@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://teppei19980914.github.io",
-  base: "/HomePage",
+  base: "/HomePage/",
   output: "static",
   integrations: [sitemap()],
 });
