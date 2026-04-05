@@ -1,0 +1,189 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { home, site } from "../data/labels";
+
+const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
+---
+
+<BaseLayout title="Home" description={`${site.name} - ${site.role}`}>
+  <section class="stats-hero fade-in">
+    <p class="stats-headline">{home.statsHeadline}</p>
+    <div class="stats-grid">
+      {home.stats.map((s) => (
+        <a href={`${import.meta.env.BASE_URL}${s.link}`} class="stat-item stat-link">
+          <span class="stat-number">{s.number}</span>
+          <span class="stat-unit">{s.unit}</span>
+          <span class="stat-label">{s.label}</span>
+          <span class="stat-detail">{s.detail}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="hero hero-gradient">
+    <h1 class="hero-name fade-in">
+      <span class="highlight">{site.name}</span>
+    </h1>
+    <p class="hero-tagline fade-in delay-1">{home.heroTagline}</p>
+    <div class="link-grid link-grid-2 fade-in delay-2">
+      <a href={`${import.meta.env.BASE_URL}profile/`} class="link-card">
+        <span class="link-card-label">{home.links.profile.label}</span>
+        <span class="link-card-desc">{home.links.profile.desc}</span>
+        <span class="link-card-arrow">&rarr;</span>
+      </a>
+      <a href={`${import.meta.env.BASE_URL}about/`} class="link-card">
+        <span class="link-card-label">{home.links.about.label}</span>
+        <span class="link-card-desc">{home.links.about.desc}</span>
+        <span class="link-card-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>{home.products.title}</h2>
+    <p class="section-desc">{home.products.desc}</p>
+    <p class="section-link">
+      <a href={`${import.meta.env.BASE_URL}product/`}>{home.products.linkText} &rarr;</a>
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <h2>{home.projects.title}</h2>
+    <p class="section-desc">{home.projects.desc}</p>
+    <p class="section-link">
+      <a href={`${import.meta.env.BASE_URL}project/`}>{home.projects.linkText} &rarr;</a>
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <h2>{home.blog.title}</h2>
+    <p class="section-desc">{home.blog.desc}</p>
+    {recentPosts.length > 0 && (
+      <ul class="blog-list">
+        {recentPosts.map((post, i) => (
+          <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <a href={`${import.meta.env.BASE_URL}blog/${post.id}/`} class="blog-item">
+              <div class="blog-item-header">
+                <span class="blog-date">{post.data.date.toLocaleDateString("ja-JP")}</span>
+                <div class="blog-tags">
+                  {post.data.tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <h3 class="blog-title">{post.data.title}</h3>
+              <p class="blog-desc">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+    <p class="section-link">
+      <a href={`${import.meta.env.BASE_URL}blog/`}>{home.blog.linkText} &rarr;</a>
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <h2>{home.contact.title}</h2>
+    <p class="section-desc">{home.contact.desc}</p>
+    <p class="section-link">
+      <a href={`${import.meta.env.BASE_URL}contact/`}>{home.contact.linkText} &rarr;</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 4rem 0 3rem;
+    text-align: center;
+  }
+  .hero-name {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 0.75rem;
+  }
+  .highlight {
+    background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-tagline {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+  .link-grid { display: grid; gap: 1rem; }
+  .link-grid-2 { grid-template-columns: 1fr 1fr; max-width: 520px; margin: 0 auto; }
+  .link-grid-1 { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .link-card {
+    display: flex; flex-direction: column; padding: 1.25rem;
+    border: 1px solid var(--color-border); border-radius: 0.75rem;
+    background-color: var(--color-surface); background-image: none;
+    color: var(--color-text); text-align: left; position: relative;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .link-card:hover {
+    transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border-color: var(--color-primary); color: var(--color-text);
+  }
+  :global(.dark) .link-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .link-card-label { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .link-card-desc { font-size: 0.8rem; color: var(--color-text-muted); }
+  .link-card-arrow {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    color: var(--color-primary); font-size: 1rem; transition: transform 0.25s;
+  }
+  .link-card:hover .link-card-arrow { transform: translateX(4px); }
+  @media (max-width: 480px) { .link-grid-2 { grid-template-columns: 1fr; } }
+
+  .stats-hero { padding: 2.5rem 0 1.5rem; }
+  .stats-headline {
+    text-align: center; font-size: 0.8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--color-text-muted); margin-bottom: 1.5rem;
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; }
+  .stat-number {
+    font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 800;
+    background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; line-height: 1;
+  }
+  .stat-unit { font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.1rem; }
+  .stat-label { font-size: 0.8rem; font-weight: 600; color: var(--color-text); margin-top: 0.35rem; }
+  .stat-detail { font-size: 0.7rem; color: var(--color-text-muted); margin-top: 0.2rem; line-height: 1.4; }
+  .stat-link {
+    text-decoration: none; background-image: none; border-radius: 0.75rem;
+    padding: 1rem 0.5rem; border: 1px solid transparent;
+    transition: background-color 0.25s, transform 0.25s, border-color 0.25s;
+  }
+  .stat-link:hover { background-color: var(--color-primary-glow); border-color: var(--color-border); transform: translateY(-2px); }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+
+  .section { margin-top: 3.5rem; }
+  .section-desc { font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.8; margin-bottom: 0.75rem; }
+  .section-link { text-align: right; margin-bottom: 0; }
+  .section-link a { font-size: 0.9rem; font-weight: 600; }
+
+  /* Blog list */
+  .blog-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0; }
+  .blog-item {
+    display: block; padding: 1rem 1.25rem; border: 1px solid var(--color-border);
+    border-radius: 0.75rem; background-color: var(--color-surface); background-image: none;
+    color: var(--color-text); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .blog-item:hover {
+    transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-color: var(--color-primary); color: var(--color-text);
+  }
+  :global(.dark) .blog-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  .blog-item-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; flex-wrap: wrap; }
+  .blog-date { font-size: 0.75rem; color: var(--color-text-muted); }
+  .blog-tags { display: flex; gap: 0.35rem; }
+  .blog-title { font-size: 1rem; margin-bottom: 0.2rem; }
+  .blog-desc { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0; }
+</style>

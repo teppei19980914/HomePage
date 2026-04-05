@@ -1,0 +1,327 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { contact } from "../data/labels";
+---
+
+<BaseLayout title={contact.title} description={contact.description}>
+  <div class="page-header hero-gradient">
+    <h1 class="fade-in">{contact.title}</h1>
+    <p class="contact-page-subtitle fade-in delay-1">
+      {contact.subtitle}
+    </p>
+  </div>
+
+  <section class="contact-form-section reveal">
+    <div class="contact-card">
+      <h2 class="contact-card-title">{contact.formTitle}</h2>
+      <p class="contact-form-note" set:html={contact.formNote.replace(/。/g, "。<br />")} />
+
+      <form
+        action="https://formspree.io/f/xykbnzvv"
+        method="POST"
+        class="contact-form"
+        id="contactForm"
+      >
+        <div class="contact-field">
+          <label for="name" class="contact-label">
+            {contact.fields.name.label} <span class="contact-required">*</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder={contact.fields.name.placeholder}
+            class="contact-input"
+          />
+        </div>
+
+        <div class="contact-field">
+          <label for="email" class="contact-label">
+            {contact.fields.email.label} <span class="contact-required">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder={contact.fields.email.placeholder}
+            class="contact-input"
+          />
+        </div>
+
+        <div class="contact-field">
+          <span class="contact-label">
+            {contact.fields.type.label} <span class="contact-required">*</span>
+          </span>
+          <div class="contact-radio-group">
+            {contact.fields.type.options.map((option, i) => (
+              <label class="contact-radio-pill">
+                <input type="radio" name="type" value={option} required={i === 0} />
+                <span class="contact-radio-text">{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div class="contact-field">
+          <label for="message" class="contact-label">
+            {contact.fields.message.label} <span class="contact-required">*</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            required
+            placeholder={contact.fields.message.placeholder}
+            class="contact-textarea"></textarea>
+        </div>
+
+        <button type="submit" class="contact-submit">{contact.submitLabel}</button>
+      </form>
+
+      <div class="contact-success" id="formSuccess" style="display: none;">
+        <div class="contact-success-icon">&#10003;</div>
+        <p class="contact-success-title">{contact.successTitle}</p>
+        <p class="contact-success-text">
+          {contact.successBody}
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline
+  data-submit-label={contact.submitLabel}
+  data-submitting-label={contact.submittingLabel}
+  data-error-message={contact.errorMessage}
+>
+  function initContactForm() {
+    var form = document.getElementById("contactForm");
+    var success = document.getElementById("formSuccess");
+    if (!form || !success) return;
+
+    var script = document.querySelector("script[data-submit-label]");
+    var submitLabel = script ? script.getAttribute("data-submit-label") : "送信する";
+    var submittingLabel = script ? script.getAttribute("data-submitting-label") : "送信中...";
+    var errorMessage = script ? script.getAttribute("data-error-message") : "送信に失敗しました。もう一度お試しください。";
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var btn = form.querySelector(".contact-submit");
+      btn.disabled = true;
+      btn.textContent = submittingLabel;
+
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      })
+        .then(function (res) {
+          if (res.ok) {
+            form.style.display = "none";
+            success.style.display = "flex";
+            form.reset();
+          } else {
+            btn.disabled = false;
+            btn.textContent = submitLabel;
+            alert(errorMessage);
+          }
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = submitLabel;
+          alert(errorMessage);
+        });
+    });
+  }
+  initContactForm();
+  document.addEventListener("astro:after-swap", initContactForm);
+</script>
+
+<style is:global>
+  .contact-page-subtitle {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+  }
+
+  .contact-form-section {
+    margin-top: 2.5rem;
+  }
+
+  .contact-card {
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .contact-card-title {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-form-note {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  /* Form layout */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .contact-required {
+    color: #ef4444;
+  }
+
+  /* Inputs */
+  .contact-input,
+  .contact-textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s, background-color 0.3s;
+  }
+
+  .contact-input:focus,
+  .contact-textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+  }
+
+  .contact-input::placeholder,
+  .contact-textarea::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+  }
+
+  .contact-textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  /* Radio pills */
+  .contact-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .contact-radio-pill {
+    cursor: pointer;
+  }
+
+  .contact-radio-pill input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .contact-radio-text {
+    display: inline-block;
+    padding: 0.55rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    transition: border-color 0.25s, background-color 0.25s, color 0.25s;
+  }
+
+  .contact-radio-pill:hover .contact-radio-text {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .contact-radio-pill input[type="radio"]:checked + .contact-radio-text {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  /* Submit button */
+  .contact-submit {
+    align-self: flex-start;
+    padding: 0.8rem 2.5rem;
+    border: none;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s, opacity 0.25s;
+  }
+
+  .contact-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--color-primary-glow);
+  }
+
+  .contact-submit:active {
+    transform: translateY(0);
+  }
+
+  .contact-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Success state */
+  .contact-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem 1rem;
+  }
+
+  .contact-success-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-success-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .contact-success-text {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+</style>

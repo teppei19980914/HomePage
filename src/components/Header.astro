@@ -1,0 +1,142 @@
+---
+import { nav, site } from "../data/labels";
+
+const navItems = [
+  { label: nav.home, href: `${import.meta.env.BASE_URL}` },
+  { label: nav.profile, href: `${import.meta.env.BASE_URL}profile/` },
+  { label: nav.about, href: `${import.meta.env.BASE_URL}about/` },
+  { label: nav.product, href: `${import.meta.env.BASE_URL}product/` },
+  { label: nav.project, href: `${import.meta.env.BASE_URL}project/` },
+  { label: nav.blog, href: `${import.meta.env.BASE_URL}blog/` },
+  { label: nav.contact, href: `${import.meta.env.BASE_URL}contact/` },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <nav class="nav">
+    <a href={import.meta.env.BASE_URL} class="logo">{site.name.split(" ")[0]}</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        {
+          navItems.map(({ label, href }) => (
+            <li>
+              <a href={href} class:list={[{ active: currentPath === href }]}>
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        aria-label="Toggle dark mode"
+        type="button"
+      >
+        <span class="icon-sun">&#9788;</span>
+        <span class="icon-moon">&#9790;</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  function initThemeToggle() {
+    var btn = document.getElementById("themeToggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  }
+  initThemeToggle();
+  document.addEventListener("astro:after-swap", initThemeToggle);
+</script>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(12px);
+    background-color: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  .nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    background-image: none;
+    transition: color 0.3s;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-links a {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    background-image: none;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.25s;
+  }
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    width: 100%;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--color-primary);
+  }
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    transition: border-color 0.2s, color 0.2s, transform 0.3s;
+  }
+  .theme-toggle:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: rotate(30deg);
+  }
+  .icon-moon { display: none; }
+  :global(.dark) .icon-sun { display: none; }
+  :global(.dark) .icon-moon { display: inline; }
+</style>

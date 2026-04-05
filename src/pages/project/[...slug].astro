@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("project");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <article class="prose">
+    <header class="hero-gradient fade-in">
+      <div class="header-meta">
+        <span class={`contract-badge contract-${project.data.contractType}`}>
+          {project.data.contractType === "employee" ? "正社員" : "業務委託"}
+        </span>
+        <span class="period">{project.data.period}</span>
+      </div>
+      <h1>{project.data.title}</h1>
+      <p class="company">
+        {
+          project.data.companyUrl ? (
+            <a
+              href={project.data.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {project.data.company}
+            </a>
+          ) : (
+            project.data.company
+          )
+        }
+        <span class="role">/ {project.data.role}</span>
+      </p>
+      <p class="description">{project.data.description}</p>
+      <div class="tags">
+        {project.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+    </header>
+    <div class="content reveal">
+      <Content />
+    </div>
+  </article>
+  <nav class="back reveal">
+    <a href={`${import.meta.env.BASE_URL}project/`}>&larr; Back to Project</a>
+  </nav>
+</BaseLayout>
+
+<style>
+  header {
+    margin-bottom: 2rem;
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .contract-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+  }
+
+  .contract-employee {
+    background-color: rgba(37, 99, 235, 0.15);
+    color: var(--color-primary);
+  }
+
+  .contract-contract {
+    background-color: rgba(139, 92, 246, 0.15);
+    color: #7c3aed;
+  }
+
+  :global(.dark) .contract-contract {
+    color: #a78bfa;
+  }
+
+  .period {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .company {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .role {
+    margin-left: 0.25rem;
+  }
+
+  .description {
+    color: var(--color-text-muted);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .content {
+    margin-top: 2rem;
+  }
+
+  .back {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+</style>

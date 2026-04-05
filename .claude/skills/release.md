@@ -13,9 +13,9 @@ description: バージョンアップとリリース作業を実施する
 4. デプロイチェックを実施する
 
 ```bash
-{{ANALYZE_COMMAND}}
-{{TEST_COMMAND}}
-{{BUILD_COMMAND}}
+npx astro check
+npm test
+npm run build
 ```
 
 5. ユーザーにコミット & プッシュの実施を案内する

@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile, site } from "../data/labels";
+
+const birthDate = new Date(profile.birthDate);
+const careerStart = new Date(profile.careerStartDate);
+const now = new Date();
+
+function calcYears(from: Date, to: Date): number {
+  let years = to.getFullYear() - from.getFullYear();
+  const monthDiff = to.getMonth() - from.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && to.getDate() < from.getDate())) {
+    years--;
+  }
+  return years;
+}
+
+const age = calcYears(birthDate, now);
+const careerYears = calcYears(careerStart, now);
+const socialLinks = [profile.links.github, profile.links.qiita, profile.links.wantedly];
+---
+
+<BaseLayout title={profile.title} description={profile.description}>
+  <div class="page-header hero-gradient">
+    <h1 class="fade-in">{profile.title}</h1>
+    <p class="page-subtitle fade-in delay-1">{profile.subtitle}</p>
+  </div>
+
+  <section class="section reveal">
+    <div class="profile-card">
+      <h2 class="profile-name">{profile.nameJa}<span class="profile-name-en">{profile.nameEn}</span></h2>
+      <p class="profile-role">{site.role}</p>
+      <div class="profile-grid">
+        <div class="profile-item">
+          <span class="profile-label">{profile.labels.birthDate}</span>
+          <span class="profile-value">{profile.birthDateDisplay}</span>
+        </div>
+        <div class="profile-item">
+          <span class="profile-label">{profile.labels.age}</span>
+          <span class="profile-value">{age} {profile.labels.ageSuffix}</span>
+        </div>
+        <div class="profile-item">
+          <span class="profile-label">{profile.labels.careerYears}</span>
+          <span class="profile-value">{careerYears} {profile.labels.careerYearsSuffix}</span>
+        </div>
+        <div class="profile-item">
+          <span class="profile-label">{profile.labels.location}</span>
+          <span class="profile-value">{profile.location}</span>
+        </div>
+        <div class="profile-item">
+          <span class="profile-label">{profile.labels.employer}</span>
+          <span class="profile-value">
+            <a href={profile.employer.url} target="_blank" rel="noopener noreferrer">{profile.employer.name}</a>
+          </span>
+        </div>
+        <div class="profile-item">
+          <span class="profile-label">{profile.labels.sideJob}</span>
+          <span class="profile-value">
+            <a href={profile.sideJob.url} target="_blank" rel="noopener noreferrer">{profile.sideJob.name}</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>{profile.philosophy.title}</h2>
+    <blockquote class="philosophy-quote">{profile.philosophy.quote}</blockquote>
+    <p>{profile.philosophy.body1}</p>
+    <p>{profile.philosophy.body2}</p>
+  </section>
+
+  <section class="section reveal">
+    <h2>{profile.motto.title}</h2>
+    <blockquote class="motto-quote">{profile.motto.quote}</blockquote>
+    <p>{profile.motto.body}</p>
+  </section>
+
+  <section class="section reveal">
+    <h2>{profile.links.title}</h2>
+    <div class="links-grid">
+      {socialLinks.map((link) => (
+        <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
+          <span class="link-name">{link.name}</span>
+          <span class="link-id">{link.id}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header { padding: 2rem 0 1rem; }
+  .page-subtitle { color: var(--color-text-muted); font-size: 1.1rem; }
+  .section { margin-top: 2.5rem; }
+  .profile-card { padding: 2rem; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); transition: background-color 0.3s; }
+  .profile-name { font-size: 1.5rem; margin-bottom: 0.25rem; }
+  .profile-name-en { font-size: 0.9rem; font-weight: 400; color: var(--color-text-muted); margin-left: 0.75rem; }
+  .profile-role { font-size: 0.95rem; color: var(--color-primary); margin-bottom: 1.5rem; }
+  .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; }
+  .profile-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--color-border); font-size: 0.9rem; }
+  .profile-label { color: var(--color-text-muted); font-weight: 600; min-width: 5rem; }
+  .profile-value { text-align: right; }
+  .philosophy-quote, .motto-quote { font-size: 1.15rem; font-style: italic; color: var(--color-primary); border-left: 3px solid var(--color-primary); padding-left: 1rem; margin-bottom: 1rem; }
+  .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+  .link-card { display: flex; flex-direction: column; align-items: center; padding: 1.25rem 1rem; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); background-image: none; color: var(--color-text); text-align: center; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
+  .link-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-color: var(--color-primary); color: var(--color-text); }
+  :global(.dark) .link-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  .link-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
+  .link-id { font-size: 0.8rem; color: var(--color-text-muted); }
+</style>

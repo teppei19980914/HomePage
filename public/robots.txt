@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://teppei19980914.github.io/HomePage/sitemap-index.xml

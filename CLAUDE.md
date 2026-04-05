@@ -1,8 +1,8 @@
-# {{PROJECT_NAME}} - Claude Code 運用ガイド
+# HomePage - Claude Code 運用ガイド
 
 ## プロジェクト概要
 
-- **{{PROJECT_NAME}}** - {{TECH_STACK}} プロジェクト
+- **HomePage** - Astro / TypeScript プロジェクト
 
 ## 運用フロー
 
@@ -23,7 +23,7 @@
 1. **横展開チェック** — 同一パターンを検索し漏れなく対応
 2. **セキュリティチェック** — XSS、インジェクション、バリデーション、機密情報
 3. **パフォーマンスチェック** — N+1禁止、不要な再描画、非同期並列化
-4. **デプロイチェック** — `{{ANALYZE_COMMAND}}` → `{{TEST_COMMAND}}` → `{{BUILD_COMMAND}}` をローカル実行
+4. **デプロイチェック** — `npx astro check` → `npm test` → `npm run build` をローカル実行
 5. **単体テスト** — テスト数の増減を確認、旧文言の残留を検索
 
 ## Claude Code レベル最適化ルール

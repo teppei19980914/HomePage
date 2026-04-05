@@ -1,0 +1,181 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
+import { site } from "../data/labels";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogType?: "website" | "article";
+  publishedDate?: string;
+  tags?: string[];
+}
+
+const {
+  title,
+  description = site.defaultDescription,
+  ogType = "website",
+  publishedDate,
+  tags = [],
+} = Astro.props;
+
+const siteTitle = `${title} | ${site.titleSuffix}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = new URL(`${import.meta.env.BASE_URL}og-image.svg`, Astro.site).toString();
+
+// JSON-LD structured data
+const jsonLd = ogType === "article"
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description,
+      author: { "@type": "Person", name: site.name, url: Astro.site?.toString() },
+      datePublished: publishedDate,
+      url: canonicalUrl,
+      keywords: tags.join(", "),
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: site.name,
+      description,
+      url: canonicalUrl,
+      author: {
+        "@type": "Person",
+        name: site.name,
+        jobTitle: site.role,
+        url: Astro.site?.toString(),
+        sameAs: [
+          "https://github.com/teppei19980914",
+          "https://qiita.com/teppei19980914",
+          "https://www.wantedly.com/id/teppei_urata",
+        ],
+      },
+    };
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="google-site-verification" content="f_jGq-vRpKheGaLTbGylmxYO7tMV8xx9R4lUvNQMo3o" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- OGP -->
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {publishedDate && (
+      <meta property="article:published_time" content={publishedDate} />
+    )}
+    {tags.length > 0 && (
+      <meta name="keywords" content={tags.join(", ")} />
+    )}
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- RSS -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${site.name} Blog RSS`}
+      href={`${import.meta.env.BASE_URL}rss.xml`}
+    />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={`${import.meta.env.BASE_URL}favicon.svg`}
+    />
+    <title>{siteTitle}</title>
+    <ClientRouter />
+
+    <script is:inline>
+      function applyTheme() {
+        var saved = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (saved === "dark" || (!saved && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      }
+      applyTheme();
+      document.addEventListener("astro:before-swap", function (e) {
+        var saved = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (saved === "dark" || (!saved && prefersDark)) {
+          e.newDocument.documentElement.classList.add("dark");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script is:inline>
+      function initScrollEffects() {
+        var bar = document.getElementById("scrollProgress");
+        if (bar) {
+          window.addEventListener(
+            "scroll",
+            function () {
+              var h =
+                document.documentElement.scrollHeight - window.innerHeight;
+              bar.style.width =
+                h > 0 ? (window.scrollY / h) * 100 + "%" : "0%";
+            },
+            { passive: true },
+          );
+        }
+        var reveals = document.querySelectorAll(".reveal");
+        if (reveals.length === 0) return;
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        reveals.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+      initScrollEffects();
+      document.addEventListener("astro:after-swap", initScrollEffects);
+    </script>
+  </body>
+</html>

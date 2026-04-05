@@ -1,0 +1,307 @@
+/* ===== Light Theme (default) ===== */
+:root {
+  --color-bg: #fafafa;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b7280;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-glow: rgba(37, 99, 235, 0.15);
+  --color-border: #e5e7eb;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f9fafb;
+  --max-width: 800px;
+  --font-sans: "Inter", "Helvetica Neue", Arial, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  /* Gradient mesh colors */
+  --mesh-1: rgba(37, 99, 235, 0.12);
+  --mesh-2: rgba(139, 92, 246, 0.10);
+  --mesh-3: rgba(6, 182, 212, 0.08);
+}
+
+/* ===== Dark Theme ===== */
+:root.dark {
+  --color-bg: #0f172a;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-primary: #60a5fa;
+  --color-primary-hover: #93bbfd;
+  --color-primary-glow: rgba(96, 165, 250, 0.15);
+  --color-border: #1e293b;
+  --color-surface: #1e293b;
+  --color-surface-hover: #334155;
+  --mesh-1: rgba(96, 165, 250, 0.08);
+  --mesh-2: rgba(139, 92, 246, 0.06);
+  --mesh-3: rgba(6, 182, 212, 0.05);
+}
+
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ===== Fluid Typography ===== */
+h1,
+h2,
+h3 {
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul,
+ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  background-image: linear-gradient(var(--color-primary), var(--color-primary));
+  background-size: 0% 1px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s, color 0.2s;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  background-size: 100% 1px;
+}
+
+/* ===== Tags ===== */
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background-color: var(--color-primary-glow);
+  color: var(--color-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.date {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== Cards ===== */
+.card {
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background-color: var(--color-surface);
+  background-image: none;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s,
+    background-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary);
+}
+
+:root.dark .card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ===== Fade-in Cascade (page load) ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.6s ease forwards;
+}
+.delay-1 {
+  animation-delay: 0.15s;
+}
+.delay-2 {
+  animation-delay: 0.3s;
+}
+.delay-3 {
+  animation-delay: 0.45s;
+}
+.delay-4 {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Scroll Reveal Animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Scroll Progress Bar ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), #8b5cf6, #06b6d4);
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* ===== Prose (Markdown) ===== */
+.prose h2 {
+  margin-top: 2rem;
+}
+
+.prose h3 {
+  margin-top: 1.5rem;
+}
+
+.prose pre {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  margin-bottom: 1rem;
+}
+
+.prose code {
+  font-size: 0.875em;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+/* ===== Gradient Mesh Hero Background ===== */
+.hero-gradient {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background:
+    radial-gradient(ellipse at 20% 50%, var(--mesh-1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, var(--mesh-2) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, var(--mesh-3) 0%, transparent 50%);
+  animation: meshMove 12s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes meshMove {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(30px, -20px) rotate(3deg);
+  }
+}
+
+/* ===== Typing Effect ===== */
+.typing {
+  display: inline-block;
+  border-right: 2px solid var(--color-primary);
+  animation: blink 0.8s step-end infinite;
+  overflow: hidden;
+  white-space: nowrap;
+  animation:
+    typing 2s steps(30) 0.5s forwards,
+    blink 0.8s step-end infinite;
+  width: 0;
+}
+
+.typing.done {
+  width: auto;
+  border-right: none;
+  animation: none;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
