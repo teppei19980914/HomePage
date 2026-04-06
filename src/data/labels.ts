@@ -149,12 +149,12 @@ export const profile = {
     title: "Links",
     github: {
       name: "GitHub",
-      id: "@teppei19980914",
+      id: "teppei19980914",
       url: "https://github.com/teppei19980914",
     },
     qiita: {
       name: "Qiita",
-      id: "211 articles",
+      id: "teppei19980914",
       url: "https://qiita.com/teppei19980914",
     },
     wantedly: {
