@@ -193,6 +193,11 @@ export const contact = {
   errorMessage: "送信に失敗しました。もう一度お試しください。",
 } as const;
 
+// --- 共通 ---
+export const common = {
+  backLink: "前のページに戻る",
+} as const;
+
 // --- Footer ---
 export const footer = {
   copyright: site.copyright,

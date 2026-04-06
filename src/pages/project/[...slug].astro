@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
+import { common } from "../../data/labels";
 
 export async function getStaticPaths() {
   const projects = await getCollection("project");
@@ -50,7 +51,7 @@ const { Content } = await render(project);
     </div>
   </article>
   <nav class="back reveal">
-    <a href={`${import.meta.env.BASE_URL}project/`}>&larr; Back to Project</a>
+    <a href="#" onclick="history.back(); return false;">&larr; {common.backLink}</a>
   </nav>
 </BaseLayout>
 

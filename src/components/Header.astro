@@ -1,5 +1,5 @@
 ---
-import { nav, site } from "../data/labels";
+import { nav } from "../data/labels";
 
 const navItems = [
   { label: nav.home, href: `${import.meta.env.BASE_URL}` },
@@ -16,29 +16,26 @@ const currentPath = Astro.url.pathname;
 
 <header class="header">
   <nav class="nav">
-    <a href={import.meta.env.BASE_URL} class="logo">{site.name.split(" ")[0]}</a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        {
-          navItems.map(({ label, href }) => (
-            <li>
-              <a href={href} class:list={[{ active: currentPath === href }]}>
-                {label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <button
-        id="themeToggle"
-        class="theme-toggle"
-        aria-label="Toggle dark mode"
-        type="button"
-      >
-        <span class="icon-sun">&#9788;</span>
-        <span class="icon-moon">&#9790;</span>
-      </button>
-    </div>
+    <ul class="nav-links">
+      {
+        navItems.map(({ label, href }) => (
+          <li>
+            <a href={href} class:list={[{ active: currentPath === href }]}>
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <button
+      id="themeToggle"
+      class="theme-toggle"
+      aria-label="Toggle dark mode"
+      type="button"
+    >
+      <span class="icon-sun">&#9788;</span>
+      <span class="icon-moon">&#9790;</span>
+    </button>
   </nav>
 </header>
 
@@ -66,58 +63,60 @@ const currentPath = Astro.url.pathname;
     transition: background-color 0.3s, border-color 0.3s;
   }
   .nav {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 1rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-text);
-    background-image: none;
-    transition: color 0.3s;
-  }
-  .nav-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+    overflow: hidden;
   }
   .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 0;
     padding: 0;
     margin: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1;
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-links li {
+    flex-shrink: 0;
   }
   .nav-links a {
+    display: block;
+    padding: 0.85rem 0.75rem;
     color: var(--color-text-muted);
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     background-image: none;
+    white-space: nowrap;
     position: relative;
     transition: color 0.2s;
   }
   .nav-links a::after {
     content: "";
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
+    bottom: 0;
+    left: 0.75rem;
+    right: 0.75rem;
     height: 2px;
     background-color: var(--color-primary);
-    transition: width 0.25s;
+    transform: scaleX(0);
+    transition: transform 0.25s;
   }
   .nav-links a:hover::after,
   .nav-links a.active::after {
-    width: 100%;
+    transform: scaleX(1);
   }
   .nav-links a:hover,
   .nav-links a.active {
     color: var(--color-primary);
   }
   .theme-toggle {
+    flex-shrink: 0;
     background: none;
     border: 1px solid var(--color-border);
     border-radius: 50%;

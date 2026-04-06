@@ -141,21 +141,31 @@ const jsonLd = ogType === "article"
       <slot />
     </main>
     <Footer />
+    <button id="scrollTop" class="scroll-top" aria-label="ページ先頭に戻る" type="button">&#8593;</button>
 
     <script is:inline>
       function initScrollEffects() {
         var bar = document.getElementById("scrollProgress");
-        if (bar) {
-          window.addEventListener(
-            "scroll",
-            function () {
-              var h =
-                document.documentElement.scrollHeight - window.innerHeight;
-              bar.style.width =
-                h > 0 ? (window.scrollY / h) * 100 + "%" : "0%";
-            },
-            { passive: true },
-          );
+        var topBtn = document.getElementById("scrollTop");
+
+        window.addEventListener(
+          "scroll",
+          function () {
+            var h = document.documentElement.scrollHeight - window.innerHeight;
+            if (bar) {
+              bar.style.width = h > 0 ? (window.scrollY / h) * 100 + "%" : "0%";
+            }
+            if (topBtn) {
+              topBtn.classList.toggle("visible", window.scrollY > 300);
+            }
+          },
+          { passive: true },
+        );
+
+        if (topBtn) {
+          topBtn.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
         }
         var reveals = document.querySelectorAll(".reveal");
         if (reveals.length === 0) return;
@@ -177,5 +187,8 @@ const jsonLd = ogType === "article"
       initScrollEffects();
       document.addEventListener("astro:after-swap", initScrollEffects);
     </script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d882ef0019134c4eb5d6473c4396f90c"}'></script>
   </body>
 </html>

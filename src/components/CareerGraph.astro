@@ -1,5 +1,4 @@
 ---
-const isDark = false; // SSR default, JS will adjust
 ---
 
 <div class="career-graph-wrapper">
@@ -16,103 +15,65 @@ const isDark = false; // SSR default, JS will adjust
   </div>
 
   <div class="cg-graph">
-    <svg class="cg-svg" viewBox="0 0 400 720" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Main line (blue): top to fork, then fork to bottom -->
+    <svg class="cg-svg" viewBox="0 0 460 720" preserveAspectRatio="xMidYMin meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main line -->
       <line x1="200" y1="30" x2="200" y2="90" class="cg-line-main" />
       <line x1="200" y1="90" x2="200" y2="430" class="cg-line-main" />
       <line x1="200" y1="430" x2="200" y2="720" class="cg-line-main" />
 
-      <!-- === UPPER: Merge curves (branches → main at 現在) === -->
-      <!-- personal-dev merges into main -->
+      <!-- Merge curves -->
       <path d="M120,160 C120,120 200,120 200,90" class="cg-line-personal" />
-      <!-- side-business merges into main -->
       <path d="M280,160 C280,120 200,120 200,90" class="cg-line-side" />
 
-      <!-- === Branch vertical lines === -->
-      <!-- personal-dev vertical -->
+      <!-- Branch vertical -->
       <line x1="120" y1="160" x2="120" y2="370" class="cg-line-personal" />
-      <!-- side-business vertical -->
       <line x1="280" y1="160" x2="280" y2="310" class="cg-line-side" />
 
-      <!-- === LOWER: Fork curves (main → branches) === -->
-      <!-- main forks to personal-dev (left) -->
+      <!-- Fork curves -->
       <path d="M200,430 C200,400 120,400 120,370" class="cg-line-personal" />
-      <!-- main forks to side-business (right) -->
       <path d="M200,430 C200,400 280,400 280,310" class="cg-line-side" />
 
-      <!-- === Nodes === -->
-      <!-- Main: 現在 (top) -->
+      <!-- Nodes -->
       <circle cx="200" cy="30" r="8" class="cg-dot-main cg-dot-big" />
-      <!-- Main: merge point -->
       <circle cx="200" cy="90" r="5" class="cg-dot-main" />
-      <!-- Main: fork point -->
       <circle cx="200" cy="430" r="6" class="cg-dot-main cg-dot-fork" />
-      <!-- Main: career history -->
       <circle cx="200" cy="490" r="4" class="cg-dot-main" />
       <circle cx="200" cy="540" r="4" class="cg-dot-main" />
       <circle cx="200" cy="590" r="4" class="cg-dot-main" />
       <circle cx="200" cy="640" r="4" class="cg-dot-main" />
       <circle cx="200" cy="700" r="8" class="cg-dot-main cg-dot-big" />
-
-      <!-- Personal Dev nodes -->
       <circle cx="120" cy="220" r="4" class="cg-dot-personal" />
       <circle cx="120" cy="300" r="4" class="cg-dot-personal" />
-
-      <!-- Side Business nodes -->
       <circle cx="280" cy="220" r="4" class="cg-dot-side" />
+
+      <!-- Labels inside SVG for proper scaling -->
+      <text x="215" y="36" class="cg-svg-text cg-svg-text-bold">現在</text>
+
+      <!-- Personal Dev (left) -->
+      <text x="110" y="218" text-anchor="end" class="cg-svg-text">ユメログ</text>
+      <text x="110" y="233" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">2026.03</text>
+      <text x="110" y="298" text-anchor="end" class="cg-svg-text">MindFlow</text>
+      <text x="110" y="313" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">2026.01</text>
+
+      <!-- Side Business (right) -->
+      <text x="295" y="218" class="cg-svg-text">WakuLab</text>
+      <text x="295" y="233" class="cg-svg-text-small cg-svg-text-purple">2026.03 / 業務委託</text>
+
+      <!-- Fork label -->
+      <text x="215" y="435" class="cg-svg-text-small cg-svg-text-muted">branch</text>
+
+      <!-- Career history (right of main) -->
+      <text x="215" y="495" class="cg-svg-text">LTS ソフトウェアテクノロジー</text>
+      <text x="215" y="510" class="cg-svg-text-small cg-svg-text-muted">2025.05 入社</text>
+      <text x="215" y="545" class="cg-svg-text">インプリム 退職</text>
+      <text x="215" y="560" class="cg-svg-text-small cg-svg-text-muted">2025.04</text>
+      <text x="215" y="595" class="cg-svg-text">インプリム 入社</text>
+      <text x="215" y="610" class="cg-svg-text-small cg-svg-text-muted">2023.01 / Pleasanter</text>
+      <text x="215" y="645" class="cg-svg-text">アクモス 退職</text>
+      <text x="215" y="660" class="cg-svg-text-small cg-svg-text-muted">2022.12</text>
+      <text x="215" y="705" class="cg-svg-text">キャリアスタート</text>
+      <text x="215" y="720" class="cg-svg-text-small cg-svg-text-muted">2021.04</text>
     </svg>
-
-    <!-- Labels -->
-    <div class="cg-labels">
-      <!-- 現在 -->
-      <div class="cg-label" style="top: 20px">
-        <span class="cg-tag">now</span>
-        <span class="cg-text cg-text-bold">現在</span>
-      </div>
-
-      <!-- Personal Dev labels (left side) -->
-      <div class="cg-label cg-label-left" style="top: 210px">
-        <span class="cg-text">ユメログ</span>
-        <span class="cg-tag cg-tag-personal">2026.03</span>
-      </div>
-      <div class="cg-label cg-label-left" style="top: 290px">
-        <span class="cg-text">MindFlow</span>
-        <span class="cg-tag cg-tag-personal">2026.01</span>
-      </div>
-
-      <!-- Side Business labels (right side) -->
-      <div class="cg-label cg-label-right" style="top: 210px">
-        <span class="cg-tag cg-tag-side">2026.03</span>
-        <span class="cg-text">WakuLab — 業務委託</span>
-      </div>
-
-      <!-- Fork point -->
-      <div class="cg-label" style="top: 420px">
-        <span class="cg-fork-label">branch</span>
-      </div>
-
-      <!-- Career history -->
-      <div class="cg-label" style="top: 480px">
-        <span class="cg-tag">2025.05</span>
-        <span class="cg-text">LTS ソフトウェアテクノロジー 入社</span>
-      </div>
-      <div class="cg-label" style="top: 530px">
-        <span class="cg-tag">2025.04</span>
-        <span class="cg-text">インプリム 退職</span>
-      </div>
-      <div class="cg-label" style="top: 580px">
-        <span class="cg-tag">2023.01</span>
-        <span class="cg-text">インプリム 入社 — Pleasanter</span>
-      </div>
-      <div class="cg-label" style="top: 630px">
-        <span class="cg-tag">2022.12</span>
-        <span class="cg-text">アクモス 退職</span>
-      </div>
-      <div class="cg-label" style="top: 690px">
-        <span class="cg-tag">2021.04</span>
-        <span class="cg-text">キャリアスタート</span>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -144,137 +105,51 @@ const isDark = false; // SSR default, JS will adjust
     display: inline-block;
   }
 
-  /* Graph container */
+  /* Graph: SVG scales with container */
   .cg-graph {
-    position: relative;
     width: 100%;
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
-    height: 750px;
+    aspect-ratio: 460 / 720;
   }
 
   .cg-svg {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    height: 720px;
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* Lines */
-  .cg-line-main {
-    stroke: #2563eb;
-    stroke-width: 3;
-  }
-
-  .cg-line-personal {
-    stroke: #06b6d4;
-    stroke-width: 3;
-    fill: none;
-  }
-
-  .cg-line-side {
-    stroke: #8b5cf6;
-    stroke-width: 3;
-    fill: none;
-  }
+  .cg-line-main { stroke: #2563eb; stroke-width: 3; }
+  .cg-line-personal { stroke: #06b6d4; stroke-width: 3; fill: none; }
+  .cg-line-side { stroke: #8b5cf6; stroke-width: 3; fill: none; }
 
   /* Dots */
-  .cg-dot-main {
-    fill: #2563eb;
-    stroke: var(--color-bg);
-    stroke-width: 2;
+  .cg-dot-main { fill: #2563eb; stroke: var(--color-bg); stroke-width: 2; }
+  .cg-dot-big { stroke-width: 3; filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.4)); }
+  .cg-dot-fork { fill: #2563eb; stroke: var(--color-bg); stroke-width: 2; filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.5)); }
+  .cg-dot-personal { fill: #06b6d4; stroke: var(--color-bg); stroke-width: 2; }
+  .cg-dot-side { fill: #8b5cf6; stroke: var(--color-bg); stroke-width: 2; }
+
+  /* SVG text */
+  .cg-svg-text {
+    font-family: "Inter", "Hiragino Sans", sans-serif;
+    font-size: 13px;
+    fill: var(--color-text);
   }
 
-  .cg-dot-big {
-    stroke-width: 3;
-    filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.4));
-  }
-
-  .cg-dot-fork {
-    fill: #2563eb;
-    stroke: var(--color-bg);
-    stroke-width: 2;
-    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.5));
-  }
-
-  .cg-dot-personal {
-    fill: #06b6d4;
-    stroke: var(--color-bg);
-    stroke-width: 2;
-  }
-
-  .cg-dot-side {
-    fill: #8b5cf6;
-    stroke: var(--color-bg);
-    stroke-width: 2;
-  }
-
-  /* Labels */
-  .cg-labels {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-
-  .cg-label {
-    position: absolute;
-    left: calc(50% + 30px);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--color-text);
-    white-space: nowrap;
-  }
-
-  .cg-label-left {
-    left: auto;
-    right: calc(50% + 30px);
-    flex-direction: row-reverse;
-  }
-
-  .cg-label-right {
-    left: calc(50% + 50px);
-  }
-
-  .cg-tag {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.15rem 0.5rem;
-    border-radius: 0.25rem;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-muted);
-    transition: background-color 0.3s, border-color 0.3s;
-  }
-
-  .cg-text {
-    font-size: 0.85rem;
-  }
-
-  .cg-text-bold {
+  .cg-svg-text-bold {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 15px;
   }
 
-  .cg-tag-personal {
-    border-color: rgba(6, 182, 212, 0.3);
-    color: #06b6d4;
+  .cg-svg-text-small {
+    font-family: "Inter", "Hiragino Sans", sans-serif;
+    font-size: 10px;
+    fill: var(--color-text-muted);
   }
 
-  .cg-tag-side {
-    border-color: rgba(139, 92, 246, 0.3);
-    color: #8b5cf6;
-  }
-
-  .cg-fork-label {
-    font-size: 0.65rem;
-    color: var(--color-text-muted);
-    font-family: monospace;
-  }
+  .cg-svg-text-muted { fill: var(--color-text-muted); }
+  .cg-svg-text-cyan { fill: #06b6d4; }
+  .cg-svg-text-purple { fill: #8b5cf6; }
 </style>

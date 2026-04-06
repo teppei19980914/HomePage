@@ -6,6 +6,7 @@
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
   --color-primary-glow: rgba(37, 99, 235, 0.15);
+  --color-accent: #a78bfa;
   --color-border: #e5e7eb;
   --color-surface: #ffffff;
   --color-surface-hover: #f9fafb;
@@ -26,6 +27,7 @@
   --color-primary: #60a5fa;
   --color-primary-hover: #93bbfd;
   --color-primary-glow: rgba(96, 165, 250, 0.15);
+  --color-accent: #c4b5fd;
   --color-border: #1e293b;
   --color-surface: #1e293b;
   --color-surface-hover: #334155;
@@ -57,6 +59,7 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 main {
@@ -192,6 +195,40 @@ a:hover {
   }
 }
 
+/* ===== Scroll to Top Button ===== */
+.scroll-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s, background-color 0.3s;
+  z-index: 50;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
 /* ===== Scroll Reveal Animation ===== */
 .reveal {
   opacity: 0;
@@ -239,7 +276,7 @@ a:hover {
 }
 
 .prose blockquote {
-  border-left: 3px solid var(--color-primary);
+  border-left: 3px solid var(--color-accent);
   padding-left: 1rem;
   color: var(--color-text-muted);
   margin-bottom: 1rem;
