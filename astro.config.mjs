@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import rehypeMermaid from "rehype-mermaid";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,7 +8,4 @@ export default defineConfig({
   base: "/HomePage/",
   output: "static",
   integrations: [sitemap()],
-  markdown: {
-    rehypePlugins: [[rehypeMermaid, { strategy: "inline-svg" }]],
-  },
 });

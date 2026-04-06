@@ -187,6 +187,31 @@ const jsonLd = ogType === "article"
       document.addEventListener("astro:after-swap", initScrollEffects);
     </script>
 
+    <!-- Mermaid (client-side, lazy load only when needed) -->
+    <script is:inline>
+      function initMermaid() {
+        var codes = document.querySelectorAll("pre > code.language-mermaid");
+        if (codes.length === 0) return;
+        var s = document.createElement("script");
+        s.src = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
+        s.onload = function () {
+          var isDark = document.documentElement.classList.contains("dark");
+          window.mermaid.initialize({ startOnLoad: false, theme: isDark ? "dark" : "default" });
+          codes.forEach(function (code) {
+            var pre = code.parentElement;
+            var div = document.createElement("div");
+            div.className = "mermaid";
+            div.textContent = code.textContent;
+            pre.replaceWith(div);
+          });
+          window.mermaid.run();
+        };
+        document.body.appendChild(s);
+      }
+      initMermaid();
+      document.addEventListener("astro:after-swap", initMermaid);
+    </script>
+
     <!-- Cloudflare Web Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d882ef0019134c4eb5d6473c4396f90c"}'></script>
   </body>
