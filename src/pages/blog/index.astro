@@ -5,6 +5,39 @@ import { blog } from "../../data/labels";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Fetch Qiita articles at build time
+interface QiitaArticle {
+  title: string;
+  url: string;
+  created_at: string;
+  likes_count: number;
+  stocks_count: number;
+  tags: { name: string }[];
+}
+
+let qiitaArticles: QiitaArticle[] = [];
+try {
+  const allItems: QiitaArticle[] = [];
+  for (let page = 1; page <= 10; page++) {
+    const res = await fetch(
+      `https://qiita.com/api/v2/users/${blog.qiitaSection.qiitaUserId}/items?per_page=100&page=${page}`
+    );
+    if (!res.ok) break;
+    const data: QiitaArticle[] = await res.json();
+    if (data.length === 0) break;
+    allItems.push(...data);
+    if (data.length < 100) break;
+  }
+  // Score = likes + stocks * 2, then take top N
+  qiitaArticles = allItems
+    .map((item) => ({ ...item, score: item.likes_count + item.stocks_count * 2 }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, blog.qiitaSection.maxArticles);
+} catch (e) {
+  // API failure: show empty list
+  qiitaArticles = [];
+}
 ---
 
 <BaseLayout title={blog.title} description={blog.description}>
@@ -13,46 +46,121 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
     <p class="page-subtitle fade-in delay-1">{blog.subtitle}</p>
   </div>
 
-  {
-    posts.length === 0 ? (
-      <p>{blog.emptyMessage}</p>
-    ) : (
+  <!-- Original Blog -->
+  <section class="section reveal">
+    <h2>{blog.title}</h2>
+    {
+      posts.length === 0 ? (
+        <p>{blog.emptyMessage}</p>
+      ) : (
+        <ul class="card-list">
+          {posts.map((post, i) => (
+            <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
+              <a href={`${import.meta.env.BASE_URL}blog/${post.id}/`} class="card blog-card">
+                <div class="blog-card-header">
+                  <span class="date">
+                    {post.data.date.toLocaleDateString("ja-JP")}
+                  </span>
+                  <div class="tags">
+                    {post.data.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <!-- Qiita Tech Blog -->
+  {qiitaArticles.length > 0 && (
+    <section class="section reveal">
+      <h2>{blog.qiitaSection.title}</h2>
+      <p class="section-subtitle">{blog.qiitaSection.subtitle}</p>
       <ul class="card-list">
-        {posts.map((post, i) => (
-          <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
-            <a href={`${import.meta.env.BASE_URL}blog/${post.id}/`} class="card">
-              <span class="date">
-                {post.data.date.toLocaleDateString("ja-JP")}
-              </span>
-              <h3>{post.data.title}</h3>
-              <p>{post.data.description}</p>
+        {qiitaArticles.map((article, i) => (
+          <li class="reveal" style={`transition-delay: ${i * 0.05}s`}>
+            <a href={article.url} target="_blank" rel="noopener noreferrer" class="card qiita-card">
+              <div class="qiita-card-header">
+                <span class="date">
+                  {new Date(article.created_at).toLocaleDateString("ja-JP")}
+                </span>
+                <div class="qiita-stats">
+                  <span class="qiita-stat" title="いいね">&#9829; {article.likes_count}</span>
+                  <span class="qiita-stat" title="ストック">&#9733; {article.stocks_count}</span>
+                </div>
+              </div>
+              <h3>{article.title}</h3>
               <div class="tags">
-                {post.data.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
+                {article.tags.slice(0, 4).map((t) => (
+                  <span class="tag">{t.name}</span>
                 ))}
               </div>
             </a>
           </li>
         ))}
       </ul>
-    )
-  }
+      <p class="section-link">
+        <a href={blog.qiitaSection.linkUrl} target="_blank" rel="noopener noreferrer">
+          {blog.qiitaSection.linkText} &rarr;
+        </a>
+      </p>
+    </section>
+  )}
 </BaseLayout>
 
 <style>
+  .section { margin-top: 2.5rem; }
+  .section-subtitle { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  .section-link { text-align: right; margin-top: 1rem; }
+  .section-link a { font-size: 0.9rem; font-weight: 600; }
+
   .card {
     display: block;
     color: var(--color-text);
     background-image: none;
   }
+  .card h3 { margin-top: 0.25rem; }
 
-  .card h3 {
-    margin-top: 0.25rem;
+  /* Blog card */
+  .blog-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  /* Qiita card */
+  .qiita-card {
+    border-left: 3px solid #55c500;
+  }
+  .qiita-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .qiita-stats {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .qiita-stat {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
   }
 
   .tags {
     display: flex;
     gap: 0.5rem;
     margin-top: 0.5rem;
+    flex-wrap: wrap;
   }
 </style>

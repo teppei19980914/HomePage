@@ -50,6 +50,11 @@
 - Content Collections は `glob` loader 必須
 - `ViewTransitions` → `ClientRouter` に名前変更
 - `astro.config.mjs` の `base` は末尾スラッシュ必須（`/HomePage/`）
+- ブログリンクには `data-astro-reload` 属性が必要（ClientRouter との互換性のため）
+
+## 外部 API 連携
+
+- **Qiita API**: ビルド時に Qiita 記事を取得し、likes + stocks*2 でスコアリング、上位10件を Blog ページに表示
 
 ## Claude Code レベル最適化ルール
 

@@ -89,7 +89,7 @@ const products = (await getCollection("product"))
       <ul class="blog-list">
         {recentPosts.map((post, i) => (
           <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
-            <a href={`${import.meta.env.BASE_URL}blog/${post.id}/`} class="blog-item">
+            <a href={`${import.meta.env.BASE_URL}blog/${post.id}/`} class="blog-item" data-astro-reload>
               <div class="blog-item-header">
                 <span class="blog-date">{post.data.date.toLocaleDateString("ja-JP")}</span>
                 <div class="blog-tags">
@@ -105,7 +105,7 @@ const products = (await getCollection("product"))
         ))}
       </ul>
       <p class="section-link">
-        <a href={`${import.meta.env.BASE_URL}blog/`}>{home.blog.linkText} &rarr;</a>
+        <a href={`${import.meta.env.BASE_URL}blog/`} data-astro-reload>{home.blog.linkText} &rarr;</a>
       </p>
     </section>
   )}

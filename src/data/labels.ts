@@ -255,6 +255,14 @@ export const blog = {
   description: "ブログ記事一覧",
   subtitle: "技術的な学びや日々の気づきを発信しています",
   emptyMessage: "記事はまだありません。",
+  qiitaSection: {
+    title: "Tech Blog (Qiita)",
+    subtitle: "Qiita で発信した技術記事（いいね・ストック数の多い記事を厳選）",
+    qiitaUserId: "teppei19980914",
+    maxArticles: 10,
+    linkText: "Qiita ですべての記事を見る",
+    linkUrl: "https://qiita.com/teppei19980914",
+  },
 } as const;
 
 // --- Product ページ ---

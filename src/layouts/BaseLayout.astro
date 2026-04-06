@@ -116,19 +116,18 @@ const jsonLd = ogType === "article"
         var prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
         ).matches;
-        if (saved === "dark" || (!saved && prefersDark)) {
-          document.documentElement.classList.add("dark");
-        } else {
+        if (saved === "light") {
           document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
         }
       }
       applyTheme();
       document.addEventListener("astro:before-swap", function (e) {
         var saved = localStorage.getItem("theme");
-        var prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        if (saved === "dark" || (!saved && prefersDark)) {
+        if (saved === "light") {
+          e.newDocument.documentElement.classList.remove("dark");
+        } else {
           e.newDocument.documentElement.classList.add("dark");
         }
       });

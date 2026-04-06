@@ -19,7 +19,11 @@ const currentPath = Astro.url.pathname;
       {
         navItems.map(({ label, href }) => (
           <li>
-            <a href={href} class:list={[{ active: currentPath === href }]}>
+            <a
+              href={href}
+              class:list={[{ active: currentPath === href }]}
+              data-astro-reload={href.includes("blog") ? true : undefined}
+            >
               {label}
             </a>
           </li>

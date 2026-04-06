@@ -15,19 +15,18 @@
 
 | ページ | 機能 |
 |---|---|
-| Home | 実績数値の表示、各ページへの導線、直近ブログ記事一覧 |
-| Profile | 基本情報（年齢・社会人歴は動的計算）、哲学、座右の銘、SNSリンク |
-| About | スキル一覧（レベル付き）、資格一覧（取得日付き）、キャリア（Gitブランチ風グラフ）、学歴 |
+| Home | Hero（名前・キャッチコピー・サマリー・CTA）、強み3カード、プロダクト2カード、直近ブログ4件+Qiita、Profile導線、Contact CTA |
+| Profile | 基本情報、スキル、資格、キャリア（gitグラフ）、学歴、哲学、夢、座右の銘、SNSリンク、CTA（アコーディオンUI） |
 | Product | 個人開発プロダクト一覧・詳細（Content Collections） |
 | Project | 参画プロジェクト一覧・詳細（Content Collections） |
-| Blog | ブログ記事一覧・詳細（Content Collections） |
-| Contact | お問い合わせフォーム（Formspree連携） |
+| Blog | ブログ記事一覧・詳細（Content Collections）+ Qiita 人気記事（ビルド時API取得） |
+| Contact | お問い合わせフォーム（Formspree連携）+ 稼働状況（業務委託のみ、平日19:00以降/土日祝、2営業日以内に返信） |
 
 ### 2.2 共通機能
 
 | 機能 | 説明 |
 |---|---|
-| ダークモード | ライト/ダーク切替。ユーザー設定を localStorage に保存。OS設定にも追従 |
+| ダークモード | デフォルトダーク。ライト/ダーク切替。ユーザー設定を localStorage に保存 |
 | ページ遷移アニメーション | Astro ClientRouter による SPA風遷移 |
 | スクロールアニメーション | セクションのフェードイン表示（IntersectionObserver） |
 | スクロールプログレスバー | 画面上部にカラフルな進捗バー |
@@ -40,7 +39,7 @@
 
 | 項目 | 方式 |
 |---|---|
-| ブログ記事 | Markdown ファイル追加（src/content/blog/） |
+| ブログ記事 | Markdown ファイル追加（src/content/blog/）+ Qiita API（ビルド時取得） |
 | プロダクト | Markdown ファイル追加（src/content/product/） |
 | プロジェクト | Markdown ファイル追加（src/content/project/） |
 | UIテキスト | src/data/labels.ts で一元管理 |
@@ -72,7 +71,7 @@
 | 項目 | 要件 |
 |---|---|
 | コスト | 月額0円（全サービス無料枠内） |
-| デプロイ | git push で自動デプロイ（GitHub Actions） |
+| デプロイ | git push で自動デプロイ（GitHub Actions）+ 定期ビルド（4/1, 9/15 cron） |
 | Cookie | 使用しない（バナー表示不要） |
 | メンテナンス | 定期的な依存パッケージ更新 |
 
