@@ -5,7 +5,7 @@ tagline: "頭の中を、空にする。"
 date: 2026-04-03
 tags: ["Python", "FastAPI", "HTMX", "SQLite", "SQLAlchemy"]
 url: "https://mindflow-gtd.onrender.com/"
-status: active
+status: beta
 order: 2
 ---
 

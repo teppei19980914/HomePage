@@ -270,7 +270,7 @@ export const product = {
   description: "個人開発プロダクトの紹介",
   subtitle: "個人で開発しているプロダクトを紹介します",
   emptyMessage: "プロダクトはまだありません。",
-  statusLabels: { active: "Active", beta: "Beta", archived: "Archived" },
+  statusLabels: { active: "Active", beta: "開発中 — こうご期待", archived: "Archived" },
   detailLink: "詳細を見る",
   tryLink: "体験する",
   githubLink: "GitHub",

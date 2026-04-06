@@ -22,7 +22,7 @@ const products = (await getCollection("product"))
       <div class="product-list">
         {products.map((product, i) => (
           <article
-            class="product-card reveal"
+            class:list={["product-card", "reveal", { "product-disabled": product.data.status === "beta" }]}
             style={`transition-delay: ${i * 0.15}s`}
           >
             <div class="product-card-header">
@@ -44,34 +44,36 @@ const products = (await getCollection("product"))
                 ))}
               </div>
             </div>
-            <div class="product-card-actions">
-              <a
-                href={`${import.meta.env.BASE_URL}product/${product.id}/`}
-                class="btn-detail"
-              >
-                {productLabels.detailLink} &rarr;
-              </a>
-              {product.data.url && (
+            {product.data.status !== "beta" && (
+              <div class="product-card-actions">
                 <a
-                  href={product.data.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn-primary"
+                  href={`${import.meta.env.BASE_URL}product/${product.id}/`}
+                  class="btn-detail"
                 >
-                  {productLabels.tryLink} &rarr;
+                  {productLabels.detailLink} &rarr;
                 </a>
-              )}
-              {product.data.repo && (
-                <a
-                  href={product.data.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn-secondary"
-                >
-                  {productLabels.githubLink}
-                </a>
-              )}
-            </div>
+                {product.data.url && (
+                  <a
+                    href={product.data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-primary"
+                  >
+                    {productLabels.tryLink} &rarr;
+                  </a>
+                )}
+                {product.data.repo && (
+                  <a
+                    href={product.data.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-secondary"
+                  >
+                    {productLabels.githubLink}
+                  </a>
+                )}
+              </div>
+            )}
           </article>
         ))}
       </div>
@@ -94,6 +96,12 @@ const products = (await getCollection("product"))
     overflow: hidden;
     transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s,
       background-color 0.3s;
+  }
+
+  .product-disabled {
+    opacity: 0.45;
+    pointer-events: none;
+    filter: grayscale(0.6);
   }
 
   .product-card:hover {
