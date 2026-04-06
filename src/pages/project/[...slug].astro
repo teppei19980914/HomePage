@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
-import { common } from "../../data/labels";
+import { common, project as projectLabels } from "../../data/labels";
 
 export async function getStaticPaths() {
   const projects = await getCollection("project");
@@ -20,7 +20,7 @@ const { Content } = await render(project);
     <header class="hero-gradient fade-in">
       <div class="header-meta">
         <span class={`contract-badge contract-${project.data.contractType}`}>
-          {project.data.contractType === "employee" ? "正社員" : "業務委託"}
+          {project.data.contractType === "employee" ? projectLabels.contractTypes.employee : projectLabels.contractTypes.contract}
         </span>
         <span class="period">{project.data.period}</span>
       </div>

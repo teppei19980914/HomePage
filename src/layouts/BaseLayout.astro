@@ -3,7 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
-import { site } from "../data/labels";
+import { site, common } from "../data/labels";
 
 interface Props {
   title: string;
@@ -141,7 +141,7 @@ const jsonLd = ogType === "article"
       <slot />
     </main>
     <Footer />
-    <button id="scrollTop" class="scroll-top" aria-label="ページ先頭に戻る" type="button">&#8593;</button>
+    <button id="scrollTop" class="scroll-top" aria-label={common.scrollTopLabel} type="button">&#8593;</button>
 
     <script is:inline>
       function initScrollEffects() {

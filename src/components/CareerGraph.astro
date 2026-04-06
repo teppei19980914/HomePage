@@ -1,16 +1,17 @@
 ---
+import { about, careerGraph } from "../data/labels";
 ---
 
 <div class="career-graph-wrapper">
   <div class="career-legend">
     <span class="legend-item">
-      <span class="legend-dot" style="background:#2563eb"></span>正社員
+      <span class="legend-dot" style="background:#2563eb"></span>{about.career.legend.employee}
     </span>
     <span class="legend-item">
-      <span class="legend-dot" style="background:#06b6d4"></span>個人開発
+      <span class="legend-dot" style="background:#06b6d4"></span>{about.career.legend.personal}
     </span>
     <span class="legend-item">
-      <span class="legend-dot" style="background:#8b5cf6"></span>副業
+      <span class="legend-dot" style="background:#8b5cf6"></span>{about.career.legend.sideJob}
     </span>
   </div>
 
@@ -47,32 +48,32 @@
       <circle cx="280" cy="220" r="4" class="cg-dot-side" />
 
       <!-- Labels inside SVG for proper scaling -->
-      <text x="215" y="36" class="cg-svg-text cg-svg-text-bold">現在</text>
+      <text x="215" y="36" class="cg-svg-text cg-svg-text-bold">{about.career.now}</text>
 
       <!-- Personal Dev (left) -->
-      <text x="110" y="218" text-anchor="end" class="cg-svg-text">ユメログ</text>
-      <text x="110" y="233" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">2026.03</text>
-      <text x="110" y="298" text-anchor="end" class="cg-svg-text">MindFlow</text>
-      <text x="110" y="313" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">2026.01</text>
+      <text x="110" y="218" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[0].name}</text>
+      <text x="110" y="233" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[0].date}</text>
+      <text x="110" y="298" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[1].name}</text>
+      <text x="110" y="313" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[1].date}</text>
 
       <!-- Side Business (right) -->
-      <text x="295" y="218" class="cg-svg-text">WakuLab</text>
-      <text x="295" y="233" class="cg-svg-text-small cg-svg-text-purple">2026.03 / 業務委託</text>
+      <text x="295" y="218" class="cg-svg-text">{careerGraph.sideBusiness.name}</text>
+      <text x="295" y="233" class="cg-svg-text-small cg-svg-text-purple">{careerGraph.sideBusiness.date} {careerGraph.sideBusiness.suffix}</text>
 
       <!-- Fork label -->
-      <text x="215" y="435" class="cg-svg-text-small cg-svg-text-muted">branch</text>
+      <text x="215" y="435" class="cg-svg-text-small cg-svg-text-muted">{about.career.branchLabel}</text>
 
       <!-- Career history (right of main) -->
-      <text x="215" y="495" class="cg-svg-text">LTS ソフトウェアテクノロジー</text>
-      <text x="215" y="510" class="cg-svg-text-small cg-svg-text-muted">2025.05 入社</text>
-      <text x="215" y="545" class="cg-svg-text">インプリム 退職</text>
-      <text x="215" y="560" class="cg-svg-text-small cg-svg-text-muted">2025.04</text>
-      <text x="215" y="595" class="cg-svg-text">インプリム 入社</text>
-      <text x="215" y="610" class="cg-svg-text-small cg-svg-text-muted">2023.01 / Pleasanter</text>
-      <text x="215" y="645" class="cg-svg-text">アクモス 退職</text>
-      <text x="215" y="660" class="cg-svg-text-small cg-svg-text-muted">2022.12</text>
-      <text x="215" y="705" class="cg-svg-text">キャリアスタート</text>
-      <text x="215" y="720" class="cg-svg-text-small cg-svg-text-muted">2021.04</text>
+      <text x="215" y="495" class="cg-svg-text">{careerGraph.history[0].name}</text>
+      <text x="215" y="510" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[0].dateSuffix}</text>
+      <text x="215" y="545" class="cg-svg-text">{careerGraph.history[1].name}</text>
+      <text x="215" y="560" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[1].dateSuffix}</text>
+      <text x="215" y="595" class="cg-svg-text">{careerGraph.history[2].name}</text>
+      <text x="215" y="610" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[2].dateSuffix}</text>
+      <text x="215" y="645" class="cg-svg-text">{careerGraph.history[3].name}</text>
+      <text x="215" y="660" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[3].dateSuffix}</text>
+      <text x="215" y="705" class="cg-svg-text">{careerGraph.history[4].name}</text>
+      <text x="215" y="720" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[4].dateSuffix}</text>
     </svg>
   </div>
 </div>
@@ -133,7 +134,7 @@
 
   /* SVG text */
   .cg-svg-text {
-    font-family: "Inter", "Hiragino Sans", sans-serif;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif;
     font-size: 13px;
     fill: var(--color-text);
   }
@@ -144,7 +145,7 @@
   }
 
   .cg-svg-text-small {
-    font-family: "Inter", "Hiragino Sans", sans-serif;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif;
     font-size: 10px;
     fill: var(--color-text-muted);
   }

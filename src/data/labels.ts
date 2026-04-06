@@ -21,6 +21,7 @@ export const nav = {
   project: "Project",
   blog: "Blog",
   contact: "Contact",
+  themeToggleLabel: "Toggle dark mode",
 } as const;
 
 // --- Home ページ ---
@@ -87,7 +88,7 @@ export const home = {
 export const profile = {
   title: "Profile",
   description: "須山 哲平のプロフィール",
-  subtitle: "須山 哲平 / Teppei Suyama",
+  subtitle: "基本情報・哲学・SNSリンク",
   nameJa: "須山 哲平",
   nameEn: "Teppei Suyama",
   birthDate: "1998-09-14",
@@ -114,23 +115,51 @@ export const profile = {
   },
   philosophy: {
     title: "Philosophy",
-    quote: "「夢を持つことで、大きな壁も乗り越えられる」",
-    body1:
-      "心理的安全性の高い社会を目指し、ソフトウェアの力で世界をよりよくすることを信念に活動しています。",
-    body2:
-      "止まっている人を動かし、動いている人を支える。それが自分のものづくりの原点です。",
+    quote: "「みんなが夢から得られた幸福感から世界を変える原動力を生み出したい」",
+    paragraphs: [
+      "学生時代、夢を持つこともなく、夢を語るような環境もなかった。将来に希望を見いだせず、自堕落な生活を送り、他責思考で自分を守っていた。",
+      "しかし、パートナーとの出会いによって「やりたいこと」が見つかり、毎日生き生きと暮らせるようになった。自らの人生を主体的に生きることができるようになった。",
+      "この経験から、夢（やりたいこと）を見つけることで人は生き生きと生活できるようになり、自責思考で自分の人生の舵取りを自分でとれるようになると考えている。",
+      "夢を持つことでみんなが主体的に行動し、自身の人生をより良くしようとする。その先に得られる幸福感が、日本、ないしは世界を大きく動かす原動力になると信じている。",
+    ],
+  },
+  dream: {
+    title: "Dream",
+    quote: "「みんなが夢を語ることができる環境を構築すること」",
+    paragraphs: [
+      "Philosophy で述べた考えから、私は「夢を持ち、夢を語らい、夢をかなえられる環境が必要」だと考えている。",
+      "一言で表現すると、みんなが素直になれる環境。これを私は「心理的安全性の高い組織」と表現している。",
+      "PM（プロジェクトマネージャ）として、メンバー間の信頼関係が構築される組織づくりを目指し、日々の業務に取り組んでいる。",
+    ],
   },
   motto: {
     title: "Motto",
     quote:
       "「落ちこぼれでも必死に努力すればエリートを超えることもあるかもよ」",
-    body: "塵も積もれば山となる。1.01 の法則を信じて日々努力を積み重ねています。",
+    paragraphs: [
+      "「塵も積もれば山となる」ということわざをもとに、1.01 の法則を信じて日々コツコツと積み上げることを大切にしている。",
+      "私は、学力が高いわけでもなく、才能があるわけでもない。ドラゴンボールのサイヤ人でいうところの落ちこぼれである。",
+      "そんな中、ドラゴンボールの名言で、主人公の孫悟空が「落ちこぼれでも必死に努力すればエリートを超えることもあるかもよ」という。結果的にエリートを超えてしまう姿を目にし、自分もこつこつと努力していけば、落ちこぼれでもエリートが見ているような景色を見ることができると考えている。",
+      "この景色を見るために、日々読書や自己学習などを実施し、努力を積み重ねている。",
+    ],
   },
   links: {
     title: "Links",
-    github: { name: "GitHub", id: "@teppei19980914", url: "https://github.com/teppei19980914" },
-    qiita: { name: "Qiita", id: "211 articles", url: "https://qiita.com/teppei19980914" },
-    wantedly: { name: "Wantedly", id: "須山 哲平", url: "https://www.wantedly.com/id/teppei_urata" },
+    github: {
+      name: "GitHub",
+      id: "@teppei19980914",
+      url: "https://github.com/teppei19980914",
+    },
+    qiita: {
+      name: "Qiita",
+      id: "211 articles",
+      url: "https://qiita.com/teppei19980914",
+    },
+    wantedly: {
+      name: "Wantedly",
+      id: "須山 哲平",
+      url: "https://www.wantedly.com/id/teppei_urata",
+    },
   },
 } as const;
 
@@ -138,7 +167,86 @@ export const profile = {
 export const about = {
   title: "About",
   description: "須山 哲平（Teppei Suyama）のプロフィール",
-  subtitle: "須山 哲平 / Teppei Suyama",
+  subtitle: "スキル・資格・キャリア",
+  profile: {
+    title: "Profile",
+    intro: "須山 哲平（Teppei Suyama）。川崎在住のソフトウェアエンジニア。",
+    career:
+      "株式会社LTS ソフトウェアテクノロジーにて SES エンジニアとして従事。前職ではローコード開発プラットフォーム「Pleasanter」の開発・導入支援に携わり、Qiita にて 211 件以上の技術記事を発信しています。",
+    personal:
+      "個人では Flutter / Dart を用いたモバイル・Web アプリ開発に取り組み、夢や目標を管理するアプリ「ユメログ」を個人開発しています。",
+    quote:
+      "「落ちこぼれでも必死に努力すればエリートを超えることもあるかもよ」",
+    quoteSub:
+      "塵も積もれば山となる。1.01 の法則を信じて日々努力を積み重ねています。",
+  },
+  philosophy: {
+    title: "Philosophy",
+    heading: "「夢を持つことで、大きな壁も乗り越えられる」",
+    items: [
+      "夢は外に出し、脳に認識させる必要がある ── 言霊の力を信じています",
+      "人は慣性で行動する。動いている人は動き続け、止まっている人は止まり続ける",
+      "止まっている人を動かし、動いている人を支える ── それが自分のものづくりの原点",
+      "他者に依存せず、自分の力で世界をよりよくするという信念",
+    ],
+    visionLabel: "最終目標:",
+    visionText: "心理的安全性の高い社会の構築",
+  },
+  skills: {
+    title: "Skills",
+    legend: "\u25CF 実務2年以上　\u25CB 実務1年以上　\u25B3 知識あり",
+    categories: {
+      languages: "Languages",
+      database: "Database",
+      cloud: "Cloud / Platform",
+      os: "OS",
+      tools: "Tools",
+      personalDev: "Personal Dev",
+    },
+  },
+  certifications: {
+    title: "Certifications",
+    items: [
+      { date: "2026.02", name: "Python 3 エンジニア認定実践試験" },
+      { date: "2024.10", name: "応用情報技術者試験" },
+      { date: "2024.03", name: "OSS-DB Silver" },
+      { date: "2023.11", name: "AZ-900 (Microsoft Azure Fundamentals)" },
+      { date: "2023.09", name: "LPIC Level 1" },
+      { date: "2022.11", name: "基本情報技術者試験" },
+      { date: "2021.07", name: "Oracle Certified Java Programmer, Gold SE 11" },
+      { date: "2019.07", name: "MOS Excel 2019 Expert" },
+      { date: "2018.06", name: "日本語漢字能力検定 2級" },
+    ],
+  },
+  career: {
+    title: "Career",
+    legend: { employee: "正社員", personal: "個人開発", sideJob: "副業" },
+    now: "現在",
+    branchLabel: "branch",
+  },
+  education: {
+    title: "Education",
+    items: [
+      { period: "2017年4月 - 2021年3月", name: "東京福祉大学 心理学部心理学科" },
+      { period: "2014年4月 - 2017年3月", name: "目黒学院高等学校" },
+    ],
+  },
+} as const;
+
+// --- Career グラフ ---
+export const careerGraph = {
+  personalDev: [
+    { name: "ユメログ", date: "2026.03" },
+    { name: "MindFlow", date: "2026.01" },
+  ],
+  sideBusiness: { name: "WakuLab", date: "2026.03", suffix: "/ 業務委託" },
+  history: [
+    { name: "LTS ソフトウェアテクノロジー", dateSuffix: "2025.05 入社" },
+    { name: "インプリム 退職", dateSuffix: "2025.04" },
+    { name: "インプリム 入社", dateSuffix: "2023.01 / Pleasanter" },
+    { name: "アクモス 退職", dateSuffix: "2022.12" },
+    { name: "キャリアスタート", dateSuffix: "2021.04" },
+  ],
 } as const;
 
 // --- Blog ページ ---
@@ -146,6 +254,7 @@ export const blog = {
   title: "Blog",
   description: "ブログ記事一覧",
   subtitle: "技術的な学びや日々の気づきを発信しています",
+  emptyMessage: "記事はまだありません。",
 } as const;
 
 // --- Product ページ ---
@@ -153,6 +262,11 @@ export const product = {
   title: "Product",
   description: "個人開発プロダクトの紹介",
   subtitle: "個人で開発しているプロダクトを紹介します",
+  emptyMessage: "プロダクトはまだありません。",
+  statusLabels: { active: "Active", beta: "Beta", archived: "Archived" },
+  detailLink: "詳細を見る",
+  tryLink: "体験する",
+  githubLink: "GitHub",
 } as const;
 
 // --- Project ページ ---
@@ -160,10 +274,12 @@ export const project = {
   title: "Project",
   description: "参画プロジェクトの紹介",
   subtitle: "正社員・業務委託として参画したプロジェクトの紹介",
+  emptyMessage: "プロジェクトはまだありません。",
   contractTypes: {
     employee: "正社員",
     contract: "業務委託",
   },
+  detailLink: "詳細を見る",
 } as const;
 
 // --- Contact ページ ---
@@ -196,6 +312,7 @@ export const contact = {
 // --- 共通 ---
 export const common = {
   backLink: "前のページに戻る",
+  scrollTopLabel: "ページ先頭に戻る",
 } as const;
 
 // --- Footer ---

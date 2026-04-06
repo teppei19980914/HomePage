@@ -15,7 +15,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
 
   {
     posts.length === 0 ? (
-      <p>記事はまだありません。</p>
+      <p>{blog.emptyMessage}</p>
     ) : (
       <ul class="card-list">
         {posts.map((post, i) => (
@@ -40,15 +40,6 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
 </BaseLayout>
 
 <style>
-  .page-header {
-    padding: 2rem 0 1rem;
-  }
-
-  .page-subtitle {
-    color: var(--color-text-muted);
-    font-size: 1.1rem;
-  }
-
   .card {
     display: block;
     color: var(--color-text);

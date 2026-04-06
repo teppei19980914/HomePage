@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # 社会人歴の更新（毎年4月1日 0:00 JST = 3月31日 15:00 UTC）
+    - cron: "0 15 31 3 *"
+    # 年齢の更新（毎年9月15日 0:00 JST = 9月14日 15:00 UTC）
+    - cron: "0 15 14 9 *"
   workflow_dispatch:
 
 permissions:

@@ -1,23 +1,23 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import { product } from "../../data/labels";
+import { product as productLabels } from "../../data/labels";
 
 const products = (await getCollection("product"))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title={product.title} description={product.description}>
+<BaseLayout title={productLabels.title} description={productLabels.description}>
   <div class="page-header hero-gradient">
-    <h1 class="fade-in">{product.title}</h1>
+    <h1 class="fade-in">{productLabels.title}</h1>
     <p class="page-subtitle fade-in delay-1">
-      {product.subtitle}
+      {productLabels.subtitle}
     </p>
   </div>
 
   {
     products.length === 0 ? (
-      <p>プロダクトはまだありません。</p>
+      <p>{productLabels.emptyMessage}</p>
     ) : (
       <div class="product-list">
         {products.map((product, i) => (
@@ -29,10 +29,10 @@ const products = (await getCollection("product"))
               <div class="product-card-meta">
                 <span class={`status status-${product.data.status}`}>
                   {product.data.status === "active"
-                    ? "Active"
+                    ? productLabels.statusLabels.active
                     : product.data.status === "beta"
-                      ? "Beta"
-                      : "Archived"}
+                      ? productLabels.statusLabels.beta
+                      : productLabels.statusLabels.archived}
                 </span>
               </div>
               <h2>{product.data.title}</h2>
@@ -49,7 +49,7 @@ const products = (await getCollection("product"))
                 href={`${import.meta.env.BASE_URL}product/${product.id}/`}
                 class="btn-detail"
               >
-                詳細を見る &rarr;
+                {productLabels.detailLink} &rarr;
               </a>
               {product.data.url && (
                 <a
@@ -58,7 +58,7 @@ const products = (await getCollection("product"))
                   rel="noopener noreferrer"
                   class="btn-primary"
                 >
-                  体験する &rarr;
+                  {productLabels.tryLink} &rarr;
                 </a>
               )}
               {product.data.repo && (
@@ -68,7 +68,7 @@ const products = (await getCollection("product"))
                   rel="noopener noreferrer"
                   class="btn-secondary"
                 >
-                  GitHub
+                  {productLabels.githubLink}
                 </a>
               )}
             </div>
@@ -80,15 +80,6 @@ const products = (await getCollection("product"))
 </BaseLayout>
 
 <style>
-  .page-header {
-    padding: 2rem 0 1rem;
-  }
-
-  .page-subtitle {
-    color: var(--color-text-muted);
-    font-size: 1.1rem;
-  }
-
   .product-list {
     display: flex;
     flex-direction: column;

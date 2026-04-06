@@ -11,7 +11,7 @@
   --color-surface: #ffffff;
   --color-surface-hover: #f9fafb;
   --max-width: 800px;
-  --font-sans: "Inter", "Helvetica Neue", Arial, "Hiragino Sans",
+  --font-sans: "Helvetica Neue", Arial, "Hiragino Sans",
     "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   /* Gradient mesh colors */
   --mesh-1: rgba(37, 99, 235, 0.12);
@@ -239,6 +239,16 @@ a:hover {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===== Page Header (shared across pages) ===== */
+.page-header {
+  padding: 2rem 0 1rem;
+}
+
+.page-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
 }
 
 /* ===== Scroll Progress Bar ===== */

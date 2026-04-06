@@ -1,56 +1,49 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CareerGraph from "../components/CareerGraph.astro";
+import { about, profile } from "../data/labels";
+
+const socialLinks = [profile.links.github, profile.links.qiita, profile.links.wantedly];
 ---
 
-<BaseLayout title="About" description="須山 哲平（Teppei Suyama）のプロフィール">
+<BaseLayout title={about.title} description={about.description}>
   <div class="page-header hero-gradient">
-    <h1 class="fade-in">About</h1>
-    <p class="page-subtitle fade-in delay-1">須山 哲平 / Teppei Suyama</p>
+    <h1 class="fade-in">{about.title}</h1>
+    <p class="page-subtitle fade-in delay-1">{about.subtitle}</p>
   </div>
 
   <section class="section reveal">
-    <h2>Profile</h2>
-    <p>
-      須山 哲平（Teppei Suyama）。川崎在住のソフトウェアエンジニア。
-    </p>
-    <p>
-      株式会社LTS ソフトウェアテクノロジーにて SES エンジニアとして従事。
-      前職ではローコード開発プラットフォーム「Pleasanter」の開発・導入支援に携わり、
-      Qiita にて 211 件以上の技術記事を発信しています。
-    </p>
-    <p>
-      個人では Flutter / Dart を用いたモバイル・Web アプリ開発に取り組み、
-      夢や目標を管理するアプリ「ユメログ」を個人開発しています。
-    </p>
+    <h2>{about.profile.title}</h2>
+    <p>{about.profile.intro}</p>
+    <p>{about.profile.career}</p>
+    <p>{about.profile.personal}</p>
     <blockquote>
-      「落ちこぼれでも必死に努力すればエリートを超えることもあるかもよ」<br />
-      塵も積もれば山となる。1.01 の法則を信じて日々努力を積み重ねています。
+      {about.profile.quote}<br />
+      {about.profile.quoteSub}
     </blockquote>
   </section>
 
   <section class="section reveal">
-    <h2>Philosophy</h2>
+    <h2>{about.philosophy.title}</h2>
     <div class="philosophy-card">
-      <h3>「夢を持つことで、大きな壁も乗り越えられる」</h3>
+      <h3>{about.philosophy.heading}</h3>
       <ul class="philosophy-list">
-        <li>夢は外に出し、脳に認識させる必要がある ── 言霊の力を信じています</li>
-        <li>人は慣性で行動する。動いている人は動き続け、止まっている人は止まり続ける</li>
-        <li>止まっている人を動かし、動いている人を支える ── それが自分のものづくりの原点</li>
-        <li>他者に依存せず、自分の力で世界をよりよくするという信念</li>
+        {about.philosophy.items.map((item) => (
+          <li>{item}</li>
+        ))}
       </ul>
       <p class="vision">
-        <strong>最終目標:</strong> 心理的安全性の高い社会の構築
+        <strong>{about.philosophy.visionLabel}</strong> {about.philosophy.visionText}
       </p>
     </div>
   </section>
 
   <section class="section reveal">
-    <h2>Skills</h2>
-    <p class="skill-legend">&#9679; 実務2年以上　&#9675; 実務1年以上　&#9651; 知識あり</p>
+    <h2>{about.skills.title}</h2>
+    <p class="skill-legend">{about.skills.legend}</p>
     <div class="skill-grid">
       <div class="skill-category">
-        <h3>Languages</h3>
+        <h3>{about.skills.categories.languages}</h3>
         <ul>
           <li><span class="level-high">C#</span></li>
           <li><span class="level-high">JavaScript</span></li>
@@ -65,7 +58,7 @@ import CareerGraph from "../components/CareerGraph.astro";
         </ul>
       </div>
       <div class="skill-category">
-        <h3>Database</h3>
+        <h3>{about.skills.categories.database}</h3>
         <ul>
           <li><span class="level-high">SQL Server</span></li>
           <li><span class="level-high">PostgreSQL</span></li>
@@ -74,7 +67,7 @@ import CareerGraph from "../components/CareerGraph.astro";
         </ul>
       </div>
       <div class="skill-category">
-        <h3>Cloud / Platform</h3>
+        <h3>{about.skills.categories.cloud}</h3>
         <ul>
           <li><span class="level-high">Azure</span></li>
           <li><span class="level-high">AWS</span></li>
@@ -84,14 +77,14 @@ import CareerGraph from "../components/CareerGraph.astro";
         </ul>
       </div>
       <div class="skill-category">
-        <h3>OS</h3>
+        <h3>{about.skills.categories.os}</h3>
         <ul>
           <li><span class="level-high">Windows</span></li>
           <li><span class="level-mid">Linux (CentOS / Ubuntu / AlmaLinux / Red Hat)</span></li>
         </ul>
       </div>
       <div class="skill-category">
-        <h3>Tools</h3>
+        <h3>{about.skills.categories.tools}</h3>
         <ul>
           <li><span class="level-high">VS Code / Eclipse</span></li>
           <li><span class="level-high">SSMS / pgAdmin / A5:SQL Mk-2</span></li>
@@ -103,7 +96,7 @@ import CareerGraph from "../components/CareerGraph.astro";
         </ul>
       </div>
       <div class="skill-category">
-        <h3>Personal Dev</h3>
+        <h3>{about.skills.categories.personalDev}</h3>
         <ul>
           <li><span class="level-high">Flutter / Dart (Riverpod, Drift ORM, go_router)</span></li>
           <li><span class="level-mid">Astro / TypeScript</span></li>
@@ -115,50 +108,52 @@ import CareerGraph from "../components/CareerGraph.astro";
   </section>
 
   <section class="section reveal">
-    <h2>Certifications</h2>
+    <h2>{about.certifications.title}</h2>
     <ul class="cert-list">
-      <li><span class="cert-date">2026.02</span>Python 3 エンジニア認定実践試験</li>
-      <li><span class="cert-date">2024.10</span>応用情報技術者試験</li>
-      <li><span class="cert-date">2024.03</span>OSS-DB Silver</li>
-      <li><span class="cert-date">2023.11</span>AZ-900 (Microsoft Azure Fundamentals)</li>
-      <li><span class="cert-date">2023.09</span>LPIC Level 1</li>
-      <li><span class="cert-date">2022.11</span>基本情報技術者試験</li>
-      <li><span class="cert-date">2021.07</span>Oracle Certified Java Programmer, Gold SE 11</li>
-      <li><span class="cert-date">2019.07</span>MOS Excel 2019 Expert</li>
-      <li><span class="cert-date">2018.06</span>日本語漢字能力検定 2級</li>
+      {about.certifications.items.map((cert) => (
+        <li><span class="cert-date">{cert.date}</span>{cert.name}</li>
+      ))}
     </ul>
   </section>
 
   <section class="section reveal">
-    <h2>Career</h2>
+    <h2>{about.career.title}</h2>
     <CareerGraph />
   </section>
 
   <section class="section reveal">
-    <h2>Education</h2>
+    <h2>{about.education.title}</h2>
     <div class="timeline">
-      <div class="timeline-item">
-        <span class="date">2017年4月 - 2021年3月</span>
-        <h3>東京福祉大学 心理学部心理学科</h3>
-      </div>
-      <div class="timeline-item">
-        <span class="date">2014年4月 - 2017年3月</span>
-        <h3>目黒学院高等学校</h3>
-      </div>
+      {about.education.items.map((edu) => (
+        <div class="timeline-item">
+          <span class="date">{edu.period}</span>
+          <h3>{edu.name}</h3>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>{profile.links.title}</h2>
+    <div class="links-grid">
+      {socialLinks.map((link) => (
+        <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
+          <span class="link-name">{link.name}</span>
+          <span class="link-id">{link.id}</span>
+        </a>
+      ))}
     </div>
   </section>
 
 </BaseLayout>
 
 <style>
-  .page-header {
-    padding: 2rem 0 1rem;
-  }
-
-  .page-subtitle {
-    color: var(--color-text-muted);
-    font-size: 1.1rem;
-  }
+  .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+  .link-card { display: flex; flex-direction: column; align-items: center; padding: 1.25rem 1rem; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); background-image: none; color: var(--color-text); text-align: center; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
+  .link-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-color: var(--color-primary); color: var(--color-text); }
+  :global(.dark) .link-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  .link-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
+  .link-id { font-size: 0.8rem; color: var(--color-text-muted); }
 
   .section {
     margin-top: 2.5rem;
