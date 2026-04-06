@@ -47,6 +47,7 @@
 
 html {
   font-family: var(--font-sans);
+  font-size: clamp(15px, 2.5vw, 16px);
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.7;
@@ -124,10 +125,22 @@ a:hover {
   background-size: 100% 1px;
 }
 
+/* ===== Mobile readability ===== */
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+  .tag, .date, .stat-detail, .stat-label, .stat-unit,
+  .blog-date, .blog-desc, .cert-date, .skill-legend,
+  .section-desc, .section-link a, .legend-item {
+    font-size: max(0.8rem, 12px);
+  }
+}
+
 /* ===== Tags ===== */
 .tag {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   padding: 0.2rem 0.6rem;
   border-radius: 9999px;
   background-color: var(--color-primary-glow);

@@ -11,6 +11,16 @@ import { contact } from "../data/labels";
     </p>
   </div>
 
+  <section class="availability reveal">
+    <h2>{contact.availability.title}</h2>
+    <ul class="availability-list">
+      {contact.availability.items.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+    <p class="response-time">{contact.availability.responseTime}</p>
+  </section>
+
   <section class="contact-form-section reveal">
     <div class="contact-card">
       <h2 class="contact-card-title">{contact.formTitle}</h2>
@@ -147,6 +157,11 @@ import { contact } from "../data/labels";
 </script>
 
 <style is:global>
+  .availability { margin-top: 2rem; }
+  .availability-list { list-style: none; padding: 0; }
+  .availability-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--color-border); font-size: 0.9rem; }
+  .response-time { margin-top: 1rem; font-size: 0.85rem; color: var(--color-accent); font-weight: 600; }
+
   .contact-page-subtitle {
     color: var(--color-text-muted);
     font-size: 1.1rem;

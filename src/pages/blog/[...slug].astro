@@ -34,6 +34,11 @@ const { Content } = await render(post);
       <Content />
     </div>
   </article>
+  <section class="bottom-cta reveal">
+    <h2>{common.ctaTitle}</h2>
+    <p>{common.ctaBody}</p>
+    <a href={`${import.meta.env.BASE_URL}contact/`} class="btn-cta">{common.ctaButton}</a>
+  </section>
   <nav class="back reveal">
     <a href="#" onclick="history.back(); return false;">&larr; {common.backLink}</a>
   </nav>
@@ -59,4 +64,10 @@ const { Content } = await render(post);
     padding-top: 1.5rem;
     border-top: 1px solid var(--color-border);
   }
+
+  .bottom-cta { margin-top: 3rem; padding: 2.5rem 1.5rem; text-align: center; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); }
+  .bottom-cta h2 { margin-bottom: 0.5rem; }
+  .bottom-cta p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .btn-cta { display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; background: linear-gradient(135deg, var(--color-primary), #8b5cf6); color: white; font-weight: 600; background-image: none; transition: transform 0.25s, box-shadow 0.25s; }
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--color-primary-glow); color: white; }
 </style>

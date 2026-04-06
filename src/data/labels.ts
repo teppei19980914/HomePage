@@ -7,7 +7,7 @@
 export const site = {
   name: "Teppei Suyama",
   role: "Software Engineer",
-  defaultDescription: "Teppei Suyama - Software Engineer",
+  defaultDescription: "業務自動化・フルスタック開発が強みのソフトウェアエンジニア須山哲平のポートフォリオ",
   titleSuffix: "Teppei Suyama",
   copyright: "Teppei Suyama. All rights reserved.",
 } as const;
@@ -16,7 +16,6 @@ export const site = {
 export const nav = {
   home: "Home",
   profile: "Profile",
-  about: "About",
   product: "Product",
   project: "Project",
   blog: "Blog",
@@ -58,9 +57,32 @@ export const home = {
     },
   ],
   heroTagline: "課題を発見し、改善を実行するソフトウェアエンジニア",
-  links: {
-    profile: { label: "Profile", desc: "人物像・哲学・SNSリンク" },
-    about: { label: "About", desc: "スキル・資格・キャリア" },
+  heroSummary: "エンジニア歴5年+ / Qiita 211記事 / 副業・個人開発を並行推進",
+  strengths: {
+    title: "Strengths",
+    items: [
+      {
+        heading: "課題発見 → 改善実行の推進力",
+        body: "業務の非効率を自ら特定し、VBA や Power Automate による自動化を提案・実行。残業時間 60% 削減、月 40 人時の完全 RPA 化など、定量的な成果に結びつけてきました。",
+      },
+      {
+        heading: "上流から下流まで一気通貫の技術力",
+        body: "要件定義・設計からバックエンド・フロントエンド開発、テスト自動化、運用保守まで一貫して対応。応用情報技術者・Java Gold・LPIC 等の資格も保有しています。",
+      },
+      {
+        heading: "信頼構築を通じたビジネス成果",
+        body: "ステークホルダーとの合意形成を積み重ね、契約額 +33% 拡大や PG → PL 昇格（単価 +25%）を実現。3 か月の短期契約を延長に導いた実績があります。",
+      },
+    ],
+  },
+  profileSection: {
+    title: "Profile",
+    desc: "基本情報やスキル・資格・キャリア、哲学や座右の銘など、エンジニアとしてのすべてをまとめています。",
+    linkText: "プロフィールはこちら",
+  },
+  productCards: {
+    title: "Products",
+    desc: "個人で開発しているプロダクト",
   },
   products: {
     title: "Products",
@@ -170,30 +192,6 @@ export const about = {
   title: "About",
   description: "須山 哲平（Teppei Suyama）のプロフィール",
   subtitle: "スキル・資格・キャリア",
-  profile: {
-    title: "Profile",
-    intro: "須山 哲平（Teppei Suyama）。川崎在住のソフトウェアエンジニア。",
-    career:
-      "株式会社LTS ソフトウェアテクノロジーにて SES エンジニアとして従事。前職ではローコード開発プラットフォーム「Pleasanter」の開発・導入支援に携わり、Qiita にて 211 件以上の技術記事を発信しています。",
-    personal:
-      "個人では Flutter / Dart を用いたモバイル・Web アプリ開発に取り組み、夢や目標を管理するアプリ「ユメログ」を個人開発しています。",
-    quote:
-      "「落ちこぼれでも必死に努力すればエリートを超えることもあるかもよ」",
-    quoteSub:
-      "塵も積もれば山となる。1.01 の法則を信じて日々努力を積み重ねています。",
-  },
-  philosophy: {
-    title: "Philosophy",
-    heading: "「夢を持つことで、大きな壁も乗り越えられる」",
-    items: [
-      "夢は外に出し、脳に認識させる必要がある ── 言霊の力を信じています",
-      "人は慣性で行動する。動いている人は動き続け、止まっている人は止まり続ける",
-      "止まっている人を動かし、動いている人を支える ── それが自分のものづくりの原点",
-      "他者に依存せず、自分の力で世界をよりよくするという信念",
-    ],
-    visionLabel: "最終目標:",
-    visionText: "心理的安全性の高い社会の構築",
-  },
   skills: {
     title: "Skills",
     legend: "\u25CF 実務2年以上　\u25CB 実務1年以上　\u25B3 知識あり",
@@ -241,13 +239,13 @@ export const careerGraph = {
     { name: "ユメログ", date: "2026.03" },
     { name: "MindFlow", date: "2026.01" },
   ],
-  sideBusiness: { name: "WakuLab", date: "2026.03", suffix: "/ 業務委託" },
+  sideBusiness: { name: "株式会社WakuLab", date: "2026.03", suffix: "/ 業務委託" },
   history: [
-    { name: "LTS ソフトウェアテクノロジー", dateSuffix: "2025.05 入社" },
-    { name: "インプリム 退職", dateSuffix: "2025.04" },
-    { name: "インプリム 入社", dateSuffix: "2023.01 / Pleasanter" },
-    { name: "アクモス 退職", dateSuffix: "2022.12" },
-    { name: "キャリアスタート", dateSuffix: "2021.04" },
+    { name: "株式会社LTS ソフトウェアテクノロジー 入社", dateSuffix: "2025.05" },
+    { name: "株式会社インプリム 退職", dateSuffix: "2025.04" },
+    { name: "株式会社インプリム 入社", dateSuffix: "2023.01" },
+    { name: "アクモス株式会社 退職", dateSuffix: "2022.12" },
+    { name: "アクモス株式会社 入社", dateSuffix: "2021.04" },
   ],
 } as const;
 
@@ -289,6 +287,14 @@ export const contact = {
   title: "Contact",
   description: "お問い合わせ・連絡先",
   subtitle: "お仕事のご依頼やお問い合わせはこちらからお願いします",
+  availability: {
+    title: "対応可能な業務形態",
+    items: [
+      "業務委託のみ対応可",
+      "対応可能時間: 平日 19:00 以降、土日祝（本業が平日 8:00〜19:00 のため）",
+    ],
+    responseTime: "2営業日以内に返信いたします。",
+  },
   formTitle: "お問い合わせフォーム",
   formNote:
     "以下のフォームからお気軽にお問い合わせください。内容を確認の上、折り返しご連絡いたします。",
@@ -315,6 +321,9 @@ export const contact = {
 export const common = {
   backLink: "前のページに戻る",
   scrollTopLabel: "ページ先頭に戻る",
+  ctaTitle: "お仕事のご依頼・ご相談",
+  ctaBody: "フルスタック開発、技術相談など、お気軽にお問い合わせください。",
+  ctaButton: "お問い合わせはこちら",
 } as const;
 
 // --- Footer ---

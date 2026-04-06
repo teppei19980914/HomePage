@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { profile, site } from "../data/labels";
+import CareerGraph from "../components/CareerGraph.astro";
+import { profile, about, site, common } from "../data/labels";
+
+const socialLinks = [profile.links.github, profile.links.qiita, profile.links.wantedly];
 
 const birthDate = new Date(profile.birthDate);
 const careerStart = new Date(profile.careerStartDate);
@@ -25,6 +28,7 @@ const careerYears = calcYears(careerStart, now);
     <p class="page-subtitle fade-in delay-1">{profile.subtitle}</p>
   </div>
 
+  <!-- 基本情報（デフォルト表示） -->
   <section class="section reveal">
     <div class="profile-card">
       <h2 class="profile-name">{profile.nameJa}<span class="profile-name-en">{profile.nameEn}</span></h2>
@@ -62,34 +66,225 @@ const careerYears = calcYears(careerStart, now);
     </div>
   </section>
 
-  <section class="section reveal">
-    <h2>{profile.philosophy.title}</h2>
-    <blockquote class="philosophy-quote">{profile.philosophy.quote}</blockquote>
-    {profile.philosophy.paragraphs.map((p) => (
-      <p>{p}</p>
-    ))}
-  </section>
+  <!-- Skills -->
+  <details class="accordion section">
+    <summary class="accordion-header">{about.skills.title}</summary>
+    <div class="accordion-body">
+      <p class="skill-legend">{about.skills.legend}</p>
+      <div class="skill-grid">
+        <div class="skill-category">
+          <h3>{about.skills.categories.languages}</h3>
+          <ul>
+            <li><span class="level-high">C#</span></li>
+            <li><span class="level-high">JavaScript</span></li>
+            <li><span class="level-high">Java</span></li>
+            <li><span class="level-high">Python</span></li>
+            <li><span class="level-high">PowerShell</span></li>
+            <li><span class="level-mid">VBA</span></li>
+            <li><span class="level-mid">HTML / CSS</span></li>
+            <li><span class="level-low">PHP</span></li>
+            <li><span class="level-low">ASP</span></li>
+            <li><span class="level-low">Dart (個人開発)</span></li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>{about.skills.categories.database}</h3>
+          <ul>
+            <li><span class="level-high">SQL Server</span></li>
+            <li><span class="level-high">PostgreSQL</span></li>
+            <li><span class="level-high">DB2</span></li>
+            <li><span class="level-mid">MySQL</span></li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>{about.skills.categories.cloud}</h3>
+          <ul>
+            <li><span class="level-high">Azure</span></li>
+            <li><span class="level-high">AWS</span></li>
+            <li><span class="level-mid">Power Platform (Apps / Automate)</span></li>
+            <li><span class="level-mid">Azure DevOps</span></li>
+            <li><span class="level-low">Dataverse</span></li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>{about.skills.categories.os}</h3>
+          <ul>
+            <li><span class="level-high">Windows</span></li>
+            <li><span class="level-mid">Linux (CentOS / Ubuntu / AlmaLinux / Red Hat)</span></li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>{about.skills.categories.tools}</h3>
+          <ul>
+            <li><span class="level-high">VS Code / Eclipse</span></li>
+            <li><span class="level-high">SSMS / pgAdmin / A5:SQL Mk-2</span></li>
+            <li><span class="level-high">Postman / Wireshark / Autify</span></li>
+            <li><span class="level-high">Redmine / Teams</span></li>
+            <li><span class="level-high">IIS / VMware</span></li>
+            <li><span class="level-mid">Docker / VirtualBox</span></li>
+            <li><span class="level-mid">Apache</span></li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>{about.skills.categories.personalDev}</h3>
+          <ul>
+            <li><span class="level-high">Flutter / Dart (Riverpod, Drift ORM, go_router)</span></li>
+            <li><span class="level-mid">Astro / TypeScript</span></li>
+            <li><span class="level-mid">Firebase (Auth, Firestore)</span></li>
+            <li><span class="level-mid">GitHub Actions (CI/CD)</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </details>
 
-  <section class="section reveal">
-    <h2>{profile.dream.title}</h2>
-    <blockquote class="philosophy-quote">{profile.dream.quote}</blockquote>
-    {profile.dream.paragraphs.map((p) => (
-      <p>{p}</p>
-    ))}
-  </section>
+  <!-- Certifications -->
+  <details class="accordion section">
+    <summary class="accordion-header">{about.certifications.title}</summary>
+    <div class="accordion-body">
+      <ul class="cert-list">
+        {about.certifications.items.map((cert) => (
+          <li><span class="cert-date">{cert.date}</span>{cert.name}</li>
+        ))}
+      </ul>
+    </div>
+  </details>
 
-  <section class="section reveal">
-    <h2>{profile.motto.title}</h2>
-    <blockquote class="motto-quote">{profile.motto.quote}</blockquote>
-    {profile.motto.paragraphs.map((p) => (
-      <p>{p}</p>
-    ))}
+  <!-- Career -->
+  <details class="accordion section">
+    <summary class="accordion-header">{about.career.title}</summary>
+    <div class="accordion-body">
+      <CareerGraph />
+    </div>
+  </details>
+
+  <!-- Education -->
+  <details class="accordion section">
+    <summary class="accordion-header">{about.education.title}</summary>
+    <div class="accordion-body">
+      <div class="timeline">
+        {about.education.items.map((edu) => (
+          <div class="timeline-item">
+            <span class="date">{edu.period}</span>
+            <h3>{edu.name}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </details>
+
+  <!-- Philosophy -->
+  <details class="accordion section">
+    <summary class="accordion-header">{profile.philosophy.title}</summary>
+    <div class="accordion-body">
+      <blockquote>{profile.philosophy.quote}</blockquote>
+      {profile.philosophy.paragraphs.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+  </details>
+
+  <!-- Dream -->
+  <details class="accordion section">
+    <summary class="accordion-header">{profile.dream.title}</summary>
+    <div class="accordion-body">
+      <blockquote>{profile.dream.quote}</blockquote>
+      {profile.dream.paragraphs.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+  </details>
+
+  <!-- Motto -->
+  <details class="accordion section">
+    <summary class="accordion-header">{profile.motto.title}</summary>
+    <div class="accordion-body">
+      <blockquote>{profile.motto.quote}</blockquote>
+      {profile.motto.paragraphs.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+  </details>
+
+  <!-- Links -->
+  <details class="accordion section">
+    <summary class="accordion-header">{profile.links.title}</summary>
+    <div class="accordion-body">
+      <div class="links-grid">
+        {socialLinks.map((link) => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
+            <span class="link-name">{link.name}</span>
+            <span class="link-id">{link.id}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </details>
+
+  <!-- CTA -->
+  <section class="bottom-cta reveal">
+    <h2>{common.ctaTitle}</h2>
+    <p>{common.ctaBody}</p>
+    <a href={`${import.meta.env.BASE_URL}contact/`} class="btn-cta">{common.ctaButton}</a>
   </section>
 
 </BaseLayout>
 
 <style>
-  .section { margin-top: 2.5rem; }
+  .section { margin-top: 1.5rem; }
+
+  /* Accordion */
+  .accordion {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .accordion[open] {
+    border-color: var(--color-accent);
+  }
+
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 700;
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s;
+  }
+
+  .accordion-header::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion-header::after {
+    content: "+";
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .accordion[open] > .accordion-header::after {
+    content: "−";
+    color: var(--color-accent);
+  }
+
+  .accordion-header:hover {
+    color: var(--color-accent);
+  }
+
+  .accordion-body {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  /* Profile card */
   .profile-card { padding: 2rem; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); transition: background-color 0.3s; }
   .profile-name { font-size: 1.5rem; margin-bottom: 0.25rem; }
   .profile-name-en { font-size: 0.9rem; font-weight: 400; color: var(--color-text-muted); margin-left: 0.75rem; }
@@ -98,5 +293,42 @@ const careerYears = calcYears(careerStart, now);
   .profile-item { display: flex; justify-content: space-between; padding: 0.85rem 0; border-bottom: 1px solid var(--color-border); font-size: 0.9rem; gap: 2rem; }
   .profile-label { color: var(--color-text-muted); font-weight: 600; white-space: nowrap; }
   .profile-value { text-align: right; }
-  .philosophy-quote, .motto-quote { font-size: 1.15rem; font-style: italic; color: var(--color-accent); border-left: 3px solid var(--color-accent); padding-left: 1rem; margin-bottom: 1rem; }
+
+  /* Skills */
+  .skill-legend { font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 1rem; }
+  .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .skill-category h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .skill-category ul { list-style: none; padding: 0; }
+  .skill-category li { padding: 0.35rem 0; border-bottom: 1px solid var(--color-border); font-size: 0.875rem; }
+  .level-high::before { content: "\25CF "; color: var(--color-accent); }
+  .level-mid::before { content: "\25CB "; color: var(--color-accent); }
+  .level-low::before { content: "\25B3 "; color: var(--color-text-muted); }
+
+  /* Certifications */
+  .cert-list { list-style: none; padding: 0; }
+  .cert-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: 0.75rem; }
+  .cert-date { font-size: 0.75rem; color: var(--color-text-muted); background-color: var(--color-primary-glow); padding: 0.15rem 0.5rem; border-radius: 0.25rem; white-space: nowrap; min-width: 4.5rem; text-align: center; }
+
+  /* Timeline */
+  .timeline { display: flex; flex-direction: column; gap: 1.5rem; border-left: 2px solid var(--color-border); padding-left: 1.5rem; }
+  .timeline-item { position: relative; }
+  .timeline-item::before { content: ""; position: absolute; left: -1.75rem; top: 0.5rem; width: 0.5rem; height: 0.5rem; border-radius: 50%; background-color: var(--color-accent); }
+
+  /* Blockquote */
+  blockquote { border-left: 3px solid var(--color-accent); padding-left: 1rem; color: var(--color-text-muted); font-style: italic; }
+
+  /* Links */
+  .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+  .link-card { display: flex; flex-direction: column; align-items: center; padding: 1.25rem 1rem; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); background-image: none; color: var(--color-text); text-align: center; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
+  .link-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-color: var(--color-primary); color: var(--color-text); }
+  :global(.dark) .link-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  .link-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
+  .link-id { font-size: 0.8rem; color: var(--color-text-muted); }
+
+  /* Bottom CTA */
+  .bottom-cta { margin-top: 2rem; padding: 2.5rem 1.5rem; text-align: center; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); }
+  .bottom-cta h2 { margin-bottom: 0.5rem; }
+  .bottom-cta p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .btn-cta { display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; background: linear-gradient(135deg, var(--color-primary), #8b5cf6); color: white; font-weight: 600; font-size: 0.95rem; background-image: none; transition: transform 0.25s, box-shadow 0.25s; }
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--color-primary-glow); color: white; }
 </style>

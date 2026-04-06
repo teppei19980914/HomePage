@@ -16,64 +16,64 @@ import { about, careerGraph } from "../data/labels";
   </div>
 
   <div class="cg-graph">
-    <svg class="cg-svg" viewBox="0 0 460 720" preserveAspectRatio="xMidYMin meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Main line -->
-      <line x1="200" y1="30" x2="200" y2="90" class="cg-line-main" />
-      <line x1="200" y1="90" x2="200" y2="430" class="cg-line-main" />
-      <line x1="200" y1="430" x2="200" y2="720" class="cg-line-main" />
+    <svg class="cg-svg" viewBox="0 0 380 620" preserveAspectRatio="xMidYMin meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main line (center = 110) -->
+      <line x1="110" y1="25" x2="110" y2="70" class="cg-line-main" />
+      <line x1="110" y1="70" x2="110" y2="340" class="cg-line-main" />
+      <line x1="110" y1="340" x2="110" y2="600" class="cg-line-main" />
 
       <!-- Merge curves -->
-      <path d="M120,160 C120,120 200,120 200,90" class="cg-line-personal" />
-      <path d="M280,160 C280,120 200,120 200,90" class="cg-line-side" />
+      <path d="M55,125 C55,95 110,95 110,70" class="cg-line-personal" />
+      <path d="M165,125 C165,95 110,95 110,70" class="cg-line-side" />
 
       <!-- Branch vertical -->
-      <line x1="120" y1="160" x2="120" y2="370" class="cg-line-personal" />
-      <line x1="280" y1="160" x2="280" y2="310" class="cg-line-side" />
+      <line x1="55" y1="125" x2="55" y2="290" class="cg-line-personal" />
+      <line x1="165" y1="125" x2="165" y2="240" class="cg-line-side" />
 
       <!-- Fork curves -->
-      <path d="M200,430 C200,400 120,400 120,370" class="cg-line-personal" />
-      <path d="M200,430 C200,400 280,400 280,310" class="cg-line-side" />
+      <path d="M110,340 C110,315 55,315 55,290" class="cg-line-personal" />
+      <path d="M110,340 C110,315 165,315 165,240" class="cg-line-side" />
 
       <!-- Nodes -->
-      <circle cx="200" cy="30" r="8" class="cg-dot-main cg-dot-big" />
-      <circle cx="200" cy="90" r="5" class="cg-dot-main" />
-      <circle cx="200" cy="430" r="6" class="cg-dot-main cg-dot-fork" />
-      <circle cx="200" cy="490" r="4" class="cg-dot-main" />
-      <circle cx="200" cy="540" r="4" class="cg-dot-main" />
-      <circle cx="200" cy="590" r="4" class="cg-dot-main" />
-      <circle cx="200" cy="640" r="4" class="cg-dot-main" />
-      <circle cx="200" cy="700" r="8" class="cg-dot-main cg-dot-big" />
-      <circle cx="120" cy="220" r="4" class="cg-dot-personal" />
-      <circle cx="120" cy="300" r="4" class="cg-dot-personal" />
-      <circle cx="280" cy="220" r="4" class="cg-dot-side" />
+      <circle cx="110" cy="25" r="7" class="cg-dot-main cg-dot-big" />
+      <circle cx="110" cy="70" r="4" class="cg-dot-main" />
+      <circle cx="110" cy="340" r="5" class="cg-dot-main cg-dot-fork" />
+      <circle cx="110" cy="390" r="3" class="cg-dot-main" />
+      <circle cx="110" cy="435" r="3" class="cg-dot-main" />
+      <circle cx="110" cy="480" r="3" class="cg-dot-main" />
+      <circle cx="110" cy="525" r="3" class="cg-dot-main" />
+      <circle cx="110" cy="580" r="7" class="cg-dot-main cg-dot-big" />
+      <circle cx="55" cy="175" r="3" class="cg-dot-personal" />
+      <circle cx="55" cy="240" r="3" class="cg-dot-personal" />
+      <circle cx="165" cy="175" r="3" class="cg-dot-side" />
 
-      <!-- Labels inside SVG for proper scaling -->
-      <text x="215" y="36" class="cg-svg-text cg-svg-text-bold">{about.career.now}</text>
+      <!-- Labels -->
+      <text x="125" y="30" class="cg-svg-text cg-svg-text-bold">{about.career.now}</text>
 
       <!-- Personal Dev (left) -->
-      <text x="110" y="218" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[0].name}</text>
-      <text x="110" y="233" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[0].date}</text>
-      <text x="110" y="298" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[1].name}</text>
-      <text x="110" y="313" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[1].date}</text>
+      <text x="45" y="173" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[0].name}</text>
+      <text x="45" y="188" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[0].date}</text>
+      <text x="45" y="238" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[1].name}</text>
+      <text x="45" y="253" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[1].date}</text>
 
       <!-- Side Business (right) -->
-      <text x="295" y="218" class="cg-svg-text">{careerGraph.sideBusiness.name}</text>
-      <text x="295" y="233" class="cg-svg-text-small cg-svg-text-purple">{careerGraph.sideBusiness.date} {careerGraph.sideBusiness.suffix}</text>
+      <text x="178" y="173" class="cg-svg-text">{careerGraph.sideBusiness.name}</text>
+      <text x="178" y="188" class="cg-svg-text-small cg-svg-text-purple">{careerGraph.sideBusiness.date} {careerGraph.sideBusiness.suffix}</text>
 
       <!-- Fork label -->
-      <text x="215" y="435" class="cg-svg-text-small cg-svg-text-muted">{about.career.branchLabel}</text>
+      <text x="125" y="345" class="cg-svg-text-small cg-svg-text-muted">{about.career.branchLabel}</text>
 
-      <!-- Career history (right of main) -->
-      <text x="215" y="495" class="cg-svg-text">{careerGraph.history[0].name}</text>
-      <text x="215" y="510" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[0].dateSuffix}</text>
-      <text x="215" y="545" class="cg-svg-text">{careerGraph.history[1].name}</text>
-      <text x="215" y="560" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[1].dateSuffix}</text>
-      <text x="215" y="595" class="cg-svg-text">{careerGraph.history[2].name}</text>
-      <text x="215" y="610" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[2].dateSuffix}</text>
-      <text x="215" y="645" class="cg-svg-text">{careerGraph.history[3].name}</text>
-      <text x="215" y="660" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[3].dateSuffix}</text>
-      <text x="215" y="705" class="cg-svg-text">{careerGraph.history[4].name}</text>
-      <text x="215" y="720" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[4].dateSuffix}</text>
+      <!-- Career history -->
+      <text x="125" y="388" class="cg-svg-text">{careerGraph.history[0].name}</text>
+      <text x="125" y="403" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[0].dateSuffix}</text>
+      <text x="125" y="433" class="cg-svg-text">{careerGraph.history[1].name}</text>
+      <text x="125" y="448" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[1].dateSuffix}</text>
+      <text x="125" y="478" class="cg-svg-text">{careerGraph.history[2].name}</text>
+      <text x="125" y="493" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[2].dateSuffix}</text>
+      <text x="125" y="523" class="cg-svg-text">{careerGraph.history[3].name}</text>
+      <text x="125" y="538" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[3].dateSuffix}</text>
+      <text x="125" y="578" class="cg-svg-text">{careerGraph.history[4].name}</text>
+      <text x="125" y="593" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[4].dateSuffix}</text>
     </svg>
   </div>
 </div>
@@ -106,12 +106,11 @@ import { about, careerGraph } from "../data/labels";
     display: inline-block;
   }
 
-  /* Graph: SVG scales with container */
   .cg-graph {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    aspect-ratio: 460 / 720;
+    aspect-ratio: 380 / 620;
   }
 
   .cg-svg {
@@ -135,18 +134,18 @@ import { about, careerGraph } from "../data/labels";
   /* SVG text */
   .cg-svg-text {
     font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif;
-    font-size: 13px;
+    font-size: 11px;
     fill: var(--color-text);
   }
 
   .cg-svg-text-bold {
     font-weight: 700;
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .cg-svg-text-small {
     font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     fill: var(--color-text-muted);
   }
 
