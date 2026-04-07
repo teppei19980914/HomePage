@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { blog, common } from "../../../data/labels";
+
+export async function getStaticPaths() {
+  return [
+    { params: { category: "work" } },
+    { params: { category: "essay" } },
+  ];
+}
+
+const { category } = Astro.params;
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .filter((p) => p.data.category === category)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const section = category === "work" ? blog.workSection : blog.essaySection;
+const cardClass = category === "work" ? "work-card" : "essay-card";
+---
+
+<BaseLayout title={`${section.title} | ${blog.title}`} description={section.subtitle}>
+  <div class="page-header hero-gradient">
+    <h1 class="fade-in">{section.title}</h1>
+    <p class="page-subtitle fade-in delay-1">{section.subtitle}</p>
+  </div>
+
+  <section class="section reveal">
+    {
+      posts.length === 0 ? (
+        <p class="empty-msg">{section.emptyMessage}</p>
+      ) : (
+        <ul class="card-list">
+          {posts.map((post, i) => (
+            <li class="reveal" style={`transition-delay: ${i * 0.05}s`}>
+              <a
+                href={`${import.meta.env.BASE_URL}blog/${post.id}/`}
+                class={`card blog-card ${cardClass}`}
+                data-astro-reload
+              >
+                <div class="blog-card-header">
+                  <span class="date">
+                    {post.data.date.toLocaleDateString("ja-JP")}
+                  </span>
+                  <div class="tags">
+                    {post.data.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    <p class="section-link">
+      <a href={`${import.meta.env.BASE_URL}blog/`} data-astro-reload>&larr; {common.backLink}</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .section { margin-top: 2.5rem; }
+  .section-link { text-align: left; margin-top: 1.5rem; }
+  .section-link a { font-size: 0.9rem; font-weight: 600; }
+  .empty-msg {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--color-text-muted);
+    background-color: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .card {
+    display: block;
+    color: var(--color-text);
+    background-image: none;
+  }
+  .card h3 { margin-top: 0.25rem; }
+
+  .blog-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .work-card { border-left: 3px solid var(--color-primary); }
+  .essay-card { border-left: 3px solid var(--color-accent); }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+</style>

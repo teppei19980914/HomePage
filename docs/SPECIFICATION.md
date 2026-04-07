@@ -15,28 +15,24 @@
 
 ### 1.2 Profile（profile.astro）
 
-| セクション | 仕様 |
-|---|---|
-| 基本情報カード | 名前、生年月日、年齢（動的計算）、社会人歴（動的計算）、居住地、所属、副業 |
-| Philosophy | 哲学・信念の引用 + 説明 |
-| Motto | 座右の銘の引用 + 説明 |
-| Links | GitHub / Qiita / Wantedly のカードリンク |
+先頭に**目次（TOC）カード**を配置し、各セクションへアンカーリンクでジャンプ可能（ゼロ JS、`scroll-behavior: smooth` + `scroll-margin-top: 5rem`）。各セクションは**常時表示**（アコーディオンは使用しない）。
+
+| セクション | id | 仕様 |
+|---|---|---|
+| 基本情報カード | `basic` | 名前、生年月日、年齢（動的計算）、社会人歴（動的計算）、居住地、所属、副業 |
+| Skills | `skills` | 6カテゴリ（3段階レベル表示: ●実務2年+/○実務1年+/△知識あり） |
+| Certifications | `certifications` | 資格一覧（取得日付き、新しい順） |
+| Career | `career` | Git ブランチ風 SVG グラフ（CareerGraph コンポーネント） |
+| Education | `education` | 学歴タイムライン |
+| Philosophy | `philosophy` | 哲学・信念の引用 + 説明 |
+| Dream | `dream` | 夢の引用 + 説明 |
+| Motto | `motto` | 座右の銘の引用 + 説明 |
+| Links | `links` | GitHub / Qiita / Wantedly のカードリンク |
 
 年齢・社会人歴の計算:
 - 生年月日: 1998-09-14
 - キャリア開始: 2021-04-01
 - ビルド時に `calcYears()` で自動計算
-
-### 1.3 About（about.astro）
-
-| セクション | 仕様 |
-|---|---|
-| Profile | 自己紹介文 + 座右の銘 |
-| Philosophy | 哲学カード（4項目 + 最終目標） |
-| Skills | 6カテゴリ（3段階レベル表示: ●実務2年+/○実務1年+/△知識あり） |
-| Certifications | 9資格（取得日付き、新しい順） |
-| Career | Git ブランチ風 SVG グラフ（CareerGraph コンポーネント） |
-| Education | 2件のタイムライン |
 
 ### 1.4 Career グラフ仕様（CareerGraph.astro）
 
@@ -59,7 +55,7 @@ SVG 手書きの Git ブランチ風グラフ:
 ```
 
 - 中央線（青）: 正社員キャリア
-- 左ブランチ（シアン）: 個人開発（ユメハシ、MindFlow）
+- 左ブランチ（シアン）: 個人開発（ユメハシ、Defrago）
 - 右ブランチ（紫）: 副業（WakuLab）
 - レスポンシブ: `viewBox` + `preserveAspectRatio` で画面幅に自動縮小
 
@@ -70,12 +66,19 @@ SVG 手書きの Git ブランチ風グラフ:
 
 ### 1.6 Project（project/）
 
-- 一覧: `order` 降順（新しいもの順）。正社員/業務委託バッジ
+- 一覧: `order` 降順（新しいもの順）で直近 **5 件** のみ表示。正社員/業務委託バッジ
+- 5 件超の場合、セクション右下に「全プロジェクトはこちら →」リンクを表示
+- 全件表示: `project/all/` で全プロジェクトを表示（戻るリンク付き）
 - 詳細: frontmatter + Markdown 本文
 
 ### 1.7 Blog（blog/）
 
 - 一覧: 日付降順。タグ表示。`draft: true` の記事は非表示
+- 先頭に**目次（TOC）カード**を配置し、各セクション (`#work` / `#essay` / `#qiita`) へアンカージャンプ。Tech Blog は Qiita 記事が 1 件以上取得できた場合のみ TOC に表示
+- 3 セクション構成（`category` で分類）: **Work & Dev** (`#work`) / **Essay** (`#essay`) / **Tech Blog (Qiita)** (`#qiita`)
+- 各セクション直近 **5 件** のみ表示。5 件超の場合「全記事はこちら →」リンクを表示
+- カテゴリ別全件表示: `blog/category/work/`、`blog/category/essay/`
+- Tech Blog (Qiita): ビルド時に Qiita API から取得。直近 1 年以内 AND Organization 未紐付けで絞り込み、`likes + stocks*2` で降順ソートし上位 5 件を表示
 - 詳細: frontmatter + Markdown 本文。`ogType="article"` で Article スキーマ適用
 
 ### 1.8 Contact（contact.astro）

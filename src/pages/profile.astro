@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CareerGraph from "../components/CareerGraph.astro";
-import { profile, about, site, common } from "../data/labels";
+import { profile, about, site, common, profileToc } from "../data/labels";
 
 const socialLinks = [profile.links.github, profile.links.qiita, profile.links.wantedly];
 
@@ -28,8 +28,24 @@ const careerYears = calcYears(careerStart, now);
     <p class="page-subtitle fade-in delay-1">{profile.subtitle}</p>
   </div>
 
-  <!-- 基本情報（デフォルト表示） -->
-  <section class="section reveal">
+  <!-- 目次 -->
+  <nav class="toc reveal" aria-label={common.tocTitle}>
+    <p class="toc-title">{common.tocTitle}</p>
+    <ol class="toc-list">
+      {profileToc.map((item, i) => (
+        <li>
+          <a href={item.href}>
+            <span class="toc-num">{String(i + 1).padStart(2, "0")}</span>
+            <span class="toc-label">{item.label}</span>
+            <span class="toc-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+
+  <!-- 基本情報 -->
+  <section id="basic" class="section reveal">
     <div class="profile-card">
       <h2 class="profile-name">{profile.nameJa}<span class="profile-name-en">{profile.nameEn}</span></h2>
       <p class="profile-role">{site.role}</p>
@@ -67,159 +83,143 @@ const careerYears = calcYears(careerStart, now);
   </section>
 
   <!-- Skills -->
-  <details class="accordion section">
-    <summary class="accordion-header">{about.skills.title}</summary>
-    <div class="accordion-body">
-      <p class="skill-legend">{about.skills.legend}</p>
-      <div class="skill-grid">
-        <div class="skill-category">
-          <h3>{about.skills.categories.languages}</h3>
-          <ul>
-            <li><span class="level-high">C#</span></li>
-            <li><span class="level-high">JavaScript</span></li>
-            <li><span class="level-high">Java</span></li>
-            <li><span class="level-high">Python</span></li>
-            <li><span class="level-high">PowerShell</span></li>
-            <li><span class="level-mid">VBA</span></li>
-            <li><span class="level-mid">HTML / CSS</span></li>
-            <li><span class="level-low">PHP</span></li>
-            <li><span class="level-low">ASP</span></li>
-            <li><span class="level-low">Dart (個人開発)</span></li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>{about.skills.categories.database}</h3>
-          <ul>
-            <li><span class="level-high">SQL Server</span></li>
-            <li><span class="level-high">PostgreSQL</span></li>
-            <li><span class="level-high">DB2</span></li>
-            <li><span class="level-mid">MySQL</span></li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>{about.skills.categories.cloud}</h3>
-          <ul>
-            <li><span class="level-high">Azure</span></li>
-            <li><span class="level-high">AWS</span></li>
-            <li><span class="level-mid">Power Platform (Apps / Automate)</span></li>
-            <li><span class="level-mid">Azure DevOps</span></li>
-            <li><span class="level-low">Dataverse</span></li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>{about.skills.categories.os}</h3>
-          <ul>
-            <li><span class="level-high">Windows</span></li>
-            <li><span class="level-mid">Linux (CentOS / Ubuntu / AlmaLinux / Red Hat)</span></li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>{about.skills.categories.tools}</h3>
-          <ul>
-            <li><span class="level-high">VS Code / Eclipse</span></li>
-            <li><span class="level-high">SSMS / pgAdmin / A5:SQL Mk-2</span></li>
-            <li><span class="level-high">Postman / Wireshark / Autify</span></li>
-            <li><span class="level-high">Redmine / Teams</span></li>
-            <li><span class="level-high">IIS / VMware</span></li>
-            <li><span class="level-mid">Docker / VirtualBox</span></li>
-            <li><span class="level-mid">Apache</span></li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>{about.skills.categories.personalDev}</h3>
-          <ul>
-            <li><span class="level-high">Flutter / Dart (Riverpod, Drift ORM, go_router)</span></li>
-            <li><span class="level-mid">Astro / TypeScript</span></li>
-            <li><span class="level-mid">Firebase (Auth, Firestore)</span></li>
-            <li><span class="level-mid">GitHub Actions (CI/CD)</span></li>
-          </ul>
-        </div>
+  <section id="skills" class="section reveal">
+    <h2 class="section-heading">{about.skills.title}</h2>
+    <p class="skill-legend">{about.skills.legend}</p>
+    <div class="skill-grid">
+      <div class="skill-category">
+        <h3>{about.skills.categories.languages}</h3>
+        <ul>
+          <li><span class="level-high">C#</span></li>
+          <li><span class="level-high">JavaScript</span></li>
+          <li><span class="level-high">Java</span></li>
+          <li><span class="level-high">Python</span></li>
+          <li><span class="level-high">PowerShell</span></li>
+          <li><span class="level-mid">VBA</span></li>
+          <li><span class="level-mid">HTML / CSS</span></li>
+          <li><span class="level-low">PHP</span></li>
+          <li><span class="level-low">ASP</span></li>
+          <li><span class="level-low">Dart (個人開発)</span></li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>{about.skills.categories.database}</h3>
+        <ul>
+          <li><span class="level-high">SQL Server</span></li>
+          <li><span class="level-high">PostgreSQL</span></li>
+          <li><span class="level-high">DB2</span></li>
+          <li><span class="level-mid">MySQL</span></li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>{about.skills.categories.cloud}</h3>
+        <ul>
+          <li><span class="level-high">Azure</span></li>
+          <li><span class="level-high">AWS</span></li>
+          <li><span class="level-mid">Power Platform (Apps / Automate)</span></li>
+          <li><span class="level-mid">Azure DevOps</span></li>
+          <li><span class="level-low">Dataverse</span></li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>{about.skills.categories.os}</h3>
+        <ul>
+          <li><span class="level-high">Windows</span></li>
+          <li><span class="level-mid">Linux (CentOS / Ubuntu / AlmaLinux / Red Hat)</span></li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>{about.skills.categories.tools}</h3>
+        <ul>
+          <li><span class="level-high">VS Code / Eclipse</span></li>
+          <li><span class="level-high">SSMS / pgAdmin / A5:SQL Mk-2</span></li>
+          <li><span class="level-high">Postman / Wireshark / Autify</span></li>
+          <li><span class="level-high">Redmine / Teams</span></li>
+          <li><span class="level-high">IIS / VMware</span></li>
+          <li><span class="level-mid">Docker / VirtualBox</span></li>
+          <li><span class="level-mid">Apache</span></li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>{about.skills.categories.personalDev}</h3>
+        <ul>
+          <li><span class="level-high">Flutter / Dart (Riverpod, Drift ORM, go_router)</span></li>
+          <li><span class="level-mid">Astro / TypeScript</span></li>
+          <li><span class="level-mid">Firebase (Auth, Firestore)</span></li>
+          <li><span class="level-mid">GitHub Actions (CI/CD)</span></li>
+        </ul>
       </div>
     </div>
-  </details>
+  </section>
 
   <!-- Certifications -->
-  <details class="accordion section">
-    <summary class="accordion-header">{about.certifications.title}</summary>
-    <div class="accordion-body">
-      <ul class="cert-list">
-        {about.certifications.items.map((cert) => (
-          <li><span class="cert-date">{cert.date}</span>{cert.name}</li>
-        ))}
-      </ul>
-    </div>
-  </details>
+  <section id="certifications" class="section reveal">
+    <h2 class="section-heading">{about.certifications.title}</h2>
+    <ul class="cert-list">
+      {about.certifications.items.map((cert) => (
+        <li><span class="cert-date">{cert.date}</span>{cert.name}</li>
+      ))}
+    </ul>
+  </section>
 
   <!-- Career -->
-  <details class="accordion section">
-    <summary class="accordion-header">{about.career.title}</summary>
-    <div class="accordion-body">
-      <CareerGraph />
-    </div>
-  </details>
+  <section id="career" class="section reveal">
+    <h2 class="section-heading">{about.career.title}</h2>
+    <CareerGraph />
+  </section>
 
   <!-- Education -->
-  <details class="accordion section">
-    <summary class="accordion-header">{about.education.title}</summary>
-    <div class="accordion-body">
-      <div class="timeline">
-        {about.education.items.map((edu) => (
-          <div class="timeline-item">
-            <span class="date">{edu.period}</span>
-            <h3>{edu.name}</h3>
-          </div>
-        ))}
-      </div>
+  <section id="education" class="section reveal">
+    <h2 class="section-heading">{about.education.title}</h2>
+    <div class="timeline">
+      {about.education.items.map((edu) => (
+        <div class="timeline-item">
+          <span class="date">{edu.period}</span>
+          <h3>{edu.name}</h3>
+        </div>
+      ))}
     </div>
-  </details>
+  </section>
 
   <!-- Philosophy -->
-  <details class="accordion section">
-    <summary class="accordion-header">{profile.philosophy.title}</summary>
-    <div class="accordion-body">
-      <blockquote>{profile.philosophy.quote}</blockquote>
-      {profile.philosophy.paragraphs.map((p) => (
-        <p>{p}</p>
-      ))}
-    </div>
-  </details>
+  <section id="philosophy" class="section reveal">
+    <h2 class="section-heading">{profile.philosophy.title}</h2>
+    <blockquote>{profile.philosophy.quote}</blockquote>
+    {profile.philosophy.paragraphs.map((p) => (
+      <p>{p}</p>
+    ))}
+  </section>
 
   <!-- Dream -->
-  <details class="accordion section">
-    <summary class="accordion-header">{profile.dream.title}</summary>
-    <div class="accordion-body">
-      <blockquote>{profile.dream.quote}</blockquote>
-      {profile.dream.paragraphs.map((p) => (
-        <p>{p}</p>
-      ))}
-    </div>
-  </details>
+  <section id="dream" class="section reveal">
+    <h2 class="section-heading">{profile.dream.title}</h2>
+    <blockquote>{profile.dream.quote}</blockquote>
+    {profile.dream.paragraphs.map((p) => (
+      <p>{p}</p>
+    ))}
+  </section>
 
   <!-- Motto -->
-  <details class="accordion section">
-    <summary class="accordion-header">{profile.motto.title}</summary>
-    <div class="accordion-body">
-      <blockquote>{profile.motto.quote}</blockquote>
-      {profile.motto.paragraphs.map((p) => (
-        <p>{p}</p>
-      ))}
-    </div>
-  </details>
+  <section id="motto" class="section reveal">
+    <h2 class="section-heading">{profile.motto.title}</h2>
+    <blockquote>{profile.motto.quote}</blockquote>
+    {profile.motto.paragraphs.map((p) => (
+      <p>{p}</p>
+    ))}
+  </section>
 
   <!-- Links -->
-  <details class="accordion section">
-    <summary class="accordion-header">{profile.links.title}</summary>
-    <div class="accordion-body">
-      <div class="links-grid">
-        {socialLinks.map((link) => (
-          <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
-            <span class="link-name">{link.name}</span>
-            <span class="link-id">{link.id}</span>
-          </a>
-        ))}
-      </div>
+  <section id="links" class="section reveal">
+    <h2 class="section-heading">{profile.links.title}</h2>
+    <div class="links-grid">
+      {socialLinks.map((link) => (
+        <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-card">
+          <span class="link-name">{link.name}</span>
+          <span class="link-id">{link.id}</span>
+        </a>
+      ))}
     </div>
-  </details>
+  </section>
 
   <!-- CTA -->
   <section class="bottom-cta reveal">
@@ -231,57 +231,89 @@ const careerYears = calcYears(careerStart, now);
 </BaseLayout>
 
 <style>
-  .section { margin-top: 1.5rem; }
+  .section {
+    margin-top: 2.5rem;
+    scroll-margin-top: 5rem;
+  }
+  .section-heading {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
 
-  /* Accordion */
-  .accordion {
+  /* TOC */
+  .toc {
+    margin-top: 1.5rem;
+    padding: 1.5rem 1.75rem;
     border: 1px solid var(--color-border);
     border-radius: 0.75rem;
     background-color: var(--color-surface);
     transition: background-color 0.3s, border-color 0.3s;
   }
-
-  .accordion[open] {
-    border-color: var(--color-accent);
-  }
-
-  .accordion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.25rem;
-    cursor: pointer;
-    font-size: 1.15rem;
+  .toc-title {
+    font-size: 0.8rem;
     font-weight: 700;
-    list-style: none;
-    user-select: none;
-    transition: color 0.2s;
-  }
-
-  .accordion-header::-webkit-details-marker {
-    display: none;
-  }
-
-  .accordion-header::after {
-    content: "+";
-    font-size: 1.25rem;
     color: var(--color-text-muted);
-    transition: transform 0.3s;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+  @media (max-width: 640px) {
+    .toc-list { grid-template-columns: 1fr; }
+  }
+  .toc-list li {
+    border-bottom: 1px dashed var(--color-border);
+  }
+  .toc-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 0.25rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    background-image: none;
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .toc-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    letter-spacing: 0.05em;
     flex-shrink: 0;
-    margin-left: 1rem;
   }
-
-  .accordion[open] > .accordion-header::after {
-    content: "−";
-    color: var(--color-accent);
+  .toc-label {
+    flex: 1;
   }
-
-  .accordion-header:hover {
-    color: var(--color-accent);
+  .toc-arrow {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s, transform 0.2s, color 0.2s;
+    flex-shrink: 0;
   }
-
-  .accordion-body {
-    padding: 0 1.25rem 1.25rem;
+  .toc-list a:hover {
+    color: var(--color-primary);
+    padding-left: 0.5rem;
+  }
+  .toc-list a:hover .toc-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--color-primary);
   }
 
   /* Profile card */

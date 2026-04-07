@@ -236,7 +236,7 @@ export const about = {
 export const careerGraph = {
   personalDev: [
     { name: "ユメハシ", date: "2026.03" },
-    { name: "MindFlow", date: "2026.01" },
+    { name: "Defrago", date: "2026.01" },
   ],
   sideBusiness: { name: "株式会社WakuLab", date: "2026.03", suffix: "/ 業務委託" },
   history: [
@@ -253,12 +253,23 @@ export const blog = {
   title: "Blog",
   description: "ブログ記事一覧",
   subtitle: "技術的な学びや日々の気づきを発信しています",
-  emptyMessage: "記事はまだありません。",
+  maxPerSection: 5,
+  viewAllText: "全記事はこちら",
+  workSection: {
+    title: "Work & Dev",
+    subtitle: "仕事や開発に関する振り返り・ナレッジ",
+    emptyMessage: "記事はまだありません。",
+  },
+  essaySection: {
+    title: "Essay",
+    subtitle: "思想や考えを自由に書き出すエッセイ",
+    emptyMessage: "記事はまだありません。",
+  },
   qiitaSection: {
     title: "Tech Blog (Qiita)",
     subtitle: "Qiita で発信した技術記事（いいね・ストック数の多い記事を厳選）",
     qiitaUserId: "teppei19980914",
-    maxArticles: 10,
+    maxArticles: 5,
     linkText: "Qiita ですべての記事を見る",
     linkUrl: "https://qiita.com/teppei19980914",
   },
@@ -282,6 +293,10 @@ export const project = {
   description: "参画プロジェクトの紹介",
   subtitle: "正社員・業務委託として参画したプロジェクトの紹介",
   emptyMessage: "プロジェクトはまだありません。",
+  maxDisplay: 5,
+  viewAllText: "全プロジェクトはこちら",
+  allTitle: "All Projects",
+  allSubtitle: "正社員・業務委託として参画したすべてのプロジェクト",
   contractTypes: {
     employee: "正社員",
     contract: "業務委託",
@@ -328,10 +343,31 @@ export const contact = {
 export const common = {
   backLink: "前のページに戻る",
   scrollTopLabel: "ページ先頭に戻る",
+  tocTitle: "目次",
   ctaTitle: "お仕事のご依頼・ご相談",
   ctaBody: "フルスタック開発、技術相談など、お気軽にお問い合わせください。",
   ctaButton: "お問い合わせはこちら",
 } as const;
+
+// --- Profile ページの目次 ---
+export const profileToc = [
+  { href: "#basic", label: "基本情報" },
+  { href: "#skills", label: "Skills" },
+  { href: "#certifications", label: "Certifications" },
+  { href: "#career", label: "Career" },
+  { href: "#education", label: "Education" },
+  { href: "#philosophy", label: "Philosophy" },
+  { href: "#dream", label: "Dream" },
+  { href: "#motto", label: "Motto" },
+  { href: "#links", label: "Links" },
+] as const;
+
+// --- Blog ページの目次 ---
+export const blogToc = [
+  { href: "#work", label: "Work & Dev" },
+  { href: "#essay", label: "Essay" },
+  { href: "#qiita", label: "Tech Blog (Qiita)" },
+] as const;
 
 // --- Footer ---
 export const footer = {

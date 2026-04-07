@@ -1,19 +1,17 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import { project as projectLabels } from "../../data/labels";
+import { project as projectLabels, common } from "../../data/labels";
 
-const allProjects = (await getCollection("project"))
+const projects = (await getCollection("project"))
   .sort((a, b) => b.data.order - a.data.order);
-const projects = allProjects.slice(0, projectLabels.maxDisplay);
-const hasMore = allProjects.length > projectLabels.maxDisplay;
 ---
 
-<BaseLayout title={projectLabels.title} description={projectLabels.description}>
+<BaseLayout title={`${projectLabels.allTitle} | ${projectLabels.title}`} description={projectLabels.allSubtitle}>
   <div class="page-header hero-gradient">
-    <h1 class="fade-in">{projectLabels.title}</h1>
+    <h1 class="fade-in">{projectLabels.allTitle}</h1>
     <p class="page-subtitle fade-in delay-1">
-      {projectLabels.subtitle}
+      {projectLabels.allSubtitle}
     </p>
   </div>
 
@@ -25,7 +23,7 @@ const hasMore = allProjects.length > projectLabels.maxDisplay;
         {projects.map((project, i) => (
           <article
             class="project-card reveal"
-            style={`transition-delay: ${i * 0.15}s`}
+            style={`transition-delay: ${i * 0.05}s`}
           >
             <div class="project-card-header">
               <div class="project-card-meta">
@@ -73,19 +71,17 @@ const hasMore = allProjects.length > projectLabels.maxDisplay;
       </div>
     )
   }
-  {hasMore && (
-    <p class="section-link">
-      <a href={`${import.meta.env.BASE_URL}project/all/`} data-astro-reload>
-        {projectLabels.viewAllText} &rarr;
-      </a>
-    </p>
-  )}
+  <p class="section-link">
+    <a href={`${import.meta.env.BASE_URL}project/`} data-astro-reload>
+      &larr; {common.backLink}
+    </a>
+  </p>
 </BaseLayout>
 
 <style>
   .section-link {
-    text-align: right;
-    margin-top: 1.5rem;
+    text-align: left;
+    margin-top: 2rem;
   }
   .section-link a {
     font-size: 0.9rem;
