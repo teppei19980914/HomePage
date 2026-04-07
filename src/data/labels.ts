@@ -235,7 +235,7 @@ export const about = {
 // --- Career グラフ ---
 export const careerGraph = {
   personalDev: [
-    { name: "ユメログ", date: "2026.03" },
+    { name: "ユメハシ", date: "2026.03" },
     { name: "MindFlow", date: "2026.01" },
   ],
   sideBusiness: { name: "株式会社WakuLab", date: "2026.03", suffix: "/ 業務委託" },

@@ -1,11 +1,11 @@
 ---
-title: "ユメログ (YumeLog)"
+title: "ユメハシ (YumeHashi)"
 description: "あなたの「やりたいこと」を、行動に変えるアプリ"
 tagline: "夢を持つことで、大きな壁も乗り越えられる。"
 date: 2026-04-03
 tags: ["Flutter", "Dart", "Firebase", "Riverpod", "SQLite"]
-url: "https://teppei19980914.github.io/GrowthEngine/"
-repo: "https://github.com/teppei19980914/GrowthEngine"
+url: "https://teppei19980914.github.io/YumeHashi/"
+repo: "https://github.com/teppei19980914/YumeHashi"
 status: active
 order: 1
 ---
@@ -16,7 +16,7 @@ order: 1
 - 目標を立てても、いつの間にか忘れてしまう
 - 毎日忙しくて、夢に向かう時間が取れない
 
-ユメログは、そんなあなたのために作られました。
+ユメハシは、そんなあなたのために作られました。
 
 ## 3ステップで夢を行動に変える
 
@@ -56,5 +56,5 @@ order: 1
 > 本との出会いを通じて「生き生きと生きるには夢が必要」と気づき、
 > 夢を言語化し行動に移す仕組みをアプリとして形にしました。
 >
-> **ユメログは「最初の一歩」を支えるアプリです。**
+> **ユメハシは「最初の一歩」を支えるアプリです。**
 > 一歩踏み出せば、自然と前に進めます。
