@@ -80,6 +80,7 @@ SVG 手書きの Git ブランチ風グラフ:
 - カテゴリ別全件表示: `blog/category/work/`、`blog/category/essay/`
 - Tech Blog (Qiita): ビルド時に Qiita API から取得。直近 1 年以内 AND Organization 未紐付けで絞り込み、`likes + stocks*2` で降順ソートし上位 5 件を表示
 - 詳細: frontmatter + Markdown 本文。`ogType="article"` で Article スキーマ適用
+- **Markdown 内の外部リンク**は `rehype-external-links` プラグインによりビルド時に `target="_blank" rel="noopener noreferrer"` を自動付与（離脱抑止と HomePage への戻りやすさを両立。サイト内の相対リンク・アンカーは対象外）
 
 ### 1.8 Contact（contact.astro）
 
