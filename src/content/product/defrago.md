@@ -5,6 +5,7 @@ tagline: "高機能をシンプルに。頭の中を最適配置する。"
 date: 2026-04-03
 tags: ["Python", "FastAPI", "HTMX", "SQLite", "SQLAlchemy"]
 url: "https://defrago.onrender.com/"
+repo: "https://github.com/teppei19980914/Defrago"
 status: beta
 order: 2
 ---
