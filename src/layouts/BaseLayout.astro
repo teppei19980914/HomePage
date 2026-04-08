@@ -132,6 +132,14 @@ const jsonLd = ogType === "article"
         }
       });
     </script>
+
+    <noscript>
+      <style>
+        /* JS 無効環境では reveal アニメーションを無効化し、常時表示する */
+        .reveal { opacity: 1 !important; transform: none !important; }
+        .fade-in { opacity: 1 !important; transform: none !important; animation: none !important; }
+      </style>
+    </noscript>
   </head>
   <body>
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -168,6 +176,11 @@ const jsonLd = ogType === "article"
         }
         var reveals = document.querySelectorAll(".reveal");
         if (reveals.length === 0) return;
+        // IntersectionObserver 非対応環境では全要素を即時表示
+        if (typeof IntersectionObserver === "undefined") {
+          reveals.forEach(function (el) { el.classList.add("visible"); });
+          return;
+        }
         var observer = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
@@ -177,10 +190,19 @@ const jsonLd = ogType === "article"
               }
             });
           },
-          { threshold: 0.1 },
+          // threshold 0: 1px でも交差したら発火。
+          // 長文ページで要素がビューポートより大きい場合に
+          // 10% に到達せず発火しない問題を回避する。
+          { threshold: 0, rootMargin: "0px 0px -10% 0px" },
         );
         reveals.forEach(function (el) {
-          observer.observe(el);
+          // 既にビューポート内にある要素は即座に visible 化（observer 登録漏れ対策）
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add("visible");
+          } else {
+            observer.observe(el);
+          }
         });
       }
       initScrollEffects();
