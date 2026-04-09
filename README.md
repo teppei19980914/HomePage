@@ -8,11 +8,12 @@
 |---|---|
 | [README.md](README.md) | 運用ドキュメント（本ファイル） |
 | [CLAUDE.md](CLAUDE.md) | Claude Code 運用ガイド |
-| [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md) | 要件定義書（機能要件・非機能要件・制約条件） |
-| [docs/SPECIFICATION.md](docs/SPECIFICATION.md) | 仕様書（ページ仕様・UI仕様・スキーマ定義） |
-| [docs/DESIGN.md](docs/DESIGN.md) | 設計書（アーキテクチャ・データフロー・コンポーネント設計・セキュリティ設計） |
-| [docs/OPERATIONS.md](docs/OPERATIONS.md) | 運用手順書（日常運用・デプロイ・メンテナンス・障害対応・SEO運用） |
-| [docs/INFRASTRUCTURE.md](docs/INFRASTRUCTURE.md) | インフラ構成書（全体構成・サービス詳細・コスト・セキュリティ・監視） |
+| [docs/Operation/REQUIREMENTS.md](docs/Operation/REQUIREMENTS.md) | 要件定義書（機能要件・非機能要件・制約条件） |
+| [docs/Operation/SPECIFICATION.md](docs/Operation/SPECIFICATION.md) | 仕様書（ページ仕様・UI仕様・スキーマ定義） |
+| [docs/Operation/DESIGN.md](docs/Operation/DESIGN.md) | 設計書（アーキテクチャ・データフロー・コンポーネント設計・セキュリティ設計） |
+| [docs/Operation/OPERATIONS.md](docs/Operation/OPERATIONS.md) | 運用手順書（日常運用・デプロイ・メンテナンス・障害対応・SEO運用） |
+| [docs/Operation/INFRASTRUCTURE.md](docs/Operation/INFRASTRUCTURE.md) | インフラ構成書（全体構成・サービス詳細・コスト・セキュリティ・監視） |
+| [docs/Operation/I18N_MIGRATION_CHECKLIST.md](docs/Operation/I18N_MIGRATION_CHECKLIST.md) | 多言語対応デプロイ後チェックリスト（SEO / OGP / 外部プロフィール更新） |
 
 ## 目次
 
@@ -39,9 +40,10 @@
 | フレームワーク | Astro v6 / TypeScript |
 | ホスティング | GitHub Pages（Public リポジトリ） |
 | CI/CD | GitHub Actions（`.github/workflows/deploy.yml`） |
+| 多言語対応 | 日本語 / 英語（URL プレフィックス方式 `/ja/...` / `/en/...`）|
 | お問い合わせ | Formspree（Cookie 不要） |
 | アクセス解析 | Cloudflare Web Analytics（Cookie 不要） |
-| SEO | sitemap / robots.txt / OGP / JSON-LD / RSS / Google Search Console |
+| SEO | sitemap / robots.txt / OGP / hreflang / JSON-LD / RSS / Google Search Console |
 
 ---
 
@@ -58,33 +60,46 @@ HomePage/
 │   └── robots.txt
 ├── src/
 │   ├── components/
-│   │   ├── CareerGraph.astro   # Git ブランチ風キャリアグラフ（SVG）
+│   │   ├── CareerGraph.astro   # Git ブランチ風キャリアグラフ（SVG、locale 対応）
 │   │   ├── Footer.astro
-│   │   └── Header.astro
+│   │   └── Header.astro        # ナビゲーション + 言語スイッチャー
 │   ├── content/                # Markdown コンテンツ（Content Collections）
-│   │   ├── blog/               # ブログ記事
-│   │   ├── product/            # プロダクト紹介
-│   │   └── project/            # プロジェクト実績
+│   │   ├── blog/
+│   │   │   ├── ja/             # 日本語ブログ記事
+│   │   │   └── en/             # 英語ブログ記事（現状未翻訳、ja にフォールバック）
+│   │   ├── product/ja/         # プロダクト紹介
+│   │   ├── project/ja/         # プロジェクト実績
+│   │   └── profile/ja/         # Profile の思想セクション（philosophy/motto/dream/goal）
 │   ├── data/
-│   │   └── labels.ts           # 全 UI テキストの一元管理
+│   │   └── labels.ts           # 後方互換シム（実体は src/i18n/ja.ts）
+│   ├── i18n/                   # ✨ 多言語対応エンジン
+│   │   ├── index.ts            # getLabels / normalizeLocale / 型エクスポート
+│   │   ├── types.ts            # Labels / Locale / LOCALES / BCP47
+│   │   ├── ja.ts               # 日本語辞書（Single Source of Truth）
+│   │   ├── en.ts               # 英語辞書（Labels 型を満たす必要あり）
+│   │   ├── url.ts              # localeUrl / rootUrl ヘルパー
+│   │   ├── content.ts          # getLocalizedCollection / getLocalizedEntry
+│   │   └── paths.ts            # localeStaticPaths / localeContentPaths
 │   ├── layouts/
-│   │   └── BaseLayout.astro    # 共通レイアウト（SEO / OGP / Analytics 含む）
-│   ├── pages/                  # ページ
-│   │   ├── index.astro         # Home
-│   │   ├── profile.astro       # Profile
-│   │   ├── about.astro         # About（スキル・資格・キャリア）
-│   │   ├── contact.astro       # Contact（Formspree フォーム）
-│   │   ├── blog/               # Blog 一覧 + 詳細
-│   │   ├── product/            # Product 一覧 + 詳細
-│   │   ├── project/            # Project 一覧 + 詳細
-│   │   └── rss.xml.ts          # RSS フィード生成
+│   │   └── BaseLayout.astro    # 共通レイアウト（hreflang / JSON-LD / Analytics 含む）
+│   ├── pages/
+│   │   ├── index.astro         # ルート: 言語検出リダイレクト
+│   │   ├── 404.astro           # カスタム 404（旧 URL → 新 URL 救済）
+│   │   ├── rss.xml.ts          # RSS フィード（ja 固定配信）
+│   │   └── [lang]/             # 言語別ページ(ja/en を単一ソースから生成)
+│   │       ├── index.astro     # Home
+│   │       ├── profile.astro   # Profile
+│   │       ├── contact.astro   # Contact（Formspree フォーム）
+│   │       ├── blog/           # Blog 一覧 + 詳細 + カテゴリ
+│   │       ├── product/        # Product 一覧 + 詳細
+│   │       └── project/        # Project 一覧 + 詳細 + all
 │   ├── styles/
 │   │   └── global.css          # グローバルスタイル
 │   ├── utils/
 │   │   ├── format.ts
 │   │   └── format.test.ts
 │   └── content.config.ts       # Content Collections スキーマ定義
-├── astro.config.mjs
+├── astro.config.mjs            # i18n / sitemap / rehype-external-links 設定
 ├── CLAUDE.md                   # Claude Code 運用ガイド
 ├── dev.bat                     # ローカル開発用バッチ
 ├── package.json
@@ -216,15 +231,25 @@ order: 50
 
 **UI テキストのハードコーディングは禁止。**
 
-すべてのテキスト（ラベル、説明文、キャッチコピー等）は `src/data/labels.ts` に定義し、各ページから import して使用する。
+すべてのテキスト（ラベル、説明文、キャッチコピー等）は `src/i18n/ja.ts` / `src/i18n/en.ts` に定義し、`getLabels(locale)` 経由で取得する。
 
 ```typescript
-// labels.ts から import
-import { about } from "../data/labels";
+// 推奨: ロケール対応
+import { getLabels, normalizeLocale } from "../../i18n";
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
 
-// テンプレートで使用
-<h1>{about.title}</h1>
+<h1>{t.about.title}</h1>
 ```
+
+```typescript
+// 後方互換シム（新規コードでは非推奨）
+import { about } from "../data/labels";  // → i18n/ja.ts を返す
+```
+
+### 型安全な翻訳漏れ検出
+
+`src/i18n/ja.ts` の構造を `typeof ja → Labels` 型として導出しており、`src/i18n/en.ts` は同じ型を満たす必要がある。**新しいラベルを ja.ts に追加すると en.ts でコンパイルエラーが発生**するため、翻訳漏れがビルド前に検出される。
 
 ### 対象
 
@@ -234,13 +259,18 @@ import { about } from "../data/labels";
 - エラーメッセージ
 - aria-label
 - フォームの placeholder
+- ナビゲーション
+- 言語スイッチャー
+- SVG 内のテキスト（CareerGraph 等）
 
 ### 対象外
 
 - HTML タグの属性値（class, style 等）
 - CSS の値
-- Markdown コンテンツ（`src/content/`）
-- 技術名（C#, Python 等のスキル名）
+- Markdown コンテンツ（`src/content/`）— 本文は言語別ディレクトリ（`ja/`, `en/`）で管理
+- 技術名・固有名詞（C#, Python, GitHub, Qiita 等）
+- 人名（Teppei Suyama）
+- 公式資格名（Oracle Certified Java Programmer 等）
 
 ---
 
@@ -257,8 +287,14 @@ import { about } from "../data/labels";
 ### 公開 URL
 
 ```
-https://teppei19980914.github.io/HomePage/
+https://teppei19980914.github.io/HomePage/       # 言語検出リダイレクト
+https://teppei19980914.github.io/HomePage/ja/    # 日本語版
+https://teppei19980914.github.io/HomePage/en/    # 英語版
 ```
+
+**URL プレフィックス戦略**: 両言語とも URL にプレフィックスを付与する。ルート `/HomePage/` は `navigator.language` → `localStorage.preferred-locale` の順で判定し、適切な言語ページへクライアントサイドリダイレクトする（JS 無効時は meta refresh で `/ja/` にフォールバック）。
+
+**旧 URL (`/HomePage/profile/` 等) は 404**: 多言語対応のタイミングで URL プレフィックス方式に変更されたため、旧 URL へのアクセスはカスタム 404 ページ経由で新 URL (`/HomePage/ja/profile/` 等) に自動リダイレクトされる（`src/pages/404.astro` が検出・誘導）。
 
 ### 手動デプロイが必要なケース
 
@@ -305,15 +341,18 @@ https://teppei19980914.github.io/HomePage/
 
 | 項目 | ファイル |
 |---|---|
-| sitemap.xml | ビルド時に自動生成（`@astrojs/sitemap`） |
+| sitemap.xml | ビルド時に自動生成（`@astrojs/sitemap`、i18n 対応） |
 | robots.txt | `public/robots.txt` |
-| OGP メタタグ | `BaseLayout.astro`（全ページ） |
+| OGP メタタグ | `BaseLayout.astro`（全ページ、`og:locale` + `og:locale:alternate`） |
 | Twitter Card | `BaseLayout.astro`（全ページ） |
-| canonical URL | `BaseLayout.astro`（全ページ） |
-| JSON-LD 構造化データ | `BaseLayout.astro`（WebSite / Article スキーマ） |
-| RSS フィード | `src/pages/rss.xml.ts` |
+| canonical URL | `BaseLayout.astro`（各言語ごとに自 URL を canonical に） |
+| hreflang タグ | `BaseLayout.astro`（ja-JP / en-US / x-default） |
+| `<html lang>` 動的化 | `BaseLayout.astro`（locale ごとに切替） |
+| JSON-LD 構造化データ | `BaseLayout.astro`（WebSite / Article スキーマ + `inLanguage`） |
+| RSS フィード | `src/pages/rss.xml.ts`（ja 固定配信） |
 | OG 画像 | `public/og-image.svg` |
 | Google 所有権確認 | `BaseLayout.astro`（meta タグ） |
+| カスタム 404 | `src/pages/404.astro`（旧 URL → 新 URL 自動リダイレクト） |
 
 ### SEO 効果を高めるためのアクション
 
@@ -353,10 +392,10 @@ https://teppei19980914.github.io/HomePage/
 
 ### ビルドサイズ
 
-- HTML 16 ページ
+- HTML **43 ページ**（ja 21 + en 21 + ルート言語検出ページ 1 + 404）
 - CSS ~12KB
-- JS ~15KB（ClientRouter）
-- 合計 ~289KB
+- JS ~15KB（ClientRouter + 言語検出スクリプト）
+- ビルド時間: 約 6〜8 秒
 
 ---
 

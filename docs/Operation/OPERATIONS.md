@@ -54,7 +54,7 @@ git push → GitHub Actions → npm ci → npm run build → GitHub Pages にデ
 
 1. [Google Search Console](https://search.google.com/search-console) にアクセス
 2. 左メニュー「URL 検査」
-3. 新しい記事の URL を入力（例: `https://teppei19980914.github.io/HomePage/blog/記事ID/`）
+3. 新しい記事の URL を入力（例: `https://teppei19980914.github.io/HomePage/ja/blog/記事ID/` / 英語版が存在する場合は `/en/blog/...` も）
 4. 「インデックス登録をリクエスト」をクリック
 
 #### 新しいページを追加した場合（Product / Project 等）

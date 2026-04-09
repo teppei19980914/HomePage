@@ -9,8 +9,12 @@
 ## テキスト管理ルール（最重要）
 
 - **UIテキストのハードコーディングは禁止**
-- すべてのテキストは `src/data/labels.ts` に定義し、各ページから import して使用する
-- 新しいテキストを追加する場合は必ず labels.ts に記録する
+- 多言語対応: ja / en の 2 言語を `src/i18n/ja.ts` / `src/i18n/en.ts` で管理
+- ja.ts が Single Source of Truth、`typeof ja` → `Labels` 型を en.ts が満たす必要あり（翻訳漏れはビルド時エラー）
+- ページ内では `getLabels(lang)` 経由で取得、`localeUrl(lang, path)` で内部リンク生成
+- 旧 `src/data/labels.ts` は後方互換シムとして残存（新規コードは i18n から import 推奨）
+- Markdown コンテンツは `src/content/{blog,product,project,profile}/{ja,en}/*.md` 配下
+- 新しいテキストを追加する場合は必ず ja.ts に先に追加 → en.ts で翻訳（または ja 継承）
 
 ## 運用フロー
 
@@ -51,6 +55,8 @@
 - `ViewTransitions` → `ClientRouter` に名前変更
 - `astro.config.mjs` の `base` は末尾スラッシュ必須（`/HomePage/`）
 - ブログリンクには `data-astro-reload` 属性が必要（ClientRouter との互換性のため）
+- **i18n**: `prefixDefaultLocale: true` により両言語とも `/ja/...` / `/en/...` で配信。ルート `/HomePage/` は言語検出リダイレクトページ
+- **ページ実装**: `src/pages/[lang]/` 配下に単一ソース。`getStaticPaths = localeStaticPaths` で全ロケール分を自動生成
 
 ## 外部 API 連携
 

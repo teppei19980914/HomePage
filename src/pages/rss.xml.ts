@@ -16,7 +16,8 @@ export async function GET(context: APIContext) {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.date,
-      link: `/HomePage/blog/${stripLocale(post.id)}/`,
+      // RSS は ja 固定配信のため link URL に /ja/ プレフィックスを含める
+      link: `/HomePage/ja/blog/${stripLocale(post.id)}/`,
       categories: post.data.tags,
     })),
   });
