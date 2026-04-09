@@ -1,9 +1,40 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import CareerGraph from "../components/CareerGraph.astro";
-import { profile, about, site, common, profileToc } from "../data/labels";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CareerGraph from "../../components/CareerGraph.astro";
+import { render } from "astro:content";
+import { getLabels, normalizeLocale } from "../../i18n";
+import { getLocalizedCollection, stripLocale } from "../../i18n/content";
+import { localeUrl } from "../../i18n/url";
+import { localeStaticPaths } from "../../i18n/paths";
+
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { profile, about, site, common, profileToc, profileGroups } = t;
 
 const socialLinks = [profile.links.github, profile.links.qiita, profile.links.wantedly];
+
+// Profile ページの長文セクション (思想 / 方向性) を Content Collections から取得
+const profileEntries = await getLocalizedCollection("profile", lang);
+
+type ProfileEntry = (typeof profileEntries)[number];
+type RenderedEntry = { entry: ProfileEntry; Content: Awaited<ReturnType<typeof render>>["Content"] };
+
+async function renderGroup(group: "mindset" | "direction"): Promise<RenderedEntry[]> {
+  const list = profileEntries
+    .filter((e) => e.data.group === group)
+    .sort((a, b) => a.data.order - b.data.order);
+  return Promise.all(
+    list.map(async (entry) => {
+      const { Content } = await render(entry);
+      return { entry, Content };
+    }),
+  );
+}
+
+const mindsetRendered = await renderGroup("mindset");
+const directionRendered = await renderGroup("direction");
 
 const birthDate = new Date(profile.birthDate);
 const careerStart = new Date(profile.careerStartDate);
@@ -165,7 +196,7 @@ const careerYears = calcYears(careerStart, now);
   <!-- Career -->
   <section id="career" class="section reveal">
     <h2 class="section-heading">{about.career.title}</h2>
-    <CareerGraph />
+    <CareerGraph locale={lang} />
   </section>
 
   <!-- Education -->
@@ -181,31 +212,40 @@ const careerYears = calcYears(careerStart, now);
     </div>
   </section>
 
-  <!-- Philosophy -->
-  <section id="philosophy" class="section reveal">
-    <h2 class="section-heading">{profile.philosophy.title}</h2>
-    <blockquote>{profile.philosophy.quote}</blockquote>
-    {profile.philosophy.paragraphs.map((p) => (
-      <p>{p}</p>
-    ))}
+  <!-- Mindset (思想): Philosophy + Motto -->
+  <section id="mindset" class="section reveal">
+    <h2 class="section-heading">{profileGroups.mindset.title}</h2>
+    <p class="group-lead">{profileGroups.mindset.lead}</p>
+    {mindsetRendered.map(({ entry, Content }) => {
+      const slug = stripLocale(entry.id) as keyof typeof profileGroups.mindset.sections;
+      // サブセクション見出しはラベル辞書から取得(言語対応)。
+      // マッピング未登録の場合は Markdown frontmatter の title にフォールバック。
+      const subTitle = profileGroups.mindset.sections[slug] ?? entry.data.title;
+      return (
+        <article id={slug} class="profile-subsection">
+          <h3 class="subsection-heading">{subTitle}</h3>
+          <blockquote>{entry.data.quote}</blockquote>
+          <div class="prose"><Content /></div>
+        </article>
+      );
+    })}
   </section>
 
-  <!-- Dream -->
-  <section id="dream" class="section reveal">
-    <h2 class="section-heading">{profile.dream.title}</h2>
-    <blockquote>{profile.dream.quote}</blockquote>
-    {profile.dream.paragraphs.map((p) => (
-      <p>{p}</p>
-    ))}
-  </section>
-
-  <!-- Motto -->
-  <section id="motto" class="section reveal">
-    <h2 class="section-heading">{profile.motto.title}</h2>
-    <blockquote>{profile.motto.quote}</blockquote>
-    {profile.motto.paragraphs.map((p) => (
-      <p>{p}</p>
-    ))}
+  <!-- Direction (方向性): Dream + Goal -->
+  <section id="direction" class="section reveal">
+    <h2 class="section-heading">{profileGroups.direction.title}</h2>
+    <p class="group-lead">{profileGroups.direction.lead}</p>
+    {directionRendered.map(({ entry, Content }) => {
+      const slug = stripLocale(entry.id) as keyof typeof profileGroups.direction.sections;
+      const subTitle = profileGroups.direction.sections[slug] ?? entry.data.title;
+      return (
+        <article id={slug} class="profile-subsection">
+          <h3 class="subsection-heading">{subTitle}</h3>
+          <blockquote>{entry.data.quote}</blockquote>
+          <div class="prose"><Content /></div>
+        </article>
+      );
+    })}
   </section>
 
   <!-- Links -->
@@ -225,7 +265,7 @@ const careerYears = calcYears(careerStart, now);
   <section class="bottom-cta reveal">
     <h2>{common.ctaTitle}</h2>
     <p>{common.ctaBody}</p>
-    <a href={`${import.meta.env.BASE_URL}contact/`} class="btn-cta">{common.ctaButton}</a>
+    <a href={localeUrl(lang,"contact/")} class="btn-cta">{common.ctaButton}</a>
   </section>
 
 </BaseLayout>
@@ -234,6 +274,29 @@ const careerYears = calcYears(careerStart, now);
   .section {
     margin-top: 2.5rem;
     scroll-margin-top: 5rem;
+  }
+  .group-lead {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+  }
+  .profile-subsection {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px dashed var(--color-border);
+    scroll-margin-top: 5rem;
+  }
+  .profile-subsection:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0.5rem;
+  }
+  .subsection-heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
   }
   .section-heading {
     font-size: 1.35rem;

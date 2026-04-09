@@ -1,5 +1,93 @@
 # 仕様書
 
+## 0. 多言語対応
+
+### 0.1 サポート言語
+- `ja` (日本語、デフォルト)
+- `en` (English)
+
+### 0.2 URL 戦略
+両言語とも URL にプレフィックスを付与する:
+- `/HomePage/ja/...` → 日本語
+- `/HomePage/en/...` → 英語
+- `/HomePage/` → クライアントサイドで言語検出し、適切な言語ページへリダイレクト
+
+### 0.3 言語検出(`/HomePage/` ルート)
+1. `localStorage.preferred-locale` (明示設定が最優先)
+2. `navigator.language` (例: `"ja-JP"` → `"ja"`)
+3. `navigator.languages` を順にチェック
+4. 上記いずれも未対応なら `ja` (デフォルト) にフォールバック
+
+JS 無効環境では `<noscript> + meta refresh` で `ja` にリダイレクト。
+
+### 0.4 フォールバック戦略
+- **UI ラベル**: `src/i18n/ja.ts` の構造を `Labels` 型として導出。`en.ts` は同じ型を満たす必要があり、翻訳漏れはビルド時にコンパイルエラーとして検出される
+- **Markdown コンテンツ**: `src/content/{blog,product,project,profile}/{ja,en}/*.md`。指定ロケールに該当ファイルがなければ、`getLocalizedCollection` が自動的に `ja` にフォールバック
+- **未対応言語**: 一律 `ja` を表示
+
+### 0.5 ページ実装
+単一ソースから両言語分を生成する `src/pages/[lang]/` 構造:
+- 静的ページ: `getStaticPaths = localeStaticPaths` で LOCALES を列挙
+- 動的ページ ([...slug], [category] 等): LOCALES × エントリのクロス積で列挙
+- ページ内では `Astro.params.lang` を `normalizeLocale()` でサニタイズし、`getLabels(lang)` でラベル辞書を取得
+- 内部リンクは必ず `localeUrl(lang, path)` 経由で生成(ハードコード禁止)
+
+### 0.6 SEO 対応
+- `<html lang={locale}>` 動的化
+- `<link rel="alternate" hreflang="...">` ja / en / x-default の 3 種
+- `<meta property="og:locale">` + `og:locale:alternate`
+- JSON-LD に `inLanguage` 追加
+- 各ページの canonical は自言語 URL (ja ページは ja URL を canonical に、en ページは en URL を canonical に)
+- sitemap.xml は `@astrojs/sitemap` の i18n オプションで自動生成
+
+### 0.7 言語スイッチャー
+Header に配置。2 つの `<a>` リンクのみで実装(ゼロ JS)。
+- 現在表示中のページと同じ階層の別言語 URL にジャンプ
+- クリック時に `localStorage.preferred-locale` に選択を保存(次回ルートアクセス時に使用)
+- `aria-current="true"` で現在の言語を示す
+
+### 0.8 セキュリティ設計
+- ロケール値は必ず `isLocale()` / `normalizeLocale()` でホワイトリスト検証
+- `navigator.language` 等の外部ソースを信頼せず、常に LOCALES 列挙に対して判定
+- リダイレクトは `window.location.replace()` を使用し履歴汚染を防止
+- 翻訳辞書は全て TypeScript オブジェクトリテラル(XSS リスクなし、外部ソース経由の翻訳注入なし)
+
+### 0.9 ファイル配置
+```
+src/
+├── i18n/
+│   ├── index.ts         # getLabels, normalizeLocale, 再エクスポート
+│   ├── types.ts         # Labels 型, Locale 型, LOCALES, BCP47
+│   ├── ja.ts            # 日本語辞書(Single Source of Truth)
+│   ├── en.ts            # 英語辞書(Labels 型を満たす必要あり)
+│   ├── url.ts           # localeUrl, rootUrl
+│   ├── content.ts       # getLocalizedCollection, getLocalizedEntry
+│   └── paths.ts         # localeStaticPaths, localeContentPaths
+├── content/
+│   ├── blog/{ja,en}/*.md
+│   ├── product/{ja,en}/*.md
+│   ├── project/{ja,en}/*.md
+│   └── profile/{ja,en}/*.md
+└── pages/
+    ├── index.astro      # ルート(言語検出リダイレクト)
+    ├── rss.xml.ts       # RSS (ja 固定)
+    └── [lang]/
+        ├── index.astro
+        ├── profile.astro
+        ├── contact.astro
+        ├── blog/
+        │   ├── index.astro
+        │   ├── [...slug].astro
+        │   └── category/[category].astro
+        ├── product/
+        │   ├── index.astro
+        │   └── [...slug].astro
+        └── project/
+            ├── index.astro
+            ├── all.astro
+            └── [...slug].astro
+```
+
 ## 1. ページ仕様
 
 ### 1.1 Home（index.astro）
@@ -24,10 +112,20 @@
 | Certifications | `certifications` | 資格一覧（取得日付き、新しい順） |
 | Career | `career` | Git ブランチ風 SVG グラフ（CareerGraph コンポーネント） |
 | Education | `education` | 学歴タイムライン |
-| Philosophy | `philosophy` | 哲学・信念の引用 + 説明 |
-| Dream | `dream` | 夢の引用 + 説明 |
-| Motto | `motto` | 座右の銘の引用 + 説明 |
+| 思想 (Mindset) | `mindset` | 抽象的な価値観のグループ。Philosophy (`#philosophy`) と Motto (`#motto`) の 2 サブセクションを含む |
+| 方向性 (Direction) | `direction` | 具体的な目指す先のグループ。Dream (`#dream`) と Goal (`#goal`) の 2 サブセクションを含む |
 | Links | `links` | GitHub / Qiita / Wantedly のカードリンク |
+
+**思想 / 方向性 の内訳は Content Collections（`profile` collection）管理**:
+
+| ファイル | group | order | 内容 |
+|---|---|---|---|
+| `src/content/profile/philosophy.md` | `mindset` | 1 | 哲学・信念 |
+| `src/content/profile/motto.md` | `mindset` | 2 | 座右の銘 |
+| `src/content/profile/dream.md` | `direction` | 1 | 長期の夢・ビジョン |
+| `src/content/profile/goal.md` | `direction` | 2 | 短期・中期・長期の具体的目標 |
+
+Schema は `title` / `quote` / `order` / `group ("mindset" | "direction")`、本文は Markdown 記述。`profile.astro` は `getCollection("profile")` で一括取得し `group` でフィルタして 2 つのグループセクションに描画する。新しいサブセクションを追加したい場合は、該当 `group` の新しい `.md` ファイルを置くだけでよい。TOC は 2 グループレベル (`#mindset` / `#direction`)、個別サブセクションへのディープリンクは各ファイル id 経由で可能。
 
 年齢・社会人歴の計算:
 - 生年月日: 1998-09-14

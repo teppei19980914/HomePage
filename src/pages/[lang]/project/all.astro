@@ -1,9 +1,17 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { project as projectLabels, common } from "../../data/labels";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale } from "../../../i18n";
+import { getLocalizedCollection, stripLocale } from "../../../i18n/content";
+import { localeUrl } from "../../../i18n/url";
+import { localeStaticPaths } from "../../../i18n/paths";
 
-const projects = (await getCollection("project"))
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { project: projectLabels, common } = t;
+
+const projects = (await getLocalizedCollection("project", lang))
   .sort((a, b) => b.data.order - a.data.order);
 ---
 
@@ -60,7 +68,7 @@ const projects = (await getCollection("project"))
             </div>
             <div class="project-card-actions">
               <a
-                href={`${import.meta.env.BASE_URL}project/${project.id}/`}
+                href={localeUrl(lang, `project/${stripLocale(project.id)}/`)}
                 class="btn-detail"
               >
                 {projectLabels.detailLink} &rarr;
@@ -72,7 +80,7 @@ const projects = (await getCollection("project"))
     )
   }
   <p class="section-link">
-    <a href={`${import.meta.env.BASE_URL}project/`} data-astro-reload>
+    <a href={localeUrl(lang, "project/")} data-astro-reload>
       &larr; {common.backLink}
     </a>
   </p>

@@ -1,17 +1,28 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection, render } from "astro:content";
-import { common, project as projectLabels } from "../../data/labels";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { render } from "astro:content";
+import { getLabels, normalizeLocale, LOCALES } from "../../../i18n";
+import { getLocalizedCollection, stripLocale } from "../../../i18n/content";
+import { localeUrl } from "../../../i18n/url";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("project");
-  return projects.map((project) => ({
-    params: { slug: project.id },
-    props: { project },
-  }));
+  const paths = [];
+  for (const lang of LOCALES) {
+    const projects = await getLocalizedCollection("project", lang);
+    for (const project of projects) {
+      paths.push({
+        params: { lang, slug: stripLocale(project.id) },
+        props: { project },
+      });
+    }
+  }
+  return paths;
 }
 
 const { project } = Astro.props;
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { common, project: projectLabels } = t;
 const { Content } = await render(project);
 ---
 
@@ -53,7 +64,7 @@ const { Content } = await render(project);
   <section class="bottom-cta reveal">
     <h2>{common.ctaTitle}</h2>
     <p>{common.ctaBody}</p>
-    <a href={`${import.meta.env.BASE_URL}contact/`} class="btn-cta">{common.ctaButton}</a>
+    <a href={localeUrl(lang, "contact/")} class="btn-cta">{common.ctaButton}</a>
   </section>
   <nav class="back reveal">
     <a href="#" onclick="history.back(); return false;">&larr; {common.backLink}</a>

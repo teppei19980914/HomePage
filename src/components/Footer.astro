@@ -1,10 +1,12 @@
 ---
-import { footer } from "../data/labels";
+import { getLabels, normalizeLocale } from "../i18n";
+const locale = normalizeLocale(Astro.currentLocale);
+const t = getLabels(locale);
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <p>&copy; {year} {footer.copyright}</p>
+  <p>&copy; {year} {t.footer.copyright}</p>
 </footer>
 
 <style>

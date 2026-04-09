@@ -1,5 +1,14 @@
 ---
-import { about, careerGraph } from "../data/labels";
+import { getLabels, normalizeLocale } from "../i18n";
+
+// 親ページから locale を渡せる。未指定時は Astro.currentLocale を使用する。
+interface Props {
+  locale?: string;
+}
+const { locale: localeProp } = Astro.props;
+const locale = normalizeLocale(localeProp ?? Astro.currentLocale);
+const t = getLabels(locale);
+const { about, careerGraph } = t;
 ---
 
 <div class="career-graph-wrapper">

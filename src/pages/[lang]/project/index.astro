@@ -1,9 +1,17 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { project as projectLabels } from "../../data/labels";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale } from "../../../i18n";
+import { getLocalizedCollection, stripLocale } from "../../../i18n/content";
+import { localeUrl } from "../../../i18n/url";
+import { localeStaticPaths } from "../../../i18n/paths";
 
-const allProjects = (await getCollection("project"))
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { project: projectLabels } = t;
+
+const allProjects = (await getLocalizedCollection("project", lang))
   .sort((a, b) => b.data.order - a.data.order);
 const projects = allProjects.slice(0, projectLabels.maxDisplay);
 const hasMore = allProjects.length > projectLabels.maxDisplay;
@@ -62,7 +70,7 @@ const hasMore = allProjects.length > projectLabels.maxDisplay;
             </div>
             <div class="project-card-actions">
               <a
-                href={`${import.meta.env.BASE_URL}project/${project.id}/`}
+                href={localeUrl(lang, `project/${stripLocale(project.id)}/`)}
                 class="btn-detail"
               >
                 {projectLabels.detailLink} &rarr;
@@ -75,7 +83,7 @@ const hasMore = allProjects.length > projectLabels.maxDisplay;
   }
   {hasMore && (
     <p class="section-link">
-      <a href={`${import.meta.env.BASE_URL}project/all/`} data-astro-reload>
+      <a href={localeUrl(lang, "project/all/")} data-astro-reload>
         {projectLabels.viewAllText} &rarr;
       </a>
     </p>

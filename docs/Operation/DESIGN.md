@@ -32,8 +32,11 @@
 src/content/blog/*.md       → Content Collections → getCollection("blog")     → ページ生成
 src/content/product/*.md    → Content Collections → getCollection("product")  → ページ生成
 src/content/project/*.md    → Content Collections → getCollection("project")  → ページ生成
-src/data/labels.ts          → import              → 全ページで参照
+src/content/profile/*.md    → Content Collections → getEntry("profile", ...) → Profile ページのセクションに挿入
+src/data/labels.ts          → import              → 全ページで参照（UI ラベル専用）
 ```
+
+**コンテンツ配置の原則**: 長文の narrative コンテンツ（ブログ記事、プロダクト紹介、プロジェクト紹介、Profile の Philosophy/Dream/Motto）は `src/content/` に Markdown で配置する。UI ラベル・ボタン文言・ページタイトル等の短文は `src/data/labels.ts` に集約する。
 
 ### 2.2 ビルドフロー
 

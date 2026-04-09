@@ -1,9 +1,17 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { product as productLabels } from "../../data/labels";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale } from "../../../i18n";
+import { getLocalizedCollection, stripLocale } from "../../../i18n/content";
+import { localeUrl } from "../../../i18n/url";
+import { localeStaticPaths } from "../../../i18n/paths";
 
-const products = (await getCollection("product"))
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { product: productLabels } = t;
+
+const products = (await getLocalizedCollection("product", lang))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -47,7 +55,7 @@ const products = (await getCollection("product"))
             {product.data.status !== "beta" && (
               <div class="product-card-actions">
                 <a
-                  href={`${import.meta.env.BASE_URL}product/${product.id}/`}
+                  href={localeUrl(lang, `product/${stripLocale(product.id)}/`)}
                   class="btn-detail"
                 >
                   {productLabels.detailLink} &rarr;
