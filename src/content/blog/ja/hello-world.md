@@ -1,8 +1,8 @@
 ---
 title: "ホームページを開設しました — 散らばった情報を、集約する"
-description: "個人ホームページを開設した経緯と、このサイトを通じて成し遂げたいことをお話しします。"
+description: "Astro v6 × GitHub Pages × AI 駆動開発で個人ホームページを構築しました。経歴・スキル・個人開発プロダクト・技術ブログを1サイトに集約した背景と、このサイトで実現したいことをお話しします。"
 date: 2026-04-06
-tags: ["日記", "自己紹介", "個人開発"]
+tags: ["ポートフォリオ", "自己紹介", "Astro", "個人開発", "AI駆動開発"]
 category: work
 ---
 
@@ -52,9 +52,9 @@ category: work
 
 このホームページも、そして今までの開発も同じ思想で設計しました。  
 
-- 導線は必要最小限（Home / Profile / Product / Project / Blog / Contact）
-- スクロールが長くなりがちな Profile はアコーディオン化して、見たい情報だけ開ける設計
-- テキストは `labels.ts` に一元管理し、ハードコーディング禁止
+- 導線は必要最小限（ホーム / プロフィール / プロダクト / プロジェクト / ブログ / お問い合わせ）
+- スクロールが長くなりがちな プロフィール は目次（TOC）でセクションジャンプできる設計
+- テキストは多言語対応を見据えて `src/i18n/ja.ts` に一元管理し、ハードコーディング禁止
 - クライアント JS は最小限（Astro のゼロ JS デフォルトを活用）
 
 「情報を詰め込む」のではなく、「ユーザーが迷わず、最速で必要な情報にたどり着ける」ことを最優先にしています。
@@ -69,6 +69,12 @@ category: work
 - **Formspree** — Cookie 不要のお問い合わせフォーム
 - **SEO 最適化** — sitemap / OGP / JSON-LD / RSS / Google Search Console
 - **AI 駆動開発** — Claude Code でサイト全体を構築
+
+## 関連記事
+
+- [「テスト工程が消滅した」— AI駆動開発 vs 従来開発を全工程で比較してみた](/HomePage/ja/blog/ai-driven-development/) — AI 駆動開発で 3 週間でアプリを作った実績データ
+- [『ユメログ』から『ユメハシ』へ — 夢と現実のあいだに、橋を架ける](/HomePage/ja/blog/yumehashi-story/) — 個人開発アプリに込めた哲学
+- [ユメハシの技術スタックと 5 つの実装課題](/HomePage/ja/blog/yumehashi-tech-stack/) — Flutter Web / Drift / Riverpod の設計判断
 
 ## おわりに
 
