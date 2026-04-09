@@ -1,6 +1,13 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { contact } from "../data/labels";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale } from "../../i18n";
+import { localeStaticPaths } from "../../i18n/paths";
+
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { contact } = t;
 ---
 
 <BaseLayout title={contact.title} description={contact.description}>

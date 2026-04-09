@@ -1,19 +1,26 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { blog, common } from "../../../data/labels";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale, BCP47, LOCALES } from "../../../../i18n";
+import { getLocalizedCollection, stripLocale } from "../../../../i18n/content";
+import { localeUrl } from "../../../../i18n/url";
 
 export async function getStaticPaths() {
-  return [
-    { params: { category: "work" } },
-    { params: { category: "essay" } },
-  ];
+  const paths = [];
+  for (const lang of LOCALES) {
+    for (const category of ["work", "essay"] as const) {
+      paths.push({ params: { lang, category } });
+    }
+  }
+  return paths;
 }
 
+const lang = normalizeLocale(Astro.params.lang);
 const { category } = Astro.params;
+const t = getLabels(lang);
+const { blog, common } = t;
 
-const posts = (await getCollection("blog", ({ data }) => !data.draft))
-  .filter((p) => p.data.category === category)
+const posts = (await getLocalizedCollection("blog", lang))
+  .filter((p) => !p.data.draft && p.data.category === category)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const section = category === "work" ? blog.workSection : blog.essaySection;
@@ -35,13 +42,13 @@ const cardClass = category === "work" ? "work-card" : "essay-card";
           {posts.map((post, i) => (
             <li class="reveal" style={`transition-delay: ${i * 0.05}s`}>
               <a
-                href={`${import.meta.env.BASE_URL}blog/${post.id}/`}
+                href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
                 class={`card blog-card ${cardClass}`}
                 data-astro-reload
               >
                 <div class="blog-card-header">
                   <span class="date">
-                    {post.data.date.toLocaleDateString("ja-JP")}
+                    {post.data.date.toLocaleDateString(BCP47[lang])}
                   </span>
                   <div class="tags">
                     {post.data.tags.map((tag) => (
@@ -58,7 +65,7 @@ const cardClass = category === "work" ? "work-card" : "essay-card";
       )
     }
     <p class="section-link">
-      <a href={`${import.meta.env.BASE_URL}blog/`} data-astro-reload>&larr; {common.backLink}</a>
+      <a href={localeUrl(lang, "blog/")} data-astro-reload>&larr; {common.backLink}</a>
     </p>
   </section>
 </BaseLayout>

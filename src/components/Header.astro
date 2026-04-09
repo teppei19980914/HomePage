@@ -1,16 +1,37 @@
 ---
-import { nav } from "../data/labels";
+import { getLabels, normalizeLocale, LOCALES, type Locale } from "../i18n";
+import { localeUrl } from "../i18n/url";
+
+// Astro.currentLocale はページパスから自動判定される。
+// 未定義時は DEFAULT_LOCALE (ja) にフォールバック。
+const locale = normalizeLocale(Astro.currentLocale);
+const t = getLabels(locale);
 
 const navItems = [
-  { label: nav.home, href: `${import.meta.env.BASE_URL}` },
-  { label: nav.profile, href: `${import.meta.env.BASE_URL}profile/` },
-  { label: nav.product, href: `${import.meta.env.BASE_URL}product/` },
-  { label: nav.project, href: `${import.meta.env.BASE_URL}project/` },
-  { label: nav.blog, href: `${import.meta.env.BASE_URL}blog/` },
-  { label: nav.contact, href: `${import.meta.env.BASE_URL}contact/` },
+  { label: t.nav.home, href: localeUrl(locale, "") },
+  { label: t.nav.profile, href: localeUrl(locale, "profile/") },
+  { label: t.nav.product, href: localeUrl(locale, "product/") },
+  { label: t.nav.project, href: localeUrl(locale, "project/") },
+  { label: t.nav.blog, href: localeUrl(locale, "blog/") },
+  { label: t.nav.contact, href: localeUrl(locale, "contact/") },
 ];
 
 const currentPath = Astro.url.pathname;
+
+// ===== 言語切替 =====
+// 現在のパスから言語プレフィックスを剥がして「パス部分」を得る
+const base = import.meta.env.BASE_URL; // "/HomePage/"
+// currentPath 例: "/HomePage/ja/profile/"
+// → neutralPath: "profile/"
+const stripped = currentPath.startsWith(base) ? currentPath.slice(base.length) : currentPath;
+const neutralPath = stripped.replace(/^(ja|en)\//, "").replace(/^\//, "");
+
+// 各ロケールへの切替リンク
+const languageLinks: { loc: Locale; label: string; href: string }[] = LOCALES.map((loc) => ({
+  loc,
+  label: loc === "ja" ? "日本語" : "English",
+  href: localeUrl(loc, neutralPath),
+}));
 ---
 
 <header class="header">
@@ -30,15 +51,32 @@ const currentPath = Astro.url.pathname;
         ))
       }
     </ul>
-    <button
-      id="themeToggle"
-      class="theme-toggle"
-      aria-label={nav.themeToggleLabel}
-      type="button"
-    >
-      <span class="icon-sun">&#9788;</span>
-      <span class="icon-moon">&#9790;</span>
-    </button>
+    <div class="header-actions">
+      <div class="lang-switcher" role="group" aria-label={t.languageSwitcher.label}>
+        {
+          languageLinks.map(({ loc, label, href }) => (
+            <a
+              href={href}
+              hreflang={loc}
+              class:list={["lang-link", { active: loc === locale }]}
+              aria-current={loc === locale ? "true" : undefined}
+              data-astro-reload
+            >
+              {label}
+            </a>
+          ))
+        }
+      </div>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        aria-label={t.nav.themeToggleLabel}
+        type="button"
+      >
+        <span class="icon-sun">&#9788;</span>
+        <span class="icon-moon">&#9790;</span>
+      </button>
+    </div>
   </nav>
 </header>
 
@@ -51,8 +89,29 @@ const currentPath = Astro.url.pathname;
       localStorage.setItem("theme", isDark ? "dark" : "light");
     });
   }
+  // 言語切替クリック時に localStorage に選択を保存
+  // 次回ルート(/HomePage/)アクセス時に検出用として利用する
+  function initLangSwitcher() {
+    var links = document.querySelectorAll(".lang-link");
+    links.forEach(function (link) {
+      link.addEventListener("click", function () {
+        var lang = link.getAttribute("hreflang");
+        if (lang === "ja" || lang === "en") {
+          try {
+            localStorage.setItem("preferred-locale", lang);
+          } catch (e) {
+            /* ignore */
+          }
+        }
+      });
+    });
+  }
   initThemeToggle();
-  document.addEventListener("astro:after-swap", initThemeToggle);
+  initLangSwitcher();
+  document.addEventListener("astro:after-swap", function () {
+    initThemeToggle();
+    initLangSwitcher();
+  });
 </script>
 
 <style>
@@ -117,6 +176,41 @@ const currentPath = Astro.url.pathname;
   .nav-links a:hover,
   .nav-links a.active {
     color: var(--color-primary);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .lang-switcher {
+    display: flex;
+    gap: 0.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    padding: 0.15rem;
+    background-color: transparent;
+  }
+  .lang-link {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background-image: none;
+    border-radius: 9999px;
+    white-space: nowrap;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .lang-link:hover {
+    color: var(--color-primary);
+  }
+  .lang-link.active {
+    color: var(--color-surface);
+    background-color: var(--color-primary);
+  }
+  :global(.dark) .lang-link.active {
+    color: #0f172a;
   }
   .theme-toggle {
     flex-shrink: 0;

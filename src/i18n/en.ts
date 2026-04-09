@@ -1,0 +1,381 @@
+// ============================================================
+// en.ts — English labels
+//
+// Phase 5: Home / Profile / Project を優先的に英訳済み。
+// Product / Blog / Contact は Phase 6 で順次翻訳予定で、現時点では ja を継承する。
+//
+// 翻訳方針:
+//   - ロケール不変の値(URL、ID、日付、人物名、会社名など)は ja と同じ値を設定
+//   - 会社名は原文(日本語)のままで問題ない(固有名詞として扱う)
+//   - Markdown コンテンツ(src/content/profile/*.md 等)はこのファイルの対象外
+// ============================================================
+
+import type { Labels } from "./types";
+
+export const en: Labels = {
+  // --- サイト共通 ---
+  site: {
+    name: "Teppei Suyama",
+    role: "Software Engineer",
+    defaultDescription:
+      "Portfolio of Teppei Suyama — a software engineer specializing in workflow automation and full-stack development",
+    titleSuffix: "Teppei Suyama",
+    copyright: "Teppei Suyama. All rights reserved.",
+  },
+
+  // --- Navigation ---
+  nav: {
+    home: "Home",
+    profile: "Profile",
+    product: "Product",
+    project: "Project",
+    blog: "Blog",
+    contact: "Contact",
+    themeToggleLabel: "Toggle dark mode",
+  },
+
+  // --- Home page ---
+  home: {
+    statsHeadline: "Measurable impact in every project",
+    stats: [
+      {
+        number: "90",
+        unit: "%",
+        label: "Regression testing cut",
+        detail: "Replaced manual test cycles with automated C# unit tests",
+        link: "project/implem-unittest/",
+      },
+      {
+        number: "60",
+        unit: "%",
+        label: "Overtime reduced",
+        detail: "VBA automation tools lifted the load across the whole team",
+        link: "project/acmos-auto-parts/",
+      },
+      {
+        number: "40",
+        unit: "h / mo",
+        label: "RPA savings",
+        detail: "Fully automated sales operations with Power Automate",
+        link: "project/implem-rpa/",
+      },
+      {
+        number: "+25",
+        unit: "%",
+        label: "Rate increase",
+        detail: "Promoted from PG to PL, trusted to extend the contract",
+        link: "project/lts-power-platform/",
+      },
+    ],
+    heroTagline: "A software engineer who finds problems and ships the fix",
+    heroSummary: "5+ years as an engineer / 211 Qiita articles / side work and personal dev in parallel",
+    strengths: {
+      title: "Strengths",
+      items: [
+        {
+          heading: "Drive from problem discovery to execution",
+          body: "I spot inefficiencies in day-to-day operations and ship fixes with VBA or Power Automate. Results include 60% less overtime and 40 person-hours/month saved with full RPA.",
+        },
+        {
+          heading: "Full-stack skills from requirements to production",
+          body: "I cover the full cycle: requirements, design, backend, frontend, test automation, and operations. Certifications include Japan's Applied Information Technology Engineer, Java Gold, and LPIC.",
+        },
+        {
+          heading: "Business outcomes through trust",
+          body: "I build alignment with stakeholders and turn it into results: +33% contract value, a PG-to-PL promotion (+25% rate), and renewed engagements after three-month trials.",
+        },
+      ],
+    },
+    profileSection: {
+      title: "Profile",
+      desc: "Basics, skills, certifications, career, philosophy and mottos — everything I bring as an engineer, in one place.",
+      linkText: "See my profile",
+    },
+    productCards: {
+      title: "Products",
+      desc: "Products I build on the side",
+    },
+    products: {
+      title: "Products",
+      desc: "\"Get the stuck moving, and keep the moving going.\" That is the heart of how I build. I ship products that help people unlock the potential they already have.",
+      linkText: "See all products",
+    },
+    projects: {
+      title: "Projects",
+      desc: "In my day job I drive projects from problem discovery through execution, turning them into measurable business outcomes.",
+      linkText: "See my project history",
+    },
+    blog: {
+      title: "Blog",
+      desc: "Thoughts on technical learnings, retrospectives from personal projects, and career reflections.",
+      linkText: "Read all posts",
+    },
+    contact: {
+      title: "Contact",
+      desc: "Reach out any time for full-stack development or tech advice.",
+      linkText: "Get in touch",
+    },
+  },
+
+  // --- Profile page ---
+  profile: {
+    title: "Profile",
+    description: "Profile of Teppei Suyama",
+    subtitle: "Basics, philosophy, and social links",
+    nameJa: "須山 哲平",
+    nameEn: "Teppei Suyama",
+    birthDate: "1998-09-14",
+    careerStartDate: "2021-04-01",
+    birthDateDisplay: "September 14, 1998",
+    location: "Kawasaki, Kanagawa, Japan",
+    employer: {
+      name: "LTS Software Technology Co., Ltd.",
+      url: "https://www.softec-ic.co.jp/",
+    },
+    sideJob: {
+      name: "WakuLab Inc. (contract)",
+      url: "https://waku-lab.com/",
+    },
+    labels: {
+      birthDate: "Date of birth",
+      age: "Age",
+      ageSuffix: "",
+      careerYears: "Years as engineer",
+      careerYearsSuffix: "yr",
+      location: "Location",
+      employer: "Employer",
+      sideJob: "Side work",
+    },
+    links: {
+      title: "Links",
+      github: {
+        name: "GitHub",
+        id: "teppei19980914",
+        url: "https://github.com/teppei19980914",
+      },
+      qiita: {
+        name: "Qiita",
+        id: "teppei19980914",
+        url: "https://qiita.com/teppei19980914",
+      },
+      wantedly: {
+        name: "Wantedly",
+        id: "Teppei Suyama",
+        url: "https://www.wantedly.com/id/teppei_urata",
+      },
+    },
+  },
+
+  // --- About (Profile sub-sections) ---
+  about: {
+    title: "About",
+    description: "Profile of Teppei Suyama",
+    subtitle: "Skills, certifications, and career",
+    skills: {
+      title: "Skills",
+      legend: "\u25CF 2+ years production  \u25CB 1+ year production  \u25B3 Familiar",
+      categories: {
+        languages: "Languages",
+        database: "Database",
+        cloud: "Cloud / Platform",
+        os: "OS",
+        tools: "Tools",
+        personalDev: "Personal Dev",
+      },
+    },
+    certifications: {
+      title: "Certifications",
+      items: [
+        { date: "2026.02", name: "Python 3 Engineer Certification (Practical)" },
+        { date: "2024.10", name: "Applied Information Technology Engineer (JP)" },
+        { date: "2024.03", name: "OSS-DB Silver" },
+        { date: "2023.11", name: "AZ-900 (Microsoft Azure Fundamentals)" },
+        { date: "2023.09", name: "LPIC Level 1" },
+        { date: "2022.11", name: "Fundamental Information Technology Engineer (JP)" },
+        { date: "2021.07", name: "Oracle Certified Java Programmer, Gold SE 11" },
+        { date: "2019.07", name: "MOS Excel 2019 Expert" },
+        { date: "2018.06", name: "Kanji Proficiency Test, Level 2 (JP)" },
+      ],
+    },
+    career: {
+      title: "Career",
+      legend: { employee: "Full-time", personal: "Personal dev", sideJob: "Side work" },
+      now: "Now",
+      branchLabel: "branch",
+    },
+    education: {
+      title: "Education",
+      items: [
+        { period: "Apr 2017 - Mar 2021", name: "Tokyo University of Social Welfare, Dept. of Psychology" },
+        { period: "Apr 2014 - Mar 2017", name: "Meguro Gakuin High School" },
+      ],
+    },
+  },
+
+  // --- Career graph ---
+  careerGraph: {
+    personalDev: [
+      { name: "YumeHashi", date: "2026.03" },
+      { name: "Defrago", date: "2026.01" },
+    ],
+    sideBusiness: { name: "WakuLab Inc.", date: "2026.03", suffix: "/ contract" },
+    history: [
+      { name: "Joined LTS Software Technology", dateSuffix: "2025.05" },
+      { name: "Left Implem Inc.", dateSuffix: "2025.04" },
+      { name: "Joined Implem Inc.", dateSuffix: "2023.01" },
+      { name: "Left Acmos Inc.", dateSuffix: "2022.12" },
+      { name: "Joined Acmos Inc.", dateSuffix: "2021.04" },
+    ],
+  },
+
+  // --- Project page ---
+  project: {
+    title: "Project",
+    description: "Projects I have delivered",
+    subtitle: "Projects I have delivered as a full-time engineer and as a contractor",
+    emptyMessage: "No projects yet.",
+    maxDisplay: 5,
+    viewAllText: "See all projects",
+    allTitle: "All Projects",
+    allSubtitle: "Every project I have delivered, in full-time and contract roles",
+    contractTypes: {
+      employee: "Full-time",
+      contract: "Contract",
+    },
+    detailLink: "View details",
+  },
+
+  // --- Common ---
+  common: {
+    backLink: "Go back",
+    scrollTopLabel: "Back to top",
+    tocTitle: "Contents",
+    ctaTitle: "Work with me",
+    ctaBody: "I'm available for full-stack development and technical consultations.",
+    ctaButton: "Get in touch",
+  },
+
+  // --- Profile page TOC ---
+  profileToc: [
+    { href: "#basic", label: "Basics" },
+    { href: "#skills", label: "Skills" },
+    { href: "#certifications", label: "Certifications" },
+    { href: "#career", label: "Career" },
+    { href: "#education", label: "Education" },
+    { href: "#mindset", label: "Mindset" },
+    { href: "#direction", label: "Direction" },
+    { href: "#links", label: "Links" },
+  ],
+
+  // --- Profile page groups (Mindset / Direction) ---
+  profileGroups: {
+    mindset: {
+      title: "Mindset",
+      lead: "The abstract values that shape my day-to-day decisions. Made up of Philosophy and Motto.",
+      sections: {
+        philosophy: "Philosophy",
+        motto: "Motto",
+      },
+    },
+    direction: {
+      title: "Direction",
+      lead: "The concrete direction I am heading. Dream lays out the long-term vision; Goal breaks it into short, mid, and long-term targets.",
+      sections: {
+        dream: "Dream",
+        goal: "Goal",
+      },
+    },
+  },
+
+  // --- Language switcher ---
+  languageSwitcher: {
+    label: "Language",
+    switchTo: "View in English",
+  },
+
+  // --- Blog page ---
+  blog: {
+    title: "Blog",
+    description: "Blog posts",
+    subtitle: "Technical learnings, reflections, and daily discoveries",
+    maxPerSection: 5,
+    viewAllText: "See all posts",
+    workSection: {
+      title: "Work & Dev",
+      subtitle: "Retrospectives and knowledge from work and development",
+      emptyMessage: "No posts yet.",
+    },
+    essaySection: {
+      title: "Essay",
+      subtitle: "Free-form essays on thoughts and ideas",
+      emptyMessage: "No posts yet.",
+    },
+    qiitaSection: {
+      title: "Tech Blog (Qiita)",
+      subtitle: "Technical articles published on Qiita (curated by likes and stocks)",
+      qiitaUserId: "teppei19980914",
+      maxArticles: 5,
+      linkText: "See all articles on Qiita",
+      linkUrl: "https://qiita.com/teppei19980914",
+    },
+  },
+
+  // --- Product page ---
+  product: {
+    title: "Product",
+    description: "Personal development products",
+    subtitle: "Products I build and maintain on the side",
+    emptyMessage: "No products yet.",
+    statusLabels: { active: "Active", beta: "In development — stay tuned", archived: "Archived" },
+    detailLink: "View details",
+    tryLink: "Try it",
+    githubLink: "GitHub",
+  },
+
+  // --- Contact page ---
+  contact: {
+    title: "Contact",
+    description: "Get in touch",
+    subtitle: "Feel free to reach out about work or any technical questions",
+    availability: {
+      title: "Available work styles",
+      items: [
+        "Contract work only",
+        "Available hours: weekday evenings after 19:00, plus weekends and holidays (weekdays 8:00-19:00 are my full-time job)",
+      ],
+      responseTime: "I'll get back to you within 2 business days.",
+    },
+    formTitle: "Contact form",
+    formNote:
+      "Use the form below to reach out. I'll review your message and get back to you.",
+    fields: {
+      name: { label: "Name", placeholder: "Your name" },
+      email: { label: "Email", placeholder: "you@example.com" },
+      type: {
+        label: "Inquiry type",
+        options: ["Work inquiry", "Technical consultation", "Other"],
+      },
+      message: {
+        label: "Message",
+        placeholder: "Please describe your inquiry",
+      },
+    },
+    submitLabel: "Send",
+    submittingLabel: "Sending...",
+    successTitle: "Thanks for reaching out",
+    successBody: "I'll review your message and get back to you shortly.",
+    errorMessage: "Failed to send. Please try again.",
+  },
+
+  // --- Blog page TOC ---
+  blogToc: [
+    { href: "#work", label: "Work & Dev" },
+    { href: "#essay", label: "Essay" },
+    { href: "#qiita", label: "Tech Blog (Qiita)" },
+  ],
+
+  // --- Footer ---
+  footer: {
+    copyright: "Teppei Suyama. All rights reserved.",
+  },
+};

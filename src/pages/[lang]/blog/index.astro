@@ -1,11 +1,19 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { blog, blogToc, common } from "../../data/labels";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale, BCP47 } from "../../../i18n";
+import { getLocalizedCollection, stripLocale } from "../../../i18n/content";
+import { localeUrl } from "../../../i18n/url";
+import { localeStaticPaths } from "../../../i18n/paths";
 
-const allPosts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { blog, blogToc, common } = t;
+
+const allPosts = (await getLocalizedCollection("blog", lang))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const workPostsAll = allPosts.filter((p) => p.data.category === "work");
 const essayPostsAll = allPosts.filter((p) => p.data.category === "essay");
@@ -104,13 +112,13 @@ const tocItems = blogToc.filter((item) => {
           {workPosts.map((post, i) => (
             <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
               <a
-                href={`${import.meta.env.BASE_URL}blog/${post.id}/`}
+                href={localeUrl(lang,`blog/${stripLocale(post.id)}/`)}
                 class="card blog-card work-card"
                 data-astro-reload
               >
                 <div class="blog-card-header">
                   <span class="date">
-                    {post.data.date.toLocaleDateString("ja-JP")}
+                    {post.data.date.toLocaleDateString(BCP47[lang])}
                   </span>
                   <div class="tags">
                     {post.data.tags.map((tag) => (
@@ -128,7 +136,7 @@ const tocItems = blogToc.filter((item) => {
     }
     {hasMoreWork && (
       <p class="section-link">
-        <a href={`${import.meta.env.BASE_URL}blog/category/work/`} data-astro-reload>
+        <a href={localeUrl(lang,"blog/category/work/")} data-astro-reload>
           {blog.viewAllText} &rarr;
         </a>
       </p>
@@ -147,13 +155,13 @@ const tocItems = blogToc.filter((item) => {
           {essayPosts.map((post, i) => (
             <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
               <a
-                href={`${import.meta.env.BASE_URL}blog/${post.id}/`}
+                href={localeUrl(lang,`blog/${stripLocale(post.id)}/`)}
                 class="card blog-card essay-card"
                 data-astro-reload
               >
                 <div class="blog-card-header">
                   <span class="date">
-                    {post.data.date.toLocaleDateString("ja-JP")}
+                    {post.data.date.toLocaleDateString(BCP47[lang])}
                   </span>
                   <div class="tags">
                     {post.data.tags.map((tag) => (
@@ -171,7 +179,7 @@ const tocItems = blogToc.filter((item) => {
     }
     {hasMoreEssay && (
       <p class="section-link">
-        <a href={`${import.meta.env.BASE_URL}blog/category/essay/`} data-astro-reload>
+        <a href={localeUrl(lang,"blog/category/essay/")} data-astro-reload>
           {blog.viewAllText} &rarr;
         </a>
       </p>
@@ -195,7 +203,7 @@ const tocItems = blogToc.filter((item) => {
               >
                 <div class="qiita-card-header">
                   <span class="date">
-                    {new Date(article.created_at).toLocaleDateString("ja-JP")}
+                    {new Date(article.created_at).toLocaleDateString(BCP47[lang])}
                   </span>
                   <div class="qiita-stats">
                     <span class="qiita-stat" title="いいね">

@@ -1,235 +1,114 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { home, site } from "../data/labels";
+// ============================================================
+// index.astro — 言語検出リダイレクトページ
+//
+// このページは /HomePage/ にアクセスされた際に表示され、
+// ユーザーの localStorage 設定または navigator.language に基づいて
+// 適切な言語ページへクライアントサイドでリダイレクトする。
+//
+// セキュリティ:
+//   - リダイレクト先は固定のホワイトリスト ("ja" / "en") のみ
+//   - navigator.language は信頼せず、必ず LOCALES に含まれるか検証
+//   - 不正値・未対応言語は全て DEFAULT_LOCALE (ja) にフォールバック
+//
+// フォールバック:
+//   1. localStorage の preferred-locale
+//   2. navigator.language から言語コード抽出
+//   3. 上記いずれも取得できない/不正 → ja
+//
+// JS 無効環境:
+//   <noscript> + meta refresh で ja にリダイレクト
+// ============================================================
+import { LOCALES, DEFAULT_LOCALE } from "../i18n";
+import { rootUrl } from "../i18n/url";
 
-const recentPosts = (await getCollection("blog", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 4);
-
-const products = (await getCollection("product"))
-  .sort((a, b) => a.data.order - b.data.order);
+const baseHref = rootUrl("");
+const jaHref = rootUrl(`${DEFAULT_LOCALE}/`);
+// ホワイトリストを JSON 化してクライアントに渡す(任意文字列の locale を許容しない)
+const localesJson = JSON.stringify(LOCALES);
+const defaultLocale = DEFAULT_LOCALE;
 ---
 
-<BaseLayout title="Home" description={`${site.name} - ${site.role}`}>
-  <!-- ===== 1. Hero ===== -->
-  <section class="hero hero-gradient">
-    <h1 class="hero-name fade-in">
-      <span class="highlight">{site.name}</span>
-    </h1>
-    <p class="hero-tagline fade-in delay-1">{home.heroTagline}</p>
-    <p class="hero-summary fade-in delay-2">{home.heroSummary}</p>
-    <div class="hero-cta fade-in delay-3">
-      <a href={`${import.meta.env.BASE_URL}contact/`} class="btn-primary-hero">
-        {home.contact.linkText}
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== 2. 実績ハイライト ===== -->
-  <section class="stats reveal">
-    <div class="stats-grid">
-      {home.stats.map((s) => (
-        <a href={`${import.meta.env.BASE_URL}${s.link}`} class="stat-item stat-link">
-          <span class="stat-number">{s.number}</span>
-          <span class="stat-unit">{s.unit}</span>
-          <span class="stat-label">{s.label}</span>
-          <span class="stat-detail">{s.detail}</span>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- ===== 3. 強み ===== -->
-  <section class="section reveal">
-    <h2>{home.strengths.title}</h2>
-    <div class="strengths-grid">
-      {home.strengths.items.map((item, i) => (
-        <div class="strength-card reveal" style={`transition-delay: ${i * 0.1}s`}>
-          <span class="strength-num">{`0${i + 1}`}</span>
-          <h3>{item.heading}</h3>
-          <p>{item.body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ===== 4. プロダクト ===== -->
-  <section class="section reveal">
-    <h2>{home.productCards.title}</h2>
-    <p class="section-desc">{home.productCards.desc}</p>
-    <div class="product-grid">
-      {products.filter((p) => p.data.status !== "beta").map((p, i) => (
-        <a
-          href={`${import.meta.env.BASE_URL}product/${p.id}/`}
-          class="product-card reveal"
-          style={`transition-delay: ${i * 0.1}s`}
-        >
-          <div class="product-color" style="background:linear-gradient(135deg,#06b6d4,#2563eb)"></div>
-          <div class="product-body">
-            <h3>{p.data.title}</h3>
-            <p class="product-tagline">{p.data.tagline}</p>
-            <p class="product-desc">{p.data.description}</p>
-            <div class="product-tags">
-              {p.data.tags.slice(0, 4).map((tag) => (
-                <span class="tag">{tag}</span>
-              ))}
-            </div>
-          </div>
-        </a>
-      ))}
-      {products.filter((p) => p.data.status === "beta").map((p, i) => (
-        <div class="product-card product-disabled reveal" style={`transition-delay: ${(i + 1) * 0.1}s`}>
-          <div class="product-color" style="background:linear-gradient(135deg,#8b5cf6,#2563eb)"></div>
-          <div class="product-body">
-            <span class="product-beta-badge">開発中 — こうご期待</span>
-            <h3>{p.data.title}</h3>
-            <p class="product-tagline">{p.data.tagline}</p>
-            <p class="product-desc">{p.data.description}</p>
-            <div class="product-tags">
-              {p.data.tags.slice(0, 4).map((tag) => (
-                <span class="tag">{tag}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ===== 5. ブログ ===== -->
-  {recentPosts.length > 0 && (
-    <section class="section reveal">
-      <h2>{home.blog.title}</h2>
-      <p class="section-desc">{home.blog.desc}</p>
-      <ul class="blog-list">
-        {recentPosts.map((post, i) => (
-          <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
-            <a href={`${import.meta.env.BASE_URL}blog/${post.id}/`} class="blog-item" data-astro-reload>
-              <div class="blog-item-header">
-                <span class="blog-date">{post.data.date.toLocaleDateString("ja-JP")}</span>
-                <div class="blog-tags">
-                  {post.data.tags.map((tag) => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-              <h3 class="blog-title">{post.data.title}</h3>
-              <p class="blog-desc">{post.data.description}</p>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="section-link">
-        <a href={`${import.meta.env.BASE_URL}blog/`} data-astro-reload>{home.blog.linkText} &rarr;</a>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teppei Suyama</title>
+    <meta name="description" content="Teppei Suyama - Software Engineer Portfolio" />
+    <meta name="robots" content="noindex" />
+    {/* JS 無効時のフォールバック: 0秒で ja にリダイレクト */}
+    <noscript>
+      <meta http-equiv="refresh" content={`0; url=${jaHref}`} />
+    </noscript>
+    <link rel="canonical" href={jaHref} />
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        font-family: "Yu Gothic UI", system-ui, -apple-system, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .detecting {
+        text-align: center;
+        opacity: 0.8;
+      }
+      .detecting a {
+        color: #60a5fa;
+        margin: 0 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="detecting">
+      <p>Detecting your language / 言語を判定中...</p>
+      <p>
+        <a href={rootUrl("ja/")}>日本語</a> /
+        <a href={rootUrl("en/")}>English</a>
       </p>
-    </section>
-  )}
+    </div>
+    <script is:inline define:vars={{ baseHref, localesJson, defaultLocale }}>
+      (function () {
+        var LOCALES = JSON.parse(localesJson);
+        var DEFAULT = defaultLocale;
 
-  <!-- ===== 6. Profile ===== -->
-  <section class="section reveal">
-    <h2>{home.profileSection.title}</h2>
-    <p class="section-desc">{home.profileSection.desc}</p>
-    <p class="section-link">
-      <a href={`${import.meta.env.BASE_URL}profile/`}>{home.profileSection.linkText} &rarr;</a>
-    </p>
-  </section>
+        function isSupported(loc) {
+          return typeof loc === "string" && LOCALES.indexOf(loc) !== -1;
+        }
 
-  <!-- ===== 7. CTA ===== -->
-  <section class="bottom-cta reveal">
-    <h2>{home.contact.title}</h2>
-    <p>{home.contact.desc}</p>
-    <a href={`${import.meta.env.BASE_URL}contact/`} class="btn-primary-hero">
-      {home.contact.linkText}
-    </a>
-  </section>
-</BaseLayout>
+        function detectLocale() {
+          // 1. localStorage の明示設定を最優先
+          try {
+            var saved = localStorage.getItem("preferred-locale");
+            if (isSupported(saved)) return saved;
+          } catch (e) {
+            /* SecurityError(iframe 埋め込み等) は無視 */
+          }
 
-<style>
-  /* Hero */
-  .hero { padding: 4rem 0 3rem; text-align: center; }
-  .hero-name { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 0.75rem; }
-  .highlight { background: linear-gradient(135deg, var(--color-primary), #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-tagline { font-size: 1.05rem; color: var(--color-text-muted); margin-bottom: 1rem; }
-  .hero-summary { font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 2rem; letter-spacing: 0.03em; }
-  .hero-cta { display: flex; justify-content: center; }
-  .btn-primary-hero {
-    display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px;
-    background: linear-gradient(135deg, var(--color-primary), #8b5cf6); color: white;
-    font-weight: 600; font-size: 0.95rem; background-image: none;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--color-primary-glow); color: white; }
+          // 2. navigator.language から言語コードを抽出 ("ja-JP" → "ja")
+          var browserLang = (navigator.language || "").toLowerCase().split("-")[0];
+          if (isSupported(browserLang)) return browserLang;
 
-  /* Stats */
-  .stats { margin-top: 3rem; padding: 2rem 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; }
-  .stat-item { display: flex; flex-direction: column; align-items: center; }
-  .stat-number { font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 800; background: linear-gradient(135deg, var(--color-primary), #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
-  .stat-unit { font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.1rem; }
-  .stat-label { font-size: 0.8rem; font-weight: 600; color: var(--color-text); margin-top: 0.35rem; }
-  .stat-detail { font-size: 0.7rem; color: var(--color-text-muted); margin-top: 0.2rem; line-height: 1.4; }
-  .stat-link { text-decoration: none; background-image: none; border-radius: 0.75rem; padding: 1rem 0.5rem; border: 1px solid transparent; transition: background-color 0.25s, transform 0.25s, border-color 0.25s; }
-  .stat-link:hover { background-color: var(--color-primary-glow); border-color: var(--color-border); transform: translateY(-2px); }
-  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+          // 3. navigator.languages を順にチェック
+          if (Array.isArray(navigator.languages)) {
+            for (var i = 0; i < navigator.languages.length; i++) {
+              var lang = (navigator.languages[i] || "").toLowerCase().split("-")[0];
+              if (isSupported(lang)) return lang;
+            }
+          }
 
-  /* Section */
-  .section { margin-top: 3.5rem; }
-  .section-desc { font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
-  .section-link { text-align: right; margin-top: 1rem; margin-bottom: 0; }
-  .section-link a { font-size: 0.9rem; font-weight: 600; }
+          // 4. どれもマッチしなければデフォルトへフォールバック
+          return DEFAULT;
+        }
 
-  /* Strengths */
-  .strengths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
-  .strength-card {
-    padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 0.75rem;
-    background-color: var(--color-surface); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s, background-color 0.3s;
-  }
-  .strength-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: var(--color-accent); }
-  :global(.dark) .strength-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-  .strength-num { font-size: 0.75rem; font-weight: 700; color: var(--color-accent); letter-spacing: 0.05em; }
-  .strength-card h3 { font-size: 1rem; margin-top: 0.35rem; margin-bottom: 0.5rem; }
-  .strength-card p { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 0; }
-
-  /* Product cards */
-  .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
-  .product-card {
-    display: flex; flex-direction: column; border: 1px solid var(--color-border); border-radius: 0.75rem;
-    background-color: var(--color-surface); overflow: hidden; color: var(--color-text); background-image: none;
-    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-  }
-  .product-disabled { opacity: 0.45; pointer-events: none; filter: grayscale(0.6); }
-  .product-beta-badge { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(234,179,8,0.15); color: #ca8a04; margin-bottom: 0.5rem; }
-  .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: var(--color-primary); color: var(--color-text); }
-  :global(.dark) .product-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-  .product-color { height: 4px; width: 100%; }
-  .product-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
-  .product-body h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
-  .product-tagline { font-size: 0.85rem; font-style: italic; color: var(--color-accent); margin-bottom: 0.5rem; }
-  .product-desc { font-size: 0.85rem; color: var(--color-text-muted); flex: 1; }
-  .product-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
-
-  /* Blog */
-  .blog-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0; }
-  .blog-item {
-    display: block; padding: 1rem 1.25rem; border: 1px solid var(--color-border); border-radius: 0.75rem;
-    background-color: var(--color-surface); background-image: none; color: var(--color-text);
-    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-  }
-  .blog-item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-color: var(--color-primary); color: var(--color-text); }
-  :global(.dark) .blog-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
-  .blog-item-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; flex-wrap: wrap; }
-  .blog-date { font-size: 0.75rem; color: var(--color-text-muted); }
-  .blog-tags { display: flex; gap: 0.35rem; }
-  .blog-title { font-size: 1rem; margin-bottom: 0.2rem; }
-  .blog-desc { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0; }
-
-  /* Bottom CTA */
-  .bottom-cta {
-    margin-top: 4rem; padding: 3rem 2rem; text-align: center;
-    border: 1px solid var(--color-border); border-radius: 0.75rem;
-    background-color: var(--color-surface); transition: background-color 0.3s;
-  }
-  .bottom-cta h2 { margin-bottom: 0.5rem; }
-  .bottom-cta p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-</style>
+        var target = baseHref + detectLocale() + "/";
+        // replace() を使ってブラウザ履歴を汚さない(戻るで無限ループを防ぐ)
+        window.location.replace(target);
+      })();
+    </script>
+  </body>
+</html>

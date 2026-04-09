@@ -43,4 +43,16 @@ const project = defineCollection({
   }),
 });
 
-export const collections = { blog, product, project };
+// Profile ページの長文セクション (Philosophy / Motto / Dream / Goal)
+// group で "思想" (mindset: 抽象的な価値観) と "方向性" (direction: 具体的な目指す先) に分類
+const profile = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/profile" }),
+  schema: z.object({
+    title: z.string(),
+    quote: z.string(),
+    order: z.number().default(0),
+    group: z.enum(["mindset", "direction"]),
+  }),
+});
+
+export const collections = { blog, product, project, profile };
