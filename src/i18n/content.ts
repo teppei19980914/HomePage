@@ -96,26 +96,33 @@ export async function getLocalizedEntry<C extends LocalizedCollection>(
 // ============================================================
 // 予約投稿フィルタ
 //
-// ブログ記事の `date` フィールドがビルド日時以前であるかを判定する。
+// ブログ記事の `date` フィールドが JST で「今日以前」であるかを判定する。
 // これにより、未来の日付を持つ記事はビルド時に除外され、
 // 日次 cron ビルドで予約日に自動公開される。
 //
 // 判定基準（本番ビルド時）:
 //   - draft: true → 非公開
-//   - date が今日以前 → 公開
-//   - date が明日以降 → 非公開
+//   - date が JST で今日以前 → 公開
+//   - date が JST で明日以降 → 非公開
 //
 // dev サーバー時:
 //   - draft: true → 非公開（draft は明示的な非公開指示なので dev でも除外）
 //   - date が未来 → **公開する**（プレビュー用。修正漏れを事前に確認できる）
 //
-// GitHub Actions は UTC で動作するため、JST で翌日 9:00 AM 以降に反映される。
+// タイムゾーン注意:
+//   frontmatter の date: 2026-04-11 は Zod により 2026-04-11T00:00:00Z (UTC) にパースされる。
+//   GitHub Actions は UTC で動作するため、JST 0:00 (= UTC 15:00 前日) にビルドすると
+//   「JST では今日だが UTC ではまだ前日」となり、UTC 比較では除外されてしまう。
+//   そこで、比較を「日付文字列 (YYYY-MM-DD) の JST 基準」で行うことで問題を回避する。
 // ============================================================
+
+/** JST オフセット（ミリ秒） */
+const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 
 /**
  * ブログ記事が公開対象かどうかを判定する。
  *
- * - **本番ビルド**: `draft: false` かつ `date` がビルド日時以前の記事のみ公開
+ * - **本番ビルド**: `draft: false` かつ `date` が JST で今日以前の記事のみ公開
  * - **dev サーバー**: `draft: false` の記事をすべて公開（未来日付も含む）
  *
  * @param entry - blog コレクションのエントリ（`data.draft` と `data.date` を持つ）
@@ -128,6 +135,10 @@ export function isPublished(entry: { data: { draft?: boolean; date: Date } }): b
   if (entry.data.draft) return false;
   // dev サーバーでは日付フィルタをスキップし、全記事をプレビュー可能にする
   if (import.meta.env.DEV) return true;
-  const now = new Date();
-  return entry.data.date <= now;
+  // JST での「今日」を YYYY-MM-DD 文字列で取得
+  const nowJST = new Date(Date.now() + JST_OFFSET_MS);
+  const todayJST = nowJST.toISOString().slice(0, 10);
+  // 記事の date も YYYY-MM-DD 文字列で比較（時刻を無視）
+  const entryDate = entry.data.date.toISOString().slice(0, 10);
+  return entryDate <= todayJST;
 }
