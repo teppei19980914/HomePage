@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getLabels, normalizeLocale, BCP47 } from "../../i18n";
-import { getLocalizedCollection, stripLocale } from "../../i18n/content";
+import { getLocalizedCollection, stripLocale, isPublished } from "../../i18n/content";
 import { localeUrl } from "../../i18n/url";
 import { localeStaticPaths } from "../../i18n/paths";
 
@@ -12,7 +12,7 @@ const t = getLabels(lang);
 const { home, site } = t;
 
 const recentPosts = (await getLocalizedCollection("blog", lang))
-  .filter((p) => !p.data.draft)
+  .filter(isPublished)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 4);
 
@@ -20,7 +20,7 @@ const products = (await getLocalizedCollection("product", lang))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title="Home" description={`${site.name} - ${site.role}`}>
+<BaseLayout title="Home" description={site.defaultDescription}>
   <!-- ===== 1. Hero ===== -->
   <section class="hero hero-gradient">
     <h1 class="hero-name fade-in">

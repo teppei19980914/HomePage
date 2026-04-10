@@ -4,9 +4,10 @@ on:
   push:
     branches: [main]
   schedule:
-    # 毎月1日 0:00 JST = 月末日 15:00 UTC
-    # Qiita 記事・年齢・社会人歴の自動更新用（毎月実行されるため年次更新もカバー）
-    - cron: "0 15 1 * *"
+    # 毎日 0:00 JST = 前日 15:00 UTC
+    # ブログ記事の予約投稿（date が今日以前の記事を自動公開）
+    # + Qiita 記事・年齢・社会人歴の自動更新もカバー
+    - cron: "0 15 * * *"
   workflow_dispatch:
 
 permissions:

@@ -18,7 +18,7 @@ export const en: Labels = {
     name: "Teppei Suyama",
     role: "Software Engineer",
     defaultDescription:
-      "Portfolio of Teppei Suyama — a software engineer specializing in workflow automation and full-stack development",
+      "Portfolio of Teppei Suyama — a software engineer specializing in workflow automation and full-stack development. Achievements include 90% regression test reduction, 40h/month RPA savings, and three personal dev products.",
     titleSuffix: "Teppei Suyama",
     copyright: "Teppei Suyama. All rights reserved.",
   },

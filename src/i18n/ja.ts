@@ -12,7 +12,7 @@ export const ja = {
     name: "Teppei Suyama", // 人名(brand): 翻訳不要
     role: "ソフトウェアエンジニア",
     defaultDescription:
-      "業務自動化・フルスタック開発が強みのソフトウェアエンジニア須山哲平のポートフォリオ",
+      "業務自動化・フルスタック開発が強みのソフトウェアエンジニア須山哲平のポートフォリオ。退行テスト 90% 削減・RPA 月 40h 工数削減などの実績、個人開発プロダクト、技術ブログを公開しています。",
     titleSuffix: "Teppei Suyama", // サイト名(brand): 翻訳不要
     copyright: "Teppei Suyama. All rights reserved.",
   },

@@ -1,6 +1,6 @@
 ---
 title: "ユメハシ (YumeHashi)"
-description: "あなたの「やりたいこと」を、行動に変えるアプリ"
+description: "夢を目標に分解し、日々のタスクに落とし込んで行動に変える個人開発アプリ。Flutter Web / Drift(SQLite) / Riverpod / Firebase で構成し、星座システムのゲーミフィケーションで継続を支援します。"
 tagline: "夢を持つことで、大きな壁も乗り越えられる。"
 date: 2026-04-03
 tags: ["Flutter", "Dart", "Firebase", "Riverpod", "SQLite"]

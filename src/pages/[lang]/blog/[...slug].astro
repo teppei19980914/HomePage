@@ -2,13 +2,13 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { render } from "astro:content";
 import { getLabels, normalizeLocale, BCP47, LOCALES } from "../../../i18n";
-import { getLocalizedCollection, stripLocale } from "../../../i18n/content";
+import { getLocalizedCollection, stripLocale, isPublished } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
 
 export async function getStaticPaths() {
   const paths = [];
   for (const lang of LOCALES) {
-    const posts = (await getLocalizedCollection("blog", lang)).filter((p) => !p.data.draft);
+    const posts = (await getLocalizedCollection("blog", lang)).filter(isPublished);
     for (const post of posts) {
       paths.push({
         params: { lang, slug: stripLocale(post.id) },

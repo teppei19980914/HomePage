@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { getLabels, normalizeLocale, BCP47, LOCALES } from "../../../../i18n";
-import { getLocalizedCollection, stripLocale } from "../../../../i18n/content";
+import { getLocalizedCollection, stripLocale, isPublished } from "../../../../i18n/content";
 import { localeUrl } from "../../../../i18n/url";
 
 export async function getStaticPaths() {
@@ -20,7 +20,7 @@ const t = getLabels(lang);
 const { blog, common } = t;
 
 const posts = (await getLocalizedCollection("blog", lang))
-  .filter((p) => !p.data.draft && p.data.category === category)
+  .filter((p) => isPublished(p) && p.data.category === category)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const section = category === "work" ? blog.workSection : blog.essaySection;

@@ -92,3 +92,34 @@ export async function getLocalizedEntry<C extends LocalizedCollection>(
   }
   return null;
 }
+
+// ============================================================
+// 予約投稿フィルタ
+//
+// ブログ記事の `date` フィールドがビルド日時以前であるかを判定する。
+// これにより、未来の日付を持つ記事はビルド時に除外され、
+// 日次 cron ビルドで予約日に自動公開される。
+//
+// 判定基準:
+//   - date が今日の 0:00 (UTC) 以前 → 公開
+//   - date が明日以降 → 非公開
+//   - draft: true → 非公開（従来通り）
+//
+// GitHub Actions は UTC で動作するため、JST で翌日 9:00 AM 以降に反映される。
+// ============================================================
+
+/**
+ * ブログ記事が公開対象かどうかを判定する。
+ * `draft: false` かつ `date` がビルド日時以前の記事のみ公開する。
+ *
+ * @param entry - blog コレクションのエントリ（`data.draft` と `data.date` を持つ）
+ * @returns 公開すべきなら true
+ *
+ * @example
+ * const posts = (await getLocalizedCollection("blog", lang)).filter(isPublished);
+ */
+export function isPublished(entry: { data: { draft?: boolean; date: Date } }): boolean {
+  if (entry.data.draft) return false;
+  const now = new Date();
+  return entry.data.date <= now;
+}

@@ -75,18 +75,33 @@ git push → GitHub Actions → npm ci → npm run build → GitHub Pages にデ
 
 ## 3. 定期メンテナンス
 
-### 3.1 月次
+### 3.1 週次（5 分）
 
+- [ ] Looker Studio ダッシュボード（ブックマーク）を開き、異常がないか目視確認
+  - 急激な表示回数の低下 → クロールエラーやインデックス除外の可能性
+  - 掲載順位の急落 → Google アルゴリズム更新 or コンテンツ品質の問題
+
+### 3.2 月次（月初、30 分）
+
+- [ ] Looker Studio ダッシュボードを PDF エクスポートし `docs/AccessLog/YYYYMMDD_HomePage_SEO_ダッシュボード.pdf` に保存
+- [ ] `docs/AccessLog/TEMPLATE_SEO_ダッシュボード.md` をコピーし `YYYYMMDD_HomePage_SEO_ダッシュボード.md` にリネーム、Looker Studio の数値を転記（Claude Code が分析に使用）
+- [ ] 前月の Markdown と比較して以下を確認:
+  - 表示回数（Impressions）の前月比: 減少していれば記事追加 or キーワード見直し
+  - CTR の前月比: 低いページは title / description を改善
+  - 伸びているクエリ: そのキーワードに合わせた新規記事の検討
+  - 表示されているがクリックされないページ: title を検索意図に合わせて修正
+  - 新しく現れたクエリ: 想定外のキーワードで発見されていないか確認
 - [ ] Cloudflare Web Analytics でアクセス状況を確認
 - [ ] Formspree ダッシュボードで送信数を確認（月50件上限）
-- [ ] Google Search Console でインデックス状況・検索クエリを確認
+- [ ] Google Search Console でインデックス状況を確認
 
-### 3.2 四半期
+### 3.3 四半期
 
 - [ ] `npm audit` で脆弱性を確認
 - [ ] `npm update` で依存パッケージを更新
-- [ ] About ページのスキル・資格・経歴が最新か確認
-- [ ] Profile ページの情報が最新か確認
+- [ ] Profile ページの情報が最新か確認（スキル・資格・経歴・目標）
+- [ ] 過去 3 ヶ月の SEO レポート PDF を比較し、中期トレンドを分析
+- [ ] 検索トレンドの変化に応じたコンテンツ戦略の見直し
 
 ### 3.3 年次
 

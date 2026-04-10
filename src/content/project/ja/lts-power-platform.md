@@ -1,6 +1,6 @@
 ---
 title: "Power Platform を使った請求書発行システムの構築"
-description: "手作業の請求書発行を DX 推進し、PG から PL へ昇格（単価 25% アップ）を実現"
+description: "Power Apps / Power Automate / Dataverse を活用した請求書発行システムの DX 推進。信頼獲得により PG から PL へ昇格(単価 25% アップ)、短期契約の延長にも成功しました。"
 period: "2025年5月 - 現在"
 role: "PL / TL / PG"
 company: "株式会社LTS ソフトウェアテクノロジー"

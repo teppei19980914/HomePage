@@ -1,11 +1,11 @@
 import rss from "@astrojs/rss";
 import { site } from "../data/labels";
-import { getLocalizedCollection, stripLocale } from "../i18n/content";
+import { getLocalizedCollection, stripLocale, isPublished } from "../i18n/content";
 import type { APIContext } from "astro";
 
 export async function GET(context: APIContext) {
   const posts = (await getLocalizedCollection("blog", "ja"))
-    .filter((p) => !p.data.draft)
+    .filter(isPublished)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   return rss({
