@@ -293,6 +293,15 @@ export const en: Labels = {
     switchTo: "View in English",
   },
 
+  // --- SNS share buttons ---
+  share: {
+    title: "Share this article",
+    x: "Share on X",
+    facebook: "Share on Facebook",
+    copyLink: "Copy link",
+    copied: "Copied!",
+  },
+
   // --- Blog page ---
   blog: {
     title: "Blog",
@@ -300,16 +309,8 @@ export const en: Labels = {
     subtitle: "Technical learnings, reflections, and daily discoveries",
     maxPerSection: 5,
     viewAllText: "See all posts",
-    workSection: {
-      title: "Work & Dev",
-      subtitle: "Retrospectives and knowledge from work and development",
-      emptyMessage: "No posts yet.",
-    },
-    essaySection: {
-      title: "Essay",
-      subtitle: "Free-form essays on thoughts and ideas",
-      emptyMessage: "No posts yet.",
-    },
+    allTitle: "All Posts",
+    emptyMessage: "No posts yet.",
     qiitaSection: {
       title: "Tech Blog (Qiita)",
       subtitle: "Technical articles published on Qiita (curated by likes and stocks)",
@@ -367,12 +368,8 @@ export const en: Labels = {
     errorMessage: "Failed to send. Please try again.",
   },
 
-  // --- Blog page TOC ---
-  blogToc: [
-    { href: "#work", label: "Work & Dev" },
-    { href: "#essay", label: "Essay" },
-    { href: "#qiita", label: "Tech Blog (Qiita)" },
-  ],
+  // --- Blog page TOC (unused after blog unification) ---
+  blogToc: [],
 
   // --- Footer ---
   footer: {

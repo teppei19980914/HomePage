@@ -3,7 +3,6 @@ title: "個人開発アプリ『ユメハシ』v2.1.0 — Firestore 無料枠を
 description: "月額 0 円運用している Flutter Web アプリ『ユメハシ』で、Firestore の無料枠を少しでも長く延ばすために v2.1.0 で導入したコスト最適化施策（gzip 圧縮、デバウンス拡大、JSON コンパクト化、サイズ監視）を紹介します。"
 date: 2026-04-09
 tags: ["Flutter", "Firestore", "個人開発", "コスト最適化", "gzip", "Dart"]
-category: work
 ---
 
 ## この記事のまとめ

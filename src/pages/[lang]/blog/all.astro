@@ -1,49 +1,38 @@
 ---
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import { getLabels, normalizeLocale, BCP47, LOCALES } from "../../../../i18n";
-import { getLocalizedCollection, stripLocale, isPublished } from "../../../../i18n/content";
-import { localeUrl } from "../../../../i18n/url";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale, BCP47 } from "../../../i18n";
+import { getLocalizedCollection, stripLocale, isPublished } from "../../../i18n/content";
+import { localeUrl } from "../../../i18n/url";
+import { localeStaticPaths } from "../../../i18n/paths";
 
-export async function getStaticPaths() {
-  const paths = [];
-  for (const lang of LOCALES) {
-    for (const category of ["work", "essay"] as const) {
-      paths.push({ params: { lang, category } });
-    }
-  }
-  return paths;
-}
+export const getStaticPaths = localeStaticPaths;
 
 const lang = normalizeLocale(Astro.params.lang);
-const { category } = Astro.params;
 const t = getLabels(lang);
 const { blog, common } = t;
 
 const posts = (await getLocalizedCollection("blog", lang))
-  .filter((p) => isPublished(p) && p.data.category === category)
+  .filter(isPublished)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-const section = category === "work" ? blog.workSection : blog.essaySection;
-const cardClass = category === "work" ? "work-card" : "essay-card";
 ---
 
-<BaseLayout title={`${section.title} | ${blog.title}`} description={section.subtitle}>
+<BaseLayout title={`${blog.allTitle} | ${blog.title}`} description={blog.subtitle}>
   <div class="page-header hero-gradient">
-    <h1 class="fade-in">{section.title}</h1>
-    <p class="page-subtitle fade-in delay-1">{section.subtitle}</p>
+    <h1 class="fade-in">{blog.allTitle}</h1>
+    <p class="page-subtitle fade-in delay-1">{blog.subtitle}</p>
   </div>
 
   <section class="section reveal">
     {
       posts.length === 0 ? (
-        <p class="empty-msg">{section.emptyMessage}</p>
+        <p class="empty-msg">{blog.emptyMessage}</p>
       ) : (
         <ul class="card-list">
           {posts.map((post, i) => (
             <li class="reveal" style={`transition-delay: ${i * 0.05}s`}>
               <a
                 href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
-                class={`card blog-card ${cardClass}`}
+                class="card blog-card"
                 data-astro-reload
               >
                 <div class="blog-card-header">
@@ -83,29 +72,12 @@ const cardClass = category === "work" ? "work-card" : "essay-card";
     border-radius: 0.75rem;
     font-size: 0.9rem;
   }
-
-  .card {
-    display: block;
-    color: var(--color-text);
-    background-image: none;
-  }
+  .card { display: block; color: var(--color-text); background-image: none; }
   .card h3 { margin-top: 0.25rem; }
-
   .blog-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.25rem;
-    flex-wrap: wrap;
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 0.25rem; flex-wrap: wrap;
   }
-
-  .work-card { border-left: 3px solid var(--color-primary); }
-  .essay-card { border-left: 3px solid var(--color-accent); }
-
-  .tags {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    flex-wrap: wrap;
-  }
+  .blog-card { border-left: 3px solid var(--color-primary); }
+  .tags { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
 </style>

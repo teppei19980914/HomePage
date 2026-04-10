@@ -3,7 +3,6 @@ title: "個人開発アプリ『ユメハシ』の技術スタックと、v2.1.0
 description: "Flutter Web + Drift(SQLite WASM) + Riverpod + Firebase のサーバーレス構成で月額 0 円運用している個人開発アプリ『ユメハシ』。起動速度・データ肥大化・CI レース条件など v2.1.0 までに直面した 5 つの実装課題と解決策を、コード付きで振り返ります。"
 date: 2026-04-07
 tags: ["Flutter", "Dart", "Drift", "Riverpod", "Firebase", "個人開発", "AI駆動開発", "パフォーマンス"]
-category: work
 ---
 
 ## はじめに

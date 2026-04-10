@@ -9,18 +9,15 @@ export const getStaticPaths = localeStaticPaths;
 
 const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
-const { blog, blogToc, common } = t;
+const { blog, common } = t;
 
+// 全記事を日付降順で取得（カテゴリ分類なし）
 const allPosts = (await getLocalizedCollection("blog", lang))
   .filter(isPublished)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const workPostsAll = allPosts.filter((p) => p.data.category === "work");
-const essayPostsAll = allPosts.filter((p) => p.data.category === "essay");
-const workPosts = workPostsAll.slice(0, blog.maxPerSection);
-const essayPosts = essayPostsAll.slice(0, blog.maxPerSection);
-const hasMoreWork = workPostsAll.length > blog.maxPerSection;
-const hasMoreEssay = essayPostsAll.length > blog.maxPerSection;
+const displayPosts = allPosts.slice(0, blog.maxPerSection);
+const hasMore = allPosts.length > blog.maxPerSection;
 
 // Fetch Qiita articles at build time
 interface QiitaArticle {
@@ -50,7 +47,6 @@ if (import.meta.env.PROD) {
       if (data.length < 100) break;
     }
 
-    // 絞り込み: 直近1年以内 + Organization 未紐付け
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
@@ -70,12 +66,6 @@ if (import.meta.env.PROD) {
     qiitaArticles = [];
   }
 }
-
-// 目次: 表示対象セクションのみ列挙
-const tocItems = blogToc.filter((item) => {
-  if (item.href === "#qiita") return qiitaArticles.length > 0;
-  return true;
-});
 ---
 
 <BaseLayout title={blog.title} description={blog.description}>
@@ -84,36 +74,18 @@ const tocItems = blogToc.filter((item) => {
     <p class="page-subtitle fade-in delay-1">{blog.subtitle}</p>
   </div>
 
-  <!-- 目次 -->
-  <nav class="toc reveal" aria-label={common.tocTitle}>
-    <p class="toc-title">{common.tocTitle}</p>
-    <ol class="toc-list">
-      {tocItems.map((item, i) => (
-        <li>
-          <a href={item.href}>
-            <span class="toc-num">{String(i + 1).padStart(2, "0")}</span>
-            <span class="toc-label">{item.label}</span>
-            <span class="toc-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-      ))}
-    </ol>
-  </nav>
-
-  <!-- Work & Dev Section -->
-  <section id="work" class="section reveal">
-    <h2>{blog.workSection.title}</h2>
-    <p class="section-subtitle">{blog.workSection.subtitle}</p>
+  <!-- Blog Section -->
+  <section class="section reveal">
     {
-      workPosts.length === 0 ? (
-        <p class="empty-msg">{blog.workSection.emptyMessage}</p>
+      displayPosts.length === 0 ? (
+        <p class="empty-msg">{blog.emptyMessage}</p>
       ) : (
         <ul class="card-list">
-          {workPosts.map((post, i) => (
+          {displayPosts.map((post, i) => (
             <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
               <a
-                href={localeUrl(lang,`blog/${stripLocale(post.id)}/`)}
-                class="card blog-card work-card"
+                href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
+                class="card blog-card"
                 data-astro-reload
               >
                 <div class="blog-card-header">
@@ -134,52 +106,9 @@ const tocItems = blogToc.filter((item) => {
         </ul>
       )
     }
-    {hasMoreWork && (
+    {hasMore && (
       <p class="section-link">
-        <a href={localeUrl(lang,"blog/category/work/")} data-astro-reload>
-          {blog.viewAllText} &rarr;
-        </a>
-      </p>
-    )}
-  </section>
-
-  <!-- Essay Section -->
-  <section id="essay" class="section reveal">
-    <h2>{blog.essaySection.title}</h2>
-    <p class="section-subtitle">{blog.essaySection.subtitle}</p>
-    {
-      essayPosts.length === 0 ? (
-        <p class="empty-msg">{blog.essaySection.emptyMessage}</p>
-      ) : (
-        <ul class="card-list">
-          {essayPosts.map((post, i) => (
-            <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
-              <a
-                href={localeUrl(lang,`blog/${stripLocale(post.id)}/`)}
-                class="card blog-card essay-card"
-                data-astro-reload
-              >
-                <div class="blog-card-header">
-                  <span class="date">
-                    {post.data.date.toLocaleDateString(BCP47[lang])}
-                  </span>
-                  <div class="tags">
-                    {post.data.tags.map((tag) => (
-                      <span class="tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-                <h3>{post.data.title}</h3>
-                <p>{post.data.description}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )
-    }
-    {hasMoreEssay && (
-      <p class="section-link">
-        <a href={localeUrl(lang,"blog/category/essay/")} data-astro-reload>
+        <a href={localeUrl(lang, "blog/all/")} data-astro-reload>
           {blog.viewAllText} &rarr;
         </a>
       </p>
@@ -189,7 +118,7 @@ const tocItems = blogToc.filter((item) => {
   <!-- Tech Blog (Qiita) Section -->
   {
     qiitaArticles.length > 0 && (
-      <section id="qiita" class="section reveal">
+      <section class="section reveal">
         <h2>{blog.qiitaSection.title}</h2>
         <p class="section-subtitle">{blog.qiitaSection.subtitle}</p>
         <ul class="card-list">
@@ -239,79 +168,8 @@ const tocItems = blogToc.filter((item) => {
 </BaseLayout>
 
 <style>
-  .section { margin-top: 2.5rem; scroll-margin-top: 5rem; }
+  .section { margin-top: 2.5rem; }
   .section-subtitle { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
-
-  /* TOC */
-  .toc {
-    margin-top: 1.5rem;
-    padding: 1.5rem 1.75rem;
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-    background-color: var(--color-surface);
-    transition: background-color 0.3s, border-color 0.3s;
-  }
-  .toc-title {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--color-text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 0 0 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-  .toc-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 1.5rem;
-  }
-  @media (max-width: 640px) {
-    .toc-list { grid-template-columns: 1fr; }
-  }
-  .toc-list li {
-    border-bottom: 1px dashed var(--color-border);
-  }
-  .toc-list a {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding: 0.75rem 0.25rem;
-    color: var(--color-text);
-    font-size: 0.95rem;
-    font-weight: 500;
-    background-image: none;
-    transition: color 0.2s, padding-left 0.2s;
-  }
-  .toc-num {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-    letter-spacing: 0.05em;
-    flex-shrink: 0;
-  }
-  .toc-label { flex: 1; }
-  .toc-arrow {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: opacity 0.2s, transform 0.2s, color 0.2s;
-    flex-shrink: 0;
-  }
-  .toc-list a:hover {
-    color: var(--color-primary);
-    padding-left: 0.5rem;
-  }
-  .toc-list a:hover .toc-arrow {
-    opacity: 1;
-    transform: translateX(0);
-    color: var(--color-primary);
-  }
   .section-link { text-align: right; margin-top: 1rem; }
   .section-link a { font-size: 0.9rem; font-weight: 600; }
   .empty-msg {
@@ -331,7 +189,6 @@ const tocItems = blogToc.filter((item) => {
   }
   .card h3 { margin-top: 0.25rem; }
 
-  /* Blog card */
   .blog-card-header {
     display: flex;
     align-items: center;
@@ -340,12 +197,8 @@ const tocItems = blogToc.filter((item) => {
     flex-wrap: wrap;
   }
 
-  /* Section-specific left borders */
-  .work-card {
+  .blog-card {
     border-left: 3px solid var(--color-primary);
-  }
-  .essay-card {
-    border-left: 3px solid var(--color-accent);
   }
   .qiita-card {
     border-left: 3px solid #55c500;

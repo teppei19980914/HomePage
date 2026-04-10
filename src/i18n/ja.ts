@@ -231,16 +231,8 @@ export const ja = {
     subtitle: "技術的な学びや日々の気づきを発信しています",
     maxPerSection: 5,
     viewAllText: "全記事はこちら",
-    workSection: {
-      title: "仕事・開発",
-      subtitle: "仕事や開発に関する振り返り・ナレッジ",
-      emptyMessage: "記事はまだありません。",
-    },
-    essaySection: {
-      title: "エッセイ",
-      subtitle: "思想や考えを自由に書き出すエッセイ",
-      emptyMessage: "記事はまだありません。",
-    },
+    allTitle: "記事一覧",
+    emptyMessage: "記事はまだありません。",
     qiitaSection: {
       title: "技術記事 (Qiita)",
       subtitle: "Qiita で発信した技術記事(いいね・ストック数の多い記事を厳選)",
@@ -362,12 +354,8 @@ export const ja = {
     },
   },
 
-  // --- Blog ページの目次 ---
-  blogToc: [
-    { href: "#work", label: "仕事・開発" },
-    { href: "#essay", label: "エッセイ" },
-    { href: "#qiita", label: "技術記事 (Qiita)" },
-  ],
+  // --- Blog ページの目次 (不使用: Blog 統合により削除) ---
+  blogToc: [],
 
   // --- Footer ---
   footer: {
@@ -378,5 +366,14 @@ export const ja = {
   languageSwitcher: {
     label: "言語",
     switchTo: "日本語で見る",
+  },
+
+  // --- SNS シェアボタン ---
+  share: {
+    title: "この記事をシェア",
+    x: "X でシェア",
+    facebook: "Facebook でシェア",
+    copyLink: "リンクをコピー",
+    copied: "コピーしました！",
   },
 };

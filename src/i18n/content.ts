@@ -100,17 +100,23 @@ export async function getLocalizedEntry<C extends LocalizedCollection>(
 // これにより、未来の日付を持つ記事はビルド時に除外され、
 // 日次 cron ビルドで予約日に自動公開される。
 //
-// 判定基準:
-//   - date が今日の 0:00 (UTC) 以前 → 公開
+// 判定基準（本番ビルド時）:
+//   - draft: true → 非公開
+//   - date が今日以前 → 公開
 //   - date が明日以降 → 非公開
-//   - draft: true → 非公開（従来通り）
+//
+// dev サーバー時:
+//   - draft: true → 非公開（draft は明示的な非公開指示なので dev でも除外）
+//   - date が未来 → **公開する**（プレビュー用。修正漏れを事前に確認できる）
 //
 // GitHub Actions は UTC で動作するため、JST で翌日 9:00 AM 以降に反映される。
 // ============================================================
 
 /**
  * ブログ記事が公開対象かどうかを判定する。
- * `draft: false` かつ `date` がビルド日時以前の記事のみ公開する。
+ *
+ * - **本番ビルド**: `draft: false` かつ `date` がビルド日時以前の記事のみ公開
+ * - **dev サーバー**: `draft: false` の記事をすべて公開（未来日付も含む）
  *
  * @param entry - blog コレクションのエントリ（`data.draft` と `data.date` を持つ）
  * @returns 公開すべきなら true
@@ -120,6 +126,8 @@ export async function getLocalizedEntry<C extends LocalizedCollection>(
  */
 export function isPublished(entry: { data: { draft?: boolean; date: Date } }): boolean {
   if (entry.data.draft) return false;
+  // dev サーバーでは日付フィルタをスキップし、全記事をプレビュー可能にする
+  if (import.meta.env.DEV) return true;
   const now = new Date();
   return entry.data.date <= now;
 }
