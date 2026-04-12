@@ -32,6 +32,8 @@ export const en: Labels = {
     blog: "Blog",
     contact: "Contact",
     themeToggleLabel: "Toggle dark mode",
+    menuOpen: "Open menu",
+    menuClose: "Close menu",
   },
 
   // --- Home page ---

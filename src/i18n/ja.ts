@@ -26,6 +26,8 @@ export const ja = {
     blog: "ブログ",
     contact: "お問い合わせ",
     themeToggleLabel: "ダークモード切替",
+    menuOpen: "メニューを開く",
+    menuClose: "メニューを閉じる",
   },
 
   // --- Home ページ ---
