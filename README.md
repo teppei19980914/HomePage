@@ -14,6 +14,7 @@
 | [docs/Operation/OPERATIONS.md](docs/Operation/OPERATIONS.md) | 運用手順書（日常運用・デプロイ・メンテナンス・障害対応・SEO運用） |
 | [docs/Operation/INFRASTRUCTURE.md](docs/Operation/INFRASTRUCTURE.md) | インフラ構成書（全体構成・サービス詳細・コスト・セキュリティ・監視） |
 | [docs/Operation/I18N_MIGRATION_CHECKLIST.md](docs/Operation/I18N_MIGRATION_CHECKLIST.md) | 多言語対応デプロイ後チェックリスト（SEO / OGP / 外部プロフィール更新） |
+| [docs/Operation/CLAUDE_CODE_ACCOUNT_MIGRATION.md](docs/Operation/CLAUDE_CODE_ACCOUNT_MIGRATION.md) | Claude Code アカウント切り替え手順書（会社→個人メール移行時の履歴引き継ぎ） |
 
 ## 目次
 
