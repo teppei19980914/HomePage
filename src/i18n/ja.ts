@@ -113,7 +113,7 @@ export const ja = {
     },
     contact: {
       title: "お問い合わせ",
-      desc: "フルスタック開発、技術相談など、お気軽にお問い合わせください。",
+      desc: "ご質問やフィードバックなど、お気軽にお問い合わせください。",
       linkText: "お問い合わせはこちら",
     },
   },
@@ -291,13 +291,10 @@ export const ja = {
   contact: {
     title: "お問い合わせ",
     description: "お問い合わせ・連絡先",
-    subtitle: "お仕事のご依頼やお問い合わせはこちらからお願いします",
+    subtitle: "ご質問やご相談はこちらからお気軽にどうぞ",
     availability: {
-      title: "対応可能な業務形態",
-      items: [
-        "業務委託のみ対応可",
-        "対応可能時間: 平日 19:00 以降、土日祝(本業が平日 8:00〜19:00 のため)",
-      ],
+      title: "",
+      items: [],
       responseTime: "2営業日以内に返信いたします。",
     },
     formTitle: "お問い合わせフォーム",
@@ -308,7 +305,7 @@ export const ja = {
       email: { label: "メールアドレス", placeholder: "example@mail.com" },
       type: {
         label: "お問い合わせ種別",
-        options: ["お仕事のご依頼", "技術相談", "その他"],
+        options: ["技術相談", "フィードバック", "その他"],
       },
       message: {
         label: "お問い合わせ内容",
@@ -327,8 +324,8 @@ export const ja = {
     backLink: "前のページに戻る",
     scrollTopLabel: "ページ先頭に戻る",
     tocTitle: "目次",
-    ctaTitle: "お仕事のご依頼・ご相談",
-    ctaBody: "フルスタック開発、技術相談など、お気軽にお問い合わせください。",
+    ctaTitle: "お問い合わせ",
+    ctaBody: "ご質問やフィードバックなど、お気軽にお問い合わせください。",
     ctaButton: "お問い合わせはこちら",
   },
 

@@ -18,15 +18,17 @@ const { contact } = t;
     </p>
   </div>
 
-  <section class="availability reveal">
-    <h2>{contact.availability.title}</h2>
-    <ul class="availability-list">
-      {contact.availability.items.map((item) => (
-        <li>{item}</li>
-      ))}
-    </ul>
-    <p class="response-time">{contact.availability.responseTime}</p>
-  </section>
+  {contact.availability.items.length > 0 && (
+    <section class="availability reveal">
+      <h2>{contact.availability.title}</h2>
+      <ul class="availability-list">
+        {contact.availability.items.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </section>
+  )}
+  <p class="response-time reveal">{contact.availability.responseTime}</p>
 
   <section class="contact-form-section reveal">
     <div class="contact-card">

@@ -83,8 +83,8 @@ Blog articles on work, life, and technology:
 
 ---
 
-## Business Inquiries
+## Contact
 
-I accept full-stack development and technical consulting on a contract basis.
+I welcome any questions or feedback.
 
 **[Contact](/HomePage/en/contact/)**

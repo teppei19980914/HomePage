@@ -76,6 +76,6 @@ As an engineer, I built this site with technical intent:
 
 This homepage is a **centralized place** for my achievements, philosophy, and products that were previously scattered.
 
-If you have any business inquiries or consultations, please feel free to reach out via the [contact form](/HomePage/en/contact/). I'm available for contract work (weekday evenings after 19:00 and weekends/holidays).
+If you have any questions or feedback, please feel free to reach out via the [contact form](/HomePage/en/contact/).
 
 Thank you for visiting.

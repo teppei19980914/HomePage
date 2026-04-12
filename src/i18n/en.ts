@@ -119,7 +119,7 @@ export const en: Labels = {
     },
     contact: {
       title: "Contact",
-      desc: "Reach out any time for full-stack development or tech advice.",
+      desc: "Feel free to reach out with any questions or feedback.",
       linkText: "Get in touch",
     },
   },
@@ -260,8 +260,8 @@ export const en: Labels = {
     backLink: "Go back",
     scrollTopLabel: "Back to top",
     tocTitle: "Contents",
-    ctaTitle: "Work with me",
-    ctaBody: "I'm available for full-stack development and technical consultations.",
+    ctaTitle: "Contact",
+    ctaBody: "Feel free to reach out with any questions or feedback.",
     ctaButton: "Get in touch",
   },
 
@@ -352,13 +352,10 @@ export const en: Labels = {
   contact: {
     title: "Contact",
     description: "Get in touch",
-    subtitle: "Feel free to reach out about work or any technical questions",
+    subtitle: "Feel free to reach out with any questions or feedback",
     availability: {
-      title: "Available work styles",
-      items: [
-        "Contract work only",
-        "Available hours: weekday evenings after 19:00, plus weekends and holidays (weekdays 8:00-19:00 are my full-time job)",
-      ],
+      title: "",
+      items: [],
       responseTime: "I'll get back to you within 2 business days.",
     },
     formTitle: "Contact form",
@@ -369,7 +366,7 @@ export const en: Labels = {
       email: { label: "Email", placeholder: "you@example.com" },
       type: {
         label: "Inquiry type",
-        options: ["Work inquiry", "Technical consultation", "Other"],
+        options: ["Technical consultation", "Feedback", "Other"],
       },
       message: {
         label: "Message",
