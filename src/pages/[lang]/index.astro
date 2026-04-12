@@ -18,6 +18,15 @@ const recentPosts = (await getLocalizedCollection("blog", lang))
 
 const products = (await getLocalizedCollection("product", lang))
   .sort((a, b) => a.data.order - b.data.order);
+
+// 月次バッチで更新される動的データを読み込み（update-stats.yml が自動更新）
+import dynamicStats from "../../data/dynamic-stats.json";
+
+const heroSummaryText = [
+  home.heroSummary.engineerYears(dynamicStats.engineerYears),
+  home.heroSummary.qiitaArticles(dynamicStats.qiita.itemsCount),
+  home.heroSummary.personalDev,
+].join(home.heroSummary.separator);
 ---
 
 <BaseLayout title="Home" description={site.defaultDescription}>
@@ -27,7 +36,7 @@ const products = (await getLocalizedCollection("product", lang))
       <span class="highlight">{site.name}</span>
     </h1>
     <p class="hero-tagline fade-in delay-1">{home.heroTagline}</p>
-    <p class="hero-summary fade-in delay-2">{home.heroSummary}</p>
+    <p class="hero-summary fade-in delay-2">{heroSummaryText}</p>
     <div class="hero-cta fade-in delay-3">
       <a href={localeUrl(lang,"contact/")} class="btn-primary-hero">
         {home.contact.linkText}
@@ -118,9 +127,10 @@ const products = (await getLocalizedCollection("product", lang))
               <div class="blog-item-header">
                 <span class="blog-date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>
                 <div class="blog-tags">
-                  {post.data.tags.map((tag) => (
+                  {post.data.tags.slice(0, 3).map((tag) => (
                     <span class="tag">{tag}</span>
                   ))}
+                  {post.data.tags.length > 3 && <span class="tag tag-more">+{post.data.tags.length - 3}</span>}
                 </div>
               </div>
               <h3 class="blog-title">{post.data.title}</h3>

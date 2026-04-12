@@ -142,3 +142,13 @@ export function isPublished(entry: { data: { draft?: boolean; date: Date } }): b
   const entryDate = entry.data.date.toISOString().slice(0, 10);
   return entryDate <= todayJST;
 }
+
+/**
+ * dev サーバーで表示対象かどうかを判定する。
+ * 下書き (draft: true) も含めて表示し、ローカルプレビューを可能にする。
+ * 本番ビルドでは isPublished と同じ動作。
+ */
+export function isVisibleInDev(entry: { data: { draft?: boolean; date: Date } }): boolean {
+  if (import.meta.env.DEV) return true;
+  return isPublished(entry);
+}

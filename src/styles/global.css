@@ -147,6 +147,12 @@ a:hover {
   color: var(--color-primary);
   transition: background-color 0.3s, color 0.3s;
 }
+.tag-more {
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border: 1px dashed var(--color-border);
+  font-size: 0.7rem;
+}
 
 .date {
   color: var(--color-text-muted);

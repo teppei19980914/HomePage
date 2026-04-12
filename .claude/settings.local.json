@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:docs.mermaidviewer.com)"
+      "WebFetch(domain:docs.mermaidviewer.com)",
+      "WebFetch(domain:zenn.dev)",
+      "WebFetch(domain:www.facebook.com)"
     ]
   }
 }

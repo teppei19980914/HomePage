@@ -3,6 +3,7 @@ title: "Get to Know Teppei Suyama in 5 Minutes — A Guide to This Site"
 description: "A navigation map for first-time visitors to quickly understand who Teppei Suyama is — career, dreams, philosophy, side projects, and the shortest routes to each section of this homepage."
 date: 2026-04-17
 tags: ["Introduction", "Portfolio", "Career", "Side Project", "AI-Driven Development"]
+featured: true
 ---
 
 ## How to Navigate This Site

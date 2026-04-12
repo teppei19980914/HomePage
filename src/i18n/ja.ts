@@ -62,7 +62,12 @@ export const ja = {
       },
     ],
     heroTagline: "課題を発見し、改善を実行するソフトウェアエンジニア",
-    heroSummary: "エンジニア歴5年+ / Qiita 211記事 / 個人開発3作を並行推進",
+    heroSummary: {
+      engineerYears: (years: number) => `エンジニア歴${years}年+`,
+      qiitaArticles: (count: number) => `Qiita ${count}記事`,
+      personalDev: "個人開発3作を並行推進",
+      separator: " / ",
+    },
     strengths: {
       title: "強み",
       items: [
@@ -236,6 +241,11 @@ export const ja = {
     viewAllText: "全記事はこちら",
     allTitle: "記事一覧",
     emptyMessage: "記事はまだありません。",
+    draftBanner: "この記事は下書きです。Web では表示されません。",
+    featuredSection: {
+      title: "ピックアップ記事",
+      subtitle: "著者が特におすすめする記事",
+    },
     qiitaSection: {
       title: "技術記事 (Qiita)",
       subtitle: "Qiita で発信した技術記事(いいね・ストック数の多い記事を厳選)",

@@ -68,7 +68,12 @@ export const en: Labels = {
       },
     ],
     heroTagline: "A software engineer who finds problems and ships the fix",
-    heroSummary: "5+ years as an engineer / 211 Qiita articles / running 3 personal dev products in parallel",
+    heroSummary: {
+      engineerYears: (years: number) => `${years}+ years as an engineer`,
+      qiitaArticles: (count: number) => `${count} Qiita articles`,
+      personalDev: "running 3 personal dev products in parallel",
+      separator: " / ",
+    },
     strengths: {
       title: "Strengths",
       items: [
@@ -314,6 +319,11 @@ export const en: Labels = {
     viewAllText: "See all posts",
     allTitle: "All Posts",
     emptyMessage: "No posts yet.",
+    draftBanner: "This article is a draft. It will not be displayed on the web.",
+    featuredSection: {
+      title: "Featured Articles",
+      subtitle: "Handpicked by the author",
+    },
     qiitaSection: {
       title: "Tech Blog (Qiita)",
       subtitle: "Technical articles published on Qiita (curated by likes and stocks)",

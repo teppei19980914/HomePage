@@ -3,6 +3,7 @@ title: '"The Testing Phase Disappeared" — AI-Driven vs Traditional Development
 description: "A developer with zero Flutter experience used Claude Code to ship a production app in 3 weeks. This article compares every phase — from planning to testing — with real data showing 6-9x faster delivery and 6x higher test density."
 date: 2026-04-10
 tags: ["AI-Driven Development", "Claude Code", "Flutter", "Side Project", "Productivity", "New Programmers"]
+featured: true
 ---
 
 Starting from zero Flutter and zero scratch-development experience, I built a production-quality web app in 3 weeks with AI (Claude Code).

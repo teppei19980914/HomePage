@@ -17,17 +17,15 @@ describe("buildXShareUrl", () => {
 });
 
 describe("buildFbShareUrl", () => {
-  it("should include u and quote parameters", () => {
-    const url = buildFbShareUrl("https://example.com/blog/test/", "My Article");
-    expect(url).toContain("facebook.com/sharer/sharer.php?");
-    expect(url).toContain("u=https%3A%2F%2Fexample.com%2Fblog%2Ftest%2F");
-    expect(url).toContain("quote=My%20Article");
+  it("should include only u parameter", () => {
+    const url = buildFbShareUrl("https://example.com/blog/test/");
+    expect(url).toBe(
+      "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fblog%2Ftest%2F",
+    );
   });
 
-  it("should handle Japanese text", () => {
-    const url = buildFbShareUrl("https://example.com/", "テスト | Teppei Suyama");
-    expect(url).toContain("facebook.com/sharer/sharer.php");
-    expect(url).toContain("quote=");
-    expect(url).toContain(encodeURIComponent("テスト | Teppei Suyama"));
+  it("should not include quote parameter", () => {
+    const url = buildFbShareUrl("https://example.com/");
+    expect(url).not.toContain("quote=");
   });
 });

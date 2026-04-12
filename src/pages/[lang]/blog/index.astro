@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getLabels, normalizeLocale, BCP47 } from "../../../i18n";
-import { getLocalizedCollection, stripLocale, isPublished } from "../../../i18n/content";
+import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
 import { localeStaticPaths } from "../../../i18n/paths";
 
@@ -11,13 +11,29 @@ const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
 const { blog, common } = t;
 
-// 全記事を日付降順で取得（カテゴリ分類なし）
+// 月次バッチで更新されるピックアップ候補（Cloudflare Analytics のアクセス数上位）
+import dynamicStats from "../../../data/dynamic-stats.json";
+
+// 全記事を日付降順で取得
 const allPosts = (await getLocalizedCollection("blog", lang))
-  .filter(isPublished)
+  .filter(isVisibleInDev)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const displayPosts = allPosts.slice(0, blog.maxPerSection);
-const hasMore = allPosts.length > blog.maxPerSection;
+// ピックアップ記事の決定:
+// 1. dynamic-stats.json の featuredSlugs（月次バッチで自動更新）を優先
+// 2. featuredSlugs が空の場合、frontmatter の featured: true をフォールバック
+const featuredSlugs: string[] = dynamicStats.featuredSlugs ?? [];
+const featuredPosts = featuredSlugs.length > 0
+  ? featuredSlugs
+      .map((slug) => allPosts.find((p) => stripLocale(p.id) === slug))
+      .filter((p): p is NonNullable<typeof p> => p != null)
+  : allPosts.filter((p) => p.data.featured);
+
+// 最新記事（ピックアップを除外）
+const featuredIds = new Set(featuredPosts.map((p) => p.id));
+const regularPosts = allPosts.filter((p) => !featuredIds.has(p.id));
+const displayPosts = regularPosts.slice(0, blog.maxPerSection);
+const hasMore = regularPosts.length > blog.maxPerSection;
 
 // Fetch Qiita articles at build time
 interface QiitaArticle {
@@ -74,6 +90,43 @@ if (import.meta.env.PROD) {
     <p class="page-subtitle fade-in delay-1">{blog.subtitle}</p>
   </div>
 
+  <!-- Featured Section -->
+  {featuredPosts.length > 0 && (
+    <section class="section reveal">
+      <h2 class="featured-heading">
+        <span class="featured-icon">&#9733;</span>
+        {blog.featuredSection.title}
+      </h2>
+      <p class="section-subtitle">{blog.featuredSection.subtitle}</p>
+      <div class="featured-grid">
+        {featuredPosts.map((post, i) => (
+          <a
+            href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
+            class="featured-card reveal"
+            style={`transition-delay: ${i * 0.1}s`}
+            data-astro-reload
+          >
+            <div class="featured-card-inner">
+              <span class="featured-badge">{blog.featuredSection.title}</span>
+              <h3>{post.data.title}</h3>
+              <p>{post.data.description}</p>
+              <div class="featured-footer">
+                <span class="date">
+                  {post.data.date.toLocaleDateString(BCP47[lang])}
+                </span>
+                <div class="tags">
+                  {post.data.tags.slice(0, 3).map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
   <!-- Blog Section -->
   <section class="section reveal">
     {
@@ -89,13 +142,15 @@ if (import.meta.env.PROD) {
                 data-astro-reload
               >
                 <div class="blog-card-header">
+                  {post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
                   <span class="date">
                     {post.data.date.toLocaleDateString(BCP47[lang])}
                   </span>
                   <div class="tags">
-                    {post.data.tags.map((tag) => (
+                    {post.data.tags.slice(0, 4).map((tag) => (
                       <span class="tag">{tag}</span>
                     ))}
+                    {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
                   </div>
                 </div>
                 <h3>{post.data.title}</h3>
@@ -172,6 +227,16 @@ if (import.meta.env.PROD) {
   .section-subtitle { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
   .section-link { text-align: right; margin-top: 1rem; }
   .section-link a { font-size: 0.9rem; font-weight: 600; }
+  .draft-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    background-color: rgba(234, 179, 8, 0.15);
+    color: #ca8a04;
+    width: 100%;
+  }
   .empty-msg {
     padding: 1.5rem;
     text-align: center;
@@ -225,6 +290,76 @@ if (import.meta.env.PROD) {
     display: flex;
     gap: 0.5rem;
     margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* Featured / Pickup */
+  .featured-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .featured-icon {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+  }
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .featured-card {
+    display: block;
+    border: 1px solid var(--color-accent);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    background-image: none;
+    color: var(--color-text);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+    color: var(--color-text);
+  }
+  :global(.dark) .featured-card:hover {
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
+  }
+  .featured-card-inner {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-top: 3px solid var(--color-accent);
+  }
+  .featured-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.6rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: white;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .featured-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .featured-card p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    flex: 1;
+    line-height: 1.6;
+  }
+  .featured-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
     flex-wrap: wrap;
   }
 </style>

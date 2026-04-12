@@ -3,6 +3,7 @@ title: 'From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and R
 description: "The story behind renaming my personal app from YumeLog to YumeHashi, the 3-step design philosophy (write, break down, keep going) for turning dreams into action, and why I keep building despite zero revenue."
 date: 2026-04-08
 tags: ["Side Project", "YumeHashi", "Flutter", "AI-Driven Development", "Essay", "Dreams"]
+featured: true
 ---
 
 ## I Was a Student Without Dreams

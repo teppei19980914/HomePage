@@ -2,14 +2,14 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { render } from "astro:content";
 import { getLabels, normalizeLocale, BCP47, LOCALES } from "../../../i18n";
-import { getLocalizedCollection, stripLocale, isPublished } from "../../../i18n/content";
+import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
 import { buildXShareUrl, buildFbShareUrl } from "../../../utils/share";
 
 export async function getStaticPaths() {
   const paths = [];
   for (const lang of LOCALES) {
-    const posts = (await getLocalizedCollection("blog", lang)).filter(isPublished);
+    const posts = (await getLocalizedCollection("blog", lang)).filter(isVisibleInDev);
     for (const post of posts) {
       paths.push({
         params: { lang, slug: stripLocale(post.id) },
@@ -23,14 +23,15 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
-const { common, share } = t;
+const { common, share, blog } = t;
 const { Content } = await render(post);
+const isDraft = post.data.draft === true;
 
 // シェア用 URL とテキストをビルド時に生成
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const shareText = `${post.data.title} | Teppei Suyama`;
 const xShareUrl = buildXShareUrl(pageUrl, shareText);
-const fbShareUrl = buildFbShareUrl(pageUrl, shareText);
+const fbShareUrl = buildFbShareUrl(pageUrl);
 ---
 
 <BaseLayout
@@ -40,12 +41,18 @@ const fbShareUrl = buildFbShareUrl(pageUrl, shareText);
   publishedDate={post.data.date.toISOString()}
   tags={post.data.tags}
 >
+  {isDraft && (
+    <div class="draft-banner">
+      {blog.draftBanner}
+    </div>
+  )}
   <article class="prose">
     <header class="hero-gradient fade-in">
       <span class="date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>
       <h1>{post.data.title}</h1>
       <div class="tags">
-        {post.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+        {post.data.tags.slice(0, 4).map((tag) => <span class="tag">{tag}</span>)}
+        {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
       </div>
     </header>
     <div class="content reveal">
@@ -57,28 +64,30 @@ const fbShareUrl = buildFbShareUrl(pageUrl, shareText);
   <div class="share-section reveal">
     <p class="share-title">{share.title}</p>
     <div class="share-buttons">
-      <button
+      <a
+        href={xShareUrl}
+        target="_blank"
+        rel="noopener"
         class="share-btn share-x"
         aria-label={share.x}
-        data-share-url={xShareUrl}
-        type="button"
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
         <span>{share.x}</span>
-      </button>
-      <button
+      </a>
+      <a
+        href={fbShareUrl}
+        target="_blank"
+        rel="noopener"
         class="share-btn share-fb"
         aria-label={share.facebook}
-        data-share-url={fbShareUrl}
-        type="button"
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
         </svg>
         <span>{share.facebook}</span>
-      </button>
+      </a>
       <button
         class="share-btn share-copy"
         data-url={pageUrl}
@@ -106,20 +115,6 @@ const fbShareUrl = buildFbShareUrl(pageUrl, shareText);
   </nav>
 
   <script is:inline>
-    // SNS シェアボタン（ポップアップで開く）
-    function initSnsShare() {
-      var btns = document.querySelectorAll("[data-share-url]");
-      btns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var url = btn.getAttribute("data-share-url");
-          if (!url) return;
-          window.open(url, "sns-share", "width=580,height=400,menubar=no,toolbar=no");
-        });
-      });
-    }
-    initSnsShare();
-    document.addEventListener("astro:after-swap", initSnsShare);
-
     // リンクコピーボタン
     function initShareCopy() {
       var btns = document.querySelectorAll(".share-copy");
@@ -147,6 +142,18 @@ const fbShareUrl = buildFbShareUrl(pageUrl, shareText);
 </BaseLayout>
 
 <style>
+  .draft-banner {
+    background-color: rgba(234, 179, 8, 0.15);
+    color: #ca8a04;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
   header {
     margin-bottom: 2rem;
   }

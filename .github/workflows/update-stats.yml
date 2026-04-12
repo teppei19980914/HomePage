@@ -1,0 +1,125 @@
+name: Update Dynamic Stats
+
+on:
+  schedule:
+    # 毎月1日 0:00 JST = 前月末 15:00 UTC
+    - cron: "0 15 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch Qiita stats
+        id: qiita
+        run: |
+          set -e
+          CAREER_START=2021
+          CURRENT_YEAR=$(date +%Y)
+          ENGINEER_YEARS=$((CURRENT_YEAR - CAREER_START))
+          echo "engineer_years=${ENGINEER_YEARS}" >> "$GITHUB_OUTPUT"
+
+          QIITA_USER=$(curl -sf "https://qiita.com/api/v2/users/teppei19980914" || echo '{}')
+          ITEMS_COUNT=$(echo "$QIITA_USER" | jq -r '.items_count // 0')
+          echo "items_count=${ITEMS_COUNT}" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch featured slugs from Cloudflare Web Analytics
+        id: featured
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_SITE_TAG: ${{ secrets.CLOUDFLARE_SITE_TAG }}
+        run: |
+          set -e
+
+          # 直近30日の期間を計算
+          DATE_TO=$(date +%Y-%m-%d)
+          DATE_FROM=$(date -d '30 days ago' +%Y-%m-%d)
+
+          # Cloudflare Web Analytics GraphQL API
+          # /HomePage/ja/blog/* のパス別アクセス数を降順で取得
+          QUERY=$(cat <<'GRAPHQL'
+          {
+            "query": "query ($accountTag: String!, $siteTag: String!, $from: Date!, $to: Date!) { viewer { accounts(filter: { accountTag: $accountTag }) { rumPageloadEventsAdaptiveGroups(siteTag: $siteTag, filter: { date_geq: $from, date_leq: $to, requestPath_like: \"/HomePage/ja/blog/%\" }, limit: 10, orderBy: [count_DESC]) { dimensions { path: requestPath } count } } } }",
+            "variables": {
+              "accountTag": "CF_ACCOUNT_ID_PLACEHOLDER",
+              "siteTag": "CF_SITE_TAG_PLACEHOLDER",
+              "from": "DATE_FROM_PLACEHOLDER",
+              "to": "DATE_TO_PLACEHOLDER"
+            }
+          }
+          GRAPHQL
+          )
+
+          # プレースホルダーを実際の値に置換
+          QUERY=$(echo "$QUERY" | sed "s/CF_ACCOUNT_ID_PLACEHOLDER/${CF_ACCOUNT_ID}/g")
+          QUERY=$(echo "$QUERY" | sed "s/CF_SITE_TAG_PLACEHOLDER/${CF_SITE_TAG}/g")
+          QUERY=$(echo "$QUERY" | sed "s/DATE_FROM_PLACEHOLDER/${DATE_FROM}/g")
+          QUERY=$(echo "$QUERY" | sed "s/DATE_TO_PLACEHOLDER/${DATE_TO}/g")
+
+          # API が設定されていない場合はスキップ
+          if [ -z "$CF_API_TOKEN" ] || [ -z "$CF_ACCOUNT_ID" ] || [ -z "$CF_SITE_TAG" ]; then
+            echo "Cloudflare secrets not configured, keeping existing featuredSlugs"
+            CURRENT_SLUGS=$(jq -c '.featuredSlugs // []' src/data/dynamic-stats.json)
+            echo "slugs_json=${CURRENT_SLUGS}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # GraphQL API を呼び出し
+          RESPONSE=$(curl -sf -X POST \
+            "https://api.cloudflare.com/client/v4/graphql" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "$QUERY" || echo '{}')
+
+          # パスからスラッグを抽出し、上位3件を取得
+          # パス例: /HomePage/ja/blog/ai-driven-development/ → ai-driven-development
+          SLUGS=$(echo "$RESPONSE" | jq -r '
+            [.data.viewer.accounts[0].rumPageloadEventsAdaptiveGroups[]
+              | .dimensions.path
+              | capture("/HomePage/ja/blog/(?<slug>[^/]+)/")
+              | .slug
+            ] | .[0:3]
+          ' 2>/dev/null || echo '[]')
+
+          # 結果が空の場合は既存値を維持
+          if [ "$SLUGS" = "[]" ] || [ "$SLUGS" = "null" ]; then
+            echo "No analytics data, keeping existing featuredSlugs"
+            SLUGS=$(jq -c '.featuredSlugs // []' src/data/dynamic-stats.json)
+          fi
+
+          echo "slugs_json=${SLUGS}" >> "$GITHUB_OUTPUT"
+          echo "Featured slugs: ${SLUGS}"
+
+      - name: Write dynamic-stats.json
+        run: |
+          TODAY=$(date +%Y-%m-%d)
+          cat > src/data/dynamic-stats.json << EOF
+          {
+            "updatedAt": "${TODAY}",
+            "engineerYears": ${{ steps.qiita.outputs.engineer_years }},
+            "qiita": {
+              "itemsCount": ${{ steps.qiita.outputs.items_count }},
+              "contributions": 0
+            },
+            "featuredSlugs": ${{ steps.featured.outputs.slugs_json }}
+          }
+          EOF
+
+          echo "=== Updated dynamic-stats.json ==="
+          cat src/data/dynamic-stats.json
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/dynamic-stats.json
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: update dynamic stats ($(date +%Y-%m-%d))"
+          git push

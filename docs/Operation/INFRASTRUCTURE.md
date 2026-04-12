@@ -42,12 +42,24 @@
 | 項目 | 値 |
 |---|---|
 | ワークフロー | `.github/workflows/deploy.yml` |
-| トリガー | `main` ブランチへの push + 手動（workflow_dispatch） |
+| トリガー | `main` ブランチへの push + 日次 cron (UTC 21:00 / JST 6:00) + 手動 |
 | ランナー | ubuntu-latest |
 | Node.js | 22 |
 | ビルドコマンド | `npm ci` → `npm run build` |
 | デプロイ | `actions/upload-pages-artifact` → `actions/deploy-pages` |
 | 無料枠 | Public リポジトリは無制限 |
+
+#### 月次バッチ（動的データ更新）
+
+| 項目 | 値 |
+|---|---|
+| ワークフロー | `.github/workflows/update-stats.yml` |
+| トリガー | 毎月1日 0:00 JST (UTC 15:00) + 手動（workflow_dispatch） |
+| 処理内容 | Qiita API から記事数を取得、エンジニア歴を計算、Cloudflare Analytics からピックアップ記事を自動選定 |
+| 更新ファイル | `src/data/dynamic-stats.json` |
+| 動作 | 変更があれば auto commit → push → deploy.yml が自動起動 |
+| Secrets | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_SITE_TAG` |
+| ピックアップ選定 | 直近30日のブログ記事をPV降順で上位3件を `featuredSlugs` に設定。API 未設定時は既存値を維持 |
 
 ### 2.3 Formspree（お問い合わせフォーム）
 

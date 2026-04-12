@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getLabels, normalizeLocale, BCP47 } from "../../../i18n";
-import { getLocalizedCollection, stripLocale, isPublished } from "../../../i18n/content";
+import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
 import { localeStaticPaths } from "../../../i18n/paths";
 
@@ -12,7 +12,7 @@ const t = getLabels(lang);
 const { blog, common } = t;
 
 const posts = (await getLocalizedCollection("blog", lang))
-  .filter(isPublished)
+  .filter(isVisibleInDev)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
@@ -36,13 +36,15 @@ const posts = (await getLocalizedCollection("blog", lang))
                 data-astro-reload
               >
                 <div class="blog-card-header">
+                  {post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
                   <span class="date">
                     {post.data.date.toLocaleDateString(BCP47[lang])}
                   </span>
                   <div class="tags">
-                    {post.data.tags.map((tag) => (
+                    {post.data.tags.slice(0, 4).map((tag) => (
                       <span class="tag">{tag}</span>
                     ))}
+                    {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
                   </div>
                 </div>
                 <h3>{post.data.title}</h3>
@@ -80,4 +82,9 @@ const posts = (await getLocalizedCollection("blog", lang))
   }
   .blog-card { border-left: 3px solid var(--color-primary); }
   .tags { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
+  .draft-badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 600;
+    padding: 0.15rem 0.5rem; border-radius: 9999px;
+    background-color: rgba(234, 179, 8, 0.15); color: #ca8a04; width: 100%;
+  }
 </style>
