@@ -81,6 +81,6 @@ App: [YumeHashi](https://teppei19980914.github.io/YumeHashi/) (free trial availa
 
 ## Related Articles
 
-- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/yumehashi-story/) — The rename story and development philosophy
-- [Firestore Free Tier Optimization — 4 Things I Did](/HomePage/en/blog/yumehashi-cost-optimization/) — gzip compression, debounce, format versioning
-- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/ai-driven-development/) — Building an app in 3 weeks
+- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — The rename story and development philosophy
+- [Firestore Free Tier Optimization — 4 Things I Did](/HomePage/en/blog/20260409-yumehashi-cost-optimization/) — gzip compression, debounce, format versioning
+- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — Building an app in 3 weeks

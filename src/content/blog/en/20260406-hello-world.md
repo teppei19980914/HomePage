@@ -68,9 +68,9 @@ As an engineer, I built this site with technical intent:
 
 ## Related Articles
 
-- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/ai-driven-development/) — Performance data from building an app in 3 weeks with AI
-- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/yumehashi-story/) — The philosophy behind my side project
-- [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/yumehashi-tech-stack/) — Design decisions with Flutter Web / Drift / Riverpod
+- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — Performance data from building an app in 3 weeks with AI
+- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — The philosophy behind my side project
+- [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/20260407-yumehashi-tech-stack/) — Design decisions with Flutter Web / Drift / Riverpod
 
 ## In Closing
 

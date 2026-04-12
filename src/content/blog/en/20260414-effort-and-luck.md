@@ -99,6 +99,6 @@ I want to keep practicing this philosophy in my work and career.
 
 ## Related Articles
 
-- ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/power-of-words/) — Communication with awareness of impact on others
-- ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/janets-law-time/) — How to use limited time
-- [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/mbti-intj-working-style/) — How an independent type learned to invest time in others
+- ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/20260412-power-of-words/) — Communication with awareness of impact on others
+- ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — How to use limited time
+- [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — How an independent type learned to invest time in others

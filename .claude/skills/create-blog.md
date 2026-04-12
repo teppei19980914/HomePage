@@ -44,12 +44,17 @@ description: トレンド分析 → SEO最適化 → 記事作成の一気通貫
 - **実体験**: 自分のプロダクト経験を具体的に引用（一次情報）
 - **まとめ**: レベル別アクション表やスキルマップで読後感を明確化
 
-### Step 4. Frontmatter 作成
+### Step 4. 投稿日と Frontmatter 作成
+
+**投稿日の決定（自動）**:
+1. `src/content/blog/ja/` 内の既存ファイル名から最新日付を取得（ファイル名の `YYYYMMDD-` 接頭辞）
+2. 最新日付の **翌日** を新記事の `date` に設定（一日一投稿ルール）
+3. 例: 最新が `20260418-failure-science.md` → 新記事は `date: 2026-04-19`
 
 ```yaml
 title: "（Step 2 で設計したタイトル）"
 description: "（120〜160文字、主要+副次キーワード含有、記事の価値が伝わる文）"
-date: YYYY-MM-DD
+date: YYYY-MM-DD  ← 上記で決定した日付
 tags: ["（具体的なタグ）"]
 ```
 
@@ -61,8 +66,10 @@ tags: ["（具体的なタグ）"]
 
 ### Step 5. 記事本文作成
 
-- `src/content/blog/ja/` に配置
-- URL slug: 英小文字+ハイフン（スペース・日本語禁止）
+- **ファイル名**: `YYYYMMDD-slug.md`（投稿日の接頭辞 + 英小文字ハイフン区切りのスラッグ）
+  - 例: `20260419-new-article.md`
+- `src/content/blog/ja/` と `src/content/blog/en/` に同一ファイル名で配置
+- URL slug: `YYYYMMDD-英小文字+ハイフン`（スペース・日本語禁止）
 - H1 は書かない（frontmatter title が H1 になるため）
 - 裸 URL を使わず、説明的なアンカーテキストを使用
 - 関連する既存記事への内部リンクを含める

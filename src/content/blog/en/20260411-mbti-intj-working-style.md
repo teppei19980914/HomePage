@@ -86,6 +86,6 @@ Just having the prior knowledge "this person is this type" significantly reduces
 
 ## Related Articles
 
-- [I Launched My Homepage — Consolidating Scattered Information into One Place](/HomePage/en/blog/hello-world/) — Why I built this site
-- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/ai-driven-development/) — The INTJ obsession with efficiency, manifested
-- ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/effort-and-luck/) — How an independent type learned to invest time in others
+- [I Launched My Homepage — Consolidating Scattered Information into One Place](/HomePage/en/blog/20260406-hello-world/) — Why I built this site
+- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — The INTJ obsession with efficiency, manifested
+- ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — How an independent type learned to invest time in others

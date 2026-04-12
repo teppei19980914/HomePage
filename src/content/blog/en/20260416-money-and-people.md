@@ -68,7 +68,7 @@ Looking back at my [project history](/HomePage/en/project/), the 90% regression 
 
 ### The Value of Spending Your Time for Others
 
-As I wrote in [the article about effort and luck](/HomePage/en/blog/effort-and-luck/), effort spent for others accumulates. If money is "a means to connect people," then **time has the same structure**. Code reviews, mentoring juniors, writing documentation — none directly generate revenue, but improving the team's overall productivity comes back around.
+As I wrote in [the article about effort and luck](/HomePage/en/blog/20260414-effort-and-luck/), effort spent for others accumulates. If money is "a means to connect people," then **time has the same structure**. Code reviews, mentoring juniors, writing documentation — none directly generate revenue, but improving the team's overall productivity comes back around.
 
 ---
 
@@ -82,6 +82,6 @@ Not working to earn money, but **solving someone's problem with my skills, with 
 
 ## Related Articles
 
-- ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/effort-and-luck/) — The value of spending time for others
-- [What Reading Gave Me Wasn't Knowledge — It Was the Habit of Thinking from Multiple Angles](/HomePage/en/blog/reading-and-perspective/) — Multi-perspective thinking from reading
-- ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/janets-law-time/) — How to use limited time
+- ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — The value of spending time for others
+- [What Reading Gave Me Wasn't Knowledge — It Was the Habit of Thinking from Multiple Angles](/HomePage/en/blog/20260415-reading-and-perspective/) — Multi-perspective thinking from reading
+- ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — How to use limited time

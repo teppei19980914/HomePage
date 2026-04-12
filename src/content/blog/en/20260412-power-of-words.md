@@ -72,6 +72,6 @@ The lesson 13-year-old me learned from Conan — I still cherish it at 27.
 
 ## Related Articles
 
-- [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/mbti-intj-working-style/) — Confronting communication challenges
-- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/yumehashi-story/) — How "putting it into words" set dreams in motion
-- ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/effort-and-luck/) — Accumulating positive impact through actions for others
+- [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — Confronting communication challenges
+- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — How "putting it into words" set dreams in motion
+- ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — Accumulating positive impact through actions for others

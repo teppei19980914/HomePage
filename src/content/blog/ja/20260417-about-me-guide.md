@@ -95,13 +95,13 @@ featured: true
 
 | テーマ | 記事 |
 |---|---|
-| **性格と働き方** | [INTJ-AS — 性格診断から見た私の働き方](/HomePage/ja/blog/mbti-intj-working-style/) |
-| **コミュニケーション** | [「言葉は刃物」— 一度放った言葉が相手の中に残り続けるという話](/HomePage/ja/blog/power-of-words/) |
-| **時間の使い方** | [「呼吸するように年を取る」— ジャネーの法則](/HomePage/ja/blog/janets-law-time/) |
-| **努力と運** | [「報われない努力はない」— 運をためるという考え方](/HomePage/ja/blog/effort-and-luck/) |
-| **読書** | [読書で手に入れたのは知識ではなく「多面的に考える習慣」だった](/HomePage/ja/blog/reading-and-perspective/) |
-| **お金の本質** | [お金の正体 — 「お金は人と人をつなぐ手段」](/HomePage/ja/blog/money-and-people/) |
-| **AI 駆動開発** | [「テスト工程が消滅した」— AI 駆動開発 vs 従来開発](/HomePage/ja/blog/ai-driven-development/) |
+| **性格と働き方** | [INTJ-AS — 性格診断から見た私の働き方](/HomePage/ja/blog/20260411-mbti-intj-working-style/) |
+| **コミュニケーション** | [「言葉は刃物」— 一度放った言葉が相手の中に残り続けるという話](/HomePage/ja/blog/20260412-power-of-words/) |
+| **時間の使い方** | [「呼吸するように年を取る」— ジャネーの法則](/HomePage/ja/blog/20260413-janets-law-time/) |
+| **努力と運** | [「報われない努力はない」— 運をためるという考え方](/HomePage/ja/blog/20260414-effort-and-luck/) |
+| **読書** | [読書で手に入れたのは知識ではなく「多面的に考える習慣」だった](/HomePage/ja/blog/20260415-reading-and-perspective/) |
+| **お金の本質** | [お金の正体 — 「お金は人と人をつなぐ手段」](/HomePage/ja/blog/20260416-money-and-people/) |
+| **AI 駆動開発** | [「テスト工程が消滅した」— AI 駆動開発 vs 従来開発](/HomePage/ja/blog/20260410-ai-driven-development/) |
 
 👉 **[ブログ一覧](/HomePage/ja/blog/)**
 

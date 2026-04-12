@@ -71,13 +71,13 @@ Blog articles on work, life, and technology:
 
 | Theme | Article |
 |---|---|
-| **Personality & Work** | [INTJ-AS — My Working Style Through Personality Assessment](/HomePage/en/blog/mbti-intj-working-style/) |
-| **Communication** | ["Words Are Blades" — How a Single Phrase Can Stay Forever](/HomePage/en/blog/power-of-words/) |
-| **Time Management** | ["Breathing Through the Years" — Janet's Law](/HomePage/en/blog/janets-law-time/) |
-| **Effort & Luck** | ["No Effort Goes Unrewarded" — Accumulating Luck](/HomePage/en/blog/effort-and-luck/) |
-| **Reading** | [What Reading Gave Me Wasn't Knowledge](/HomePage/en/blog/reading-and-perspective/) |
-| **Money** | [The Nature of Money — Connecting People](/HomePage/en/blog/money-and-people/) |
-| **AI Development** | ["The Testing Phase Disappeared"](/HomePage/en/blog/ai-driven-development/) |
+| **Personality & Work** | [INTJ-AS — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) |
+| **Communication** | ["Words Are Blades" — How a Single Phrase Can Stay Forever](/HomePage/en/blog/20260412-power-of-words/) |
+| **Time Management** | ["Breathing Through the Years" — Janet's Law](/HomePage/en/blog/20260413-janets-law-time/) |
+| **Effort & Luck** | ["No Effort Goes Unrewarded" — Accumulating Luck](/HomePage/en/blog/20260414-effort-and-luck/) |
+| **Reading** | [What Reading Gave Me Wasn't Knowledge](/HomePage/en/blog/20260415-reading-and-perspective/) |
+| **Money** | [The Nature of Money — Connecting People](/HomePage/en/blog/20260416-money-and-people/) |
+| **AI Development** | ["The Testing Phase Disappeared"](/HomePage/en/blog/20260410-ai-driven-development/) |
 
 **[All Blog Posts](/HomePage/en/blog/)**
 

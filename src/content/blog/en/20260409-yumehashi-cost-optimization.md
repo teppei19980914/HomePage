@@ -125,6 +125,6 @@ Repository: [GitHub Repository](https://github.com/teppei19980914/YumeHashi)
 
 ## Related Articles
 
-- [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/yumehashi-tech-stack/) — Startup speed, data growth, CI race conditions
-- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/yumehashi-story/) — The philosophy behind the app
-- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/ai-driven-development/) — Building an app in 3 weeks
+- [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/20260407-yumehashi-tech-stack/) — Startup speed, data growth, CI race conditions
+- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — The philosophy behind the app
+- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — Building an app in 3 weeks

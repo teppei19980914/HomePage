@@ -39,7 +39,7 @@ Conversely, **deliberately incorporating new experiences can stretch subjective 
 
 What I practice:
 
-- **Touching unfamiliar technology** — At work I use .NET / SQL Server, but in personal projects I dive into Flutter and Astro. [Building an app in 3 weeks with AI-driven development](/HomePage/en/blog/ai-driven-development/) was a genuine "brain activation" experience
+- **Touching unfamiliar technology** — At work I use .NET / SQL Server, but in personal projects I dive into Flutter and Astro. [Building an app in 3 weeks with AI-driven development](/HomePage/en/blog/20260410-ai-driven-development/) was a genuine "brain activation" experience
 - **Forcing learning cycles through certifications** — Building up from Fundamental IT Engineer to Applied IT Engineer, LPIC, OSS-DB, and Python certifications. Exam prep isn't "reviewing what I know" but "systematically learning unknown domains"
 - **Making output a habit** — Technical articles on Qiita, reflections on this blog. Input alone doesn't activate the brain. The process of articulating thoughts externally reveals new perspectives
 - **Never stopping personal development** — [YumeHashi](/HomePage/en/product/yumehashi/) / [Defrago](/HomePage/en/product/defrago/) / this homepage. The act of building continuously generates new challenges
@@ -75,6 +75,6 @@ Time can't be stopped. So I keep striving within it. That's the conclusion I rea
 
 ## Related Articles
 
-- [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/mbti-intj-working-style/) — Self-analysis from another angle
-- ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/power-of-words/) — Both triggered by a senior's words
-- [I Launched My Homepage — Consolidating Scattered Information into One Place](/HomePage/en/blog/hello-world/) — Creating a place to "consolidate myself" within limited time
+- [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — Self-analysis from another angle
+- ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/20260412-power-of-words/) — Both triggered by a senior's words
+- [I Launched My Homepage — Consolidating Scattered Information into One Place](/HomePage/en/blog/20260406-hello-world/) — Creating a place to "consolidate myself" within limited time

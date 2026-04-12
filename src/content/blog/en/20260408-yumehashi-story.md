@@ -99,6 +99,6 @@ And may YumeHashi serve as a small bridge along the way.
 
 ## Related Articles
 
-- [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/yumehashi-tech-stack/) — Design decisions with Flutter Web / Drift / Riverpod
-- [Firestore Free Tier Optimization — 4 Things I Did](/HomePage/en/blog/yumehashi-cost-optimization/) — Zero-cost operation strategies
-- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/ai-driven-development/) — Building an app in 3 weeks
+- [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/20260407-yumehashi-tech-stack/) — Design decisions with Flutter Web / Drift / Riverpod
+- [Firestore Free Tier Optimization — 4 Things I Did](/HomePage/en/blog/20260409-yumehashi-cost-optimization/) — Zero-cost operation strategies
+- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — Building an app in 3 weeks

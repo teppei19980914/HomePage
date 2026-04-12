@@ -126,7 +126,7 @@ AIは万能ではありません。「モバイルでキーボードに入力欄
 
 ## で、何を作ったの？
 
-この仕組みで作ったのが「[ユメハシ（YumeHashi）](https://teppei19980914.github.io/YumeHashi/)」です（開発当初「ユメログ」として開発し、その後改名。改名の経緯は[こちらの記事](/HomePage/ja/blog/yumehashi-story/)で詳しく書いています）。
+この仕組みで作ったのが「[ユメハシ（YumeHashi）](https://teppei19980914.github.io/YumeHashi/)」です（開発当初「ユメログ」として開発し、その後改名。改名の経緯は[こちらの記事](/HomePage/ja/blog/20260408-yumehashi-story/)で詳しく書いています）。
 
 **夢を行動に変えるアプリ。** 3 ステップで使えます。
 
@@ -178,7 +178,7 @@ AIは万能ではありません。「モバイルでキーボードに入力欄
 
 **このアプリ自体が、AI 駆動開発における私の「最初の一歩」でもあります。**
 
-> ユメハシの技術スタック（Flutter Web / Drift / Riverpod）やパフォーマンス最適化の詳細は、[技術スタックの記事](/HomePage/ja/blog/yumehashi-tech-stack/)と [Firestore コスト最適化の記事](/HomePage/ja/blog/yumehashi-cost-optimization/)で詳しく解説しています。
+> ユメハシの技術スタック（Flutter Web / Drift / Riverpod）やパフォーマンス最適化の詳細は、[技術スタックの記事](/HomePage/ja/blog/20260407-yumehashi-tech-stack/)と [Firestore コスト最適化の記事](/HomePage/ja/blog/20260409-yumehashi-cost-optimization/)で詳しく解説しています。
 
 ---
 

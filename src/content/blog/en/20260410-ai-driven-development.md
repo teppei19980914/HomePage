@@ -116,7 +116,7 @@ AI isn't omniscient. The "keyboard covers the input field on mobile" issue was o
 
 ## What Did I Build?
 
-The app built with this system is "[YumeHashi](https://teppei19980914.github.io/YumeHashi/)" (originally developed as "YumeLog" and later renamed — see [the story behind the rename](/HomePage/en/blog/yumehashi-story/)).
+The app built with this system is "[YumeHashi](https://teppei19980914.github.io/YumeHashi/)" (originally developed as "YumeLog" and later renamed — see [the story behind the rename](/HomePage/en/blog/20260408-yumehashi-story/)).
 
 **An app that turns dreams into action.** 3 steps:
 
