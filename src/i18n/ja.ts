@@ -62,7 +62,7 @@ export const ja = {
       },
     ],
     heroTagline: "課題を発見し、改善を実行するソフトウェアエンジニア",
-    heroSummary: "エンジニア歴5年+ / Qiita 211記事 / 副業・個人開発を並行推進",
+    heroSummary: "エンジニア歴5年+ / Qiita 211記事 / 個人開発3作を並行推進",
     strengths: {
       title: "強み",
       items: [
@@ -126,9 +126,10 @@ export const ja = {
       name: "株式会社LTS ソフトウェアテクノロジー",
       url: "https://www.softec-ic.co.jp/",
     },
+    // sideJob: 非公開扱い(空文字で profile.astro 側で非表示分岐)
     sideJob: {
-      name: "株式会社WakuLab(業務委託)",
-      url: "https://waku-lab.com/",
+      name: "",
+      url: "",
     },
     labels: {
       birthDate: "生年月日",
@@ -195,7 +196,8 @@ export const ja = {
     },
     career: {
       title: "キャリア",
-      legend: { employee: "正社員", personal: "個人開発", sideJob: "副業" },
+      // sideJob は副業情報の非公開化に伴い表示対象外(凡例ラベルは後方互換のため残置)
+      legend: { employee: "正社員", personal: "個人開発", sideJob: "" },
       now: "現在",
       branchLabel: "分岐",
     },
@@ -214,7 +216,8 @@ export const ja = {
       { name: "ユメハシ", date: "2026.03" },
       { name: "Defrago", date: "2026.01" },
     ],
-    sideBusiness: { name: "株式会社WakuLab", date: "2026.03", suffix: "/ 業務委託" },
+    // sideBusiness: 副業情報の非公開化に伴い空文字化(CareerGraph 側で非表示分岐)
+    sideBusiness: { name: "", date: "", suffix: "" },
     history: [
       { name: "株式会社LTS ソフトウェアテクノロジー 入社", dateSuffix: "2025.05" },
       { name: "株式会社インプリム 退職", dateSuffix: "2025.04" },
@@ -259,12 +262,12 @@ export const ja = {
   project: {
     title: "プロジェクト",
     description: "参画プロジェクトの紹介",
-    subtitle: "正社員・業務委託として参画したプロジェクトの紹介",
+    subtitle: "正社員として参画したプロジェクトの紹介",
     emptyMessage: "プロジェクトはまだありません。",
     maxDisplay: 5,
     viewAllText: "全プロジェクトはこちら",
     allTitle: "プロジェクト一覧",
-    allSubtitle: "正社員・業務委託として参画したすべてのプロジェクト",
+    allSubtitle: "正社員として参画したすべてのプロジェクト",
     contractTypes: {
       employee: "正社員",
       contract: "業務委託",

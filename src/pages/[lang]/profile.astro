@@ -103,12 +103,14 @@ const careerYears = calcYears(careerStart, now);
             <a href={profile.employer.url} target="_blank" rel="noopener noreferrer">{profile.employer.name}</a>
           </span>
         </div>
-        <div class="profile-item">
-          <span class="profile-label">{profile.labels.sideJob}</span>
-          <span class="profile-value">
-            <a href={profile.sideJob.url} target="_blank" rel="noopener noreferrer">{profile.sideJob.name}</a>
-          </span>
-        </div>
+        {profile.sideJob.name && (
+          <div class="profile-item">
+            <span class="profile-label">{profile.labels.sideJob}</span>
+            <span class="profile-value">
+              <a href={profile.sideJob.url} target="_blank" rel="noopener noreferrer">{profile.sideJob.name}</a>
+            </span>
+          </div>
+        )}
       </div>
     </div>
   </section>

@@ -68,7 +68,7 @@ export const en: Labels = {
       },
     ],
     heroTagline: "A software engineer who finds problems and ships the fix",
-    heroSummary: "5+ years as an engineer / 211 Qiita articles / side work and personal dev in parallel",
+    heroSummary: "5+ years as an engineer / 211 Qiita articles / running 3 personal dev products in parallel",
     strengths: {
       title: "Strengths",
       items: [
@@ -132,9 +132,10 @@ export const en: Labels = {
       name: "LTS Software Technology Co., Ltd.",
       url: "https://www.softec-ic.co.jp/",
     },
+    // sideJob: hidden (intentionally empty for privacy reasons)
     sideJob: {
-      name: "WakuLab Inc. (contract)",
-      url: "https://waku-lab.com/",
+      name: "",
+      url: "",
     },
     labels: {
       birthDate: "Date of birth",
@@ -199,7 +200,8 @@ export const en: Labels = {
     },
     career: {
       title: "Career",
-      legend: { employee: "Full-time", personal: "Personal dev", sideJob: "Side work" },
+      // sideJob hidden for privacy; label kept as empty for schema parity
+      legend: { employee: "Full-time", personal: "Personal dev", sideJob: "" },
       now: "Now",
       branchLabel: "branch",
     },
@@ -218,7 +220,8 @@ export const en: Labels = {
       { name: "YumeHashi", date: "2026.03" },
       { name: "Defrago", date: "2026.01" },
     ],
-    sideBusiness: { name: "WakuLab Inc.", date: "2026.03", suffix: "/ contract" },
+    // sideBusiness: hidden (intentionally empty for privacy reasons)
+    sideBusiness: { name: "", date: "", suffix: "" },
     history: [
       { name: "Joined LTS Software Technology", dateSuffix: "2025.05" },
       { name: "Left Implem Inc.", dateSuffix: "2025.04" },
@@ -232,12 +235,12 @@ export const en: Labels = {
   project: {
     title: "Project",
     description: "Projects I have delivered",
-    subtitle: "Projects I have delivered as a full-time engineer and as a contractor",
+    subtitle: "Projects I have delivered as a full-time engineer",
     emptyMessage: "No projects yet.",
     maxDisplay: 5,
     viewAllText: "See all projects",
     allTitle: "All Projects",
-    allSubtitle: "Every project I have delivered, in full-time and contract roles",
+    allSubtitle: "Every project I have delivered as a full-time engineer",
     contractTypes: {
       employee: "Full-time",
       contract: "Contract",

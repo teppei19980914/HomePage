@@ -19,9 +19,6 @@ const { about, careerGraph } = t;
     <span class="legend-item">
       <span class="legend-dot" style="background:#06b6d4"></span>{about.career.legend.personal}
     </span>
-    <span class="legend-item">
-      <span class="legend-dot" style="background:#8b5cf6"></span>{about.career.legend.sideJob}
-    </span>
   </div>
 
   <div class="cg-graph">
@@ -31,17 +28,14 @@ const { about, careerGraph } = t;
       <line x1="110" y1="70" x2="110" y2="340" class="cg-line-main" />
       <line x1="110" y1="340" x2="110" y2="600" class="cg-line-main" />
 
-      <!-- Merge curves -->
+      <!-- Merge curves (personal dev のみ) -->
       <path d="M55,125 C55,95 110,95 110,70" class="cg-line-personal" />
-      <path d="M165,125 C165,95 110,95 110,70" class="cg-line-side" />
 
-      <!-- Branch vertical -->
+      <!-- Branch vertical (personal dev のみ) -->
       <line x1="55" y1="125" x2="55" y2="290" class="cg-line-personal" />
-      <line x1="165" y1="125" x2="165" y2="240" class="cg-line-side" />
 
-      <!-- Fork curves -->
+      <!-- Fork curves (personal dev のみ) -->
       <path d="M110,340 C110,315 55,315 55,290" class="cg-line-personal" />
-      <path d="M110,340 C110,315 165,315 165,240" class="cg-line-side" />
 
       <!-- Nodes -->
       <circle cx="110" cy="25" r="7" class="cg-dot-main cg-dot-big" />
@@ -54,7 +48,6 @@ const { about, careerGraph } = t;
       <circle cx="110" cy="580" r="7" class="cg-dot-main cg-dot-big" />
       <circle cx="55" cy="175" r="3" class="cg-dot-personal" />
       <circle cx="55" cy="240" r="3" class="cg-dot-personal" />
-      <circle cx="165" cy="175" r="3" class="cg-dot-side" />
 
       <!-- Labels -->
       <text x="125" y="30" class="cg-svg-text cg-svg-text-bold">{about.career.now}</text>
@@ -64,10 +57,6 @@ const { about, careerGraph } = t;
       <text x="45" y="188" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[0].date}</text>
       <text x="45" y="238" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[1].name}</text>
       <text x="45" y="253" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[1].date}</text>
-
-      <!-- Side Business (right) -->
-      <text x="178" y="173" class="cg-svg-text">{careerGraph.sideBusiness.name}</text>
-      <text x="178" y="188" class="cg-svg-text-small cg-svg-text-purple">{careerGraph.sideBusiness.date} {careerGraph.sideBusiness.suffix}</text>
 
       <!-- Fork label -->
       <text x="125" y="345" class="cg-svg-text-small cg-svg-text-muted">{about.career.branchLabel}</text>

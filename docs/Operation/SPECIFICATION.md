@@ -154,7 +154,6 @@ SVG 手書きの Git ブランチ風グラフ:
 
 - 中央線（青）: 正社員キャリア
 - 左ブランチ（シアン）: 個人開発（ユメハシ、Defrago）
-- 右ブランチ（紫）: 副業（WakuLab）
 - レスポンシブ: `viewBox` + `preserveAspectRatio` で画面幅に自動縮小
 
 ### 1.5 Product（product/）
