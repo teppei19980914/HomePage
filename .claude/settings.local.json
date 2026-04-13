@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:docs.mermaidviewer.com)",
       "WebFetch(domain:zenn.dev)",
-      "WebFetch(domain:www.facebook.com)"
+      "WebFetch(domain:www.facebook.com)",
+      "WebFetch(domain:tbsb.info)"
     ]
   }
 }
