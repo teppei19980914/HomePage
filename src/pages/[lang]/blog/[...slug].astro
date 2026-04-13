@@ -5,6 +5,7 @@ import { getLabels, normalizeLocale, BCP47, LOCALES } from "../../../i18n";
 import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
 import { buildXShareUrl, buildFbShareUrl } from "../../../utils/share";
+import { estimateReadingTime } from "../../../utils/reading-time";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -23,7 +24,8 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
-const { common, share, blog } = t;
+const { common, share, blog, readingTime: readingTimeLabel } = t;
+const readingMin = estimateReadingTime(post.body ?? "");
 const { Content } = await render(post);
 const isDraft = post.data.draft === true;
 const isScheduled = !isDraft && post.data.date > new Date();
@@ -54,15 +56,47 @@ const fbShareUrl = buildFbShareUrl(pageUrl);
   )}
   <article class="prose">
     <header class="hero-gradient fade-in">
-      <span class="date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>
       <h1>{post.data.title}</h1>
-      <div class="tags">
-        {post.data.tags.slice(0, 4).map((tag) => <span class="tag">{tag}</span>)}
-        {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
+      <div class="article-meta">
+        <span class="meta-item">
+          <span class="meta-icon">&#128197;</span>
+          {post.data.date.toLocaleDateString(BCP47[lang])}
+        </span>
+        <span class="meta-divider"></span>
+        <span class="meta-item">
+          <span class="meta-icon">&#9201;</span>
+          {readingTimeLabel(readingMin)}
+        </span>
+        <span class="meta-divider"></span>
+        <span class="meta-item meta-tags">
+          {post.data.tags.slice(0, 4).map((tag) => <span class="tag">{tag}</span>)}
+          {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
+        </span>
       </div>
     </header>
-    <div class="content reveal">
-      <Content />
+
+    <!-- モバイル: 折りたたみ目次 -->
+    <nav class="toc-mobile reveal" aria-label={common.tocTitle}>
+      <button class="toc-mobile-toggle" type="button" aria-expanded="false">
+        <span class="toc-mobile-icon">&#9776;</span>
+        <span>{common.tocTitle}</span>
+        <span class="toc-mobile-chevron">&#9660;</span>
+      </button>
+      <ol class="toc-mobile-list" id="tocMobileList"></ol>
+    </nav>
+
+    <div class="blog-layout">
+      <div class="content reveal">
+        <Content />
+      </div>
+
+      <!-- PC: サイドバー固定目次 -->
+      <aside class="toc-sidebar" aria-label={common.tocTitle}>
+        <nav class="toc-sidebar-inner">
+          <p class="toc-sidebar-title">{common.tocTitle}</p>
+          <ol class="toc-sidebar-list" id="tocSidebarList"></ol>
+        </nav>
+      </aside>
     </div>
   </article>
 
@@ -145,6 +179,129 @@ const fbShareUrl = buildFbShareUrl(pageUrl);
     initShareCopy();
     document.addEventListener("astro:after-swap", initShareCopy);
 
+    // ===== 目次（TOC）の自動生成 =====
+    function initToc() {
+      var content = document.querySelector(".content");
+      var mobileList = document.getElementById("tocMobileList");
+      var sidebarList = document.getElementById("tocSidebarList");
+      if (!content || (!mobileList && !sidebarList)) return;
+
+      // 記事内の H2/H3 を取得（H4 以下は目次に含めない）
+      var headings = content.querySelectorAll("h2, h3");
+      if (headings.length === 0) {
+        // 見出しがない記事では目次を非表示
+        var tocMobile = document.querySelector(".toc-mobile");
+        var tocSidebar = document.querySelector(".toc-sidebar");
+        if (tocMobile) tocMobile.style.display = "none";
+        if (tocSidebar) tocSidebar.style.display = "none";
+        return;
+      }
+
+      var fragment1 = document.createDocumentFragment();
+      var fragment2 = document.createDocumentFragment();
+      var observeTargets = [];
+      var h2Count = 0;
+      var h3Count = 0;
+
+      headings.forEach(function (h, i) {
+        // id がない見出しにスラッグを付与
+        if (!h.id) {
+          h.id = "heading-" + i;
+        }
+
+        var text = (h.textContent || "").trim();
+        if (!text) return; // 空の見出しはスキップ
+
+        var isH3 = h.tagName === "H3";
+
+        // 連番を算出
+        var num;
+        if (isH3) {
+          h3Count++;
+          num = h2Count + "." + h3Count;
+        } else {
+          h2Count++;
+          h3Count = 0;
+          num = String(h2Count);
+        }
+
+        observeTargets.push(h);
+
+        function createTocItem(className) {
+          var li = document.createElement("li");
+          if (isH3) li.className = "toc-indent";
+          var a = document.createElement("a");
+          a.href = "#" + h.id;
+          // 連番 + テキスト
+          var numSpan = document.createElement("span");
+          numSpan.className = "toc-num";
+          numSpan.textContent = num;
+          var labelSpan = document.createElement("span");
+          labelSpan.className = "toc-label";
+          labelSpan.textContent = text;
+          a.appendChild(numSpan);
+          a.appendChild(labelSpan);
+          if (className) a.setAttribute("data-heading-id", h.id);
+          li.appendChild(a);
+          return li;
+        }
+
+        // モバイル用
+        if (mobileList) {
+          var li1 = createTocItem(null);
+          li1.querySelector("a").addEventListener("click", function () {
+            var toggle = document.querySelector(".toc-mobile-toggle");
+            var list = document.getElementById("tocMobileList");
+            if (toggle && list) {
+              toggle.setAttribute("aria-expanded", "false");
+              list.classList.remove("is-open");
+            }
+          });
+          fragment1.appendChild(li1);
+        }
+
+        // サイドバー用
+        if (sidebarList) {
+          fragment2.appendChild(createTocItem("sidebar"));
+        }
+      });
+
+      if (mobileList) mobileList.appendChild(fragment1);
+      if (sidebarList) sidebarList.appendChild(fragment2);
+
+      // モバイル: 折りたたみトグル
+      var toggleBtn = document.querySelector(".toc-mobile-toggle");
+      if (toggleBtn && mobileList) {
+        toggleBtn.addEventListener("click", function () {
+          var isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+          toggleBtn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+          mobileList.classList.toggle("is-open", !isOpen);
+        });
+      }
+
+      // PC: Intersection Observer で現在位置をハイライト
+      if (sidebarList && observeTargets.length > 0 && typeof IntersectionObserver !== "undefined") {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var links = sidebarList.querySelectorAll("a");
+            links.forEach(function (link) {
+              link.classList.toggle(
+                "is-active",
+                link.getAttribute("data-heading-id") === entry.target.id
+              );
+            });
+          });
+        }, { rootMargin: "-80px 0px -60% 0px", threshold: 0 });
+
+        observeTargets.forEach(function (target) {
+          observer.observe(target);
+        });
+      }
+    }
+    initToc();
+    document.addEventListener("astro:after-swap", initToc);
+
   </script>
 </BaseLayout>
 
@@ -175,16 +332,190 @@ const fbShareUrl = buildFbShareUrl(pageUrl);
   header {
     margin-bottom: 2rem;
   }
-
-  .tags {
+  header h1 {
+    margin-bottom: 0.75rem;
+  }
+  .article-meta {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
-    margin-top: 0.75rem;
+    flex-wrap: wrap;
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+  }
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .meta-icon {
+    font-size: 0.85rem;
+    line-height: 1;
+  }
+  .meta-divider {
+    width: 1px;
+    height: 0.9rem;
+    background-color: var(--color-border);
+    flex-shrink: 0;
+  }
+  .meta-tags {
+    display: inline-flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
   }
 
   .content {
     margin-top: 2rem;
+    min-width: 0; /* flex child のオーバーフロー防止 */
+  }
+
+  /* ===== Blog Layout (PC: サイドバー付き 2カラム) ===== */
+  .blog-layout {
+    display: flex;
+    gap: 2rem;
+  }
+  .blog-layout .content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* ===== Mobile TOC (折りたたみ) ===== */
+  .toc-mobile {
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    overflow: hidden;
+  }
+  .toc-mobile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .toc-mobile-toggle:hover { color: var(--color-primary); }
+  .toc-mobile-icon { font-size: 0.9rem; }
+  .toc-mobile-chevron {
+    margin-left: auto;
+    font-size: 0.6rem;
+    transition: transform 0.3s;
+  }
+  .toc-mobile-toggle[aria-expanded="true"] .toc-mobile-chevron {
+    transform: rotate(180deg);
+  }
+  .toc-mobile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    border-top: 1px solid var(--color-border);
+  }
+  .toc-mobile-list.is-open { display: block; }
+  .toc-mobile-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    background-image: none;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .toc-mobile-list li a:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-glow);
+  }
+  .toc-mobile-list .toc-indent a { padding-left: 2rem; font-size: 0.78rem; }
+  .toc-mobile-list .toc-num {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    min-width: 1.5rem;
+  }
+  .toc-mobile-list .toc-label { flex: 1; }
+
+  /* ===== Sidebar TOC (PC: sticky) ===== */
+  .toc-sidebar {
+    display: none; /* デフォルト非表示、PC のみ表示 */
+    width: 220px;
+    flex-shrink: 0;
+  }
+  .toc-sidebar-inner {
+    position: sticky;
+    top: 4rem; /* ヘッダーの高さ分 */
+    max-height: calc(100vh - 5rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .toc-sidebar-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .toc-sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .toc-sidebar-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    background-image: none;
+    border-left: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    line-height: 1.4;
+  }
+  .toc-sidebar-list .toc-num {
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    min-width: 1.2rem;
+  }
+  .toc-sidebar-list .toc-label { flex: 1; }
+  .toc-sidebar-list li a:hover {
+    color: var(--color-primary);
+  }
+  .toc-sidebar-list li a.is-active {
+    color: var(--color-primary);
+    border-left-color: var(--color-primary);
+    font-weight: 600;
+  }
+  .toc-sidebar-list .toc-indent a {
+    padding-left: 1.25rem;
+    font-size: 0.72rem;
+  }
+
+  /* ===== レスポンシブ ===== */
+  @media (min-width: 1080px) {
+    .toc-mobile { display: none; }
+    .toc-sidebar { display: block; }
+    /* ブログ記事ページだけ main の幅を拡張（サイドバー分） */
+    :global(main) { max-width: 1080px; }
+  }
+  @media (max-width: 1079px) {
+    .blog-layout { flex-direction: column; }
+    .toc-sidebar { display: none; }
   }
 
   /* Share buttons */

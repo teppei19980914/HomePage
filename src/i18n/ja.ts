@@ -382,6 +382,8 @@ export const ja = {
   },
 
   // --- SNS シェアボタン ---
+  readingTime: (min: number) => `${min}分で読めます`,
+
   share: {
     title: "この記事をシェア",
     x: "X でシェア",

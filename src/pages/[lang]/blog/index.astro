@@ -4,12 +4,13 @@ import { getLabels, normalizeLocale, BCP47 } from "../../../i18n";
 import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
 import { localeStaticPaths } from "../../../i18n/paths";
+import { estimateReadingTime } from "../../../utils/reading-time";
 
 export const getStaticPaths = localeStaticPaths;
 
 const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
-const { blog, common } = t;
+const { blog, common, readingTime: readingTimeLabel } = t;
 
 // 月次バッチで更新されるピックアップ候補（Cloudflare Analytics のアクセス数上位）
 import dynamicStats from "../../../data/dynamic-stats.json";
@@ -141,20 +142,21 @@ if (import.meta.env.PROD) {
                 class="card blog-card"
                 data-astro-reload
               >
-                <div class="blog-card-header">
-                  {post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
-                  {!post.data.draft && post.data.date > new Date() && <span class="scheduled-badge">{blog.scheduledBanner}</span>}
-                  <span class="date">
-                    {post.data.date.toLocaleDateString(BCP47[lang])}
-                  </span>
-                  <div class="tags">
+                {post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
+                {!post.data.draft && post.data.date > new Date() && <span class="scheduled-badge">{blog.scheduledBanner}</span>}
+                <h3>{post.data.title}</h3>
+                <div class="card-meta">
+                  <span class="date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>
+                  <span class="meta-divider"></span>
+                  <span class="reading-time">{readingTimeLabel(estimateReadingTime(post.body ?? ""))}</span>
+                  <span class="meta-divider"></span>
+                  <span class="card-tags">
                     {post.data.tags.slice(0, 4).map((tag) => (
                       <span class="tag">{tag}</span>
                     ))}
                     {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
-                  </div>
+                  </span>
                 </div>
-                <h3>{post.data.title}</h3>
                 <p>{post.data.description}</p>
               </a>
             </li>
@@ -244,6 +246,29 @@ if (import.meta.env.PROD) {
     background-color: rgba(59, 130, 246, 0.15);
     color: #2563eb;
   }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.35rem;
+  }
+  .meta-divider {
+    width: 1px;
+    height: 0.8rem;
+    background-color: var(--color-border);
+    flex-shrink: 0;
+  }
+  .card-tags {
+    display: inline-flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .reading-time {
+    color: var(--color-text-muted);
+  }
   .empty-msg {
     padding: 1.5rem;
     text-align: center;
@@ -261,13 +286,7 @@ if (import.meta.env.PROD) {
   }
   .card h3 { margin-top: 0.25rem; }
 
-  .blog-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.25rem;
-    flex-wrap: wrap;
-  }
+  .card h3 { margin-bottom: 0.25rem; }
 
   .blog-card {
     border-left: 3px solid var(--color-primary);

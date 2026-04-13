@@ -303,6 +303,8 @@ export const en: Labels = {
     switchTo: "View in English",
   },
 
+  readingTime: (min: number) => `${min} min read`,
+
   // --- SNS share buttons ---
   share: {
     title: "Share this article",
