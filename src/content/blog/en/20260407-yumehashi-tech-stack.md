@@ -35,23 +35,37 @@ This article focuses on the **technical internals**:
 
 The key design: **primary storage is browser-side SQLite**. Firestore is a "full JSON cloud backup." Most reads and writes complete locally, keeping Firestore free-tier writes (20,000/day) well within bounds up to DAU 3,000.
 
+### Key Tech Stack
+
+| Layer | Technology | Why |
+|---|---|---|
+| UI | Flutter (Dart) | Single codebase for Web / Windows |
+| State | Riverpod | Compile-time DI, testable |
+| Local DB | Drift (SQLite) | Type-safe queries, WASM for Web |
+| Auth | Firebase Auth | Seamless anonymous → email migration |
+| Payment | Stripe (via Apps Script) | No secret keys on client |
+
+Running at **zero monthly cost** for over a year. The only variable cost factor is Firestore writes (DAU 3,000 threshold).
+
 ---
 
 ## 5 Implementation Challenges
 
 ### Challenge #1: Slow Initial Load
 
-**Problem:** First Paint at 3.4s cached, 6-10s cold start due to a serial dependency chain including Apps Script's 1.8s cold start.
+HAR analysis showed First Paint at 3.4s (cached), 6-10s cold start.
+
+**Problem:** Apps Script's Stripe verification took 1.8s, blocking the serial dependency chain.
 
 **Solution:** Three-pronged approach — cache premium state before `runApp()`, defer external calls via `addPostFrameCallback`, and add preconnect/preload hints to `index.html`.
 
 ### Challenge #2: Inbox Data Growth
 
-**Solution:** Auto-delete read notifications older than 30 days. Unread notifications protected regardless of age.
+After 1 year of operation, accumulated notifications pressured memory and Firestore. **Solution:** Auto-delete read notifications older than 30 days. Unread notifications protected regardless of age — deleting unread items would erode user trust.
 
 ### Challenge #3: Completed Task Accumulation
 
-**Solution:** Default-hide completed tasks + auto-delete completed tasks older than 30 days via `DataRetentionService`.
+After 10 months, task list rendering became noticeably slower on real devices. **Solution:** Default-hide completed tasks + auto-delete completed tasks older than 30 days via `DataRetentionService`. Added FAQ entry: "Export data you want to keep before it's auto-deleted."
 
 ### Challenge #4: Duplicate Announcements
 

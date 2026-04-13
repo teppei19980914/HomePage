@@ -387,8 +387,8 @@ export const ja = {
   share: {
     title: "この記事をシェア",
     x: "X でシェア",
-    facebook: "Facebook でシェア",
-    copyLink: "リンクをコピー",
+    copyText: "シェア用テキストをコピー",
+    copyLink: "URL をコピー",
     copied: "コピーしました！",
   },
 

@@ -124,6 +124,8 @@ The app built with this system is "[YumeHashi](https://teppei19980914.github.io/
 2. **Break it down** — Decompose dreams into goals, goals into tasks
 3. **Keep going** — Your activities light up as constellations
 
+The app packs 32 features. For the detailed tech stack, see the [tech stack article](/HomePage/en/blog/20260407-yumehashi-tech-stack/).
+
 ---
 
 ## Judge the quality yourself — try the app built in 3 weeks

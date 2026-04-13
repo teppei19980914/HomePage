@@ -31,7 +31,6 @@ This article covers the full process, including the **duplicate article ID trap*
 ② /improve-article skill auto-executes
    ├── Qiita trend analysis (fetches latest each time)
    ├── SEO 6-point check
-   ├── Improve structure and expression (without changing content)
    └── Auto-calculate scheduled date
    ↓
 ③ Git managed (daily branch → PR → merge to main)
@@ -43,27 +42,61 @@ This article covers the full process, including the **duplicate article ID trap*
 
 ---
 
-## The Article ID Trap — The Same Article Published 4 Times
+## Step 1: Managing Articles with Qiita CLI
 
-This was the hardest part. When Qiita CLI creates a new article, the frontmatter `id` is `null`.
+[Qiita CLI](https://github.com/increments/qiita-cli) is Qiita's official command-line tool.
 
-```yaml
-id: null          # Not yet published to Qiita
-ignorePublish: false
+```bash
+npm install @qiita/qiita-cli --save-dev
+npx qiita init && npx qiita login && npx qiita pull
 ```
 
-When merged to main, `publish.yml` runs `qiita publish --all`. Qiita CLI treats `id: null` articles as **new articles every time**.
+This syncs all your Qiita articles as Markdown files in `public/`. My account had **213 articles** pulled in one shot.
+
+---
+
+## Step 2: Automating Article Improvement with Claude Code
+
+The `.claude/skills/improve-article.md` skill defines the full improvement process. Telling Claude Code "improve this article" triggers a 10-step automated improvement — including **accumulative trend analysis** that builds a pattern library over time rather than overwriting.
+
+---
+
+## Step 3: Scheduled Publishing — 1 Article per Day
+
+Just specify the scheduled date in frontmatter:
+
+```yaml
+ignorePublish: true                    # Reserved state
+scheduled_publish_date: "2026-04-15"   # Auto-publishes on this date
+```
+
+A GitHub Actions cron job runs at **20:00 JST daily** and publishes 1 scheduled article. The next date is auto-calculated from the latest existing scheduled date — no manual date math needed.
+
+### Why 20:00 JST
+
+| Time Slot | Effect |
+|---|---|
+| **Morning (9:00-12:00)** | Gets initial traction (work-time searches) |
+| **Evening (20:00-22:00)** | **Read deeply** (post-work reading) |
+| Weekends | PV drops to 1/5 of weekdays |
+
+**Wednesday has the highest Qiita PV** in data, so when batch-writing multiple articles, the most viral candidate gets the Wednesday slot.
+
+---
+
+## Step 4: The Article ID Trap — The Same Article Published 4 Times
+
+When Qiita CLI creates a new article, the frontmatter `id` is `null`. When merged to main, `publish.yml` runs `qiita publish --all`. Qiita CLI treats `id: null` articles as **new articles every time**.
 
 The default workflow had **no mechanism to commit the Qiita-assigned ID back to the repository**.
 
 ```text
 1st merge → publish id:null article → Qiita assigns ID
           → but repo still has id:null
-2nd merge → still id:null → published again as new
-3rd merge → still id:null → published yet again...
+2nd merge → still id:null → published again as new...
 ```
 
-Result: **the same article was published 4 times**.
+Result: **the same article was published 4 times**. Then deleting the duplicates on Qiita left files with deleted IDs locally — triggering **404 errors** that broke the entire workflow.
 
 ### The Fix: ID Commit-Back
 
@@ -79,8 +112,6 @@ Result: **the same article was published 4 times**.
     fi
 ```
 
-### Lessons Learned
-
 | Lesson | Details |
 |---|---|
 | **`id: null` + `ignorePublish: false` is dangerous** | Publishes as new on every merge |
@@ -89,15 +120,13 @@ Result: **the same article was published 4 times**.
 
 ---
 
-## Why 20:00 JST — Data-Driven Publishing
+## Step 5: Git Workflow — Daily Branch Automation
 
-| Time Slot | Effect |
-|---|---|
-| **Morning (9:00-12:00)** | Gets initial traction (work-time searches) |
-| **Evening (20:00-22:00)** | **Read deeply** (post-work reading) |
-| Weekends | PV drops to 1/5 of weekdays |
+Claude Code Hooks automate the daily branch workflow.
 
-**Wednesday has the highest Qiita PV** (31,759 PV in data), fitting the Thursday trend update → Sunday Best 20 → Wednesday newsletter flow.
+**SessionStart Hook**: Detects previous day branches → commits & pushes uncommitted changes → auto-creates PRs → deletes merged branches → creates today's branch.
+
+**Stop Hook**: Runs secret scan → auto-commits changes → SEO check. **No manual commits needed.**
 
 ---
 
@@ -107,18 +136,14 @@ Result: **the same article was published 4 times**.
 |---|---|---|
 | **Editing** | Qiita browser editor | Local Markdown + Git |
 | **SEO** | Manual each time | Skill auto-optimizes + Stop Hook checks |
-| **Trends** | Gut feeling | Fetch and accumulate each time |
 | **Timing** | Publish immediately | 20:00 JST scheduled (Wednesday strategy) |
-| **Commits** | Manual | Stop Hook auto-commits |
 | **Article IDs** | Manual (duplicate risk) | Auto commit-back after publish |
 
 ---
 
 ## In Closing
 
-Building this system, I fell into the "article ID duplicate" trap. The same article published 4 times, deleted articles caused 404 errors, and publishing time optimization required data research.
-
-But **incorporating those failures into the system** means I can now run scheduled publishing with confidence.
+Building this system, I fell into the "article ID duplicate" trap. But **incorporating those failures into the system** means I can now run scheduled publishing with confidence.
 
 ## Related Articles
 

@@ -101,10 +101,6 @@ Quality checks embedded in systems mean humans can forget and quality is still m
 - Test execution → **automated via Hooks**
 - Security review → **automated via Agents**
 
-### Protecting Working Memory
-
-Smart people make careless mistakes because **working memory is depleted**. Prevention means reducing cognitive load: checklists, auto-formatting, CI/CD pipelines.
-
 ---
 
 ## In Closing

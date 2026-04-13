@@ -309,8 +309,8 @@ export const en: Labels = {
   share: {
     title: "Share this article",
     x: "Share on X",
-    facebook: "Share on Facebook",
-    copyLink: "Copy link",
+    copyText: "Copy share text",
+    copyLink: "Copy URL",
     copied: "Copied!",
   },
 

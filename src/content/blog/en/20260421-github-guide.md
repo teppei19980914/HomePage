@@ -43,14 +43,12 @@ This article is for my past self: **"If I'd known just this, I wouldn't have bee
                     Select changes    Record changes
 ```
 
-**"Why separate `git add` and `git commit`?"** Because sometimes you want to commit only part of your changes.
+**"Why separate `git add` and `git commit`?"** Because sometimes you want to commit only part of your changes — e.g., committing just the bug fix before the new feature.
 
-### 7 Essential Commands
+### 5 Essential Commands
 
 | Command | Meaning | When to Use |
 |---------|---------|-------------|
-| `git init` | Create new repo | Project start |
-| `git clone <URL>` | Copy remote repo | Joining a project |
 | `git status` | Check state | **When in doubt, run this** |
 | `git add <file>` | Stage changes | Before commit |
 | `git commit -m "msg"` | Record changes | At logical checkpoints |
@@ -69,7 +67,7 @@ main:     A --- B --- C --- D (production)
 feature:        E --- F --- G (in development)
 ```
 
-Even if feature branch fails, main is untouched. **Merge only when complete.**
+Even if feature branch fails, main is untouched. **Merge only when complete.** Use GitHub's branch protection rules ("Require a pull request before merging") to enforce this.
 
 ---
 
@@ -77,7 +75,7 @@ Even if feature branch fails, main is untouched. **Merge only when complete.**
 
 ### Pull Requests = "Please Review This Code"
 
-A PR is a **request to merge your branch into main**. It creates a space for code review.
+A PR is a **request to merge your branch into main**. It creates a space for code review — teammates catch bugs and design issues you'd miss.
 
 ### Issues = Task Management
 
@@ -89,6 +87,8 @@ Write `closes #42` in a PR, and the issue auto-closes on merge.
 
 ### 6 Real Workflows from Personal Projects
 
+Below are configurations actually running on this homepage and [YumeHashi](/HomePage/en/product/yumehashi/).
+
 #### ① Auto Deploy on Push to Main
 
 ```yaml
@@ -97,32 +97,26 @@ on:
     branches: [main]
   schedule:
     - cron: "0 21 * * *"  # Daily JST 6:00
+  workflow_dispatch:       # Manual trigger too
 ```
 
 **Result: `git push` automatically updates the site.**
 
 #### ② Scheduled Blog Publishing via Cron
 
-Articles with future `date` fields are automatically published when the daily build runs.
+Articles with future `date` fields automatically publish when the daily build runs at the scheduled time.
 
 #### ③ Monthly Batch: Auto-Update Dynamic Data
 
-Qiita article count and engineer years auto-updated monthly via API.
+Qiita article count auto-fetched via API → JSON updated → auto commit → push → deploy triggers. **No manual updates needed.**
 
 #### ④ PR CI: Auto Test + Version Check
 
-[YumeHashi](/HomePage/en/product/yumehashi/) runs `flutter analyze` + `flutter test` + version 4-file set check on every PR. **Prevents merging without tests or version updates.**
+[YumeHashi](/HomePage/en/product/yumehashi/) runs `flutter analyze` + `flutter test` + version 4-file set consistency check on every PR. **Prevents merging without passing tests or forgetting version updates.**
 
 #### ⑤ Weekly Stress Test + Auto Issue Creation
 
-```yaml
-schedule:
-  - cron: '0 3 * * 0'  # Weekly Sunday
-permissions:
-  issues: write
-```
-
-**If performance degrades, an Issue is automatically created.** Quality monitored weekly without human intervention.
+Every Sunday, stress tests run automatically. If performance thresholds are exceeded, a GitHub Issue is automatically created. **Quality monitored weekly without human intervention.**
 
 #### ⑥ Deploy-Time Version Stamp
 
@@ -168,6 +162,12 @@ This homepage runs on GitHub Pages at **zero monthly cost**.
             ▼
        [GitHub Pages] → Free hosting
 ```
+
+| Your Situation | Next Step |
+|---|---|
+| Never used Git | Experience `git status` → `git add` → `git commit` |
+| Use Git but afraid of branches | Try `git checkout -b` and submit a PR |
+| Know GitHub but not Actions | Copy the `deploy.yml` above and run it in your repo |
 
 ## Related Articles
 

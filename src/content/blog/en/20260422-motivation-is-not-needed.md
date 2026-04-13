@@ -88,11 +88,9 @@ Systematize any action the same way — **"When X happens, do Y"** — and it co
 
 ## Applying to Engineering
 
-### The Value of Consistent Output
+### Systematizing Code Review
 
-The most trusted engineer isn't the one who delivers 120% on good days. It's the one who **delivers 80% consistently every day**.
-
-120% on good days → 30% on bad days → average 75%. That's less reliable than steady 80% daily. Teams can plan around consistency.
+"I need to do code review" but keep putting it off — that's motivation dependency in action. The systematic solution: **"When a PR arrives, review it before starting the next task."** Eliminate the "do it or not?" decision entirely.
 
 ### AI-Driven Development Is Systematization
 

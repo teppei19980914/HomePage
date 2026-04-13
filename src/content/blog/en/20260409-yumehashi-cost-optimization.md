@@ -29,18 +29,13 @@ YumeHashi stores **1 Firestore document per user**, containing all data (dreams,
         ^ Master                       ^ Backup
 ```
 
+Firestore writes happen in only 3 cases: timestamp comparison on startup, after debounce on data changes, and unsync'd data on app exit.
+
 ---
 
 ## Optimization 1: JSON Indent Removal
 
-Previously, exported JSON used `JsonEncoder.withIndent('  ')` for readability. But **cloud sync doesn't need indentation** — no human reads it directly.
-
-```dart
-Future<String> exportDataCompact() async {
-  final data = await _buildExportMap();
-  return json.encode(data);  // No indentation
-}
-```
+Use `json.encode(data)` for cloud sync exports, eliminating indentation. The existing formatted export remains for local file backups only.
 
 Result: **~20% size reduction**.
 
@@ -49,13 +44,10 @@ Result: **~20% size reduction**.
 ## Optimization 2: Write Debounce 3s → 5s
 
 ```dart
-// Before
-static const _debounceDuration = Duration(seconds: 3);
-// After
-static const _debounceDuration = Duration(seconds: 5);
+static const _debounceDuration = Duration(seconds: 5); // changed from 3s
 ```
 
-A one-line change with significant impact. In typical scenarios (editing 4-5 tasks sequentially), 3s debounce splits into 2-3 writes; 5s debounce consolidates to 1.
+A one-line change with significant impact. In typical scenarios (editing 4-5 tasks sequentially), 3s debounce splits into 2-3 writes; 5s debounce consolidates to 1. Since local DB writes immediately, data is never lost even if the tab closes during debounce.
 
 Result: **~30-40% write reduction**.
 
@@ -63,19 +55,12 @@ Result: **~30-40% write reduction**.
 
 ## Optimization 3: gzip Compression + Format Versioning
 
-The main event. Compress the JSON string with **gzip**, then Base64-encode it for Firestore's text-only field.
+Compress the JSON string with **gzip**, then Base64-encode it for Firestore's text-only field. Base64 inflates by ~1.33x, but gzip's compression ratio (3-5x for repetitive text) far outweighs that.
 
-### Backward Compatibility via Prefix Versioning
+To achieve zero impact on existing users, **prefix-based format versioning** was introduced:
 
 ```dart
 const String syncPayloadFormat2Prefix = 'gz1:';
-
-String encodeSyncPayload(String jsonString) {
-  final bytes = utf8.encode(jsonString);
-  final gzipped = GZipEncoder().encode(bytes);
-  if (gzipped == null) return jsonString; // fallback
-  return '$syncPayloadFormat2Prefix${base64Encode(gzipped)}';
-}
 
 String decodeSyncPayload(String payload) {
   if (!payload.startsWith(syncPayloadFormat2Prefix)) {
@@ -88,7 +73,11 @@ String decodeSyncPayload(String payload) {
 }
 ```
 
-**Existing users automatically migrate to format 2 on their next write** — zero impact, zero downtime.
+- `gz1:` prefix identifies format 2 (compressed)
+- JSON always starts with `{` or `[`, so no collision
+- **Existing users automatically migrate to format 2 on their next write**
+
+Note: compression and Base64 are reversible encodings, not encryption. Security remains via Firestore Security Rules and HTTPS as before.
 
 Result: Combined with indent removal, **reduced to 1/4-1/5 of original size**.
 
@@ -96,17 +85,7 @@ Result: Combined with indent removal, **reduced to 1/4-1/5 of original size**.
 
 ## Optimization 4: Document Size Monitoring
 
-Pre-upload payload size check against Firestore's hard 1 MiB limit:
-
-```dart
-void _warnIfPayloadTooLarge(String payload) {
-  final size = payload.length;
-  if (size > _payloadWarningBytes) { // 900 KB
-    debugPrint('[SyncManager] WARNING: Large payload '
-      '(${(size / 1024).toStringAsFixed(1)} KB / limit 1024 KB).');
-  }
-}
-```
+Pre-upload payload size check against Firestore's hard 1 MiB limit. If over 900 KB, logs a `debugPrint` warning. Combined with the existing policy of physically deleting 30-day-old read notifications and completed tasks, hitting 1 MiB in normal usage is extremely unlikely.
 
 ---
 
