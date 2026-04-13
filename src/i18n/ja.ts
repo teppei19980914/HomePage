@@ -244,6 +244,7 @@ export const ja = {
     allTitle: "記事一覧",
     emptyMessage: "記事はまだありません。",
     draftBanner: "この記事は下書きです。Web では表示されません。",
+    scheduledBanner: "この記事は予約投稿です。公開予定日まで Web では表示されません。",
     featuredSection: {
       title: "ピックアップ記事",
       subtitle: "著者が特におすすめする記事",
@@ -388,4 +389,5 @@ export const ja = {
     copyLink: "リンクをコピー",
     copied: "コピーしました！",
   },
+
 };

@@ -143,6 +143,7 @@ if (import.meta.env.PROD) {
               >
                 <div class="blog-card-header">
                   {post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
+                  {!post.data.draft && post.data.date > new Date() && <span class="scheduled-badge">{blog.scheduledBanner}</span>}
                   <span class="date">
                     {post.data.date.toLocaleDateString(BCP47[lang])}
                   </span>
@@ -227,15 +228,21 @@ if (import.meta.env.PROD) {
   .section-subtitle { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
   .section-link { text-align: right; margin-top: 1rem; }
   .section-link a { font-size: 0.9rem; font-weight: 600; }
-  .draft-badge {
+  .draft-badge, .scheduled-badge {
     display: inline-block;
     font-size: 0.7rem;
     font-weight: 600;
     padding: 0.15rem 0.5rem;
     border-radius: 9999px;
+    width: 100%;
+  }
+  .draft-badge {
     background-color: rgba(234, 179, 8, 0.15);
     color: #ca8a04;
-    width: 100%;
+  }
+  .scheduled-badge {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #2563eb;
   }
   .empty-msg {
     padding: 1.5rem;

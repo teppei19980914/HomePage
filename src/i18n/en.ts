@@ -322,6 +322,7 @@ export const en: Labels = {
     allTitle: "All Posts",
     emptyMessage: "No posts yet.",
     draftBanner: "This article is a draft. It will not be displayed on the web.",
+    scheduledBanner: "This article is scheduled. It will not be displayed on the web until the publish date.",
     featuredSection: {
       title: "Featured Articles",
       subtitle: "Handpicked by the author",
