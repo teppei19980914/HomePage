@@ -11,6 +11,7 @@ export const getStaticPaths = localeStaticPaths;
 const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
 const { blog, common, readingTime: readingTimeLabel } = t;
+const isDev = import.meta.env.DEV;
 
 const posts = (await getLocalizedCollection("blog", lang))
   .filter(isVisibleInDev)
@@ -36,8 +37,8 @@ const posts = (await getLocalizedCollection("blog", lang))
                 class="card blog-card"
                 data-astro-reload
               >
-                {post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
-                {!post.data.draft && post.data.date > new Date() && <span class="scheduled-badge">{blog.scheduledBanner}</span>}
+                {isDev && post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
+                {isDev && !post.data.draft && post.data.date > new Date() && <span class="scheduled-badge">{blog.scheduledBanner}</span>}
                 <h3>{post.data.title}</h3>
                 <div class="card-meta">
                   <span class="date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>

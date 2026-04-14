@@ -27,8 +27,10 @@ const t = getLabels(lang);
 const { common, share, blog, readingTime: readingTimeLabel } = t;
 const readingMin = estimateReadingTime(post.body ?? "");
 const { Content } = await render(post);
-const isDraft = post.data.draft === true;
-const isScheduled = !isDraft && post.data.date > new Date();
+// dev 環境でのみ下書き/予約投稿バナーを表示（本番では表示しない）
+const isDev = import.meta.env.DEV;
+const isDraft = isDev && post.data.draft === true;
+const isScheduled = isDev && !post.data.draft && post.data.date > new Date();
 
 // シェア用 URL とテキストをビルド時に生成
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
