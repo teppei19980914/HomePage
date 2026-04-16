@@ -5,6 +5,9 @@
       "WebFetch(domain:zenn.dev)",
       "WebFetch(domain:www.facebook.com)",
       "WebFetch(domain:tbsb.info)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\SF02512\\GitHub\\Private\\CreateQiita\\public"
     ]
   }
 }
