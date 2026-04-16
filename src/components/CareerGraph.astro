@@ -22,56 +22,59 @@ const { about, careerGraph } = t;
   </div>
 
   <div class="cg-graph">
-    <svg class="cg-svg" viewBox="0 0 380 620" preserveAspectRatio="xMidYMin meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="cg-svg" viewBox="-40 0 420 680" preserveAspectRatio="xMidYMin meet" fill="none" xmlns="http://www.w3.org/2000/svg">
       <!-- Main line (center = 110) -->
       <line x1="110" y1="25" x2="110" y2="70" class="cg-line-main" />
-      <line x1="110" y1="70" x2="110" y2="340" class="cg-line-main" />
-      <line x1="110" y1="340" x2="110" y2="600" class="cg-line-main" />
+      <line x1="110" y1="70" x2="110" y2="360" class="cg-line-main" />
+      <line x1="110" y1="360" x2="110" y2="660" class="cg-line-main" />
 
-      <!-- Merge curves (personal dev のみ) -->
+      <!-- Merge curves (personal dev) -->
       <path d="M55,125 C55,95 110,95 110,70" class="cg-line-personal" />
 
-      <!-- Branch vertical (personal dev のみ) -->
-      <line x1="55" y1="125" x2="55" y2="290" class="cg-line-personal" />
+      <!-- Branch vertical (personal dev) -->
+      <line x1="55" y1="125" x2="55" y2="310" class="cg-line-personal" />
 
-      <!-- Fork curves (personal dev のみ) -->
-      <path d="M110,340 C110,315 55,315 55,290" class="cg-line-personal" />
+      <!-- Fork curves (personal dev) -->
+      <path d="M110,360 C110,335 55,335 55,310" class="cg-line-personal" />
 
       <!-- Nodes -->
       <circle cx="110" cy="25" r="7" class="cg-dot-main cg-dot-big" />
       <circle cx="110" cy="70" r="4" class="cg-dot-main" />
-      <circle cx="110" cy="340" r="5" class="cg-dot-main cg-dot-fork" />
-      <circle cx="110" cy="390" r="3" class="cg-dot-main" />
-      <circle cx="110" cy="435" r="3" class="cg-dot-main" />
-      <circle cx="110" cy="480" r="3" class="cg-dot-main" />
-      <circle cx="110" cy="525" r="3" class="cg-dot-main" />
-      <circle cx="110" cy="580" r="7" class="cg-dot-main cg-dot-big" />
-      <circle cx="55" cy="175" r="3" class="cg-dot-personal" />
-      <circle cx="55" cy="240" r="3" class="cg-dot-personal" />
+      <circle cx="110" cy="360" r="5" class="cg-dot-main cg-dot-fork" />
+      <circle cx="110" cy="410" r="3" class="cg-dot-main" />
+      <circle cx="110" cy="455" r="3" class="cg-dot-main" />
+      <circle cx="110" cy="500" r="3" class="cg-dot-main" />
+      <circle cx="110" cy="545" r="3" class="cg-dot-main" />
+      <circle cx="110" cy="640" r="7" class="cg-dot-main cg-dot-big" />
+      <circle cx="55" cy="155" r="3" class="cg-dot-personal" />
+      <circle cx="55" cy="215" r="3" class="cg-dot-personal" />
+      <circle cx="55" cy="275" r="3" class="cg-dot-personal" />
 
       <!-- Labels -->
       <text x="125" y="30" class="cg-svg-text cg-svg-text-bold">{about.career.now}</text>
 
       <!-- Personal Dev (left) -->
-      <text x="45" y="173" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[0].name}</text>
-      <text x="45" y="188" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[0].date}</text>
-      <text x="45" y="238" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[1].name}</text>
-      <text x="45" y="253" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[1].date}</text>
+      <text x="45" y="153" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[0].name}</text>
+      <text x="45" y="168" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[0].date}</text>
+      <text x="45" y="213" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[1].name}</text>
+      <text x="45" y="228" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[1].date}</text>
+      <text x="45" y="273" text-anchor="end" class="cg-svg-text">{careerGraph.personalDev[2].name}</text>
+      <text x="45" y="288" text-anchor="end" class="cg-svg-text-small cg-svg-text-cyan">{careerGraph.personalDev[2].date}</text>
 
       <!-- Fork label -->
-      <text x="125" y="345" class="cg-svg-text-small cg-svg-text-muted">{about.career.branchLabel}</text>
+      <text x="125" y="365" class="cg-svg-text-small cg-svg-text-muted">{about.career.branchLabel}</text>
 
       <!-- Career history -->
-      <text x="125" y="388" class="cg-svg-text">{careerGraph.history[0].name}</text>
-      <text x="125" y="403" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[0].dateSuffix}</text>
-      <text x="125" y="433" class="cg-svg-text">{careerGraph.history[1].name}</text>
-      <text x="125" y="448" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[1].dateSuffix}</text>
-      <text x="125" y="478" class="cg-svg-text">{careerGraph.history[2].name}</text>
-      <text x="125" y="493" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[2].dateSuffix}</text>
-      <text x="125" y="523" class="cg-svg-text">{careerGraph.history[3].name}</text>
-      <text x="125" y="538" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[3].dateSuffix}</text>
-      <text x="125" y="578" class="cg-svg-text">{careerGraph.history[4].name}</text>
-      <text x="125" y="593" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[4].dateSuffix}</text>
+      <text x="125" y="408" class="cg-svg-text">{careerGraph.history[0].name}</text>
+      <text x="125" y="423" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[0].dateSuffix}</text>
+      <text x="125" y="453" class="cg-svg-text">{careerGraph.history[1].name}</text>
+      <text x="125" y="468" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[1].dateSuffix}</text>
+      <text x="125" y="498" class="cg-svg-text">{careerGraph.history[2].name}</text>
+      <text x="125" y="513" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[2].dateSuffix}</text>
+      <text x="125" y="543" class="cg-svg-text">{careerGraph.history[3].name}</text>
+      <text x="125" y="558" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[3].dateSuffix}</text>
+      <text x="125" y="638" class="cg-svg-text">{careerGraph.history[4].name}</text>
+      <text x="125" y="653" class="cg-svg-text-small cg-svg-text-muted">{careerGraph.history[4].dateSuffix}</text>
     </svg>
   </div>
 </div>
@@ -108,7 +111,7 @@ const { about, careerGraph } = t;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    aspect-ratio: 380 / 620;
+    aspect-ratio: 420 / 680;
   }
 
   .cg-svg {

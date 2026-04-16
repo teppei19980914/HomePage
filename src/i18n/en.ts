@@ -224,6 +224,7 @@ export const en: Labels = {
   // --- Career graph ---
   careerGraph: {
     personalDev: [
+      { name: "HomePage", date: "2026.04" },
       { name: "YumeHashi", date: "2026.03" },
       { name: "Defrago", date: "2026.01" },
     ],
