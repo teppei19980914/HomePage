@@ -1,7 +1,7 @@
 ---
 title: '"Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself'
 description: "Reading 'Black Box Thinking' revealed how ego blocks learning from failure. I explore the mechanisms of self-esteem-driven denial and how engineers can build systems to detect, report, and leverage failure."
-date: 2026-04-18
+date: 2026-04-19
 tags: ["Reading", "Self-Growth", "Team Building", "Psychological Safety", "Essay"]
 ---
 

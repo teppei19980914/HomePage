@@ -1,13 +1,13 @@
 ---
 title: "AI That Implements Without Hesitation — How to Write a 20-Section, 3,500-Line Design Doc"
 description: "Publishing the structure of the design doc that reduced 16 person-days to 2 hours in AI-driven development. The roles and priorities of 20 sections, and the 'must-write' points for each."
-date: 2026-04-25
+date: 2026-04-26
 tags: ["AI-Driven Development", "Design", "Productivity", "Side Project", "New Programmers"]
 ---
 
 ## Publishing the Table of Contents
 
-In [the previous article](/HomePage/en/blog/20260424-design-doc-speed/), I wrote that design doc completeness determines development speed. So what exactly makes a "complete" design doc?
+In [the previous article](/HomePage/en/blog/20260425-design-doc-speed/), I wrote that design doc completeness determines development speed. So what exactly makes a "complete" design doc?
 
 Here's the structure that achieved 16 person-days → 2 hours.
 
@@ -77,6 +77,6 @@ Start with just the 7 ★★★ sections. That alone will dramatically change AI
 
 ## Related Articles
 
-- [16 Person-Days Done in 2 Hours — Design Doc Completeness Determines Speed](/HomePage/en/blog/20260424-design-doc-speed/) — Why completeness matters
+- [16 Person-Days Done in 2 Hours — Design Doc Completeness Determines Speed](/HomePage/en/blog/20260425-design-doc-speed/) — Why completeness matters
 - ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — AI development performance data
-- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260418-failure-science/) — Accumulating judgments as systems
+- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260419-failure-science/) — Accumulating judgments as systems

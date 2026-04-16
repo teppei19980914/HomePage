@@ -1,7 +1,7 @@
 ---
 title: "Don't Bring Motivation to Work — Deliver Consistent Results Through Systems, Like Brushing Your Teeth"
 description: "Motivation-driven action inevitably burns out. Understanding how self-preservation instincts block change, and how systematizing actions like brushing teeth enables consistent output regardless of mood."
-date: 2026-04-22
+date: 2026-04-23
 tags: ["Career", "Self-Growth", "Productivity", "Essay", "Team Building"]
 ---
 
@@ -116,7 +116,7 @@ Imagine brushing your teeth.
 
 ## Related Articles
 
-- ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260419-essentialism-effortless/) — The philosophy behind systematization
+- ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260420-essentialism-effortless/) — The philosophy behind systematization
 - ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — Systematizing actions for others
 - [INTJ-AS — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — Personality traits for consistent output
 - ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — Building systems within limited time

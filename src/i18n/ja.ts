@@ -258,6 +258,22 @@ export const ja = {
       linkText: "Qiita ですべての記事を見る",
       linkUrl: "https://qiita.com/teppei19980914",
     },
+    calendar: {
+      title: "投稿カレンダー",
+      subtitle: "過去の投稿と今後の公開予定が一目で分かります",
+      legendPublished: "公開済み",
+      legendScheduled: "公開予定",
+      weekDays: ["日", "月", "火", "水", "木", "金", "土"],
+      monthNames: [
+        "1月", "2月", "3月", "4月", "5月", "6月",
+        "7月", "8月", "9月", "10月", "11月", "12月",
+      ],
+      scheduledSuffix: "(公開予定)",
+      prev: "前の月",
+      next: "次の月",
+      monthArticlesTitle: "この月の記事",
+      emptyMonth: "この月に投稿された記事はありません。",
+    },
   },
 
   // --- Product ページ ---

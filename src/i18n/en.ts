@@ -338,6 +338,22 @@ export const en: Labels = {
       linkText: "See all articles on Qiita",
       linkUrl: "https://qiita.com/teppei19980914",
     },
+    calendar: {
+      title: "Publishing Calendar",
+      subtitle: "Past posts and upcoming scheduled articles at a glance",
+      legendPublished: "Published",
+      legendScheduled: "Scheduled",
+      weekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      monthNames: [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+      ],
+      scheduledSuffix: " (scheduled)",
+      prev: "Previous month",
+      next: "Next month",
+      monthArticlesTitle: "Articles this month",
+      emptyMonth: "No articles published this month.",
+    },
   },
 
   // --- Product page ---

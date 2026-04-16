@@ -78,4 +78,4 @@ Time can't be stopped. So I keep striving within it. That's the conclusion I rea
 - [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — Self-analysis from another angle
 - ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/20260412-power-of-words/) — Both triggered by a senior's words
 - [I Launched My Homepage — Consolidating Scattered Information into One Place](/HomePage/en/blog/20260406-hello-world/) — Creating a place to "consolidate myself" within limited time
-- ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260419-essentialism-effortless/) — Focusing on what's essential in a limited life
+- ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260420-essentialism-effortless/) — Focusing on what's essential in a limited life

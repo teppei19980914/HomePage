@@ -1,7 +1,7 @@
 ---
 title: "Qiita CLI × Claude Code — Automating Article Management with Trend Analysis, SEO, and Scheduled Publishing"
 description: "I built a system combining Qiita CLI, Claude Code, and GitHub Actions to manage articles entirely in Git. This covers the full journey including a duplicate article ID trap and data-driven publishing time optimization."
-date: 2026-04-20
+date: 2026-04-21
 tags: ["Qiita", "Claude Code", "AI-Driven Development", "GitHub Actions", "Automation"]
 ---
 
@@ -148,5 +148,5 @@ Building this system, I fell into the "article ID duplicate" trap. But **incorpo
 ## Related Articles
 
 - ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — Building an app in 3 weeks with AI
-- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260418-failure-science/) — Systematizing failure
-- ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260419-essentialism-effortless/) — The philosophy of systematization
+- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260419-failure-science/) — Systematizing failure
+- ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260420-essentialism-effortless/) — The philosophy of systematization

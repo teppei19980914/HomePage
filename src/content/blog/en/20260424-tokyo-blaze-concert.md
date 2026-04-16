@@ -1,7 +1,7 @@
 ---
 title: "The Power of Small Contributions — Reflections from Tokyo Blaze Symphonic Band's 13th Concert"
 description: "Attending the Tokyo Blaze Symphonic Band's concert for the third consecutive year, I witnessed how individual efforts converge into a single piece of music — and what it taught me about team building and psychological safety."
-date: 2026-04-23
+date: 2026-04-24
 tags: ["Team Building", "Psychological Safety", "Essay", "Music"]
 ---
 
@@ -9,7 +9,7 @@ tags: ["Team Building", "Psychological Safety", "Essay", "Music"]
 
 I recently attended the [Tokyo Blaze Symphonic Band 13th Regular Concert](https://tbsb.info/13th-regular-concert/). This was my third consecutive year.
 
-![Tokyo Blaze Symphonic Band 13th Concert Program](/HomePage/blog/20260423-tokyo-blaze-concert/program.jpg)
+![Tokyo Blaze Symphonic Band 13th Concert Program](/HomePage/blog/20260424-tokyo-blaze-concert/program.jpg)
 
 A senior colleague from my first company performs in this ensemble. Why do I keep going? To witness the moment when **small individual contributions converge into a single piece of music**.
 

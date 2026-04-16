@@ -1,7 +1,7 @@
 ---
 title: 'From "What Is Git?" to GitHub Actions — The Big Picture New Engineers Wish They Knew'
 description: "A step-by-step guide covering Git, branches, GitHub, GitHub Actions, and GitHub Pages. Includes real CI/CD configurations (auto-deploy, scheduled publishing, stress testing) from two personal projects with actual code."
-date: 2026-04-21
+date: 2026-04-22
 tags: ["Git", "GitHub", "GitHub Actions", "CI/CD", "New Programmers"]
 ---
 
@@ -173,4 +173,4 @@ This homepage runs on GitHub Pages at **zero monthly cost**.
 
 - ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — CI/CD performance data with GitHub Actions
 - [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/20260407-yumehashi-tech-stack/) — Practical GitHub Actions challenges and solutions
-- [Qiita CLI × Claude Code — Automating Article Management](/HomePage/en/blog/20260420-qiita-cli-automation/) — Building scheduled publishing with GitHub Actions
+- [Qiita CLI × Claude Code — Automating Article Management](/HomePage/en/blog/20260421-qiita-cli-automation/) — Building scheduled publishing with GitHub Actions

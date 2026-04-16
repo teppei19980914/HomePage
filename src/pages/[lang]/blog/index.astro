@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import BlogCalendar from "../../../components/BlogCalendar.astro";
 import { getLabels, normalizeLocale, BCP47 } from "../../../i18n";
 import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
@@ -15,10 +16,13 @@ import dynamicStats from "../../../data/dynamic-stats.json";
 const { blog, common, readingTime: readingTimeLabel } = t;
 const isDev = import.meta.env.DEV;
 
-// 全記事を日付降順で取得
-const allPosts = (await getLocalizedCollection("blog", lang))
-  .filter(isVisibleInDev)
+// 全記事を日付降順で取得（draft を除き、予約投稿も含む。カレンダー表示で必要）
+const postsAllDates = (await getLocalizedCollection("blog", lang))
+  .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// カード表示用は isVisibleInDev でさらにフィルタ（本番では未来日付を除外）
+const allPosts = postsAllDates.filter(isVisibleInDev);
 
 // ピックアップ記事の決定:
 // 1. dynamic-stats.json の featuredSlugs（月次バッチで自動更新）を優先
@@ -223,6 +227,9 @@ if (import.meta.env.PROD) {
       </section>
     )
   }
+
+  <!-- 投稿カレンダー（予約投稿含む全記事） -->
+  <BlogCalendar posts={postsAllDates} lang={lang} labels={blog.calendar} />
 </BaseLayout>
 
 <style>

@@ -397,148 +397,6 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
     min-width: 0;
   }
 
-  /* ===== Mobile TOC (折りたたみ) ===== */
-  .toc-mobile {
-    margin-top: 1.5rem;
-    border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
-    background-color: var(--color-surface);
-    overflow: hidden;
-  }
-  .toc-mobile-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background: none;
-    border: none;
-    color: var(--color-text);
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-  .toc-mobile-toggle:hover { color: var(--color-primary); }
-  .toc-mobile-icon { font-size: 0.9rem; }
-  .toc-mobile-chevron {
-    margin-left: auto;
-    font-size: 0.6rem;
-    transition: transform 0.3s;
-  }
-  .toc-mobile-toggle[aria-expanded="true"] .toc-mobile-chevron {
-    transform: rotate(180deg);
-  }
-  .toc-mobile-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: none;
-    border-top: 1px solid var(--color-border);
-  }
-  .toc-mobile-list.is-open { display: block; }
-  .toc-mobile-list li a {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.82rem;
-    color: var(--color-text-muted);
-    background-image: none;
-    transition: color 0.2s, background-color 0.2s;
-  }
-  .toc-mobile-list li a:hover {
-    color: var(--color-primary);
-    background-color: var(--color-primary-glow);
-  }
-  .toc-mobile-list .toc-indent a {
-    padding-left: 2.5rem;
-    font-size: 0.78rem;
-    border-left: 2px solid var(--color-border);
-    margin-left: 1rem;
-  }
-  .toc-mobile-list .toc-indent a:hover {
-    border-left-color: var(--color-primary);
-  }
-  .toc-mobile-list .toc-num {
-    flex-shrink: 0;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    min-width: 2rem;
-    text-align: right;
-  }
-  .toc-mobile-list .toc-label { flex: 1; }
-
-  /* ===== Sidebar TOC (PC: sticky) ===== */
-  .toc-sidebar {
-    display: none; /* デフォルト非表示、PC のみ表示 */
-    width: 220px;
-    flex-shrink: 0;
-  }
-  .toc-sidebar-inner {
-    position: sticky;
-    top: 4rem; /* ヘッダーの高さ分 */
-    max-height: calc(100vh - 5rem);
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-  .toc-sidebar-title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-text-muted);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-  .toc-sidebar-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .toc-sidebar-list li a {
-    display: flex;
-    align-items: baseline;
-    gap: 0.6rem;
-    padding: 0.35rem 0.5rem;
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
-    background-image: none;
-    border-left: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-    line-height: 1.4;
-  }
-  .toc-sidebar-list .toc-num {
-    flex-shrink: 0;
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: var(--color-accent);
-    min-width: 1.8rem;
-    text-align: right;
-  }
-  .toc-sidebar-list .toc-label { flex: 1; }
-  .toc-sidebar-list li a:hover {
-    color: var(--color-primary);
-  }
-  .toc-sidebar-list li a.is-active {
-    color: var(--color-primary);
-    border-left-color: var(--color-primary);
-    font-weight: 600;
-  }
-  .toc-sidebar-list .toc-indent a {
-    padding-left: 2rem;
-    font-size: 0.72rem;
-    opacity: 0.85;
-    margin-left: 0.75rem;
-    border-left: 2px solid var(--color-border);
-  }
-  .toc-sidebar-list .toc-indent a:hover,
-  .toc-sidebar-list .toc-indent a.is-active {
-    border-left-color: var(--color-primary);
-  }
-
   /* ===== レスポンシブ ===== */
   @media (min-width: 1080px) {
     .toc-mobile { display: none; }
@@ -624,4 +482,151 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
   .bottom-cta p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
   .btn-cta { display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; background: linear-gradient(135deg, var(--color-primary), #8b5cf6); color: white; font-weight: 600; background-image: none; transition: transform 0.25s, box-shadow 0.25s; }
   .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--color-primary-glow); color: white; }
+</style>
+
+<!-- NOTE: TOC 項目 (li/a/span) は client-side JS で動的生成されるため、
+     Astro のスコープ属性 (data-astro-cid-xxx) が付与されない。
+     そのため is:global を使ってスコープ外で適用する必要がある。 -->
+<style is:global>
+  /* ===== Mobile TOC (折りたたみ) ===== */
+  .toc-mobile {
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    overflow: hidden;
+  }
+  .toc-mobile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .toc-mobile-toggle:hover { color: var(--color-primary); }
+  .toc-mobile-icon { font-size: 0.9rem; }
+  .toc-mobile-chevron {
+    margin-left: auto;
+    font-size: 0.6rem;
+    transition: transform 0.3s;
+  }
+  .toc-mobile-toggle[aria-expanded="true"] .toc-mobile-chevron {
+    transform: rotate(180deg);
+  }
+  .toc-mobile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    border-top: 1px solid var(--color-border);
+  }
+  .toc-mobile-list.is-open { display: block; }
+  .toc-mobile-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    background-image: none;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .toc-mobile-list li a:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-glow);
+  }
+  .toc-mobile-list .toc-indent a {
+    padding-left: 2.5rem;
+    font-size: 0.78rem;
+    border-left: 2px solid var(--color-border);
+    margin-left: 1rem;
+  }
+  .toc-mobile-list .toc-indent a:hover {
+    border-left-color: var(--color-primary);
+  }
+  .toc-mobile-list .toc-num {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    min-width: 2rem;
+    text-align: right;
+  }
+  .toc-mobile-list .toc-label { flex: 1; }
+
+  /* ===== Sidebar TOC (PC: sticky) ===== */
+  .toc-sidebar {
+    display: none;
+    width: 220px;
+    flex-shrink: 0;
+  }
+  .toc-sidebar-inner {
+    position: sticky;
+    top: 4rem;
+    max-height: calc(100vh - 5rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .toc-sidebar-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .toc-sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .toc-sidebar-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    background-image: none;
+    border-left: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    line-height: 1.4;
+  }
+  .toc-sidebar-list .toc-num {
+    flex-shrink: 0;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    min-width: 1.8rem;
+    text-align: right;
+  }
+  .toc-sidebar-list .toc-label { flex: 1; }
+  .toc-sidebar-list li a:hover {
+    color: var(--color-primary);
+  }
+  .toc-sidebar-list li a.is-active {
+    color: var(--color-primary);
+    border-left-color: var(--color-primary);
+    font-weight: 600;
+  }
+  .toc-sidebar-list .toc-indent a {
+    padding-left: 2rem;
+    font-size: 0.72rem;
+    opacity: 0.85;
+    margin-left: 0.75rem;
+    border-left: 2px solid var(--color-border);
+  }
+  .toc-sidebar-list .toc-indent a:hover,
+  .toc-sidebar-list .toc-indent a.is-active {
+    border-left-color: var(--color-primary);
+  }
 </style>

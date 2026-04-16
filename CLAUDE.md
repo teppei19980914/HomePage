@@ -16,6 +16,7 @@
 - Markdown コンテンツは `src/content/{blog,product,project,profile}/{ja,en}/*.md` 配下
 - **ブログ記事ファイル名**: `YYYYMMDD-slug.md`（例: `20260418-failure-science.md`）。date は既存最新日付の翌日を設定（一日一投稿）
 - **ブログ記事の読了時間**: 3〜5分が目標。3分未満は深掘り、5分超は分割を検討
+- **ブログ記事 CRUD 時のカレンダー点検**: `src/content/blog/{ja,en}/*.md` を追加・更新・削除した場合は必ず `npm test -- blog-calendar` を実行し、カレンダー（`src/components/BlogCalendar.astro`）に正しく反映されることを自動テストで確認する。`assertAllPostsCovered` と「1 日 1 投稿」ルールが強制される
 - 新しいテキストを追加する場合は必ず ja.ts に先に追加 → en.ts で翻訳（または ja 継承）
 
 ## 運用フロー

@@ -1,7 +1,7 @@
 ---
 title: "16 Person-Days of Development Done in 2 Hours — Design Doc Completeness Determines Speed"
 description: "In a personal project, AI-driven development completed 16 person-days of work in 2 hours. The biggest factor wasn't AI speed — it was the completeness of the design document that eliminated all decision-making."
-date: 2026-04-24
+date: 2026-04-25
 tags: ["AI-Driven Development", "Design", "Productivity", "Side Project", "Essay"]
 ---
 
@@ -64,10 +64,10 @@ Raising design doc completeness is tedious work. But it's **the only way to rais
 
 What exactly should you write to create a "complete" design doc? The next article breaks down the actual 20-section structure.
 
-**[AI That Implements Without Hesitation — How to Write a 20-Section Design Doc](/HomePage/en/blog/20260425-design-doc-howto/) (Published April 25)**
+**[AI That Implements Without Hesitation — How to Write a 20-Section Design Doc](/HomePage/en/blog/20260426-design-doc-howto/) (Published April 25)**
 
 ## Related Articles
 
-- [AI That Implements Without Hesitation — How to Write a 20-Section Design Doc](/HomePage/en/blog/20260425-design-doc-howto/) — The concrete structure
+- [AI That Implements Without Hesitation — How to Write a 20-Section Design Doc](/HomePage/en/blog/20260426-design-doc-howto/) — The concrete structure
 - ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — AI development performance data
-- ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260419-essentialism-effortless/) — The thinking behind "what to do"
+- ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260420-essentialism-effortless/) — The thinking behind "what to do"

@@ -90,4 +90,4 @@ My reading habits:
 - ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — How a book changed my definition of effort
 - ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — Habits for keeping the brain active
 - ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/20260412-power-of-words/) — The original experience of learning the power of words through reading
-- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260418-failure-science/) — The importance of accumulating and analyzing failure
+- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260419-failure-science/) — The importance of accumulating and analyzing failure

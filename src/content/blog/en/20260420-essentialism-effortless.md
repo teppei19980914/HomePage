@@ -1,7 +1,7 @@
 ---
 title: '"Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It'
 description: "Reading Essentialism (what to do) and Effortless (how to do it), I explored how to focus on essential tasks and build systems to make them easier. Applying the Pickle Jar Theory, 10,000-hour rule, and broaden-and-build theory to engineering work."
-date: 2026-04-19
+date: 2026-04-20
 tags: ["Reading", "Self-Growth", "Productivity", "Essay", "Psychological Safety"]
 ---
 
@@ -116,5 +116,5 @@ These two frameworks apply not just to engineering work, but to designing life i
 
 - ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — How to use limited time
 - [What Reading Gave Me Wasn't Knowledge — It Was the Habit of Thinking from Multiple Angles](/HomePage/en/blog/20260415-reading-and-perspective/) — How reading changes thinking
-- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260418-failure-science/) — Systematizing failure
+- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260419-failure-science/) — Systematizing failure
 - ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — A reading experience that changed the definition of effort

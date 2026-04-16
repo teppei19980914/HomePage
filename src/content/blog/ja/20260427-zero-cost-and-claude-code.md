@@ -1,7 +1,7 @@
 ---
 title: "「作っては使わない」を繰り返していた私が、運用コスト0円でアプリを公開できるようになった話"
 description: "ローカルでしか動かないアプリを作っては放置していたエンジニアが、Claude Code との出会いでサーバ構築のハードルを超え、運用コスト0円で3つのプロダクトを公開するまでの変遷と、制約駆動の設計思想を語ります。"
-date: 2026-04-26
+date: 2026-04-27
 tags: ["個人開発", "Claude Code", "運用コスト0円", "設計", "GitHub Pages", "Vercel"]
 ---
 
@@ -118,5 +118,6 @@ GitHub Pages、Vercel、Supabase——無料で使えるインフラは山ほど
 
 ## 関連記事
 
-- [「テスト工程が消滅した」— AI 駆動開発 vs 従来開発を全工程で比較してみた](/HomePage/ja/blog/ai-driven-development/) — Claude Code を使った開発の具体的な実績データ
-- [『ユメログ』から『ユメハシ』へ — 夢と現実のあいだに、橋を架ける](/HomePage/ja/blog/yumehashi-story/) — 運用コスト 0 円で運用しているプロダクトの開発哲学
+- [「テスト工程が消滅した」— AI 駆動開発 vs 従来開発を全工程で比較してみた](/HomePage/ja/blog/20260410-ai-driven-development/) — Claude Code を使った開発の具体的な実績データ
+- [『ユメログ』から『ユメハシ』へ — 夢と現実のあいだに、橋を架ける](/HomePage/ja/blog/20260408-yumehashi-story/) — 運用コスト 0 円で運用しているプロダクトの開発哲学
+- [Astro v6 で個人ホームページを作って分かった — 情報の少ないフレームワークで設計を通す技術](/HomePage/ja/blog/20260418-astro-v6-homepage/) — このサイト自体の技術スタックと設計判断

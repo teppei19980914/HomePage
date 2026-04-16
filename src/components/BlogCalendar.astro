@@ -1,0 +1,523 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { stripLocale } from "../i18n/content";
+import { localeUrl } from "../i18n/url";
+import type { Locale } from "../i18n";
+import {
+  buildDayMap,
+  buildMonthGrid,
+  buildMonthList,
+  entriesForMonth,
+  toMonthKey,
+  assertAllPostsCovered,
+} from "../utils/blog-calendar";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+  lang: Locale;
+  labels: {
+    title: string;
+    subtitle: string;
+    legendPublished: string;
+    legendScheduled: string;
+    weekDays: string[];
+    monthNames: string[];
+    scheduledSuffix: string;
+    prev: string;
+    next: string;
+    monthArticlesTitle: string;
+    emptyMonth: string;
+  };
+}
+
+const { posts, lang, labels } = Astro.props;
+
+const now = new Date();
+const dayMap = buildDayMap(posts, now);
+const months = buildMonthList(posts, now);
+
+// 記事の date が全て表示月に含まれることを検証(追加/更新時の抜け漏れ検知)
+assertAllPostsCovered(posts, months);
+
+const currentMonthKey = toMonthKey(now);
+const defaultMonthKey = months.some((m) => m.key === currentMonthKey)
+  ? currentMonthKey
+  : months[Math.floor(months.length / 2)].key;
+---
+
+<section class="blog-calendar section reveal">
+  <h2>{labels.title}</h2>
+  <p class="section-subtitle">{labels.subtitle}</p>
+
+  <div class="cal-container" data-default-month={defaultMonthKey}>
+    <div class="cal-header">
+      <button
+        type="button"
+        class="cal-nav cal-nav-prev"
+        aria-label={labels.prev}
+      >
+        <span aria-hidden="true">&larr;</span>
+      </button>
+      <h3 class="cal-current-month" aria-live="polite">
+        <span class="cal-current-month-text"></span>
+      </h3>
+      <button
+        type="button"
+        class="cal-nav cal-nav-next"
+        aria-label={labels.next}
+      >
+        <span aria-hidden="true">&rarr;</span>
+      </button>
+    </div>
+
+    <div class="cal-legend">
+      <span class="cal-legend-item">
+        <span class="cal-dot cal-dot-published" aria-hidden="true"></span>
+        {labels.legendPublished}
+      </span>
+      <span class="cal-legend-item">
+        <span class="cal-dot cal-dot-scheduled" aria-hidden="true"></span>
+        {labels.legendScheduled}
+      </span>
+    </div>
+
+    {months.map(({ key, year, month }) => {
+      const cells = buildMonthGrid(year, month, dayMap, now);
+      const monthArticles = entriesForMonth(year, month, dayMap);
+      const yearLabel = `${year} / ${labels.monthNames[month]}`;
+      return (
+        <div
+          class="cal-month-panel"
+          data-month-key={key}
+          data-month-label={yearLabel}
+          hidden
+        >
+          <div class="cal-grid" role="grid">
+            {labels.weekDays.map((d, idx) => (
+              <div
+                class:list={[
+                  "cal-weekday",
+                  { "cal-weekday-sun": idx === 0, "cal-weekday-sat": idx === 6 },
+                ]}
+                role="columnheader"
+              >{d}</div>
+            ))}
+            {cells.map((cell) => {
+              if (cell.day === null) {
+                return <div class="cal-cell cal-cell-empty" role="gridcell"></div>;
+              }
+              const hasEntry = cell.entries.length > 0;
+              const firstPublished = cell.entries.find((e) => !e.scheduled);
+              const firstScheduled = cell.entries.find((e) => e.scheduled);
+              const displayPost = firstPublished?.post ?? firstScheduled?.post;
+              const href = firstPublished
+                ? localeUrl(lang, `blog/${stripLocale(firstPublished.post.id)}/`)
+                : undefined;
+              const tooltip = displayPost
+                ? firstPublished
+                  ? displayPost.data.title
+                  : `${displayPost.data.title}${labels.scheduledSuffix}`
+                : undefined;
+              const dots = cell.entries.map((e) => ({
+                scheduled: e.scheduled,
+              }));
+              return (
+                <div
+                  class:list={[
+                    "cal-cell",
+                    { "cal-cell-today": cell.isToday, "cal-cell-has-entry": hasEntry },
+                  ]}
+                  role="gridcell"
+                >
+                  {href ? (
+                    <a href={href} class="cal-cell-link" title={tooltip} data-astro-reload>
+                      <span class="cal-day-num">{cell.day}</span>
+                      {hasEntry && (
+                        <span class="cal-dots" aria-hidden="true">
+                          {dots.map((d) => (
+                            <span class:list={["cal-dot", d.scheduled ? "cal-dot-scheduled" : "cal-dot-published"]}></span>
+                          ))}
+                        </span>
+                      )}
+                      {hasEntry && displayPost && (
+                        <span class="cal-cell-title">
+                          {displayPost.data.title}
+                          {cell.entries.length > 1 && <span class="cal-more"> +{cell.entries.length - 1}</span>}
+                        </span>
+                      )}
+                    </a>
+                  ) : (
+                    <span class="cal-cell-static" title={tooltip}>
+                      <span class="cal-day-num">{cell.day}</span>
+                      {hasEntry && (
+                        <span class="cal-dots" aria-hidden="true">
+                          {dots.map((d) => (
+                            <span class:list={["cal-dot", d.scheduled ? "cal-dot-scheduled" : "cal-dot-published"]}></span>
+                          ))}
+                        </span>
+                      )}
+                      {hasEntry && displayPost && (
+                        <span class="cal-cell-title">
+                          {displayPost.data.title}
+                          {cell.entries.length > 1 && <span class="cal-more"> +{cell.entries.length - 1}</span>}
+                        </span>
+                      )}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {monthArticles.length > 0 ? (
+            <div class="cal-month-list">
+              <h4 class="cal-month-list-title">{labels.monthArticlesTitle}</h4>
+              <ul>
+                {monthArticles.flatMap(({ day, entries }) =>
+                  entries.map(({ post, scheduled }) => (
+                    <li class:list={["cal-month-list-item", { "cal-item-scheduled": scheduled }]}>
+                      <span class="cal-item-day">{day}</span>
+                      {scheduled ? (
+                        <span class="cal-item-label">
+                          {post.data.title}
+                          <span class="cal-item-suffix">{labels.scheduledSuffix}</span>
+                        </span>
+                      ) : (
+                        <a
+                          href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
+                          class="cal-item-label"
+                          data-astro-reload
+                        >{post.data.title}</a>
+                      )}
+                    </li>
+                  )),
+                )}
+              </ul>
+            </div>
+          ) : (
+            <p class="cal-empty-month">{labels.emptyMonth}</p>
+          )}
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<script>
+  function initBlogCalendar() {
+    const containers = document.querySelectorAll<HTMLElement>(".cal-container");
+    containers.forEach((container) => {
+      if (container.dataset.calInit === "true") return;
+      container.dataset.calInit = "true";
+
+      const panels = Array.from(
+        container.querySelectorAll<HTMLElement>(".cal-month-panel"),
+      );
+      if (panels.length === 0) return;
+
+      const prevBtn = container.querySelector<HTMLButtonElement>(".cal-nav-prev");
+      const nextBtn = container.querySelector<HTMLButtonElement>(".cal-nav-next");
+      const labelEl = container.querySelector<HTMLElement>(".cal-current-month-text");
+
+      const keys = panels.map((p) => p.dataset.monthKey as string);
+      let currentIdx = keys.indexOf(container.dataset.defaultMonth ?? "");
+      if (currentIdx === -1) currentIdx = 0;
+
+      function render() {
+        panels.forEach((p, i) => {
+          p.hidden = i !== currentIdx;
+        });
+        const active = panels[currentIdx];
+        if (labelEl && active) {
+          labelEl.textContent = active.dataset.monthLabel ?? "";
+        }
+        if (prevBtn) prevBtn.disabled = currentIdx === 0;
+        if (nextBtn) nextBtn.disabled = currentIdx === panels.length - 1;
+      }
+
+      prevBtn?.addEventListener("click", () => {
+        if (currentIdx > 0) {
+          currentIdx--;
+          render();
+        }
+      });
+      nextBtn?.addEventListener("click", () => {
+        if (currentIdx < panels.length - 1) {
+          currentIdx++;
+          render();
+        }
+      });
+
+      render();
+    });
+  }
+
+  initBlogCalendar();
+  document.addEventListener("astro:after-swap", initBlogCalendar);
+</script>
+
+<style>
+  .blog-calendar { margin-top: 3rem; }
+
+  .cal-container {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cal-current-month {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+  }
+
+  .cal-nav {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+  .cal-nav:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: scale(1.05);
+  }
+  .cal-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .cal-legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--color-border);
+  }
+  .cal-legend-item { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+  .cal-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .cal-dot-published { background-color: var(--color-primary); }
+  .cal-dot-scheduled {
+    background-color: var(--color-accent);
+    opacity: 0.6;
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+  }
+
+  .cal-weekday {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 0.35rem 0;
+    letter-spacing: 0.02em;
+  }
+  .cal-weekday-sun { color: #dc2626; }
+  .cal-weekday-sat { color: #2563eb; }
+
+  .cal-cell {
+    position: relative;
+    min-height: 44px;
+    border-radius: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .cal-cell-empty { background: transparent; }
+  .cal-cell-today {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+
+  .cal-cell-link,
+  .cal-cell-static {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+    padding: 4px 3px;
+    color: var(--color-text);
+    background-image: none;
+    border-radius: 0.35rem;
+    line-height: 1.25;
+    min-height: inherit;
+    transition: background-color 0.2s, transform 0.15s;
+  }
+  .cal-cell-link { cursor: pointer; }
+  .cal-cell-link:hover {
+    background-color: var(--color-primary-glow);
+    color: var(--color-primary);
+  }
+
+  .cal-day-num {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .cal-cell-has-entry .cal-day-num { font-weight: 700; }
+
+  .cal-dots {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    min-height: 7px;
+  }
+  .cal-dots .cal-dot { width: 5px; height: 5px; }
+
+  .cal-cell-title {
+    display: none;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    padding: 1px 2px;
+    color: var(--color-text-muted);
+    text-align: center;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 2.4em;
+  }
+  .cal-cell-link:hover .cal-cell-title { color: var(--color-primary); }
+  .cal-more { color: var(--color-accent); font-weight: 700; }
+
+  /* ===== Month article list (主にモバイル用) ===== */
+  .cal-month-list {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--color-border);
+  }
+  .cal-month-list-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .cal-month-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .cal-month-list-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .cal-item-day {
+    flex-shrink: 0;
+    min-width: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: right;
+  }
+  .cal-item-scheduled .cal-item-day { color: var(--color-accent); opacity: 0.7; }
+  .cal-item-label {
+    color: var(--color-text);
+    background-image: none;
+  }
+  a.cal-item-label:hover { color: var(--color-primary); }
+  .cal-item-suffix {
+    margin-left: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+  }
+  .cal-item-scheduled .cal-item-label { color: var(--color-text-muted); }
+
+  .cal-empty-month {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    background-color: var(--color-bg);
+    border: 1px dashed var(--color-border);
+    border-radius: 0.5rem;
+  }
+
+  /* ===== PC レイアウト: セル内にタイトル表示 ===== */
+  @media (min-width: 768px) {
+    .cal-container { padding: 1.5rem; }
+    .cal-current-month { font-size: 1.15rem; }
+    .cal-weekday { font-size: 0.75rem; padding: 0.5rem 0; }
+
+    .cal-cell { min-height: 88px; }
+    .cal-cell-link,
+    .cal-cell-static {
+      align-items: flex-start;
+      padding: 5px 6px;
+    }
+    .cal-day-num { font-size: 0.8rem; align-self: flex-start; }
+    .cal-cell-has-entry { background-color: var(--color-bg); }
+    .cal-cell-title {
+      display: -webkit-box;
+      text-align: left;
+      width: 100%;
+      font-size: 0.68rem;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      max-height: 3.6em;
+      overflow: hidden;
+    }
+    .cal-dots {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      min-height: 0;
+    }
+
+    /* PC では記事リストをコンパクトに(カレンダーで情報が見えるため) */
+    .cal-month-list-title { font-size: 0.85rem; }
+    .cal-month-list-item { font-size: 0.8rem; }
+  }
+
+  /* ===== モバイルはカレンダーをコンパクトに、タイトルはリスト側で表示 ===== */
+  @media (max-width: 767px) {
+    .cal-container { padding: 1rem; }
+    .cal-cell-title { display: none !important; }
+    .cal-cell { min-height: 38px; }
+    .cal-day-num { font-size: 0.72rem; }
+    .cal-nav { width: 2rem; height: 2rem; font-size: 0.85rem; }
+    .cal-current-month { font-size: 0.9rem; }
+    .cal-weekday { font-size: 0.65rem; padding: 0.25rem 0; }
+  }
+</style>
