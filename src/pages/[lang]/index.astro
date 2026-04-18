@@ -12,16 +12,29 @@ const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
 const { home, site, readingTime: readingTimeLabel } = t;
 
-const recentPosts = (await getLocalizedCollection("blog", lang))
+// 月次バッチで更新される動的データ(update-stats.yml が自動更新)
+import dynamicStats from "../../data/dynamic-stats.json";
+
+// Home の Blog セクションはアクセス数ベースのピックアップ記事を表示する。
+// dynamic-stats.json の featuredSlugs(Cloudflare Analytics から月次自動更新)を
+// 優先し、該当記事が未公開 or 空の場合は frontmatter の featured: true にフォールバック。
+const publishedPosts = (await getLocalizedCollection("blog", lang))
   .filter(isPublished)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 4);
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featuredSlugsForHome: string[] = dynamicStats.featuredSlugs ?? [];
+const pickupFromStats = featuredSlugsForHome
+  .map((slug) => publishedPosts.find((p) => stripLocale(p.id) === slug))
+  .filter((p): p is NonNullable<typeof p> => p != null);
+
+const recentPosts = (
+  pickupFromStats.length > 0
+    ? pickupFromStats
+    : publishedPosts.filter((p) => p.data.featured)
+).slice(0, 4);
 
 const products = (await getLocalizedCollection("product", lang))
   .sort((a, b) => a.data.order - b.data.order);
-
-// 月次バッチで更新される動的データを読み込み（update-stats.yml が自動更新）
-import dynamicStats from "../../data/dynamic-stats.json";
 
 const heroSummaryText = [
   home.heroSummary.engineerYears(dynamicStats.engineerYears),
