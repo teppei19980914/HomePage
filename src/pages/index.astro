@@ -36,12 +36,18 @@ const defaultLocale = DEFAULT_LOCALE;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teppei Suyama</title>
     <meta name="description" content="Teppei Suyama - Software Engineer Portfolio" />
-    <meta name="robots" content="noindex" />
+    {/* noindex は使わない: canonical で /ja/ を正規 URL として宣言すれば
+         重複コンテンツ問題は解決され、Google Search Console の
+         「noindex タグによって除外」エラーも回避できる。 */}
     {/* JS 無効時のフォールバック: 0秒で ja にリダイレクト */}
     <noscript>
       <meta http-equiv="refresh" content={`0; url=${jaHref}`} />
     </noscript>
     <link rel="canonical" href={jaHref} />
+    {/* 言語選択ページとして hreflang を明示(多言語サイトの標準パターン) */}
+    <link rel="alternate" hreflang="ja" href={jaHref} />
+    <link rel="alternate" hreflang="en" href={rootUrl("en/")} />
+    <link rel="alternate" hreflang="x-default" href={jaHref} />
     <style>
       body {
         background-color: #0f172a;
