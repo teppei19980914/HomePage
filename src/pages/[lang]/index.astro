@@ -36,31 +36,15 @@ const recentPosts = (
 const products = (await getLocalizedCollection("product", lang))
   .sort((a, b) => a.data.order - b.data.order);
 
-const heroSummaryText = [
-  home.heroSummary.engineerYears(dynamicStats.engineerYears),
-  home.heroSummary.qiitaArticles(dynamicStats.qiita.itemsCount),
-  home.heroSummary.personalDev,
-].join(home.heroSummary.separator);
 ---
 
 <BaseLayout title="Home" description={site.defaultDescription}>
-  <!-- ===== 1. Hero ===== -->
+  <!-- ===== 1. Hero (実績ハイライトを内包) ===== -->
   <section class="hero hero-gradient">
     <h1 class="hero-name fade-in">
       <span class="highlight">{site.name}</span>
     </h1>
-    <p class="hero-tagline fade-in delay-1">{home.heroTagline}</p>
-    <p class="hero-summary fade-in delay-2">{heroSummaryText}</p>
-    <div class="hero-cta fade-in delay-3">
-      <a href={localeUrl(lang,"contact/")} class="btn-primary-hero">
-        {home.contact.linkText}
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== 2. 実績ハイライト ===== -->
-  <section class="stats reveal">
-    <div class="stats-grid">
+    <div class="hero-stats-grid fade-in delay-1">
       {home.stats.map((s) => (
         <a href={localeUrl(lang,s.link)} class="stat-item stat-link">
           <span class="stat-number">{s.number}</span>
@@ -69,6 +53,11 @@ const heroSummaryText = [
           <span class="stat-detail">{s.detail}</span>
         </a>
       ))}
+    </div>
+    <div class="hero-cta fade-in delay-2">
+      <a href={localeUrl(lang,"contact/")} class="btn-primary-hero">
+        {home.contact.linkText}
+      </a>
     </div>
   </section>
 
@@ -220,23 +209,21 @@ const heroSummaryText = [
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
-  .hero-tagline {
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
-    color: var(--color-text);
-    margin-bottom: 1rem;
-    font-weight: 600;
-    line-height: 1.6;
+  /* Hero 内に埋め込んだ実績カードグリッド */
+  .hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+    margin: 2rem auto 2.5rem;
+    max-width: 880px;
+    position: relative;
   }
-  .hero-summary {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    margin-bottom: 2rem;
-    letter-spacing: 0.03em;
+  @media (max-width: 600px) {
+    .hero-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   }
-  .hero-cta { display: flex; justify-content: center; }
 
-  /* ダークモードで tagline を読みやすく調整 */
-  :global(.dark) .hero-tagline { color: var(--color-text); }
+  .hero-cta { display: flex; justify-content: center; margin-top: 0.5rem; }
 
   /* モーションを嫌うユーザーに配慮 */
   @media (prefers-reduced-motion: reduce) {
@@ -251,17 +238,38 @@ const heroSummaryText = [
   }
   .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--color-primary-glow); color: white; }
 
-  /* Stats */
-  .stats { margin-top: 3rem; padding: 2rem 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; }
+  /* Hero 内に配置する実績カード (個別要素スタイル) */
   .stat-item { display: flex; flex-direction: column; align-items: center; }
-  .stat-number { font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 800; background: linear-gradient(135deg, var(--color-primary), #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+  .stat-number {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
   .stat-unit { font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.1rem; }
-  .stat-label { font-size: 0.8rem; font-weight: 600; color: var(--color-text); margin-top: 0.35rem; }
+  .stat-label { font-size: 0.82rem; font-weight: 700; color: var(--color-text); margin-top: 0.4rem; }
   .stat-detail { font-size: 0.7rem; color: var(--color-text-muted); margin-top: 0.2rem; line-height: 1.4; }
-  .stat-link { text-decoration: none; background-image: none; border-radius: 0.75rem; padding: 1rem 0.5rem; border: 1px solid transparent; transition: background-color 0.25s, transform 0.25s, border-color 0.25s; }
-  .stat-link:hover { background-color: var(--color-primary-glow); border-color: var(--color-border); transform: translateY(-2px); }
-  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+  .stat-link {
+    text-decoration: none;
+    background-image: none;
+    border-radius: 0.75rem;
+    padding: 1.1rem 0.75rem;
+    border: 1px solid var(--color-border);
+    background-color: color-mix(in srgb, var(--color-surface) 82%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background-color 0.25s, transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .stat-link:hover {
+    background-color: var(--color-primary-glow);
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+  :global(.dark) .stat-link:hover { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
 
   /* Section */
   .section { margin-top: 3.5rem; }
