@@ -63,7 +63,7 @@ export const ja = {
         link: "project/lts-power-platform/",
       },
     ],
-    heroTagline: "課題を発見し、改善を実行するソフトウェアエンジニア",
+    heroTagline: "退行テストを 90% 減らし、チームの残業を 60% 減らしたエンジニア。",
     heroSummary: {
       engineerYears: (years: number) => `エンジニア歴${years}年+`,
       qiitaArticles: (count: number) => `Qiita ${count}記事`,

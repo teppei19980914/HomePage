@@ -186,13 +186,63 @@ const heroSummaryText = [
 </BaseLayout>
 
 <style>
-  /* Hero */
-  .hero { padding: 4rem 0 3rem; text-align: center; }
-  .hero-name { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 0.75rem; }
-  .highlight { background: linear-gradient(135deg, var(--color-primary), #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-tagline { font-size: 1.05rem; color: var(--color-text-muted); margin-bottom: 1rem; }
-  .hero-summary { font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 2rem; letter-spacing: 0.03em; }
+  /* Hero (Home ページ限定でより動きのある背景) */
+  .hero { padding: 5rem 0 4rem; text-align: center; position: relative; }
+
+  /* Home hero はデフォルトの .hero-gradient より強めの動きにする(他ページには影響させない) */
+  .hero.hero-gradient::before {
+    animation:
+      meshMove 9s ease-in-out infinite alternate,
+      heroPulse 6s ease-in-out infinite;
+    opacity: 0.9;
+  }
+
+  @keyframes heroPulse {
+    0%, 100% { filter: saturate(1) brightness(1); }
+    50% { filter: saturate(1.25) brightness(1.08); }
+  }
+
+  .hero-name {
+    font-size: clamp(2.25rem, 7vw, 3.75rem);
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .highlight {
+    background: linear-gradient(135deg, var(--color-primary), #8b5cf6, #ec4899, var(--color-primary));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: highlightShift 8s ease-in-out infinite;
+  }
+  @keyframes highlightShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .hero-tagline {
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .hero-summary {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    letter-spacing: 0.03em;
+  }
   .hero-cta { display: flex; justify-content: center; }
+
+  /* ダークモードで tagline を読みやすく調整 */
+  :global(.dark) .hero-tagline { color: var(--color-text); }
+
+  /* モーションを嫌うユーザーに配慮 */
+  @media (prefers-reduced-motion: reduce) {
+    .hero.hero-gradient::before { animation: none; }
+    .highlight { animation: none; background-position: 0% 50%; }
+  }
   .btn-primary-hero {
     display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px;
     background: linear-gradient(135deg, var(--color-primary), #8b5cf6); color: white;

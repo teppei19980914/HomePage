@@ -69,7 +69,7 @@ export const en: Labels = {
         link: "project/lts-power-platform/",
       },
     ],
-    heroTagline: "A software engineer who finds problems and ships the fix",
+    heroTagline: "The engineer who cut regression tests by 90% and team overtime by 60%.",
     heroSummary: {
       engineerYears: (years: number) => `${years}+ years as an engineer`,
       qiitaArticles: (count: number) => `${count} Qiita articles`,
