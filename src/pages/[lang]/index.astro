@@ -111,7 +111,11 @@ const heroSummaryText = [
         </a>
       ))}
       {products.filter((p) => p.data.status === "beta").map((p, i) => (
-        <div class="product-card product-disabled reveal" style={`transition-delay: ${(i + 1) * 0.1}s`}>
+        <a
+          href={localeUrl(lang,`product/${stripLocale(p.id)}/`)}
+          class="product-card product-coming-soon reveal"
+          style={`transition-delay: ${(i + 1) * 0.1}s`}
+        >
           <div class="product-color" style="background:linear-gradient(135deg,#8b5cf6,#2563eb)"></div>
           <div class="product-body">
             <span class="product-beta-badge">開発中 — こうご期待</span>
@@ -124,7 +128,7 @@ const heroSummaryText = [
               ))}
             </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </section>
@@ -234,7 +238,8 @@ const heroSummaryText = [
     background-color: var(--color-surface); overflow: hidden; color: var(--color-text); background-image: none;
     transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
   }
-  .product-disabled { opacity: 0.45; pointer-events: none; filter: grayscale(0.6); }
+  .product-coming-soon { opacity: 0.55; filter: grayscale(0.55); }
+  .product-coming-soon:hover { opacity: 0.85; filter: grayscale(0.25); }
   .product-beta-badge { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(234,179,8,0.15); color: #ca8a04; margin-bottom: 0.5rem; }
   .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: var(--color-primary); color: var(--color-text); }
   :global(.dark) .product-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }

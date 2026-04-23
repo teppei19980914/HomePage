@@ -30,7 +30,7 @@ const products = (await getLocalizedCollection("product", lang))
       <div class="product-list">
         {products.map((product, i) => (
           <article
-            class:list={["product-card", "reveal", { "product-disabled": product.data.status === "beta" }]}
+            class:list={["product-card", "reveal", { "product-coming-soon": product.data.status === "beta" }]}
             style={`transition-delay: ${i * 0.15}s`}
           >
             <div class="product-card-header">
@@ -52,36 +52,34 @@ const products = (await getLocalizedCollection("product", lang))
                 ))}
               </div>
             </div>
-            {product.data.status !== "beta" && (
-              <div class="product-card-actions">
+            <div class="product-card-actions">
+              <a
+                href={localeUrl(lang, `product/${stripLocale(product.id)}/`)}
+                class="btn-detail"
+              >
+                {productLabels.detailLink} &rarr;
+              </a>
+              {product.data.status !== "beta" && product.data.url && (
                 <a
-                  href={localeUrl(lang, `product/${stripLocale(product.id)}/`)}
-                  class="btn-detail"
+                  href={product.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-primary"
                 >
-                  {productLabels.detailLink} &rarr;
+                  {productLabels.tryLink} &rarr;
                 </a>
-                {product.data.url && (
-                  <a
-                    href={product.data.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-primary"
-                  >
-                    {productLabels.tryLink} &rarr;
-                  </a>
-                )}
-                {product.data.repo && (
-                  <a
-                    href={product.data.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-secondary"
-                  >
-                    {productLabels.githubLink}
-                  </a>
-                )}
-              </div>
-            )}
+              )}
+              {product.data.status !== "beta" && product.data.repo && (
+                <a
+                  href={product.data.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-secondary"
+                >
+                  {productLabels.githubLink}
+                </a>
+              )}
+            </div>
           </article>
         ))}
       </div>
@@ -106,10 +104,14 @@ const products = (await getLocalizedCollection("product", lang))
       background-color 0.3s;
   }
 
-  .product-disabled {
-    opacity: 0.45;
-    pointer-events: none;
-    filter: grayscale(0.6);
+  .product-coming-soon {
+    opacity: 0.6;
+    filter: grayscale(0.55);
+    transition: opacity 0.25s, filter 0.25s, transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .product-coming-soon:hover {
+    opacity: 0.95;
+    filter: grayscale(0.2);
   }
 
   .product-card:hover {
