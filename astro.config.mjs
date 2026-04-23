@@ -66,6 +66,13 @@ export default defineConfig({
           en: "en-US",
         },
       },
+      // ルート /HomePage/ は言語検出のための JS リダイレクトページで、
+      // @astrojs/sitemap がデフォルトロケール扱いすることで
+      // hreflang="ja-JP" が自身(/HomePage/)と /HomePage/ja/ の両方に
+      // 宣言され、サイトマップ検証が失敗する(Google Search Console で
+      // 「サイトマップを読み込めませんでした」になる)。
+      // 言語検出用の中間ページはサイトマップに含めない。
+      filter: (page) => !/^https:\/\/[^/]+\/HomePage\/$/.test(page),
     }),
   ],
   markdown: {
