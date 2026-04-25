@@ -6,7 +6,7 @@ date: 2026-04-03
 tags: ["Flutter", "Dart", "Firebase", "Riverpod", "SQLite"]
 url: "https://teppei19980914.github.io/YumeHashi/"
 repo: "https://github.com/teppei19980914/YumeHashi"
-status: active
+status: suspended
 order: 1
 ---
 
@@ -17,6 +17,8 @@ order: 1
 - 毎日忙しくて、夢に向かう時間が取れない
 
 ユメハシは、そんなあなたのために作られました。
+
+> **お知らせ**: 現在、新規ユーザーの受け入れを停止しています。再開時期が決まり次第、本ページにてご案内します。
 
 ## 3ステップで夢を行動に変える
 

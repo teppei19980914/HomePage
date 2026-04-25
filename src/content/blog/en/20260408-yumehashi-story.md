@@ -78,7 +78,7 @@ I keep building because **this app helps "another version of me"** — the high 
 
 If something in this article moved you, please try YumeHashi.
 
-The app is available at [YumeHashi](https://teppei19980914.github.io/YumeHashi/) — no download required. Just write down one dream on the first screen.
+The app is available at [YumeHashi](/HomePage/en/product/yumehashi/) — no download required. Just write down one dream on the first screen.
 
 May that dream someday become reality.
 

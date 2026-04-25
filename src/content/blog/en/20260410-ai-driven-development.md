@@ -14,7 +14,7 @@ This article shares exactly what changed — and by how much — compared to tra
 
 It opens right in your browser. Free, no account required.
 
-**[Try YumeHashi](https://teppei19980914.github.io/YumeHashi/)**
+**[Try YumeHashi](/HomePage/en/product/yumehashi/)**
 
 If you feel "this was really built in 3 weeks?", then the power of AI-driven development has been communicated.
 
@@ -116,7 +116,7 @@ AI isn't omniscient. The "keyboard covers the input field on mobile" issue was o
 
 ## What Did I Build?
 
-The app built with this system is "[YumeHashi](https://teppei19980914.github.io/YumeHashi/)" (originally developed as "YumeLog" and later renamed — see [the story behind the rename](/HomePage/en/blog/20260408-yumehashi-story/)).
+The app built with this system is "[YumeHashi](/HomePage/en/product/yumehashi/)" (originally developed as "YumeLog" and later renamed — see [the story behind the rename](/HomePage/en/blog/20260408-yumehashi-story/)).
 
 **An app that turns dreams into action.** 3 steps:
 
@@ -132,6 +132,6 @@ The app packs 32 features. For the detailed tech stack, see the [tech stack arti
 
 It opens right in your browser. Free, no account required.
 
-**[Try YumeHashi](https://teppei19980914.github.io/YumeHashi/)**
+**[Try YumeHashi](/HomePage/en/product/yumehashi/)**
 
 If you feel "this was really built in 3 weeks?", then the power of AI-driven development has been communicated.

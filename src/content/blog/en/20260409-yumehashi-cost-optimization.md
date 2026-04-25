@@ -7,7 +7,7 @@ tags: ["Flutter", "Firestore", "Side Project", "Cost Optimization", "gzip", "Dar
 
 ## Summary
 
-I run my personal Flutter Web app [YumeHashi](https://teppei19980914.github.io/YumeHashi/) at zero monthly cost. The only variable cost factor is Firestore write volume, and current projections show the free tier holds until DAU 3,000.
+I run my personal Flutter Web app [YumeHashi](/HomePage/en/product/yumehashi/) at zero monthly cost. The only variable cost factor is Firestore write volume, and current projections show the free tier holds until DAU 3,000.
 
 However, "deal with it when we hit the limit" is too late, so I proactively added **free tier lifetime extension** measures in v2.1.0. All implemented without any impact on existing users' data or security.
 
@@ -99,7 +99,7 @@ Pre-upload payload size check against Firestore's hard 1 MiB limit. If over 900 
 
 The DAU 3,000 threshold for Firestore's free tier is pushed even further. For a small personal app, "scaling 2-3x more while staying free" provides significant peace of mind.
 
-App: [Try YumeHashi](https://teppei19980914.github.io/YumeHashi/)
+App: [Try YumeHashi](/HomePage/en/product/yumehashi/)
 Repository: [GitHub Repository](https://github.com/teppei19980914/YumeHashi)
 
 ## Related Articles

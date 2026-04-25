@@ -282,9 +282,11 @@ export const ja = {
     description: "個人開発プロダクトの紹介",
     subtitle: "個人で開発しているプロダクトを紹介します",
     emptyMessage: "プロダクトはまだありません。",
-    statusLabels: { active: "公開中", beta: "開発中 — こうご期待", archived: "アーカイブ" },
+    statusLabels: { active: "公開中", beta: "開発中 — こうご期待", archived: "アーカイブ", suspended: "新規受付停止中" },
     detailLink: "詳細を見る",
     tryLink: "体験する",
+    suspendedLink: "新規受付停止中",
+    suspendedNotice: "現在、新規ユーザーの受け入れを停止しています。",
     githubLink: "GitHub", // brand
   },
 

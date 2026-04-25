@@ -159,8 +159,9 @@ SVG 手書きの Git ブランチ風グラフ:
 
 ### 1.5 Product（product/）
 
-- 一覧: `order` 昇順で表示。ステータスバッジ（Active/Beta/Archived）
+- 一覧: `order` 昇順で表示。ステータスバッジ（Active/Beta/Archived/Suspended）
 - 詳細: frontmatter + Markdown 本文。「体験する →」「GitHub」ボタン（任意）
+- `status: "suspended"` のとき: 詳細ページに「新規受付停止中」のお知らせバナーを表示し、「体験する」ボタンを非活性表示（クリック不可）に置換。GitHub ボタンは引き続き利用可能
 
 ### 1.6 Project（project/）
 
@@ -261,7 +262,7 @@ SVG 手書きの Git ブランチ風グラフ:
   tags: string[],
   url: string (URL),       // 任意
   repo: string (URL),      // 任意
-  status: "active" | "beta" | "archived",  // デフォルト: "active"
+  status: "active" | "beta" | "archived" | "suspended",  // デフォルト: "active"
   order: number,           // デフォルト: 0
 }
 ```

@@ -7,7 +7,7 @@ tags: ["Flutter", "Dart", "Drift", "Riverpod", "Firebase", "Side Project", "AI-D
 
 ## Introduction
 
-[YumeHashi](https://teppei19980914.github.io/YumeHashi/) is a personal Flutter Web app that breaks dreams into goals, goals into tasks, and turns them into action. Renamed from "YumeLog" in April 2026, it's now at v2.1.0.
+[YumeHashi](/HomePage/en/product/yumehashi/) is a personal Flutter Web app that breaks dreams into goals, goals into tasks, and turns them into action. Renamed from "YumeLog" in April 2026, it's now at v2.1.0.
 
 This article focuses on the **technical internals**:
 
@@ -91,7 +91,7 @@ After 10 months, task list rendering became noticeably slower on real devices. *
 | Source lines | ~30,000 (lib/ + test/) |
 | Commits | 160+ |
 
-App: [YumeHashi](https://teppei19980914.github.io/YumeHashi/) (free trial available). Repository: [GitHub](https://github.com/teppei19980914/YumeHashi).
+App: [YumeHashi](/HomePage/en/product/yumehashi/) (free trial available). Repository: [GitHub](https://github.com/teppei19980914/YumeHashi).
 
 ## Related Articles
 

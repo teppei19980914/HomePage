@@ -14,7 +14,7 @@ Flutter 未経験・スクラッチ開発未経験の状態から、AI（Claude 
 
 Web ブラウザですぐに開けます。無料・アカウント登録不要です。
 
-**[ユメハシ（YumeHashi）を試す](https://teppei19980914.github.io/YumeHashi/)**
+**[ユメハシ（YumeHashi）を試す](/HomePage/ja/product/yumehashi/)**
 
 触ってみて「これが 3 週間で作れるのか」と感じてもらえたら、AI 駆動開発の威力が伝わったということです。
 
@@ -126,7 +126,7 @@ AIは万能ではありません。「モバイルでキーボードに入力欄
 
 ## で、何を作ったの？
 
-この仕組みで作ったのが「[ユメハシ（YumeHashi）](https://teppei19980914.github.io/YumeHashi/)」です（開発当初「ユメログ」として開発し、その後改名。改名の経緯は[こちらの記事](/HomePage/ja/blog/20260408-yumehashi-story/)で詳しく書いています）。
+この仕組みで作ったのが「[ユメハシ（YumeHashi）](/HomePage/ja/product/yumehashi/)」です（開発当初「ユメログ」として開発し、その後改名。改名の経緯は[こちらの記事](/HomePage/ja/blog/20260408-yumehashi-story/)で詳しく書いています）。
 
 **夢を行動に変えるアプリ。** 3 ステップで使えます。
 
@@ -154,7 +154,7 @@ AIは万能ではありません。「モバイルでキーボードに入力欄
 
 Web ブラウザですぐに開けます。無料・アカウント登録不要です。
 
-**[ユメハシ（YumeHashi）を試す](https://teppei19980914.github.io/YumeHashi/)**
+**[ユメハシ（YumeHashi）を試す](/HomePage/ja/product/yumehashi/)**
 
 触ってみて「これが 3 週間で作れるのか」と感じてもらえたら、AI 駆動開発の威力が伝わったということです。
 

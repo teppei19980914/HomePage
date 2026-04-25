@@ -40,7 +40,9 @@ const products = (await getLocalizedCollection("product", lang))
                     ? productLabels.statusLabels.active
                     : product.data.status === "beta"
                       ? productLabels.statusLabels.beta
-                      : productLabels.statusLabels.archived}
+                      : product.data.status === "suspended"
+                        ? productLabels.statusLabels.suspended
+                        : productLabels.statusLabels.archived}
                 </span>
               </div>
               <h2>{product.data.title}</h2>
@@ -59,7 +61,12 @@ const products = (await getLocalizedCollection("product", lang))
               >
                 {productLabels.detailLink} &rarr;
               </a>
-              {product.data.status !== "beta" && product.data.url && (
+              {product.data.status === "suspended" && product.data.url && (
+                <span class="btn-primary btn-disabled" aria-disabled="true">
+                  {productLabels.suspendedLink}
+                </span>
+              )}
+              {product.data.status !== "beta" && product.data.status !== "suspended" && product.data.url && (
                 <a
                   href={product.data.url}
                   target="_blank"
@@ -158,6 +165,23 @@ const products = (await getLocalizedCollection("product", lang))
   .status-archived {
     background-color: rgba(107, 114, 128, 0.15);
     color: #6b7280;
+  }
+
+  .status-suspended {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+  }
+
+  :global(.dark) .status-suspended {
+    color: #f87171;
+  }
+
+  .btn-disabled {
+    background-color: var(--color-border) !important;
+    color: var(--color-text-muted) !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
   }
 
   .product-card h2 {

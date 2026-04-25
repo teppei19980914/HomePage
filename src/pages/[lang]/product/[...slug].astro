@@ -34,7 +34,9 @@ const { Content } = await render(product);
           ? productLabels.statusLabels.active
           : product.data.status === "beta"
             ? productLabels.statusLabels.beta
-            : productLabels.statusLabels.archived}
+            : product.data.status === "suspended"
+              ? productLabels.statusLabels.suspended
+              : productLabels.statusLabels.archived}
       </span>
       <h1>{product.data.title}</h1>
       <p class="tagline">{product.data.tagline}</p>
@@ -44,17 +46,30 @@ const { Content } = await render(product);
           {product.data.tags.map((tag) => <span class="tag">{tag}</span>)}
         </div>
       </div>
+      {
+        product.data.status === "suspended" && (
+          <p class="suspended-notice" role="status">
+            {productLabels.suspendedNotice}
+          </p>
+        )
+      }
       <div class="header-actions">
         {
-          product.data.url && (
-            <a
-              href={product.data.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary"
-            >
-              {productLabels.tryLink} &rarr;
-            </a>
+          product.data.url && product.data.status === "suspended" ? (
+            <span class="btn-primary btn-disabled" aria-disabled="true">
+              {productLabels.suspendedLink}
+            </span>
+          ) : (
+            product.data.url && (
+              <a
+                href={product.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary"
+              >
+                {productLabels.tryLink} &rarr;
+              </a>
+            )
           )
         }
         {
@@ -118,6 +133,37 @@ const { Content } = await render(product);
   .status-archived {
     background-color: rgba(107, 114, 128, 0.15);
     color: #6b7280;
+  }
+
+  .status-suspended {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+  }
+
+  :global(.dark) .status-suspended {
+    color: #f87171;
+  }
+
+  .suspended-notice {
+    margin-top: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.5rem;
+    background-color: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #b91c1c;
+    font-size: 0.9rem;
+  }
+
+  :global(.dark) .suspended-notice {
+    color: #fca5a5;
+  }
+
+  .btn-disabled {
+    background-color: var(--color-border) !important;
+    color: var(--color-text-muted) !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
   }
 
   .tagline {

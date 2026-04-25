@@ -362,9 +362,11 @@ export const en: Labels = {
     description: "Personal development products",
     subtitle: "Products I build and maintain on the side",
     emptyMessage: "No products yet.",
-    statusLabels: { active: "Active", beta: "In development — stay tuned", archived: "Archived" },
+    statusLabels: { active: "Active", beta: "In development — stay tuned", archived: "Archived", suspended: "Not accepting new users" },
     detailLink: "View details",
     tryLink: "Try it",
+    suspendedLink: "Not accepting new users",
+    suspendedNotice: "We are currently not accepting new users.",
     githubLink: "GitHub",
   },
 
