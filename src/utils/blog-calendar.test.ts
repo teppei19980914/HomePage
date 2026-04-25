@@ -60,6 +60,20 @@ describe("buildDayMap", () => {
     const map = buildDayMap(posts, now);
     expect(map.get("2026-04-10")?.length).toBe(2);
   });
+
+  // 回帰テスト: GitHub Actions(UTC) で JST 早朝にビルドしたとき、JST 当日の記事が
+  // 誤って scheduled=true になり「公開予定」表示されてしまう問題のリグレッション検知。
+  // UTC 2026-04-24 15:30 (= JST 2026-04-25 00:30) にビルドした想定。
+  it("treats today's JST post as published even when build runs late on previous UTC day", () => {
+    const buildTimeUtc = new Date("2026-04-24T15:30:00Z");
+    const posts = [
+      mkPost("today-jst", "2026-04-25"),
+      mkPost("tomorrow-jst", "2026-04-26"),
+    ];
+    const map = buildDayMap(posts, buildTimeUtc);
+    expect(map.get("2026-04-25")?.[0].scheduled).toBe(false);
+    expect(map.get("2026-04-26")?.[0].scheduled).toBe(true);
+  });
 });
 
 describe("buildMonthList", () => {

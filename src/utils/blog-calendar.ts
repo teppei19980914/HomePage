@@ -29,22 +29,30 @@ export interface Cell<T extends BlogPostLike = BlogPostLike> {
   entries: PostEntry<T>[];
 }
 
+// 記事 date は frontmatter `date: YYYY-MM-DD` を JST カレンダー日として扱う。
+// ビルド環境(GitHub Actions=UTC / 開発機=JST)に依存せず常に JST 基準で日付キーを生成する。
+const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+
 /**
- * Date を "YYYY-MM-DD" 形式の文字列に変換する(タイムゾーン依存を避けるためローカル時間で)。
+ * Date を JST カレンダーの "YYYY-MM-DD" 形式に変換する。
+ * ビルド時刻が JST の早朝(=UTC では前日夜)でも当日記事が誤って未来扱いされないよう、
+ * 実行環境のタイムゾーンに依存せず Asia/Tokyo を基準にする。
  */
 export function toDateKey(date: Date): string {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
+  const jst = new Date(date.getTime() + JST_OFFSET_MS);
+  const y = jst.getUTCFullYear();
+  const m = String(jst.getUTCMonth() + 1).padStart(2, "0");
+  const d = String(jst.getUTCDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
 }
 
 /**
- * Date を "YYYY-MM" 形式の月キーに変換する。
+ * Date を JST カレンダーの "YYYY-MM" 形式の月キーに変換する。
  */
 export function toMonthKey(date: Date): string {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const jst = new Date(date.getTime() + JST_OFFSET_MS);
+  const y = jst.getUTCFullYear();
+  const m = String(jst.getUTCMonth() + 1).padStart(2, "0");
   return `${y}-${m}`;
 }
 
