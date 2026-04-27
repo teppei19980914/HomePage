@@ -18,7 +18,7 @@ export const en: Labels = {
     name: "Teppei Suyama",
     role: "Software Engineer",
     defaultDescription:
-      "Portfolio of Teppei Suyama — a software engineer specializing in workflow automation and full-stack development. Achievements include 90% regression test reduction, 40h/month RPA savings, and three personal dev products.",
+      "Portfolio of software engineer Teppei Suyama: workflow automation and full-stack development, with 90% regression test reduction and 40h/month RPA savings.",
     titleSuffix: "Teppei Suyama",
     copyright: "Teppei Suyama. All rights reserved.",
   },
@@ -127,7 +127,7 @@ export const en: Labels = {
   // --- Profile page ---
   profile: {
     title: "Profile",
-    description: "Profile of Teppei Suyama",
+    description: "Profile of software engineer Teppei Suyama: bio, philosophy, mottos, links. 90% regression test reduction, 40h/month RPA savings in workflow automation.",
     subtitle: "Basics, philosophy, and social links",
     nameJa: "須山 哲平",
     nameEn: "Teppei Suyama",
@@ -177,7 +177,7 @@ export const en: Labels = {
   // --- About (Profile sub-sections) ---
   about: {
     title: "About",
-    description: "Profile of Teppei Suyama",
+    description: "About Teppei Suyama: skills, certifications, career, and education. Tech: Flutter, TypeScript, Astro, RPA, AI-driven development, with real automation results.",
     subtitle: "Skills, certifications, and career",
     skills: {
       title: "Skills",
@@ -242,7 +242,7 @@ export const en: Labels = {
   // --- Project page ---
   project: {
     title: "Project",
-    description: "Projects I have delivered",
+    description: "Projects delivered by Teppei Suyama as full-time and contract engineer: 90% regression test reduction, 40h/month RPA savings, and core business system rollouts.",
     subtitle: "Projects I have delivered as a full-time engineer",
     emptyMessage: "No projects yet.",
     maxDisplay: 5,
@@ -318,11 +318,12 @@ export const en: Labels = {
   // --- Blog page ---
   blog: {
     title: "Blog",
-    description: "Blog posts",
+    description: "Daily blog by software engineer Teppei Suyama on AI-driven development, workflow automation, and personal projects with Astro v6, Flutter, and Claude Code.",
     subtitle: "Technical learnings, reflections, and daily discoveries",
     maxPerSection: 5,
     viewAllText: "See all posts",
     allTitle: "All Posts",
+    allDescription: "Full archive by software engineer Teppei Suyama, sorted by date: AI-driven development, workflow automation, personal projects, career, and reading reflections.",
     emptyMessage: "No posts yet.",
     draftBanner: "This article is a draft. It will not be displayed on the web.",
     scheduledBanner: "This article is scheduled. It will not be displayed on the web until the publish date.",
@@ -359,7 +360,7 @@ export const en: Labels = {
   // --- Product page ---
   product: {
     title: "Product",
-    description: "Personal development products",
+    description: "Personal products by Teppei Suyama: YumeHashi (goals), Defrago (PDCA), and Tasukiba (knowledge-driven PM). Flutter, FastAPI, Next.js — zero monthly cost.",
     subtitle: "Products I build and maintain on the side",
     emptyMessage: "No products yet.",
     statusLabels: { active: "Active", beta: "In development — stay tuned", archived: "Archived", suspended: "Not accepting new users" },
@@ -373,7 +374,7 @@ export const en: Labels = {
   // --- Contact page ---
   contact: {
     title: "Contact",
-    description: "Get in touch",
+    description: "Contact software engineer Teppei Suyama for personal-dev consulting, hiring, speaking, writing, advice, or collaboration. GitHub, Qiita, Wantedly listed too.",
     subtitle: "Feel free to reach out with any questions or feedback",
     availability: {
       title: "",

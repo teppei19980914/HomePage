@@ -24,6 +24,11 @@ import { rootUrl } from "../i18n/url";
 
 const baseHref = rootUrl("");
 const jaHref = rootUrl(`${DEFAULT_LOCALE}/`);
+const enHref = rootUrl("en/");
+// canonical / hreflang は Google 仕様で絶対 URL 必須。
+// Astro.site (= "https://teppei19980914.github.io") + base パスを組み合わせて絶対 URL を構築する。
+const jaAbsoluteHref = new URL(jaHref, Astro.site).toString();
+const enAbsoluteHref = new URL(enHref, Astro.site).toString();
 // ホワイトリストを JSON 化してクライアントに渡す(任意文字列の locale を許容しない)
 const localesJson = JSON.stringify(LOCALES);
 const defaultLocale = DEFAULT_LOCALE;
@@ -35,7 +40,7 @@ const defaultLocale = DEFAULT_LOCALE;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teppei Suyama</title>
-    <meta name="description" content="Teppei Suyama - Software Engineer Portfolio" />
+    <meta name="description" content="Personal homepage of software engineer Teppei Suyama (須山哲平): workflow automation and AI-driven development. Products, projects, profile, and a daily tech blog." />
     {/* noindex は使わない: canonical で /ja/ を正規 URL として宣言すれば
          重複コンテンツ問題は解決され、Google Search Console の
          「noindex タグによって除外」エラーも回避できる。 */}
@@ -43,11 +48,11 @@ const defaultLocale = DEFAULT_LOCALE;
     <noscript>
       <meta http-equiv="refresh" content={`0; url=${jaHref}`} />
     </noscript>
-    <link rel="canonical" href={jaHref} />
+    <link rel="canonical" href={jaAbsoluteHref} />
     {/* 言語選択ページとして hreflang を明示(多言語サイトの標準パターン) */}
-    <link rel="alternate" hreflang="ja" href={jaHref} />
-    <link rel="alternate" hreflang="en" href={rootUrl("en/")} />
-    <link rel="alternate" hreflang="x-default" href={jaHref} />
+    <link rel="alternate" hreflang="ja" href={jaAbsoluteHref} />
+    <link rel="alternate" hreflang="en" href={enAbsoluteHref} />
+    <link rel="alternate" hreflang="x-default" href={jaAbsoluteHref} />
     <style>
       body {
         background-color: #0f172a;

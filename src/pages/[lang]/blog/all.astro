@@ -18,7 +18,7 @@ const posts = (await getLocalizedCollection("blog", lang))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title={`${blog.allTitle} | ${blog.title}`} description={blog.subtitle}>
+<BaseLayout title={`${blog.allTitle} | ${blog.title}`} description={blog.allDescription}>
   <div class="page-header hero-gradient">
     <h1 class="fade-in">{blog.allTitle}</h1>
     <p class="page-subtitle fade-in delay-1">{blog.subtitle}</p>

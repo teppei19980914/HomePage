@@ -12,7 +12,7 @@ export const ja = {
     name: "Teppei Suyama", // 人名(brand): 翻訳不要
     role: "ソフトウェアエンジニア",
     defaultDescription:
-      "業務自動化・フルスタック開発が強みのソフトウェアエンジニア須山哲平のポートフォリオ。退行テスト 90% 削減・RPA 月 40h 工数削減などの実績、個人開発プロダクト、技術ブログを公開しています。",
+      "業務自動化・フルスタック開発が強みのソフトウェアエンジニア須山哲平のポートフォリオサイト。退行テスト90%削減・RPA月40h工数削減などの主要実績、個人開発プロダクト3つ、技術ブログ・エッセイ・参画プロジェクトを毎日更新で公開しています。",
     titleSuffix: "Teppei Suyama", // サイト名(brand): 翻訳不要
     copyright: "Teppei Suyama. All rights reserved.",
   },
@@ -121,7 +121,7 @@ export const ja = {
   // --- Profile ページ ---
   profile: {
     title: "プロフィール",
-    description: "須山 哲平のプロフィール",
+    description: "ソフトウェアエンジニア須山哲平のプロフィール。基本情報・哲学・座右の銘・SNSリンクをまとめています。業務自動化とAI駆動開発を強みとし、退行テスト工数90%削減・RPA月40h削減などの実績を積んだエンジニアとしての価値観と全体像を1ページで把握できます。",
     subtitle: "基本情報・哲学・SNSリンク",
     nameJa: "須山 哲平",
     nameEn: "Teppei Suyama",
@@ -172,7 +172,7 @@ export const ja = {
   // --- About (Profile サブ情報) ---
   about: {
     title: "自己紹介",
-    description: "須山 哲平(Teppei Suyama)のプロフィール",
+    description: "須山哲平(Teppei Suyama)の自己紹介ページ。保有スキル・資格・キャリア年表・学歴を一覧で確認できます。Flutter / TypeScript / Astro / RPA / AI駆動開発などの技術スタックと、業務自動化での具体的な改善実績をまとめています。",
     subtitle: "スキル・資格・キャリア",
     skills: {
       title: "スキル",
@@ -238,11 +238,12 @@ export const ja = {
   // --- Blog ページ ---
   blog: {
     title: "ブログ",
-    description: "ブログ記事一覧",
+    description: "AI駆動開発・業務自動化を強みとするソフトウェアエンジニア須山哲平のブログ。Astro v6・Flutter・Claude Codeで実践した個人開発の知見、現場で役立つエンジニアリングの学び、キャリア論や読書から得た気づきを毎日発信しています。",
     subtitle: "技術的な学びや日々の気づきを発信しています",
     maxPerSection: 5,
     viewAllText: "全記事はこちら",
     allTitle: "記事一覧",
+    allDescription: "ソフトウェアエンジニア須山哲平が公開した全ブログ記事のアーカイブ。AI駆動開発・業務自動化・個人開発・キャリア論・読書から得た学びを日付降順で全件参照できます。タイトル・日付・タグから気になる記事を検索でき、過去の発信もすべて辿れる総覧ページです。",
     emptyMessage: "記事はまだありません。",
     draftBanner: "この記事は下書きです。Web では表示されません。",
     scheduledBanner: "この記事は予約投稿です。公開予定日まで Web では表示されません。",
@@ -279,7 +280,7 @@ export const ja = {
   // --- Product ページ ---
   product: {
     title: "プロダクト",
-    description: "個人開発プロダクトの紹介",
+    description: "須山哲平が個人開発・運用しているプロダクト一覧。夢を行動に変える「ユメハシ」、ワーキングメモリを解放する「Defrago」、ナレッジ循環型のプロジェクト管理基盤「たすきば」。Flutter / FastAPI / Next.jsで構築し月額0円運用しています。",
     subtitle: "個人で開発しているプロダクトを紹介します",
     emptyMessage: "プロダクトはまだありません。",
     statusLabels: { active: "公開中", beta: "開発中 — こうご期待", archived: "アーカイブ", suspended: "新規受付停止中" },
@@ -293,7 +294,7 @@ export const ja = {
   // --- Project ページ ---
   project: {
     title: "プロジェクト",
-    description: "参画プロジェクトの紹介",
+    description: "ソフトウェアエンジニア須山哲平が正社員・業務委託として参画したプロジェクトの紹介ページです。退行テスト工数90%削減・RPA月40h削減・基幹業務システム導入などの主要実績を、業務ドメイン・技術スタック・担当工程とあわせて一覧で公開しています。",
     subtitle: "正社員として参画したプロジェクトの紹介",
     emptyMessage: "プロジェクトはまだありません。",
     maxDisplay: 5,
@@ -310,7 +311,7 @@ export const ja = {
   // --- Contact ページ ---
   contact: {
     title: "お問い合わせ",
-    description: "お問い合わせ・連絡先",
+    description: "ソフトウェアエンジニア須山哲平への問い合わせ窓口。個人開発の相談・採用・登壇・執筆依頼・技術相談・コラボレーション提案などはこちらから。GitHub / Qiita / Wantedly などの連絡手段もご案内しているため、まずはお気軽にメッセージをどうぞ。",
     subtitle: "ご質問やご相談はこちらからお気軽にどうぞ",
     availability: {
       title: "",
