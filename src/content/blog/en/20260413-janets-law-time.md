@@ -1,6 +1,6 @@
 ---
-title: '"Breathing Through the Years" — Janet''s Law and Working with Time on Your Side'
-description: "A senior colleague's remark about aging led me to explore Janet's Law — why years feel shorter as we age. Here's how I use new experiences and continuous learning to stretch subjective time as an engineer."
+title: "Janet's Law — How to Counter Time Feeling Shorter as You Age"
+description: "Janet's Law: why each year feels shorter as we age. Countermeasures using new experiences and continuous learning — stretching subjective time as an engineer."
 date: 2026-04-13
 tags: ["Self-Analysis", "Career", "Learning Habits", "Essay"]
 ---

@@ -9,10 +9,19 @@ export default defineConfig({
   base: "/HomePage/",
   output: "static",
   // ===== リダイレクト =====
-  // ブログ記事のファイル名に日付接頭辞を追加した際の旧 URL → 新 URL リダイレクト。
-  // Google Search Console でインデックス済みだった旧 URL への 301 相当の転送。
+  // (1) i18n 移行前のロケール無し URL → ja 版へリダイレクト。
+  //     Google Search Console で旧 URL がインデックス済みだったため
+  //     404 を防ぎ SEO 評価を引き継ぐ目的で追加 (2026-05-01 SEO 分析より)。
+  // (2) ブログ記事のファイル名に日付接頭辞を追加した際の旧 URL → 新 URL リダイレクト。
   // 静的ビルドでは <meta http-equiv="refresh"> を含む HTML が生成される。
   redirects: {
+    // === (1) i18n 移行前のロケール無し URL → ja ===
+    "/profile/": "/HomePage/ja/profile/",
+    "/product/": "/HomePage/ja/product/",
+    "/contact/": "/HomePage/ja/contact/",
+    "/blog/": "/HomePage/ja/blog/",
+    "/project/": "/HomePage/ja/project/",
+    // === (2) ブログ記事スラッグ変更 ===
     "/ja/blog/hello-world/": "/HomePage/ja/blog/20260406-hello-world/",
     "/ja/blog/yumehashi-tech-stack/": "/HomePage/ja/blog/20260407-yumehashi-tech-stack/",
     "/ja/blog/yumehashi-story/": "/HomePage/ja/blog/20260408-yumehashi-story/",
