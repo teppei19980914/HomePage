@@ -110,7 +110,7 @@ const products = (await getLocalizedCollection("product", lang))
         >
           <div class="product-color" style="background:linear-gradient(135deg,#8b5cf6,#2563eb)"></div>
           <div class="product-body">
-            <span class="product-beta-badge">開発中 — こうご期待</span>
+            <span class="product-beta-badge">{productLabels.statusLabels.beta}</span>
             <h3>{p.data.title}</h3>
             <p class="product-tagline">{p.data.tagline}</p>
             <p class="product-desc">{p.data.description}</p>

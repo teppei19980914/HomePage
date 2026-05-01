@@ -126,10 +126,12 @@ const { contact } = t;
     var success = document.getElementById("formSuccess");
     if (!form || !success) return;
 
+    // フォールバックは英語側に揃える(script タグがほぼ確実に取得できるが、念のため)。
+    // 言語別の正しいテキストは data-* 属性経由で必ず注入される。
     var script = document.querySelector("script[data-submit-label]");
-    var submitLabel = script ? script.getAttribute("data-submit-label") : "送信する";
-    var submittingLabel = script ? script.getAttribute("data-submitting-label") : "送信中...";
-    var errorMessage = script ? script.getAttribute("data-error-message") : "送信に失敗しました。もう一度お試しください。";
+    var submitLabel = script ? script.getAttribute("data-submit-label") : "Submit";
+    var submittingLabel = script ? script.getAttribute("data-submitting-label") : "Submitting...";
+    var errorMessage = script ? script.getAttribute("data-error-message") : "Failed to send. Please try again.";
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
