@@ -1,5 +1,7 @@
 # 仕様書
 
+> このサイトの「**何が・どのように動いているか**」を定義する。要件は [REQUIREMENTS.md](REQUIREMENTS.md)、設計判断は [DESIGN.md](DESIGN.md) を参照。
+
 ## 0. 多言語対応
 
 ### 0.1 サポート言語
@@ -120,10 +122,10 @@ src/
 
 | ファイル | group | order | 内容 |
 |---|---|---|---|
-| `src/content/profile/philosophy.md` | `mindset` | 1 | 哲学・信念 |
-| `src/content/profile/motto.md` | `mindset` | 2 | 座右の銘 |
-| `src/content/profile/dream.md` | `direction` | 1 | 長期の夢・ビジョン |
-| `src/content/profile/goal.md` | `direction` | 2 | 短期・中期・長期の具体的目標 |
+| `src/content/profile/{ja,en}/philosophy.md` | `mindset` | 1 | 哲学・信念 |
+| `src/content/profile/{ja,en}/motto.md` | `mindset` | 2 | 座右の銘 |
+| `src/content/profile/{ja,en}/dream.md` | `direction` | 1 | 長期の夢・ビジョン |
+| `src/content/profile/{ja,en}/goal.md` | `direction` | 2 | 短期・中期・長期の具体的目標 |
 
 Schema は `title` / `quote` / `order` / `group ("mindset" | "direction")`、本文は Markdown 記述。`profile.astro` は `getCollection("profile")` で一括取得し `group` でフィルタして 2 つのグループセクションに描画する。新しいサブセクションを追加したい場合は、該当 `group` の新しい `.md` ファイルを置くだけでよい。TOC は 2 グループレベル (`#mindset` / `#direction`)、個別サブセクションへのディープリンクは各ファイル id 経由で可能。
 
@@ -172,14 +174,30 @@ SVG 手書きの Git ブランチ風グラフ:
 
 ### 1.7 Blog（blog/）
 
-- 一覧: 日付降順。タグ表示。`draft: true` の記事は非表示
-- 先頭に**目次（TOC）カード**を配置し、各セクション (`#work` / `#essay` / `#qiita`) へアンカージャンプ。Tech Blog は Qiita 記事が 1 件以上取得できた場合のみ TOC に表示
-- 3 セクション構成（`category` で分類）: **Work & Dev** (`#work`) / **Essay** (`#essay`) / **Tech Blog (Qiita)** (`#qiita`)
-- 各セクション直近 **5 件** のみ表示。5 件超の場合「全記事はこちら →」リンクを表示
-- カテゴリ別全件表示: `blog/category/work/`、`blog/category/essay/`
-- Tech Blog (Qiita): ビルド時に Qiita API から取得。直近 1 年以内 AND Organization 未紐付けで絞り込み、`likes + stocks*2` で降順ソートし上位 5 件を表示
-- 詳細: frontmatter + Markdown 本文。`ogType="article"` で Article スキーマ適用
-- **Markdown 内の外部リンク**は `rehype-external-links` プラグインによりビルド時に `target="_blank" rel="noopener noreferrer"` を自動付与（離脱抑止と HomePage への戻りやすさを両立。サイト内の相対リンク・アンカーは対象外）
+#### 1.7.1 一覧ページ（`/{lang}/blog/`）
+
+4 つのセクションで構成（上から順に表示）:
+
+| セクション | 内容 |
+|---|---|
+| **Featured Articles**（ピックアップ）| `dynamic-stats.json` の `featuredSlugs` で指定された記事を最大 4 件表示。空の場合は `frontmatter.featured: true` の記事をフォールバック |
+| **直近の記事**（regular）| ピックアップ以外の最新記事を `blog.maxPerSection` 件（既定 5 件）表示 |
+| **Tech Blog (Qiita)** | ビルド時に Qiita API から取得。直近 1 年以内 AND Organization 未紐付けで絞り込み、`likes + stocks*2` で降順ソートし上位 5 件を表示 |
+| **投稿カレンダー** | 月別グリッド。投稿日と未来日付の「公開予定」記事を一望（`BlogCalendar.astro`）|
+
+5 件超の場合は各セクション右下に「全記事はこちら →」リンク（`/{lang}/blog/all/`）を表示。
+
+#### 1.7.2 全件ページ（`/{lang}/blog/all/`）
+
+- 全記事を日付降順で表示
+- `draft: true` の記事は本番では非表示（dev では表示）
+
+#### 1.7.3 詳細ページ（`/{lang}/blog/{slug}/`）
+
+- frontmatter + Markdown 本文
+- `ogType="article"` で Article スキーマ適用、`article:published_time` メタタグ付与
+- Markdown 内の外部リンクは `rehype-external-links` で `target="_blank" rel="noopener noreferrer"` を自動付与
+- 未来日付（`date` が今日より後）の記事は本番ビルドで個別ページ非生成（`isPublished` フィルタ）。dev では常に表示
 
 ### 1.8 Contact（contact.astro）
 
@@ -248,6 +266,7 @@ SVG 手書きの Git ブランチ風グラフ:
   date: Date,             // 必須（coerce）
   tags: string[],         // デフォルト: []
   draft: boolean,         // デフォルト: false
+  featured: boolean,      // デフォルト: false（dynamic-stats.json が空の時のフォールバック）
 }
 ```
 
@@ -282,3 +301,49 @@ SVG 手書きの Git ブランチ風グラフ:
   order: number,             // デフォルト: 0
 }
 ```
+
+### 3.4 profile
+
+```typescript
+{
+  title: string,                          // 必須（"Philosophy" / "Motto" / "Dream" / "Goal"）
+  quote: string,                          // 必須（座右の銘・ビジョン文）
+  order: number,                          // デフォルト: 0
+  group: "mindset" | "direction",         // 必須（思想 = mindset / 方向性 = direction）
+}
+```
+
+## 4. 動的データ
+
+### 4.1 dynamic-stats.json
+
+`src/data/dynamic-stats.json` は月次バッチ（`.github/workflows/update-stats.yml`）で自動更新されるサイト全体の動的データ。
+
+```json
+{
+  "updatedAt": "2026-05-01",
+  "engineerYears": 5,
+  "qiita": {
+    "itemsCount": 113,
+    "contributions": 0
+  },
+  "featuredSlugs": [
+    "20260510-objective-self-portrait",
+    "20260417-about-me-guide",
+    "20260410-ai-driven-development",
+    "20260408-yumehashi-story"
+  ]
+}
+```
+
+| フィールド | 用途 | 更新方法 |
+|---|---|---|
+| `updatedAt` | 最終更新日 | バッチで自動 |
+| `engineerYears` | Profile / Home に表示するエンジニア歴 | バッチでキャリア開始日から計算 |
+| `qiita.itemsCount` | Profile に表示する Qiita 記事数 | バッチで Qiita API から取得 |
+| `qiita.contributions` | Profile に表示する Qiita Contributions | バッチで取得 |
+| `featuredSlugs` | Home / Blog のピックアップ記事スラッグ（最大 4 件）| バッチで Cloudflare Analytics の PV 上位から自動選定（手動上書きも可）|
+
+### 4.2 Qiita 記事（ビルド時取得）
+
+Blog 一覧ページの「Tech Blog (Qiita)」セクション用。`src/pages/[lang]/blog/index.astro` がビルド時に直接 Qiita API（認証不要）を叩いて取得。dev サーバーではスキップ（`import.meta.env.PROD` でガード）。

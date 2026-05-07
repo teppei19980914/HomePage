@@ -1,5 +1,7 @@
 # インフラ構成書
 
+> このサイトの「**何の上で動いているか**」を定義する。設計判断は [DESIGN.md](DESIGN.md)、運用手順は [OPERATIONS.md](OPERATIONS.md) を参照。
+
 ## 1. 全体構成図
 
 ```
@@ -93,10 +95,22 @@
 |---|---|
 | 管理画面 | https://search.google.com/search-console |
 | プロパティ | `https://teppei19980914.github.io/HomePage/` |
-| 確認方法 | HTML メタタグ |
-| 確認タグ | `f_jGq-vRpKheGaLTbGylmxYO7tMV8xx9R4lUvNQMo3o` |
-| 実装箇所 | `src/layouts/BaseLayout.astro`（`<head>` 内） |
+| 確認方法（二重化） | ① meta タグ + ② HTML ファイル |
+| ① meta タグ | `f_jGq-vRpKheGaLTbGylmxYO7tMV8xx9R4lUvNQMo3o`（実装: `src/layouts/BaseLayout.astro` の `<head>` 内）|
+| ② HTML ファイル | `public/google42479a91fae835e0.html`（ビルド時に `dist/google42479a91fae835e0.html` へコピー）|
 | サイトマップ | `https://teppei19980914.github.io/HomePage/sitemap-index.xml` |
+| 月次ダッシュボード | `docs/AccessLog/YYYYMMDD_HomePage_SEO_ダッシュボード.{md,pdf}` で蓄積 |
+
+> **重要**: GSC 検証用 HTML ファイルは必ず `public/` 配下に置く。リポジトリ直下に置くと Astro ビルドの対象外となり、`dist/` にコピーされず 404 になる。
+
+### 2.6 URL リダイレクト（astro.config.mjs）
+
+| リダイレクト群 | 件数 | 目的 |
+|---|---|---|
+| ロケール無し旧 URL → ja | 5 | i18n 移行で発生した 404 を救済（`/profile/` → `/ja/profile/` 等）|
+| 旧ブログスラッグ → 日付プレフィックス付きスラッグ | 22 | ファイル名規則変更の救済（`/ja/blog/hello-world/` → `/ja/blog/20260406-hello-world/` 等）|
+
+合計 27 件。Astro は静的ビルドで `<meta http-equiv="refresh">` + canonical 付き HTML を生成し、Google が canonical 経由で正規化を学習する。
 
 ## 3. コスト
 

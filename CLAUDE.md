@@ -72,6 +72,22 @@
 - **i18n**: `prefixDefaultLocale: true` により両言語とも `/ja/...` / `/en/...` で配信。ルート `/HomePage/` は言語検出リダイレクトページ
 - **ページ実装**: `src/pages/[lang]/` 配下に単一ソース。`getStaticPaths = localeStaticPaths` で全ロケール分を自動生成
 
+## Claude Code 運用スコープ（最重要）
+
+**Claude Code が実施する作業**:
+- SEO データ分析・公式情報を根拠とした改善提案（イベント駆動: ユーザーから依頼があった時のみ）
+- ブログ記事公開前の SEO レビュー（**毎回必須**）
+
+**Claude Code が実施しない作業**:
+- ホームページの実装修正・コード変更
+- 記事の作成・投稿
+- コミット & プッシュ
+
+**SEO 提案時のルール**:
+- 提案には必ず公式情報（Google Search Central / Web.dev / Schema.org など）の URL を根拠として明示
+- 期待効果と実装コストを併記
+- ユーザーが採否を判断・実装する
+
 ## 外部 API 連携
 
 - **Qiita API**: ビルド時に Qiita 記事を取得し、likes + stocks*2 でスコアリング、上位10件を Blog ページに表示
