@@ -38,7 +38,7 @@ const products = (await getLocalizedCollection("product", lang))
 
 ---
 
-<BaseLayout title="Home" description={site.defaultDescription}>
+<BaseLayout title={home.pageTitle} description={site.defaultDescription}>
   <!-- ===== 1. Hero (実績ハイライトを内包) ===== -->
   <section class="hero hero-gradient">
     <h1 class="hero-name fade-in">

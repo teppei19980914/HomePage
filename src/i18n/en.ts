@@ -38,6 +38,7 @@ export const en: Labels = {
 
   // --- Home page ---
   home: {
+    pageTitle: "Portfolio — Workflow Automation, AI Engineer",
     statsHeadline: "Measurable impact in every project",
     stats: [
       {
@@ -126,8 +127,8 @@ export const en: Labels = {
 
   // --- Profile page ---
   profile: {
-    title: "Profile",
-    description: "Profile of software engineer Teppei Suyama: bio, philosophy, mottos, links. 90% regression test reduction, 40h/month RPA savings in workflow automation.",
+    title: "Profile — Workflow Automation & AI Engineer",
+    description: "Software engineer Teppei Suyama — workflow automation & AI. 90% regression test reduction, 40h/month RPA savings. Skills, career, philosophy in one page.",
     subtitle: "Basics, philosophy, and social links",
     nameJa: "須山 哲平",
     nameEn: "Teppei Suyama",

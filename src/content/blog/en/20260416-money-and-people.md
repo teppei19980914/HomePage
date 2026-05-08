@@ -1,6 +1,6 @@
 ---
-title: 'The Nature of Money — "Money Is a Means to Connect People"'
-description: "Money itself has no value. It's paid not for goods or services but for the labor of people who create them. Using Zimbabwe's hyperinflation as an example, I examine the essence of money from an engineer's perspective."
+title: "What Money Really Is — Connecting People"
+description: "An essay on what money really is. Money has no inherent value; it pays for human labor. With Zimbabwe hyperinflation, an engineer view on why value attaches."
 date: 2026-04-16
 tags: ["Essay", "Reading", "Economics", "Philosophy", "Career"]
 ---
