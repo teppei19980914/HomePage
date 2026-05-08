@@ -86,31 +86,17 @@
 
 ---
 
-### 3. Discord サーバーの作成と URL 設定
-
-**背景**:
-- 開発者とユーザーをつなげるコミュニティとして Discord を運営したい
-- 現在は全 3 アプリの LP で「Discord（ユーザー・開発者向け）（準備中）」表示
-
-**実施タイミング**:
-- たすきばのリリースに合わせて、または個別アプリで利用者が増えてニーズが顕在化したタイミング
-
-**実施内容**:
-1. Discord サーバー作成
-   - 案 a: 3 アプリで 1 サーバー共有（チャンネル分離）
-   - 案 b: アプリ別に 3 サーバー分離
-   - 推奨: 立ち上げ初期は **案 a**（運用工数を抑えつつコミュニティ規模を集約）
-2. 永続招待リンク（Server Settings → Invites → Permanent）を取得
-3. `src/i18n/ja.ts` の各アプリの `discordUrl` に URL 設定（3 箇所）
-4. `src/i18n/en.ts` も同様に
-5. ビルド確認、デプロイ
-
-**関連ファイル**:
-- `src/i18n/ja.ts`（`apps.yumehashi.discordUrl` `apps.defrago.discordUrl` `apps.tasukiba.discordUrl`）
-- `src/i18n/en.ts`（同）
-
 ---
 
 ## 完了済み項目
 
-（現時点なし）
+### ✅ Discord サーバーの作成と URL 設定（2026-05 完了）
+
+**実施内容**:
+- Discord サーバーを 3 アプリで共有する形で作成
+- 各アプリ用の招待リンク（`https://discord.gg/...` 形式）を取得
+- `src/i18n/ja.ts` および `src/i18n/en.ts` の各アプリの `discordUrl` に URL を設定（3 箇所 × 2 言語 = 6 箇所）
+
+**結果**:
+- 全 3 アプリの LP で Discord リンクが「準備中」→ 招待リンクに切替済み
+- たすきばは Discord のみ先行稼働（他 URL は BACKLOG #1 に従い順次対応）

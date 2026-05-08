@@ -343,7 +343,7 @@ export const ja = {
       officialUrl: "https://teppei19980914.github.io/YumeHashi/",
       repoUrl: "https://github.com/teppei19980914/YumeHashi",
       discussionsUrl: "https://github.com/teppei19980914/YumeHashi/discussions",
-      discordUrl: "", // TODO: Discord サーバー作成後に URL を設定
+      discordUrl: "https://discord.gg/HcZKVsJdcn",
     },
     defrago: {
       pageTitle: "Defrago — 頭の断片化を解放してゴールに最短到達するアプリ",
@@ -356,7 +356,7 @@ export const ja = {
       officialUrl: "https://defrago.onrender.com/",
       repoUrl: "https://github.com/teppei19980914/Defrago",
       discussionsUrl: "https://github.com/teppei19980914/Defrago/discussions",
-      discordUrl: "", // TODO: Discord サーバー作成後に URL を設定
+      discordUrl: "https://discord.gg/KThVePenzz",
     },
     tasukiba: {
       pageTitle: "たすきば Knowledge Relay — 知見をつなぐ業務管理プラットフォーム",
@@ -369,7 +369,7 @@ export const ja = {
       officialUrl: "", // TODO: リリース後に公式サイト URL を設定
       repoUrl: "", // TODO: 公開時にリポジトリ URL を設定（現状は private な BusinessManagementPlatform リポジトリ）
       discussionsUrl: "", // TODO: BusinessManagementPlatform リポジトリの公開後 or 別途公開コミュニティリポジトリ作成後に設定
-      discordUrl: "", // TODO: Discord サーバー作成後に URL を設定
+      discordUrl: "https://discord.gg/AYekewZg2S",
     },
   },
 

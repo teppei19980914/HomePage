@@ -423,7 +423,7 @@ export const en: Labels = {
       officialUrl: "https://teppei19980914.github.io/YumeHashi/",
       repoUrl: "https://github.com/teppei19980914/YumeHashi",
       discussionsUrl: "https://github.com/teppei19980914/YumeHashi/discussions",
-      discordUrl: "",
+      discordUrl: "https://discord.gg/HcZKVsJdcn",
     },
     defrago: {
       pageTitle: "Defrago — Defragment Your Mind for Fast PDCA",
@@ -436,7 +436,7 @@ export const en: Labels = {
       officialUrl: "https://defrago.onrender.com/",
       repoUrl: "https://github.com/teppei19980914/Defrago",
       discussionsUrl: "https://github.com/teppei19980914/Defrago/discussions",
-      discordUrl: "",
+      discordUrl: "https://discord.gg/KThVePenzz",
     },
     tasukiba: {
       pageTitle: "Tasukiba — Knowledge-Driven Project Platform",
@@ -449,7 +449,7 @@ export const en: Labels = {
       officialUrl: "",
       repoUrl: "", // Currently private (BusinessManagementPlatform). Public repo URL TBD on release.
       discussionsUrl: "", // TODO: set after BusinessManagementPlatform is made public, or after creating a separate community repo
-      discordUrl: "",
+      discordUrl: "https://discord.gg/AYekewZg2S",
     },
   },
 
