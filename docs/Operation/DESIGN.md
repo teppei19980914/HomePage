@@ -227,6 +227,46 @@ rootUrl("rss.xml")         // → "/HomePage/rss.xml"（言語プレフィック
 - リダイレクトは `window.location.replace()` を使用し履歴汚染を防止
 - 翻訳辞書は全て TypeScript オブジェクトリテラル（XSS リスクなし、外部ソース経由の翻訳注入なし）
 
+## 4.x ブログ検索とタグページ設計
+
+### 4.x.1 タグページの静的生成
+
+```
+src/utils/blog-tags.ts
+   ├── tagToSlug(tag): 日本語はそのまま / 英数字は小文字+ハイフン化
+   ├── buildTagMap(posts): tag-slug → 記事リスト（date 降順）
+   ├── buildTagDisplayMap(posts): slug → 表示名
+   ├── shouldNoindex(count): 1 件以下なら true（thin content 対策）
+   └── listTagsSorted(map): 記事数降順 + アルファベット順
+
+src/pages/[lang]/blog/tag/[tag].astro
+   └── getStaticPaths でロケール × タグの静的ページを全件生成
+```
+
+### 4.x.2 SEO 戦略
+
+- 全タグページが**インデックス可能 URL**として sitemap に含まれる（@astrojs/sitemap が自動取得）
+- 1 記事しかないタグページは `<meta name="robots" content="noindex, follow">` で「クロールはする、検索結果には出さない」運用 → [Google Search Central の thin content 対策](https://developers.google.com/search/docs/essentials/spam-policies#thin-content) に準拠
+- 各タグページの description は最新記事タイトル + 公開日を含む動的テンプレート（120-160 字、CTR 向上目的）
+
+### 4.x.3 ブログ一覧の検索機能
+
+```
+[ユーザー入力]
+   ↓
+HTML 内 data-search-* 属性（title / description / tags）に対する部分一致
+   ↓
+カードを CSS display で表示/非表示（URL は変更しない）
+   ↓
+ヒット件数を aria-live で通知（アクセシビリティ配慮）
+```
+
+**設計判断**:
+- 検索インデックスを別 JSON で配信せず、HTML の `data-*` 属性に埋め込み（追加 fetch なし、キャッシュ管理不要）
+- 約 50 記事 × 200 文字 = 10KB 程度の HTML 増加に収まる（gzip で半分以下）
+- 検索範囲は **タイトル + description + タグ** のみ（本文全文は除外）。スモールスタート方針
+- 将来本文全文検索が必要になった場合は、`src/pages/blog-search-index.json.ts` を別途生成して遅延ロード方式に切り替え可能（既存 JS の構造はそのまま流用可能）
+
 ## 5. SEO 設計
 
 ### 5.1 メタタグ構成（BaseLayout.astro）

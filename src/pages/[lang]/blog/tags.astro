@@ -1,0 +1,117 @@
+---
+// ============================================================
+// blog/tags.astro — タグ一覧ハブページ
+//
+// 全タグを記事数降順で一覧表示。各タグから個別タグページへ遷移。
+// 内部リンクハブとしての SEO 効果と、ユーザーがテーマ別に記事を探す導線を兼ねる。
+// ============================================================
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale } from "../../../i18n";
+import { getLocalizedCollection, isPublished } from "../../../i18n/content";
+import { localeUrl } from "../../../i18n/url";
+import { localeStaticPaths } from "../../../i18n/paths";
+import {
+  buildTagMap,
+  buildTagDisplayMap,
+  listTagsSorted,
+} from "../../../utils/blog-tags";
+
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { blog } = t;
+
+const posts = (await getLocalizedCollection("blog", lang)).filter(isPublished);
+const tagMap = buildTagMap(posts);
+const displayMap = buildTagDisplayMap(posts);
+const tagsSorted = listTagsSorted(tagMap);
+---
+
+<BaseLayout title={blog.tag.indexTitle} description={blog.tag.indexDescription}>
+  <div class="page-header hero-gradient">
+    <h1 class="fade-in">{blog.tag.indexTitle}</h1>
+    <p class="page-subtitle fade-in delay-1">{blog.tag.indexSubtitle}</p>
+  </div>
+
+  <section class="section reveal">
+    <ul class="tag-cloud">
+      {tagsSorted.map(({ slug, count }, i) => {
+        const display = displayMap.get(slug) ?? slug;
+        return (
+          <li
+            class="tag-item reveal"
+            style={`transition-delay: ${i * 0.02}s`}
+          >
+            <a
+              href={localeUrl(lang, `blog/tag/${slug}/`)}
+              class="tag-card"
+              data-astro-reload
+            >
+              <span class="tag-card-name">#{display}</span>
+              <span class="tag-card-count">{count}{blog.tag.countSuffix}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <p class="back-link reveal">
+    <a href={localeUrl(lang, "blog/")} data-astro-reload>&larr; {blog.tag.backToBlogIndex}</a>
+  </p>
+</BaseLayout>
+
+<style>
+  .section { margin-top: 2rem; }
+  .page-subtitle { color: var(--color-text-muted); font-size: 0.95rem; }
+  .tag-cloud {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .tag-item { margin: 0; }
+  .tag-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    background-image: none;
+    color: var(--color-text);
+    transition: transform 0.2s, border-color 0.2s, background-color 0.2s, color 0.2s;
+  }
+  .tag-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-glow);
+    color: var(--color-primary);
+  }
+  .tag-card-name {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.9rem;
+  }
+  .tag-card-count {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    background-color: var(--color-bg);
+    padding: 0.1rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border);
+  }
+  .tag-card:hover .tag-card-count {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  .back-link {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .back-link a { font-size: 0.9rem; color: var(--color-primary); }
+</style>

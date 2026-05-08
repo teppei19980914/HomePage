@@ -1,0 +1,173 @@
+---
+// ============================================================
+// blog/tag/[tag].astro — タグ別記事一覧ページ
+//
+// 記事カード内のタグをクリックして遷移するインデックス可能なタグページ。
+// 1 記事しかないタグは <meta name="robots" content="noindex"> を付与し、
+// Google Search Central の "thin content" 対策に準拠する。
+// ============================================================
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale, BCP47, LOCALES } from "../../../../i18n";
+import { getLocalizedCollection, stripLocale, isPublished } from "../../../../i18n/content";
+import { localeUrl } from "../../../../i18n/url";
+import { estimateReadingTime } from "../../../../utils/reading-time";
+import {
+  buildTagMap,
+  buildTagDisplayMap,
+  shouldNoindex,
+} from "../../../../utils/blog-tags";
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of LOCALES) {
+    const posts = (await getLocalizedCollection("blog", lang)).filter(isPublished);
+    const tagMap = buildTagMap(posts);
+    const displayMap = buildTagDisplayMap(posts);
+    for (const [tagSlug, tagPosts] of tagMap.entries()) {
+      paths.push({
+        params: { lang, tag: tagSlug },
+        props: {
+          tagSlug,
+          tagDisplay: displayMap.get(tagSlug) ?? tagSlug,
+          posts: tagPosts,
+        },
+      });
+    }
+  }
+  return paths;
+}
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { blog, readingTime: readingTimeLabel } = t;
+const { tagDisplay, posts } = Astro.props as {
+  tagSlug: string;
+  tagDisplay: string;
+  posts: Awaited<ReturnType<typeof getLocalizedCollection<"blog">>>;
+};
+
+const count = posts.length;
+const isSingle = count === 1;
+const noindex = shouldNoindex(count);
+const latest = posts[0];
+const latestDate = latest.data.date.toLocaleDateString(BCP47[lang]);
+
+// title (30-60 字目標) / description (120-160 字目標)
+const title = isSingle
+  ? blog.tag.titleSingleTemplate.replace("{tag}", tagDisplay)
+  : blog.tag.titleTemplate
+      .replace("{tag}", tagDisplay)
+      .replace("{count}", String(count));
+
+const description = isSingle
+  ? blog.tag.descriptionSingleTemplate
+      .replace("{tag}", tagDisplay)
+      .replace("{latest}", latest.data.title)
+      .replace("{date}", latestDate)
+  : blog.tag.descriptionTemplate
+      .replace("{tag}", tagDisplay)
+      .replace("{count}", String(count))
+      .replace("{latest}", latest.data.title)
+      .replace("{date}", latestDate);
+---
+
+<BaseLayout title={title} description={description} noindex={noindex}>
+  <div class="page-header hero-gradient">
+    <p class="page-eyebrow fade-in">{blog.title}</p>
+    <h1 class="fade-in">
+      <span class="tag-name">#{tagDisplay}</span>
+    </h1>
+    <p class="page-subtitle fade-in delay-1">{count} {blog.tag.countSuffix}</p>
+  </div>
+
+  <section class="section reveal">
+    <ul class="card-list">
+      {posts.map((post, i) => (
+        <li class="reveal" style={`transition-delay: ${i * 0.05}s`}>
+          <a
+            href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
+            class="card blog-card"
+            data-astro-reload
+          >
+            <h3>{post.data.title}</h3>
+            <div class="card-meta">
+              <span class="date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>
+              <span class="meta-divider"></span>
+              <span class="reading-time">{readingTimeLabel(estimateReadingTime(post.body ?? ""))}</span>
+              <span class="meta-divider"></span>
+              <span class="card-tags">
+                {post.data.tags.slice(0, 4).map((otherTag) => (
+                  <span class="tag">{otherTag}</span>
+                ))}
+                {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
+              </span>
+            </div>
+            <p>{post.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <nav class="back-nav reveal">
+    <a href={localeUrl(lang, "blog/tags/")} class="back-link" data-astro-reload>
+      &larr; {blog.tag.backToTagIndex}
+    </a>
+    <a href={localeUrl(lang, "blog/")} class="back-link" data-astro-reload>
+      {blog.tag.backToBlogIndex} &rarr;
+    </a>
+  </nav>
+</BaseLayout>
+
+<style>
+  .page-header { text-align: left; }
+  .page-eyebrow {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .tag-name {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--color-accent);
+  }
+  .page-subtitle { color: var(--color-text-muted); font-size: 0.95rem; }
+  .section { margin-top: 2rem; }
+  .card-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .card {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-image: none;
+    color: var(--color-text);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .blog-card { border-left: 3px solid var(--color-primary); }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: var(--color-primary); }
+  :global(.dark) .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .card p { color: var(--color-text-muted); margin: 0.5rem 0 0; font-size: 0.95rem; line-height: 1.6; }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+  .meta-divider { width: 1px; height: 0.8rem; background-color: var(--color-border); flex-shrink: 0; }
+  .card-tags { display: inline-flex; gap: 0.3rem; flex-wrap: wrap; }
+  .back-nav {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .back-link { font-size: 0.9rem; color: var(--color-primary); }
+</style>

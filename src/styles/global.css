@@ -153,6 +153,16 @@ a:hover {
   border: 1px dashed var(--color-border);
   font-size: 0.7rem;
 }
+/* タグページへのリンク（クリック可能なタグチップ）*/
+a.tag, a.tag-link {
+  background-image: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+a.tag:hover, a.tag-link:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
 
 .date {
   color: var(--color-text-muted);

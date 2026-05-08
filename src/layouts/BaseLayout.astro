@@ -12,6 +12,11 @@ interface Props {
   ogType?: "website" | "article";
   publishedDate?: string;
   tags?: string[];
+  /**
+   * インデックス除外フラグ。true で <meta name="robots" content="noindex, follow"> を出力する。
+   * 1 記事しかないタグページなど、Google Search Central が "thin content" と判定し得るページに付与する。
+   */
+  noindex?: boolean;
 }
 
 const {
@@ -20,6 +25,7 @@ const {
   ogType = "website",
   publishedDate,
   tags = [],
+  noindex = false,
 } = Astro.props;
 
 // ===== ロケール判定 =====
@@ -98,6 +104,7 @@ const jsonLd = ogType === "article"
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="google-site-verification" content="f_jGq-vRpKheGaLTbGylmxYO7tMV8xx9R4lUvNQMo3o" />
 
     <!-- Canonical: 自言語 URL を canonical とする -->

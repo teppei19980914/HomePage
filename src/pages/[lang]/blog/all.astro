@@ -5,6 +5,7 @@ import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i1
 import { localeUrl } from "../../../i18n/url";
 import { localeStaticPaths } from "../../../i18n/paths";
 import { estimateReadingTime } from "../../../utils/reading-time";
+import { tagToSlug } from "../../../utils/blog-tags";
 
 export const getStaticPaths = localeStaticPaths;
 
@@ -31,7 +32,7 @@ const posts = (await getLocalizedCollection("blog", lang))
       ) : (
         <ul class="card-list">
           {posts.map((post, i) => (
-            <li class="reveal" style={`transition-delay: ${i * 0.05}s`}>
+            <li class="card-item reveal" style={`transition-delay: ${i * 0.05}s`}>
               <a
                 href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
                 class="card blog-card"
@@ -44,16 +45,19 @@ const posts = (await getLocalizedCollection("blog", lang))
                   <span class="date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>
                   <span class="meta-divider"></span>
                   <span class="reading-time">{readingTimeLabel(estimateReadingTime(post.body ?? ""))}</span>
-                  <span class="meta-divider"></span>
-                  <span class="card-tags">
-                    {post.data.tags.slice(0, 4).map((tag) => (
-                      <span class="tag">{tag}</span>
-                    ))}
-                    {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
-                  </span>
                 </div>
                 <p>{post.data.description}</p>
               </a>
+              <div class="card-tags-row">
+                {post.data.tags.slice(0, 4).map((tag) => (
+                  <a
+                    href={localeUrl(lang, `blog/tag/${tagToSlug(tag)}/`)}
+                    class="tag tag-link"
+                    data-astro-reload
+                  >{tag}</a>
+                ))}
+                {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
+              </div>
             </li>
           ))}
         </ul>
@@ -87,6 +91,17 @@ const posts = (await getLocalizedCollection("blog", lang))
   }
   .meta-divider { width: 1px; height: 0.8rem; background-color: var(--color-border); flex-shrink: 0; }
   .card-tags { display: inline-flex; gap: 0.3rem; flex-wrap: wrap; }
+  .card-item { display: flex; flex-direction: column; gap: 0.5rem; }
+  .card-tags-row { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0 0.25rem; }
+  .card-tags-row .tag-link {
+    color: var(--color-text-muted);
+    background-image: none;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+  }
+  .card-tags-row .tag-link:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
   .reading-time { color: var(--color-text-muted); }
   .draft-badge, .scheduled-badge {
     display: inline-block; font-size: 0.7rem; font-weight: 600;

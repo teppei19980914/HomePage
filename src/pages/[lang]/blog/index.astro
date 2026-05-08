@@ -6,6 +6,7 @@ import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i1
 import { localeUrl } from "../../../i18n/url";
 import { localeStaticPaths } from "../../../i18n/paths";
 import { estimateReadingTime } from "../../../utils/reading-time";
+import { tagToSlug } from "../../../utils/blog-tags";
 
 export const getStaticPaths = localeStaticPaths;
 
@@ -95,6 +96,29 @@ if (import.meta.env.PROD) {
     <p class="page-subtitle fade-in delay-1">{blog.subtitle}</p>
   </div>
 
+  <!-- 検索 + タグ一覧導線（JS 無効時は検索ボックスは非表示、タグ導線は表示） -->
+  <section class="blog-toolbar reveal">
+    <div class="blog-search" id="blogSearchWrapper" hidden>
+      <input
+        type="search"
+        id="blogSearchInput"
+        class="blog-search-input"
+        placeholder={blog.search.placeholder}
+        aria-label={blog.search.ariaLabel}
+        autocomplete="off"
+      />
+      <button type="button" id="blogSearchClear" class="blog-search-clear" aria-label={blog.search.clearLabel} hidden>
+        &times;
+      </button>
+    </div>
+    <a href={localeUrl(lang, "blog/tags/")} class="blog-toolbar-link" data-astro-reload>
+      #{blog.tag.indexTitle} &rarr;
+    </a>
+  </section>
+
+  <p class="blog-search-status" id="blogSearchStatus" aria-live="polite" hidden></p>
+  <p class="blog-search-empty" id="blogSearchEmpty" hidden>{blog.search.noResults}</p>
+
   <!-- Featured Section -->
   {featuredPosts.length > 0 && (
     <section class="section reveal">
@@ -110,6 +134,9 @@ if (import.meta.env.PROD) {
             class="featured-card reveal"
             style={`transition-delay: ${i * 0.1}s`}
             data-astro-reload
+            data-search-title={post.data.title}
+            data-search-desc={post.data.description}
+            data-search-tags={post.data.tags.join(",")}
           >
             <div class="featured-card-inner">
               <span class="featured-badge">{blog.featuredSection.title}</span>
@@ -140,11 +167,14 @@ if (import.meta.env.PROD) {
       ) : (
         <ul class="card-list">
           {displayPosts.map((post, i) => (
-            <li class="reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <li class="card-item reveal" style={`transition-delay: ${i * 0.1}s`}>
               <a
                 href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
                 class="card blog-card"
                 data-astro-reload
+                data-search-title={post.data.title}
+                data-search-desc={post.data.description}
+                data-search-tags={post.data.tags.join(",")}
               >
                 {isDev && post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
                 {isDev && !post.data.draft && post.data.date > new Date() && <span class="scheduled-badge">{blog.scheduledBanner}</span>}
@@ -153,16 +183,19 @@ if (import.meta.env.PROD) {
                   <span class="date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>
                   <span class="meta-divider"></span>
                   <span class="reading-time">{readingTimeLabel(estimateReadingTime(post.body ?? ""))}</span>
-                  <span class="meta-divider"></span>
-                  <span class="card-tags">
-                    {post.data.tags.slice(0, 4).map((tag) => (
-                      <span class="tag">{tag}</span>
-                    ))}
-                    {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
-                  </span>
                 </div>
                 <p>{post.data.description}</p>
               </a>
+              <div class="card-tags-row">
+                {post.data.tags.slice(0, 4).map((tag) => (
+                  <a
+                    href={localeUrl(lang, `blog/tag/${tagToSlug(tag)}/`)}
+                    class="tag tag-link"
+                    data-astro-reload
+                  >{tag}</a>
+                ))}
+                {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
+              </div>
             </li>
           ))}
         </ul>
@@ -230,6 +263,78 @@ if (import.meta.env.PROD) {
 
   <!-- 投稿カレンダー（予約投稿含む全記事） -->
   <BlogCalendar posts={postsAllDates} lang={lang} labels={blog.calendar} />
+
+  <!--
+    クライアントサイド検索（タイトル + description + タグ部分一致）。
+    JS 有効時のみ検索ボックス表示。data-search-* 属性を持つカードを動的フィルター。
+    URL は変更しない（ブラウザ履歴を汚さず、SEO にも影響しない）。
+  -->
+  <script
+    is:inline
+    data-result-template={blog.search.resultCountTemplate}
+  >
+    function initBlogSearch() {
+      var wrapper = document.getElementById("blogSearchWrapper");
+      var input = document.getElementById("blogSearchInput");
+      var clearBtn = document.getElementById("blogSearchClear");
+      var status = document.getElementById("blogSearchStatus");
+      var emptyMsg = document.getElementById("blogSearchEmpty");
+      if (!wrapper || !input || !clearBtn || !status || !emptyMsg) return;
+
+      // JS 有効環境で検索ボックスを表示
+      wrapper.hidden = false;
+
+      // 検索対象カード収集（featured + regular の両方）
+      var cards = Array.prototype.slice.call(
+        document.querySelectorAll("[data-search-title]"),
+      );
+
+      var script = document.querySelector("script[data-result-template]");
+      var resultTemplate = script ? script.getAttribute("data-result-template") : "{count} hit(s)";
+
+      function normalize(s) {
+        return (s || "").toLowerCase().replace(/\s+/g, " ").trim();
+      }
+
+      function applyFilter(query) {
+        var q = normalize(query);
+        if (!q) {
+          cards.forEach(function (c) { c.style.display = ""; });
+          status.hidden = true;
+          emptyMsg.hidden = true;
+          clearBtn.hidden = true;
+          return;
+        }
+        clearBtn.hidden = false;
+        var hits = 0;
+        cards.forEach(function (card) {
+          var title = normalize(card.getAttribute("data-search-title"));
+          var desc = normalize(card.getAttribute("data-search-desc"));
+          var tags = normalize(card.getAttribute("data-search-tags"));
+          var match = title.indexOf(q) >= 0 || desc.indexOf(q) >= 0 || tags.indexOf(q) >= 0;
+          // li.card-item または featured-card 自体を表示制御
+          var container = card.closest(".card-item") || card;
+          container.style.display = match ? "" : "none";
+          if (match) hits++;
+        });
+        status.textContent = resultTemplate.replace("{count}", String(hits));
+        status.hidden = false;
+        emptyMsg.hidden = hits > 0;
+      }
+
+      input.addEventListener("input", function () {
+        applyFilter(input.value);
+      });
+      clearBtn.addEventListener("click", function () {
+        input.value = "";
+        applyFilter("");
+        input.focus();
+      });
+    }
+
+    initBlogSearch();
+    document.addEventListener("astro:after-swap", initBlogSearch);
+  </script>
 </BaseLayout>
 
 <style>
@@ -272,6 +377,97 @@ if (import.meta.env.PROD) {
     display: inline-flex;
     gap: 0.3rem;
     flex-wrap: wrap;
+  }
+  .card-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  /* === Search & toolbar === */
+  .blog-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .blog-search {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    max-width: 480px;
+  }
+  .blog-search-input {
+    width: 100%;
+    padding: 0.6rem 2rem 0.6rem 0.9rem;
+    font-size: 0.95rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    color: var(--color-text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .blog-search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+  }
+  .blog-search-clear {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-border);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    line-height: 1;
+    font-size: 1rem;
+  }
+  .blog-search-clear:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  .blog-toolbar-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background-image: none;
+    white-space: nowrap;
+  }
+  .blog-search-status {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: 0.5rem 0 0;
+  }
+  .blog-search-empty {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+  }
+  .card-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0 0.25rem;
+  }
+  .card-tags-row .tag-link {
+    color: var(--color-text-muted);
+    background-image: none;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+  }
+  .card-tags-row .tag-link:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
   }
   .reading-time {
     color: var(--color-text-muted);

@@ -355,6 +355,25 @@ export const en: Labels = {
       monthArticlesTitle: "Articles this month",
       emptyMonth: "No articles published this month.",
     },
+    search: {
+      placeholder: "Search articles (title / description)",
+      ariaLabel: "Search blog articles",
+      clearLabel: "Clear",
+      noResults: "No articles found. Try different keywords.",
+      resultCountTemplate: "{count} hit(s)",
+    },
+    tag: {
+      titleTemplate: "Articles tagged \"{tag}\" — {count} posts",
+      titleSingleTemplate: "Articles tagged \"{tag}\"",
+      descriptionTemplate: "Archive of {count} articles tagged \"{tag}\". Latest: \"{latest}\" (published {date}). Curated technical explanations, experience reports, and reading reflections.",
+      descriptionSingleTemplate: "1 article tagged \"{tag}\". \"{latest}\" (published {date}).",
+      indexTitle: "All Tags",
+      indexDescription: "Index of all tags on Teppei Suyama's blog. Pick a theme — technical, career, reading, personal dev — and filter the entire archive at once.",
+      indexSubtitle: "Browse articles by theme",
+      countSuffix: "post(s)",
+      backToBlogIndex: "Back to Blog",
+      backToTagIndex: "Back to all tags",
+    },
   },
 
   // --- Product page ---

@@ -6,6 +6,7 @@ import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i1
 import { localeUrl } from "../../../i18n/url";
 import { buildXShareUrl } from "../../../utils/share";
 import { estimateReadingTime } from "../../../utils/reading-time";
+import { tagToSlug } from "../../../utils/blog-tags";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -71,7 +72,13 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
         </span>
         <span class="meta-divider"></span>
         <span class="meta-item meta-tags">
-          {post.data.tags.slice(0, 4).map((tag) => <span class="tag">{tag}</span>)}
+          {post.data.tags.slice(0, 4).map((tag) => (
+            <a
+              href={localeUrl(lang, `blog/tag/${tagToSlug(tag)}/`)}
+              class="tag tag-link"
+              data-astro-reload
+            >{tag}</a>
+          ))}
           {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
         </span>
       </div>

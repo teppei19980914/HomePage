@@ -275,6 +275,25 @@ export const ja = {
       monthArticlesTitle: "この月の記事",
       emptyMonth: "この月に投稿された記事はありません。",
     },
+    search: {
+      placeholder: "記事を検索（タイトル・概要）",
+      ariaLabel: "ブログ記事内検索",
+      clearLabel: "クリア",
+      noResults: "該当する記事はありませんでした。検索ワードを変更してお試しください。",
+      resultCountTemplate: "{count} 件ヒット",
+    },
+    tag: {
+      titleTemplate: "「{tag}」の記事一覧 — {count} 件",
+      titleSingleTemplate: "「{tag}」の記事",
+      descriptionTemplate: "「{tag}」に関するブログ記事 {count} 件のアーカイブ。最新は「{latest}」（{date} 公開）。技術解説・体験談・読書感想などをまとめてご覧いただけます。",
+      descriptionSingleTemplate: "「{tag}」に関するブログ記事 1 件。「{latest}」（{date} 公開）。",
+      indexTitle: "タグ一覧",
+      indexDescription: "ソフトウェアエンジニア須山哲平のブログ全タグの一覧ページ。技術・キャリア・読書・個人開発などのカテゴリーから関心のあるテーマを選んでブログ記事を一気に絞り込みできます。",
+      indexSubtitle: "テーマからブログ記事を探す",
+      countSuffix: "件",
+      backToBlogIndex: "ブログ一覧へ戻る",
+      backToTagIndex: "タグ一覧へ戻る",
+    },
   },
 
   // --- Product ページ ---

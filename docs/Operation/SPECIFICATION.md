@@ -176,12 +176,14 @@ SVG 手書きの Git ブランチ風グラフ:
 
 #### 1.7.1 一覧ページ（`/{lang}/blog/`）
 
-4 つのセクションで構成（上から順に表示）:
+ページ上部の **ツールバー** に検索ボックスとタグ一覧導線を配置し、その下に 4 つのセクションを表示。
 
-| セクション | 内容 |
+| エリア | 内容 |
 |---|---|
-| **Featured Articles**（ピックアップ）| `dynamic-stats.json` の `featuredSlugs` で指定された記事を最大 4 件表示。空の場合は `frontmatter.featured: true` の記事をフォールバック |
-| **直近の記事**（regular）| ピックアップ以外の最新記事を `blog.maxPerSection` 件（既定 5 件）表示 |
+| **検索ボックス** | タイトル + description + タグの部分一致でカードをクライアント側フィルター。`URL` は変更しない（履歴を汚さず SEO 影響なし）。JS 無効環境では `<input>` を CSS で非表示 |
+| **タグ一覧へのリンク** | `#タグ一覧 →` リンクで `/{lang}/blog/tags/` へ遷移 |
+| **Featured Articles**（ピックアップ）| `dynamic-stats.json` の `featuredSlugs` で指定された記事を最大 4 件表示。空の場合は `frontmatter.featured: true` をフォールバック |
+| **直近の記事**（regular）| ピックアップ以外の最新記事を `blog.maxPerSection` 件（既定 5 件）表示。各カードのタグはクリック可能なリンク（`/{lang}/blog/tag/{slug}/`）|
 | **Tech Blog (Qiita)** | ビルド時に Qiita API から取得。直近 1 年以内 AND Organization 未紐付けで絞り込み、`likes + stocks*2` で降順ソートし上位 5 件を表示 |
 | **投稿カレンダー** | 月別グリッド。投稿日と未来日付の「公開予定」記事を一望（`BlogCalendar.astro`）|
 
@@ -196,8 +198,26 @@ SVG 手書きの Git ブランチ風グラフ:
 
 - frontmatter + Markdown 本文
 - `ogType="article"` で Article スキーマ適用、`article:published_time` メタタグ付与
+- 記事メタの**タグはクリック可能なリンク**（`/{lang}/blog/tag/{slug}/`）
 - Markdown 内の外部リンクは `rehype-external-links` で `target="_blank" rel="noopener noreferrer"` を自動付与
 - 未来日付（`date` が今日より後）の記事は本番ビルドで個別ページ非生成（`isPublished` フィルタ）。dev では常に表示
+
+#### 1.7.4 タグ別ページ（`/{lang}/blog/tag/{tag-slug}/`）
+
+各タグごとに静的に生成される SEO 最適化済みページ。
+
+| 項目 | 内容 |
+|---|---|
+| URL | `/{lang}/blog/tag/{tag-slug}/`（日本語タグはそのまま、英数字は小文字 + ハイフン化）|
+| タイトル | 2 件以上: `「{tag}」の記事一覧 — {N} 件 | Teppei Suyama` / 1 件: `「{tag}」の記事 | Teppei Suyama` |
+| description | テンプレート展開（[blog.tag.descriptionTemplate](../../src/i18n/ja.ts) 参照、120-160 字） |
+| **noindex 制御** | **記事数 1 件のタグページは `<meta name="robots" content="noindex, follow">` を出力**（Google Search Central の "thin content" 対策）|
+| canonical | 自言語の自タグページ URL（絶対 URL） |
+| コンテンツ | 該当タグを持つ記事の一覧（date 降順）、各カードは詳細ページへリンク |
+
+#### 1.7.5 タグ一覧ハブページ（`/{lang}/blog/tags/`）
+
+全タグを記事数降順で一覧表示する内部リンクハブ。タグカードをクリックでタグ別ページへ遷移。SEO 上はサイト内のタグページへの内部リンクを集約することで評価を補強。
 
 ### 1.8 Contact（contact.astro）
 
