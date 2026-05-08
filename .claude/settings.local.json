@@ -4,7 +4,11 @@
       "WebFetch(domain:docs.mermaidviewer.com)",
       "WebFetch(domain:zenn.dev)",
       "WebFetch(domain:www.facebook.com)",
-      "WebFetch(domain:tbsb.info)"
+      "WebFetch(domain:tbsb.info)",
+      "PowerShell(npx astro check)",
+      "PowerShell(npm test 2>&1)",
+      "PowerShell(npm run build 2>&1)",
+      "PowerShell(npx astro check 2>&1)"
     ],
     "additionalDirectories": [
       "C:\\Users\\SF02512\\GitHub\\Private\\CreateQiita\\public"

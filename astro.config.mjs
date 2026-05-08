@@ -46,6 +46,18 @@ export default defineConfig({
     "/en/blog/reading-and-perspective/": "/HomePage/en/blog/20260415-reading-and-perspective/",
     "/en/blog/money-and-people/": "/HomePage/en/blog/20260416-money-and-people/",
     "/en/blog/about-me-guide/": "/HomePage/en/blog/20260417-about-me-guide/",
+    // === (3) /apps/ → /product/ への統合（A 案: 完全統合） ===
+    // /apps/{slug}/ と /product/{slug}/ の二重管理を解消し、product 側に一本化。
+    // 旧 /apps/ URL はインデックス未公開（noindex 運用）だったが、相互参照や
+    // 内部リンクの遺漏を防ぐためリダイレクトで救済する。
+    "/ja/apps/": "/HomePage/ja/product/",
+    "/en/apps/": "/HomePage/en/product/",
+    "/ja/apps/yumehashi/": "/HomePage/ja/product/yumehashi/",
+    "/en/apps/yumehashi/": "/HomePage/en/product/yumehashi/",
+    "/ja/apps/defrago/": "/HomePage/ja/product/defrago/",
+    "/en/apps/defrago/": "/HomePage/en/product/defrago/",
+    "/ja/apps/tasukiba/": "/HomePage/ja/product/tasukiba/",
+    "/en/apps/tasukiba/": "/HomePage/en/product/tasukiba/",
   },
   // ===== 多言語対応 =====
   // ja / en の 2 言語をサポート。両言語とも URL にプレフィックスを付与する。
@@ -81,13 +93,8 @@ export default defineConfig({
       // 宣言され、サイトマップ検証が失敗する(Google Search Console で
       // 「サイトマップを読み込めませんでした」になる)。
       // 言語検出用の中間ページはサイトマップに含めない。
-      //
-      // /apps/ 配下は現在コンテンツ拡張中。各ページに noindex を付与しているが、
-      // sitemap からも除外することで、Google に存在を通知しない運用にする。
-      // 公開準備が整ったタイミングで apps/ のフィルタを外す。
       filter: (page) =>
-        !/^https:\/\/[^/]+\/HomePage\/$/.test(page) &&
-        !/\/HomePage\/(ja|en)\/apps\//.test(page),
+        !/^https:\/\/[^/]+\/HomePage\/$/.test(page),
     }),
   ],
   markdown: {

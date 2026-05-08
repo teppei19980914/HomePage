@@ -15,74 +15,34 @@
 
 ## アクティブ項目
 
-### 1. たすきばの Discussions / コミュニティ連携の有効化
+### 1. たすきばの公開リポジトリ整備とリンク反映
 
 **背景**:
 - たすきばの本体リポジトリは現在 private（`BusinessManagementPlatform`）で開発中
-- LP は `/apps/tasukiba/` で公開準備中（**noindex 運用**）
-- 各種リンク（公式サイト・GitHub・Discussions・Discord）は **「準備中」表示**
+- 統合済み `/product/tasukiba/` ページの「コミュニティ」セクションには Discord のみ掲載、GitHub Discussions は「公開リポジトリ整備後に開設予定」と記載
 
 **実施タイミング**:
 - `BusinessManagementPlatform` リポジトリを公開化したタイミング
-- または、たすきばのリリース準備が整ったタイミング
+- または、たすきばの正式リリース準備が整ったタイミング
 
 **実施内容**:
 1. `BusinessManagementPlatform` リポジトリを Public 化
 2. リポジトリの **Settings → General → Features → Discussions** を有効化
-3. `src/i18n/ja.ts` の `apps.tasukiba` ブロックを更新:
-   - `repoUrl: "https://github.com/teppei19980914/BusinessManagementPlatform"`
-   - `discussionsUrl: "https://github.com/teppei19980914/BusinessManagementPlatform/discussions"`
-   - 必要に応じて `officialUrl` も
-4. `src/i18n/en.ts` の対応箇所も同様に更新（型システムが翻訳漏れを強制検出）
-5. `npm run build` でビルド確認、main へ commit & push
+3. `src/content/product/ja/tasukiba.md` の frontmatter に `repo` を追加:
+   ```yaml
+   repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
+   ```
+4. 同 md の「コミュニティ」セクションに Discussions URL を追加（プレースホルダ「公開リポジトリ整備後に開設予定」を置換）
+5. 必要に応じて `url`（公式サイト URL）も追加
+6. `src/content/product/en/tasukiba.md` も同様に更新
+7. `npm run build` でビルド確認、main へ commit & push
 
 **関連ファイル**:
-- `src/i18n/ja.ts`（`apps.tasukiba` ブロック）
-- `src/i18n/en.ts`（同）
+- `src/content/product/ja/tasukiba.md`（frontmatter + コミュニティセクション）
+- `src/content/product/en/tasukiba.md`（同）
 
 **補足**:
 - 旧リポジトリ `AnonymousKnowledgePlatform` は実質廃止（リポジトリ自体は残存）。LP からのリンクなし
-
----
-
-### 2. `/apps/` セクションの一般公開
-
-**背景**:
-- 現在 `/apps/` 配下は以下の制御で「直接 URL を知っている人だけアクセス可能」状態:
-  - 全 4 ページ（hub + 3 アプリ）に `<meta name="robots" content="noindex, follow">` 付与
-  - `astro.config.mjs` の sitemap フィルタで `/apps/` を除外
-  - Header にナビ未追加
-  - 既存 `/product/{slug}/` から `/apps/{slug}/` への内部リンクなし
-- コンテンツ拡張中
-
-**実施タイミング**:
-- 各アプリ LP のコンテンツが「他人に見せられる品質」に達したとき
-- 特にたすきばのリリース準備と合わせて公開するのが自然
-
-**実施内容**:
-1. `src/pages/[lang]/apps/index.astro` `yumehashi.astro` `defrago.astro` `tasukiba.astro` の `noindex={true}` を **削除**（または `false` に）
-2. `astro.config.mjs` の sitemap フィルタから `/apps/` 除外条件を削除:
-   ```js
-   // Before
-   filter: (page) =>
-     !/^https:\/\/[^/]+\/HomePage\/$/.test(page) &&
-     !/\/HomePage\/(ja|en)\/apps\//.test(page),
-   // After
-   filter: (page) => !/^https:\/\/[^/]+\/HomePage\/$/.test(page),
-   ```
-3. `src/components/Header.astro` にナビゲーション項目「Apps」を追加
-4. `src/i18n/ja.ts` `src/i18n/en.ts` の `nav` ブロックに `apps` ラベル追加
-5. （任意）`src/pages/[lang]/product/[...slug].astro` から対応する `/apps/{slug}/` へのリンク追加
-6. `npm run build` で生成数確認（sitemap に `/apps/` 配下が含まれることを `dist/sitemap-0.xml` で確認）
-7. main へ commit & push
-8. デプロイ完了後、Google Search Console で各 `/apps/` URL を **URL 検査 → インデックス登録リクエスト**
-
-**関連ファイル**:
-- `src/pages/[lang]/apps/*.astro`（4 ファイル）
-- `astro.config.mjs`
-- `src/components/Header.astro`
-- `src/i18n/ja.ts` `src/i18n/en.ts`（`nav` ブロック）
-- 任意: `src/pages/[lang]/product/[...slug].astro`
 
 ---
 
@@ -90,13 +50,22 @@
 
 ## 完了済み項目
 
+### ✅ `/apps/` と `/product/` の統合（A 案: 完全統合、2026-05 完了）
+
+**実施内容**:
+- `/apps/{slug}/` と `/product/{slug}/` の二重管理を解消し、`/product/` 側に一本化
+- product 配下の各 md にユーザ向け（悩み・3 ステップ・機能・ユースケース）を前段、技術詳細を後段に再構成
+- `/apps/` 配下の 4 ページ（hub + 3 アプリ）と `app` Content Collection を撤去
+- 旧 `/apps/{slug}/` URL は `astro.config.mjs` の redirects で `/product/{slug}/` へリダイレクト
+- sitemap の `/apps/` 除外条件と i18n の `apps` namespace（ja/en）を撤去
+
+**根拠**:
+- 採用担当者と一般ユーザの想定読者層は混在しており、個人サイト規模では別 URL を維持する SEO メリットより二重管理コストの方が大きい
+- 一本化により被リンク・内部リンクが集約、Google Search Central の canonicalization ガイダンスに沿った構成
+
 ### ✅ Discord サーバーの作成と URL 設定（2026-05 完了）
 
 **実施内容**:
 - Discord サーバーを 3 アプリで共有する形で作成
 - 各アプリ用の招待リンク（`https://discord.gg/...` 形式）を取得
-- `src/i18n/ja.ts` および `src/i18n/en.ts` の各アプリの `discordUrl` に URL を設定（3 箇所 × 2 言語 = 6 箇所）
-
-**結果**:
-- 全 3 アプリの LP で Discord リンクが「準備中」→ 招待リンクに切替済み
-- たすきばは Discord のみ先行稼働（他 URL は BACKLOG #1 に従い順次対応）
+- `/product/{slug}/` 各 md の「コミュニティ」セクションに Discord 招待リンクを反映（3 アプリ × 2 言語 = 6 箇所）
