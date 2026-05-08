@@ -377,6 +377,82 @@ export const en: Labels = {
     },
   },
 
+  // --- Apps page (active products LP section) ---
+  // ⚠️ Under construction. Not navigable from Header, excluded from sitemap, noindex per page.
+  //
+  // [URL configuration note]
+  // - discussionsUrl: GitHub Discussions must be **explicitly enabled per repository**.
+  //   Enable via: GitHub repo → Settings → General → Features → Discussions.
+  //   Without enabling, `/repo/discussions` returns a 404 from GitHub.
+  //   → Enable Discussions per repo, then set the URL here.
+  // - discordUrl: Set the invite URL after creating the Discord server.
+  // - Empty string renders as "TBD" on each LP page (no link is generated).
+  apps: {
+    title: "Apps",
+    description: "A section for active products by Teppei Suyama. Each app: overview, official site, GitHub, community links. Under construction; expanded over time.",
+    subtitle: "Products under active development & operation",
+    underConstructionTitle: "Under Construction",
+    underConstructionMessage: "This section is under construction. Information will be expanded over time.",
+    detailLink: "View details",
+    backToHub: "Back to Apps",
+    sectionHeadings: {
+      overview: "Overview",
+      links: "Official Site & Community",
+      status: "Current Status",
+    },
+    linkLabels: {
+      official: "Official site",
+      repo: "GitHub repository",
+      discussions: "GitHub Discussions (developers)",
+      discord: "Discord (users & developers)",
+      tbd: "TBD",
+    },
+    statusLabels: {
+      active: "Active",
+      development: "In Development",
+      suspended: "Not accepting new users",
+    },
+    yumehashi: {
+      pageTitle: "YumeHashi — Turn Dreams Into Daily Action",
+      pageDescription: "YumeHashi: a personal app that breaks dreams into goals and daily tasks. Flutter Web, Drift, Riverpod, Firebase. Constellation gamification. Currently paused.",
+      headline: "Turn dreams into goals you can act on today",
+      tagline: "With a dream, even the largest wall can be crossed",
+      statusKey: "suspended",
+      statusNote: "Currently not accepting new users. Restart timing is undecided.",
+      overview: "A personal-dev app built with Flutter Web. Three steps (write down → break down → keep going) turn dreams into action, with a 12-constellation gamification system supporting continuity.",
+      officialUrl: "https://teppei19980914.github.io/YumeHashi/",
+      repoUrl: "https://github.com/teppei19980914/YumeHashi",
+      discussionsUrl: "https://github.com/teppei19980914/YumeHashi/discussions",
+      discordUrl: "",
+    },
+    defrago: {
+      pageTitle: "Defrago — Defragment Your Mind for Fast PDCA",
+      pageDescription: "Defrago: an app that releases mental memory fragmentation. Python, FastAPI, HTMX, SQLite. Capture-clarify-engage-review PDCA. Shortest path to the goal.",
+      headline: "Defragment your mind, then move fast",
+      tagline: "The simplicity of taking the shortest path to the goal",
+      statusKey: "active",
+      statusNote: "Live. Free for anyone to use.",
+      overview: "Built on Python + FastAPI + HTMX + SQLite. The fast PDCA cycle (capture → clarify → engage → review) releases mental fragmentation and creates the shortest path to the goal.",
+      officialUrl: "https://defrago.onrender.com/",
+      repoUrl: "https://github.com/teppei19980914/Defrago",
+      discussionsUrl: "https://github.com/teppei19980914/Defrago/discussions",
+      discordUrl: "",
+    },
+    tasukiba: {
+      pageTitle: "Tasukiba — Knowledge-Driven Project Platform",
+      pageDescription: "Tasukiba: a project management platform that hands knowledge from one project to the next. Estimating, WBS, risks, retrospectives end-to-end. In development.",
+      headline: "The more you run it, the stronger the next project",
+      tagline: "Leave the insights. Hand over the judgments. Make every project stronger.",
+      statusKey: "development",
+      statusNote: "Currently in development (pre-release). Repository is private; release date is undecided.",
+      overview: "A project management platform built on Next.js + PostgreSQL + Prisma. End-to-end support from planning to retrospective, centered on knowledge — the longer you run it, the more organizational knowledge accumulates.",
+      officialUrl: "",
+      repoUrl: "", // Currently private (BusinessManagementPlatform). Public repo URL TBD on release.
+      discussionsUrl: "", // TODO: set after BusinessManagementPlatform is made public, or after creating a separate community repo
+      discordUrl: "",
+    },
+  },
+
   // --- Product page ---
   product: {
     title: "Product",

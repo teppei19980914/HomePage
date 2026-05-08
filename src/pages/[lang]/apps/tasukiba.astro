@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale } from "../../../i18n";
+import { localeUrl } from "../../../i18n/url";
+import { localeStaticPaths } from "../../../i18n/paths";
+
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { apps } = t;
+const app = apps.tasukiba;
+---
+
+<BaseLayout title={app.pageTitle} description={app.pageDescription} noindex={true}>
+  <article class="lp">
+    <header class="lp-hero hero-gradient fade-in">
+      <span class={`status status-${app.statusKey}`}>{apps.statusLabels[app.statusKey as keyof typeof apps.statusLabels]}</span>
+      <h1>{app.headline}</h1>
+      <p class="lp-tagline">{app.tagline}</p>
+    </header>
+
+    <aside class="construction-banner reveal">
+      <strong>{apps.underConstructionTitle}</strong>
+      <p>{apps.underConstructionMessage}</p>
+    </aside>
+
+    <section class="lp-section reveal">
+      <h2>{apps.sectionHeadings.overview}</h2>
+      <p>{app.overview}</p>
+    </section>
+
+    <section class="lp-section reveal">
+      <h2>{apps.sectionHeadings.status}</h2>
+      <p>{app.statusNote}</p>
+    </section>
+
+    <section class="lp-section reveal">
+      <h2>{apps.sectionHeadings.links}</h2>
+      <ul class="link-list">
+        {app.officialUrl
+          ? <li><a href={app.officialUrl} target="_blank" rel="noopener noreferrer">{apps.linkLabels.official} &rarr;</a></li>
+          : <li class="link-tbd"><span>{apps.linkLabels.official}（{apps.linkLabels.tbd}）</span></li>
+        }
+        {app.repoUrl
+          ? <li><a href={app.repoUrl} target="_blank" rel="noopener noreferrer">{apps.linkLabels.repo} &rarr;</a></li>
+          : <li class="link-tbd"><span>{apps.linkLabels.repo}（{apps.linkLabels.tbd}）</span></li>
+        }
+        {app.discussionsUrl
+          ? <li><a href={app.discussionsUrl} target="_blank" rel="noopener noreferrer">{apps.linkLabels.discussions} &rarr;</a></li>
+          : <li class="link-tbd"><span>{apps.linkLabels.discussions}（{apps.linkLabels.tbd}）</span></li>
+        }
+        {app.discordUrl
+          ? <li><a href={app.discordUrl} target="_blank" rel="noopener noreferrer">{apps.linkLabels.discord} &rarr;</a></li>
+          : <li class="link-tbd"><span>{apps.linkLabels.discord}（{apps.linkLabels.tbd}）</span></li>
+        }
+      </ul>
+    </section>
+
+    <nav class="lp-back reveal">
+      <a href={localeUrl(lang, "apps/")} data-astro-reload>&larr; {apps.backToHub}</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .lp { max-width: 720px; margin: 0 auto; }
+  .lp-hero { text-align: left; padding: 2rem 1.5rem; }
+  .lp-hero h1 { margin: 0.5rem 0 0.5rem; font-size: 1.6rem; }
+  .lp-tagline { font-style: italic; color: var(--color-accent); margin: 0; }
+  .construction-banner {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    background-color: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 0.5rem;
+  }
+  .construction-banner strong { display: block; color: #ca8a04; margin-bottom: 0.25rem; font-size: 0.95rem; }
+  .construction-banner p { margin: 0; color: var(--color-text-muted); font-size: 0.9rem; }
+  :global(.dark) .construction-banner strong { color: #fcd34d; }
+  .lp-section { margin-top: 2rem; }
+  .lp-section h2 { font-size: 1.05rem; margin: 0 0 0.5rem; color: var(--color-text); }
+  .lp-section p { color: var(--color-text-muted); line-height: 1.7; margin: 0; }
+  .link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .link-list a { font-weight: 600; }
+  .link-tbd span { color: var(--color-text-muted); font-size: 0.9rem; }
+  .lp-back { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+  .lp-back a { font-size: 0.9rem; color: var(--color-primary); }
+  .status {
+    display: inline-block; font-size: 0.7rem; font-weight: 600;
+    padding: 0.2rem 0.6rem; border-radius: 9999px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .status-active { background-color: rgba(34, 197, 94, 0.15); color: #16a34a; }
+  :global(.dark) .status-active { color: #4ade80; }
+  .status-development { background-color: rgba(59, 130, 246, 0.15); color: #2563eb; }
+  .status-suspended { background-color: rgba(239, 68, 68, 0.15); color: #dc2626; }
+  :global(.dark) .status-suspended { color: #f87171; }
+</style>

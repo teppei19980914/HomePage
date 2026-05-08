@@ -1,0 +1,151 @@
+---
+// ============================================================
+// apps/index.astro — Apps セクションのハブページ
+//
+// 須山哲平が現在開発・運用しているアクティブなプロダクトの紹介セクション。
+// noindex（コンテンツ拡張中）+ sitemap 除外。Header からのナビ追加もしない。
+// 直接 URL アクセスのみで到達可能。
+// ============================================================
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getLabels, normalizeLocale } from "../../../i18n";
+import { localeUrl } from "../../../i18n/url";
+import { localeStaticPaths } from "../../../i18n/paths";
+
+export const getStaticPaths = localeStaticPaths;
+
+const lang = normalizeLocale(Astro.params.lang);
+const t = getLabels(lang);
+const { apps } = t;
+
+type StatusKey = keyof typeof apps.statusLabels;
+const slugs = ["yumehashi", "defrago", "tasukiba"] as const;
+---
+
+<BaseLayout title={apps.title} description={apps.description} noindex={true}>
+  <div class="page-header hero-gradient">
+    <h1 class="fade-in">{apps.title}</h1>
+    <p class="page-subtitle fade-in delay-1">{apps.subtitle}</p>
+  </div>
+
+  <aside class="construction-banner reveal">
+    <strong>{apps.underConstructionTitle}</strong>
+    <p>{apps.underConstructionMessage}</p>
+  </aside>
+
+  <section class="section reveal">
+    <ul class="app-card-list">
+      {slugs.map((slug, i) => {
+        const app = apps[slug];
+        return (
+          <li class="app-card-item reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <a
+              href={localeUrl(lang, `apps/${slug}/`)}
+              class="app-card"
+              data-astro-reload
+            >
+              <div class="app-card-header">
+                <h2>{app.headline}</h2>
+                <span class={`status status-${app.statusKey}`}>
+                  {apps.statusLabels[app.statusKey as StatusKey]}
+                </span>
+              </div>
+              <p class="app-card-tagline">{app.tagline}</p>
+              <p class="app-card-overview">{app.overview}</p>
+              <span class="app-card-link">{apps.detailLink} &rarr;</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .construction-banner {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    background-color: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 0.5rem;
+  }
+  .construction-banner strong {
+    display: block;
+    color: #ca8a04;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+  }
+  .construction-banner p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  :global(.dark) .construction-banner strong { color: #fcd34d; }
+
+  .section { margin-top: 2rem; }
+  .app-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .app-card-item { margin: 0; }
+  .app-card {
+    display: block;
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-image: none;
+    color: var(--color-text);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .app-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-primary);
+  }
+  :global(.dark) .app-card:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+  .app-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .app-card h2 { margin: 0; font-size: 1.2rem; }
+  .app-card-tagline {
+    font-style: italic;
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    margin: 0 0 0.5rem;
+  }
+  .app-card-overview {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 0.75rem;
+  }
+  .app-card-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+  .status {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .status-active { background-color: rgba(34, 197, 94, 0.15); color: #16a34a; }
+  :global(.dark) .status-active { color: #4ade80; }
+  .status-development { background-color: rgba(59, 130, 246, 0.15); color: #2563eb; }
+  .status-suspended { background-color: rgba(239, 68, 68, 0.15); color: #dc2626; }
+  :global(.dark) .status-suspended { color: #f87171; }
+</style>

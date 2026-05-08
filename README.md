@@ -24,6 +24,7 @@
 | [docs/Operation/DESIGN.md](docs/Operation/DESIGN.md) | 設計（アーキテクチャ・データフロー・コンポーネント） |
 | [docs/Operation/OPERATIONS.md](docs/Operation/OPERATIONS.md) | 運用手順（日常運用・デプロイ・メンテナンス・SEO 運用） |
 | [docs/Operation/INFRASTRUCTURE.md](docs/Operation/INFRASTRUCTURE.md) | インフラ構成（外部サービス・コスト・セキュリティ） |
+| [docs/Operation/BACKLOG.md](docs/Operation/BACKLOG.md) | 予定作業（着手時期未定の TODO 蓄積。完了したら他 docs に反映 or 削除） |
 | [docs/AccessLog/](docs/AccessLog/) | 月次 SEO ダッシュボード（GSC データ転記） |
 | [docs/Operation/I18N_MIGRATION_CHECKLIST.md](docs/Operation/I18N_MIGRATION_CHECKLIST.md) | 多言語対応デプロイ後チェックリスト |
 

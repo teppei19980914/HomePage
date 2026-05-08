@@ -81,7 +81,13 @@ export default defineConfig({
       // 宣言され、サイトマップ検証が失敗する(Google Search Console で
       // 「サイトマップを読み込めませんでした」になる)。
       // 言語検出用の中間ページはサイトマップに含めない。
-      filter: (page) => !/^https:\/\/[^/]+\/HomePage\/$/.test(page),
+      //
+      // /apps/ 配下は現在コンテンツ拡張中。各ページに noindex を付与しているが、
+      // sitemap からも除外することで、Google に存在を通知しない運用にする。
+      // 公開準備が整ったタイミングで apps/ のフィルタを外す。
+      filter: (page) =>
+        !/^https:\/\/[^/]+\/HomePage\/$/.test(page) &&
+        !/\/HomePage\/(ja|en)\/apps\//.test(page),
     }),
   ],
   markdown: {
