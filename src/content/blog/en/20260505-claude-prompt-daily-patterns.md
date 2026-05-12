@@ -7,9 +7,11 @@ tags: ["Claude Code", "AI-driven development", "prompt engineering", "career", "
 
 ## Series part 8
 
-[Part 7](/HomePage/en/blog/20260504-claude-prompt-thinking-patterns/) covered 13 thinking-mode patterns. This post collects **non-technical, everyday patterns** I use daily.
+Ever thought, "I should ask a friend about this," and then realized it's 1 a.m. on a Tuesday?
 
-I'm an engineer, but Claude is not only for code. I reach for it for **emails, career decisions, journal reflections, even travel planning**.
+[Part 7](/HomePage/en/blog/20260504-claude-prompt-thinking-patterns/) covered 13 thinking-mode patterns. This post collects **non-technical, everyday patterns** I genuinely use.
+
+I'm an engineer, but Claude isn't only for code. I reach for it for **emails, career decisions, journal reflections, even travel planning**. Honestly, that was the part that surprised me.
 
 ## D. Writing
 
@@ -261,6 +263,8 @@ The biggest surprise when I started using Claude wasn't the productivity boost a
 Claude works well as a **non-judgmental thinking partner**. With human friends I unconsciously frame things to protect myself. With Claude I can be honest.
 
 **AI-driven development turned out to also be AI-driven living.**
+
+If there's a thing in your head right now that's "too small to bother a friend with, too persistent to ignore," you might try Pattern 14 (Journal reflection) tonight. The fact that you don't owe Claude an apology for the time turns out to matter.
 
 ## Related posts
 

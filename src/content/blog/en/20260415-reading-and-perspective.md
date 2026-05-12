@@ -7,11 +7,13 @@ tags: ["Reading", "Self-Analysis", "Self-Growth", "Essay", "Communication"]
 
 ## What Changed Wasn't My Knowledge
 
-I read during my commute and before bed as a daily habit. At first it was a battle against sleepiness, but now it's become a time when my mind sharpens.
+Honestly, I used to think people read books to "learn things."
 
-What I've realized through continuous reading: **the greatest value wasn't "gaining more knowledge."**
+I read during my commute and right before bed. It started as a battle against sleepiness, and somewhere along the way it turned into the time my mind actually sharpens.
 
-Knowledge is searchable. Technical problems can be solved through Qiita or official documentation. What only reading provides lies elsewhere.
+After enough years of this, something quietly surprised me: **the biggest gain wasn't "more knowledge."**
+
+Knowledge is searchable. Technical problems get solved by Qiita or official docs. The thing only reading gives you sits somewhere else entirely.
 
 ---
 
@@ -19,28 +21,28 @@ Knowledge is searchable. Technical problems can be solved through Qiita or offic
 
 What reading gave me is **"the ability to form my own answers."**
 
-When reading, questions naturally arise: "Is that really true?" "What about in my case?" Through self-questioning and research based on those doubts, I find my own answers.
+When I read, questions just show up uninvited: "Is that really true?" "What about in my case?" Following those doubts — asking, looking up, sitting with them — I end up arriving at answers that are mine, not borrowed.
 
-By repeating this process, I became able to **interpret the same event from multiple angles**.
+Repeat that process enough times, and something shifts. You start being able to **interpret the same event from several angles at once**.
 
-I call this "intellectual richness" — in other words, **the degree to which you can view things from multiple perspectives**.
+I call this "intellectual richness." Or, more practically, **how many perspectives you can hold for a single thing**.
 
 ---
 
 ## What Does "Multiple Perspectives" Mean?
 
-Consider a common workplace scenario:
+Picture a familiar workplace moment:
 
-> A deadline is approaching, and a team member reports: "I don't think I can finish this task."
+> Deadline approaching. A teammate says: "I don't think I can finish this task."
 
-**Single perspective:** "Why didn't you say something sooner?" → Blame
+**Single perspective:** "Why didn't you say something sooner?" → Blame.
 
 **Multiple perspectives:**
-- Was there an atmosphere that made it hard to speak up?
-- Was the estimate itself too optimistic? Was my review the problem?
-- Isn't the fact they could be honest actually a sign of psychological safety?
+- Was there an atmosphere that made speaking up hard?
+- Was the estimate itself too optimistic? Was my review the bottleneck?
+- Isn't the fact they could be honest actually evidence of psychological safety?
 
-Same event, but **increasing the angles of interpretation changes the action you take next**. Instead of blame, you focus on improving systems. That's the practical value.
+Same event. Same five seconds. But **adding angles changes what you do next**. Instead of blame, you reach for system improvement. That's the practical payoff.
 
 ---
 
@@ -48,23 +50,23 @@ Same event, but **increasing the angles of interpretation changes the action you
 
 ### Code Review
 
-Ask "why did they write it this way?" first. Seemingly inefficient code may have constraints or context behind it. Understanding intent before suggesting changes results in higher buy-in and better team learning.
+Start with "*why* did they write it this way?" Code that looks inefficient often has invisible constraints behind it. Understanding intent before suggesting changes gets you better buy-in and far better team learning.
 
 ### Requirements Definition
 
-Instead of implementing client requests as-is, dig into "why is this feature needed?" and "what's the real problem to solve?" Finding the **essential problem behind surface-level requests** requires habitual multi-perspective thinking.
+Instead of implementing what the client asked for verbatim, dig into "why is this feature needed?" and "what's the actual problem to solve?" Finding the **real problem under the surface request** is just multi-perspective thinking, applied.
 
 ### Incident Response
 
-Direct thinking toward "why did it happen" and "how to prevent recurrence" rather than "whose fault is it." Another situation that requires going beyond single-perspective thinking (blame game).
+Steer the conversation toward "why did it happen" and "how do we prevent recurrence" — not "whose fault is it." Another moment where single-perspective thinking (the blame game) does real damage.
 
 ---
 
 ## Curiosity Comes Later
 
-"Having questions is important" — but without curiosity, questions don't arise. Some may feel this contradiction.
+"Having questions is important" — sure. But what if you don't have curiosity in the first place? You might be feeling that contradiction right now.
 
-In my experience, **curiosity comes as a *result* of reading**.
+In my experience, **curiosity arrives as a *result* of reading, not as a prerequisite.**
 
 ```
 Read a book → Questions arise → Self-questioning → Form your own answer
@@ -72,22 +74,23 @@ Read a book → Questions arise → Self-questioning → Form your own answer
     → Want to know more (= curiosity) → Read another book → ...
 ```
 
-You don't need curiosity to start. **Just read one book.** The cycle begins.
+You don't need curiosity to start. **Just open one book.** The cycle handles the rest.
 
 ---
 
 ## Small Practices for Continuous Reading
 
-My reading habits:
+Here's what I personally try:
 
-- **Read during commute** — Just replace phone time with reading
-- **15 minutes before bed** — Don't aim for perfect comprehension. Skimming is fine
-- **Note interesting passages** — Save "seeds for self-questioning"
-- **Alternate between technical and philosophical books** — Switch brain modes to prevent burnout
+- **Commute reading** — Replace phone time with book time. That's it.
+- **15 minutes before bed** — Don't aim for full comprehension. Skimming counts.
+- **Note the lines that snag you** — Saving "seeds for self-questioning"
+- **Alternate technical and philosophical books** — Switch brain modes to dodge burnout
+
+If you've been telling yourself "I should read more" for months, maybe pick one book today and read three pages. The trick is starting — not finishing.
 
 ## Related Articles
 
 - ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — How a book changed my definition of effort
 - ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — Habits for keeping the brain active
-- ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/20260412-power-of-words/) — The original experience of learning the power of words through reading
 - ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260419-failure-science/) — The importance of accumulating and analyzing failure

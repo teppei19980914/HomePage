@@ -7,9 +7,11 @@ tags: ["Claude Code", "AI-driven development", "workflow", "prompt engineering",
 
 ## Series part 3
 
-[The previous post](/HomePage/en/blog/20260429-claude-prompt-principles/) covered the three core principles. This post is about **the development workflow** that turns those principles into execution.
+Ever asked Claude to "fix this bug" and watched it confidently fix a different bug?
 
-The Claude Code docs lay it out in a single, memorable pattern: **Explore → Plan → Code → Commit**.
+[The previous post](/HomePage/en/blog/20260429-claude-prompt-principles/) covered the three core principles. This one is about **the development workflow** that turns those principles into execution.
+
+The Claude Code docs lay it out in a single memorable pattern: **Explore → Plan → Code → Commit**.
 
 ## Jumping straight to code is the worst anti-pattern
 
@@ -17,7 +19,7 @@ From the official guide:
 
 > Letting Claude jump straight to coding can produce code that solves the wrong problem. Use Plan Mode to separate exploration from execution.
 
-**Skip exploration and planning and you'll get working code that solves the wrong problem.** I've been burned many times:
+**Skip exploration and planning, and you'll get working code that solves the wrong problem.** I've been burned many times:
 
 - "Add an API endpoint" → Claude designs one that conflicts with an existing route
 - "Fix this bug" → Symptoms disappear but the root cause is still there
@@ -33,7 +35,7 @@ First, have Claude read the codebase:
 
 > "Read through the authentication module in `src/auth/`. Don't write code yet — just summarize what you find."
 
-The key phrase is **"Don't write code yet."** Without it Claude will start "helpfully fixing" things as it reads.
+The key phrase is **"Don't write code yet."** Without it, Claude will start "helpfully fixing" things as it reads.
 
 ### Step 2 — Plan
 
@@ -63,7 +65,7 @@ The guide is explicit that **simple, localized changes don't need the full ritua
 
 > For simple, localized changes (typo fix, single variable rename, trivial refactor), you can skip Plan Mode.
 
-The rule of thumb: if the change stays inside a single function, skip Explore and Plan. If it touches multiple files or modules, do all four stages.
+Rule of thumb: if the change stays inside one function, skip Explore and Plan. If it touches multiple files or modules, do all four stages.
 
 ## A moment Plan Mode saved me
 
@@ -71,7 +73,7 @@ When I was building the scheduled-publishing feature for my blog, I asked Claude
 
 But this site is a static SSG with no database. **Plan Mode let me catch that** before any code was written. The real implementation just reads the `date` frontmatter and filters via an `isPublished()` function — a fraction of the change.
 
-If I'd gone straight to code, I'd have paid for wiring up an unnecessary database.
+If I'd gone straight to code, I'd have paid to wire up an unnecessary database.
 
 ## Pass concrete context during Explore
 

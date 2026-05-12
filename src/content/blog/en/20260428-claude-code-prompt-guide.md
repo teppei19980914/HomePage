@@ -7,11 +7,13 @@ tags: ["Claude Code", "AI-driven development", "prompt engineering", "personal p
 
 ## Are you using Claude Code "by feel"?
 
-I run three personal products powered by AI-driven development, and I lean on Claude Code heavily for all of them. But for a long time I was using it purely by instinct — "Claude feels smart today" or "Claude is off today" — as if the model's performance was a weather report.
+Ever had that moment where Claude nails a hard task one minute and then completely whiffs an easy one the next — and you start blaming the weather?
 
-What pulled me out of that mode was sitting down and actually reading **Anthropic's official best practices** front to back.
+I run three personal products powered by AI-driven development, and I lean on Claude Code heavily for all of them. For a long time I was using it purely on instinct — "Claude feels smart today" or "Claude is off today" — as if the model's performance was the daily forecast.
 
-My first reaction after finishing them:
+What pulled me out of that mode was sitting down and actually reading **Anthropic's official best practices**, front to back.
+
+My honest first reaction:
 
 > "Oh. The answer was here the whole time."
 
@@ -22,7 +24,7 @@ Only two sources:
 - [Best Practices for Claude Code — Anthropic official](https://code.claude.com/docs/en/best-practices)
 - [Prompting best practices for Claude 4 — Anthropic official](https://platform.claude.com/docs/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices)
 
-They're in English, but they're also short. Half a day alongside your normal coding and you can get through both. Despite that, few Japanese write-ups cover them comprehensively, which is part of what inspired this series.
+They're in English, but they're also short. Half a day alongside your normal coding and you can finish both. Despite that, few Japanese write-ups cover them comprehensively, which is part of what inspired this series.
 
 ## What changed in my workflow
 
@@ -68,6 +70,8 @@ To separate official statements from my own opinion, every post uses the followi
 The homepage version focuses on personal takeaways and readability. The Qiita version is a **reference-grade writeup with full official quotations** — if you want the deep dive, visit my Qiita profile.
 
 - [Qiita profile](https://qiita.com/teppei19980914)
+
+If you've been using Claude Code "by feel" too, you might try opening just one of the two links above today. Half a day. That's all it took to change how I work.
 
 ## Related posts
 

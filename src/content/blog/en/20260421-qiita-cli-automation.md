@@ -5,11 +5,13 @@ date: 2026-04-21
 tags: ["Qiita", "Claude Code", "AI-Driven Development", "GitHub Actions", "Automation"]
 ---
 
-Every time I published on Qiita, I edited in the browser. No Git management, no diffs, manual SEO every time.
+Ever opened the Qiita editor for the tenth time that week and thought, "there has to be a better way to live"?
 
-To solve this, I built a system with **Qiita CLI + Claude Code + GitHub Actions** to automate article management from creation to publishing.
+That was me. Every Qiita article meant editing in the browser. No Git management, no diffs, manual SEO every single time.
 
-This article covers the full process, including the **duplicate article ID trap** I fell into and **data-driven publishing time optimization**.
+So I built it — a system with **Qiita CLI + Claude Code + GitHub Actions** that automates article management from creation through publication.
+
+This article walks the full road, including the **duplicate article ID trap** I fell into and **data-driven publishing time optimization**.
 
 ---
 
@@ -17,9 +19,9 @@ This article covers the full process, including the **duplicate article ID trap*
 
 | Problem | Details |
 |---|---|
-| **Browser editing every time** | Writing in Qiita's editor → no Git management, no diffs |
-| **Ad-hoc SEO** | Manually optimizing titles and tags each time |
-| **Can't sustain daily posting** | Want to batch-write but spread publication timing |
+| **Browser editing every time** | Writing in Qiita's editor → no Git, no diffs |
+| **Ad-hoc SEO** | Manually fiddling titles and tags each time |
+| **Can't sustain daily posting** | Want to batch-write but stagger publication |
 
 ---
 
@@ -51,13 +53,13 @@ npm install @qiita/qiita-cli --save-dev
 npx qiita init && npx qiita login && npx qiita pull
 ```
 
-This syncs all your Qiita articles as Markdown files in `public/`. My account had **213 articles** pulled in one shot.
+This syncs all your Qiita articles as Markdown files in `public/`. My account had **213 articles** pulled in one shot. Slightly emotional moment.
 
 ---
 
 ## Step 2: Automating Article Improvement with Claude Code
 
-The `.claude/skills/improve-article.md` skill defines the full improvement process. Telling Claude Code "improve this article" triggers a 10-step automated improvement — including **accumulative trend analysis** that builds a pattern library over time rather than overwriting.
+The `.claude/skills/improve-article.md` skill defines the full improvement process. Telling Claude Code "improve this article" triggers a 10-step automated improvement — including **accumulative trend analysis** that builds a pattern library over time, rather than overwriting it.
 
 ---
 
@@ -70,7 +72,7 @@ ignorePublish: true                    # Reserved state
 scheduled_publish_date: "2026-04-15"   # Auto-publishes on this date
 ```
 
-A GitHub Actions cron job runs at **20:00 JST daily** and publishes 1 scheduled article. The next date is auto-calculated from the latest existing scheduled date — no manual date math needed.
+A GitHub Actions cron job runs at **20:00 JST daily** and publishes 1 scheduled article. The next date is auto-calculated from the latest existing scheduled date — no mental date math required.
 
 ### Why 20:00 JST
 
@@ -80,11 +82,13 @@ A GitHub Actions cron job runs at **20:00 JST daily** and publishes 1 scheduled 
 | **Evening (20:00-22:00)** | **Read deeply** (post-work reading) |
 | Weekends | PV drops to 1/5 of weekdays |
 
-**Wednesday has the highest Qiita PV** in data, so when batch-writing multiple articles, the most viral candidate gets the Wednesday slot.
+**Wednesday has the highest Qiita PV** in the data, so when I batch-write multiple articles, the most viral candidate gets the Wednesday slot.
 
 ---
 
 ## Step 4: The Article ID Trap — The Same Article Published 4 Times
+
+Honestly, this one stung.
 
 When Qiita CLI creates a new article, the frontmatter `id` is `null`. When merged to main, `publish.yml` runs `qiita publish --all`. Qiita CLI treats `id: null` articles as **new articles every time**.
 
@@ -96,7 +100,7 @@ The default workflow had **no mechanism to commit the Qiita-assigned ID back to 
 2nd merge → still id:null → published again as new...
 ```
 
-Result: **the same article was published 4 times**. Then deleting the duplicates on Qiita left files with deleted IDs locally — triggering **404 errors** that broke the entire workflow.
+Result: **the same article was published 4 times**. Then deleting the duplicates on Qiita left files with deleted IDs locally — which threw **404 errors** that broke the entire workflow.
 
 ### The Fix: ID Commit-Back
 
@@ -116,13 +120,13 @@ Result: **the same article was published 4 times**. Then deleting the duplicates
 |---|---|
 | **`id: null` + `ignorePublish: false` is dangerous** | Publishes as new on every merge |
 | **ID commit-back is essential** | Qiita CLI doesn't persist IDs to the repo by default |
-| **Test systems with 1 article first** | Validate before bulk operations |
+| **Test systems with 1 article first** | Validate before any bulk operation |
 
 ---
 
 ## Step 5: Git Workflow — Daily Branch Automation
 
-Claude Code Hooks automate the daily branch workflow.
+Claude Code Hooks automate the daily branch dance.
 
 **SessionStart Hook**: Detects previous day branches → commits & pushes uncommitted changes → auto-creates PRs → deletes merged branches → creates today's branch.
 
@@ -143,7 +147,9 @@ Claude Code Hooks automate the daily branch workflow.
 
 ## In Closing
 
-Building this system, I fell into the "article ID duplicate" trap. But **incorporating those failures into the system** means I can now run scheduled publishing with confidence.
+Building this system, I fell into the "article ID duplicate" trap. But **baking that failure into the system itself** means I can now run scheduled publishing without second-guessing every merge.
+
+If you're still editing in the browser, you might pick just one piece of this — even the cron alone — and try grafting it onto your own workflow.
 
 ## Related Articles
 

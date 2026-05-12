@@ -182,7 +182,7 @@ SVG 手書きの Git ブランチ風グラフ:
 |---|---|
 | **検索ボックス** | タイトル + description + タグの部分一致でカードをクライアント側フィルター。`URL` は変更しない（履歴を汚さず SEO 影響なし）。JS 無効環境では `<input>` を CSS で非表示 |
 | **タグ一覧へのリンク** | `#タグ一覧 →` リンクで `/{lang}/blog/tags/` へ遷移 |
-| **Featured Articles**（ピックアップ）| `dynamic-stats.json` の `featuredSlugs` で指定された記事を最大 4 件表示。空の場合は `frontmatter.featured: true` をフォールバック |
+| **Featured Articles**（ピックアップ）| `dynamic-stats.json` の `featuredSlugs` で**手動キュレーション**した記事を最大 4 件表示。空の場合は `frontmatter.featured: true` をフォールバック |
 | **直近の記事**（regular）| ピックアップ以外の最新記事を `blog.maxPerSection` 件（既定 5 件）表示。各カードのタグはクリック可能なリンク（`/{lang}/blog/tag/{slug}/`）|
 | **Tech Blog (Qiita)** | ビルド時に Qiita API から取得。直近 1 年以内 AND Organization 未紐付けで絞り込み、`likes + stocks*2` で降順ソートし上位 5 件を表示 |
 | **投稿カレンダー** | 月別グリッド。投稿日と未来日付の「公開予定」記事を一望（`BlogCalendar.astro`）|
@@ -349,9 +349,7 @@ SVG 手書きの Git ブランチ風グラフ:
   },
   "featuredSlugs": [
     "20260510-objective-self-portrait",
-    "20260417-about-me-guide",
-    "20260410-ai-driven-development",
-    "20260408-yumehashi-story"
+    "20260417-about-me-guide"
   ]
 }
 ```
@@ -362,7 +360,7 @@ SVG 手書きの Git ブランチ風グラフ:
 | `engineerYears` | Profile / Home に表示するエンジニア歴 | バッチでキャリア開始日から計算 |
 | `qiita.itemsCount` | Profile に表示する Qiita 記事数 | バッチで Qiita API から取得 |
 | `qiita.contributions` | Profile に表示する Qiita Contributions | バッチで取得 |
-| `featuredSlugs` | Home / Blog のピックアップ記事スラッグ（最大 4 件）| バッチで Cloudflare Analytics の PV 上位から自動選定（手動上書きも可）|
+| `featuredSlugs` | Home / Blog のピックアップ記事スラッグ（最大 4 件）| **手動キュレーション**。直接編集する。月次バッチは既存値を保持する |
 
 ### 4.2 Qiita 記事（ビルド時取得）
 

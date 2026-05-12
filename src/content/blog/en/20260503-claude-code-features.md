@@ -7,7 +7,9 @@ tags: ["Claude Code", "AI-driven development", "Skills", "Subagents", "learning"
 
 ## Series part 6
 
-[Part 5](/HomePage/en/blog/20260502-claude-prompt-instructions/) covered five instruction techniques. This post is about **Claude Code–specific features** and how to decide which to reach for.
+Ever wondered what those extra menu items in Claude Code actually do — and quietly never used them?
+
+[Part 5](/HomePage/en/blog/20260502-claude-prompt-instructions/) covered five instruction techniques. This post is about **Claude Code–specific features**, and how to decide which one to reach for when.
 
 ## Feature list
 
@@ -114,6 +116,8 @@ Ranked by impact on Claude's token usage:
 | Huge investigation task | Subagents |
 | Want to review what Claude wrote | Writer / Reviewer |
 | Need to run inside CI | Auto Mode |
+
+If you've been working in a single, ever-growing session for weeks, you might try just one disciplined `/clear` tomorrow morning. The contrast can be surprisingly stark.
 
 ## Related posts
 

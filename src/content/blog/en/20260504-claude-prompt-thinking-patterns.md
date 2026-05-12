@@ -7,9 +7,11 @@ tags: ["Claude Code", "AI-driven development", "prompt engineering", "learning s
 
 ## Series part 7
 
+Ever found yourself stuck on a decision and realized — Claude could help, but somehow you've only been using it for code?
+
 [Part 6](/HomePage/en/blog/20260503-claude-code-features/) covered Claude Code's unique features. This post shifts gears: **using Claude for tasks that don't involve writing code**.
 
-Claude gets described as "the coding AI," but it's equally strong at research, learning, and decision-making. I rely on it daily as a "thinking partner."
+Claude tends to get described as "the coding AI," but it's equally strong at research, learning, and decision-making. I rely on it daily as a "thinking partner" — and honestly, that's the use case that surprised me most.
 
 ## B. Research & learning
 
@@ -174,9 +176,11 @@ I used to struggle to reach conclusions when discussing tech decisions with team
 
 - Claude counterargues my position → blind spots emerge
 - Claude compares candidates → evaluation axes become objective
-- Check decisions with a "1-year-future" lens → short-term bias removed
+- Check decisions with a "1-year-future" lens → short-term bias melts
 
 The upshot: my conversations with teammates start from a **much sharper set of questions**. Claude isn't a replacement; it's a **warm-up partner** for thinking.
+
+If you've got one decision sitting heavy in your head right now, you might try Pattern 9 (the "1-year-future me" lens) on it tonight. Often, the answer was already obvious once the timeframe stretched.
 
 ## Related posts
 

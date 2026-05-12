@@ -7,71 +7,73 @@ tags: ["Communication", "Team Building", "Essay", "Psychological Safety"]
 
 ## A Line That Changed Me at 13
 
-In the 2011 movie "Detective Conan: Quarter of Silence," Conan mediates a fight between friends:
+Ever had someone say something to you years ago that still flickers in your head today?
+
+For me, it's a single line from a Detective Conan movie. I was 13. Conan was mediating a fight between friends:
 
 > "Once you let words out, you can never take them back.
 > Words are blades. Use them wrong and they become dangerous weapons.
 > A misunderstanding in words can cost you a lifelong friend."
 
-At 13, this gave me chills and made me seriously consider **the weight of the tool called "words"** for the first time. Since then, this line has been the foundation of my communication.
+I got chills. It was the first time I genuinely thought about **the weight of the tool we call "words."** That single line has quietly become the floor of my communication ever since.
 
 ---
 
 ## Words Have Two Faces
 
-Words have **the power to encourage and propel people forward**. At the same time, they have **the power to deeply wound and stop people in their tracks**.
+Words can **lift someone up and push them forward**. Words can also **cut someone deeply and stop them in their tracks**.
 
-The critical point: **the same words can mean the opposite depending on the listener's situation**.
+The unsettling part: **the exact same words can mean opposite things, depending on the listener's situation.**
 
 ### Example: "Getting certifications is meaningless"
 
 | Interpretation | Meaning |
 |---|---|
-| Positive | "Focus on practical experience instead" → Encourages action |
-| Negative | "Your effort has no value" → Negates effort |
+| Positive | "Focus on practical experience instead" → Pushes you to act |
+| Negative | "Your effort had no value" → Negates everything you did |
 
-I was actually told this when I passed my certifications. "They're useless in real work," someone said. I was deeply discouraged.
+I was actually told this when I passed my certifications. "They're useless in real work," someone said, casually. I was deeply discouraged.
 
-I didn't earn them for recognition. But **the sensation of having carefully accumulated effort dismissed in a single sentence** lingered for a long time.
+I hadn't earned them for recognition. But **the feeling of carefully stacked effort being dismissed in one sentence** lingered for a long, long time.
 
 ---
 
 ## The Speaker Forgets. The Listener Never Does.
 
-This is what I consider the most troublesome property of words.
+This is, to me, the most troublesome property of words.
 
-The speaker almost always forgets their words within days. But **in the listener's heart, those words remain lodged**.
+The speaker almost always forgets what they said within days. But **in the listener, those words lodge somewhere quiet and stay there**.
 
-That's why I believe we need to **pause before speaking**.
+That's why I think the right move is, almost always: **pause before speaking**.
 
 ---
 
 ## "Maturing Words" as a Habit
 
-What I practice in daily communication: **"Give yourself time to think, mature your words, then speak."**
+Here's what I personally try in daily communication: **"give yourself time to think, mature your words, then speak."**
 
-Specifically:
+Concretely:
 
-- **The more emotional you are, the more you should delay speaking** — Words born from anger or panic almost always become blades
-- **Receive your own words from the other person's perspective first** — "How would this person, in this situation, feel hearing this?"
-- **Don't lead with negation** — Understand their intent first, then share your opinion
+- **The more emotional you are, the more you should slow down** — Words born from anger or panic almost always come out as blades
+- **Receive your own words from the other side first** — "How would this specific person, in their current situation, hear this?"
+- **Don't lead with negation** — Understand the intent first, then share your view
 
-In one phrase: "Consider others' feelings." It's obvious, yet it becomes remarkably difficult when you're busy, under pressure, or in disagreement.
+In one phrase: "consider how the other person will feel." Obvious. And — for some reason — remarkably hard when you're busy, under pressure, or in disagreement.
 
 ---
 
 ## As an Engineer Working in Teams
 
-This philosophy is deeply relevant to teamwork in engineering.
+This philosophy is deeply relevant to team engineering.
 
-Code review comments, Slack feedback, candid opinions in 1-on-1s — all of these can **destroy a team's psychological safety in an instant** if words are misused.
+Code review comments. Slack feedback. Candid 1-on-1 opinions. Each of these can **shred a team's psychological safety in an instant** if the words are off.
 
-> Words have power. That's exactly why I want to mature them carefully before speaking, and deliver the kindest words I can.
+> Words have power. That's exactly why I want to mature them carefully before speaking — and deliver the kindest version I can manage.
 
-The lesson 13-year-old me learned from Conan — I still cherish it at 27.
+The lesson 13-year-old me picked up from Conan, I still carry at 27.
+
+If a single line ever stuck with you the way that one stuck with me, you might try jotting it down somewhere visible. Whatever it was, it's quietly shaping how you talk to people right now.
 
 ## Related Articles
 
-- [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — Confronting communication challenges
-- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — How "putting it into words" set dreams in motion
-- ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — Accumulating positive impact through actions for others
+- [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — Facing my own communication challenges

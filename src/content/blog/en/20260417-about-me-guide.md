@@ -8,7 +8,9 @@ featured: true
 
 ## How to Navigate This Site
 
-For first-time visitors, or anyone wondering "who is this person, really?" — here's a **5-minute guide**.
+Ever landed on someone's personal site and thought, "okay — where do I even start?"
+
+If you're here for the first time, or wondering "who is this person, exactly?" — this is a **5-minute guided tour**. Skim it, follow the links that catch you, skip the rest.
 
 ---
 
@@ -29,7 +31,7 @@ For first-time visitors, or anyone wondering "who is this person, really?" — h
 
 ## Career and Skills
 
-The [profile page](/HomePage/en/profile/) consolidates:
+The [profile page](/HomePage/en/profile/) pulls together:
 
 - **Basic Info** — Age, location, affiliation
 - **Skills** — 6 categories x 3 proficiency levels
@@ -40,7 +42,7 @@ The [profile page](/HomePage/en/profile/) consolidates:
 
 ## What I'm Building
 
-3 personal products currently in operation:
+Three personal products currently in operation:
 
 | Product | One-liner | Link |
 |---|---|---|
@@ -67,7 +69,7 @@ The [profile page](/HomePage/en/profile/) consolidates:
 
 ## Deeper Into My Thinking
 
-Blog articles on work, life, and technology:
+If the numbers got your attention but you want to know how I actually *think*, the blog is where that lives:
 
 | Theme | Article |
 |---|---|
@@ -85,6 +87,6 @@ Blog articles on work, life, and technology:
 
 ## Contact
 
-I welcome any questions or feedback.
+If anything here sparked a question — or you'd just like to say hi — the door is open.
 
 **[Contact](/HomePage/en/contact/)**

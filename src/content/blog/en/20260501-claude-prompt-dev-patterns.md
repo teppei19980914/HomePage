@@ -7,7 +7,9 @@ tags: ["Claude Code", "AI-driven development", "prompt engineering", "personal p
 
 ## Series part 4
 
-[Part 3](/HomePage/en/blog/20260430-claude-prompt-workflow/) covered the four-stage workflow. This post shows the **prompt templates** I actually send at each stage.
+Ever stared at the prompt box thinking, "okay, but how do I actually phrase this?"
+
+[Part 3](/HomePage/en/blog/20260430-claude-prompt-workflow/) covered the four-stage workflow. This post hands you the **prompt templates** I actually send at each stage — the ones that have survived contact with real work.
 
 These 11 patterns are all ones I use in my personal products. They work in Claude Code, Claude Web, and the Claude API.
 
@@ -172,9 +174,11 @@ Constraints: {{no install / POSIX compliant / etc.}}
 
 ## My take — patterns stabilize output quality
 
-I used to spend three minutes every time crafting a prompt. Now I just **pick a pattern and fill the blanks** — prompt creation time dropped by an order of magnitude.
+I used to burn three minutes every time crafting a prompt from scratch. Now I just **pick a pattern and fill the blanks** — prompt creation time dropped by an order of magnitude.
 
 More importantly: **consistent templates produce consistent output quality**. When my prompts varied wildly in structure, so did Claude's output. Standardizing the structure stabilized the output. (The same lesson applies to writing design docs, actually.)
+
+If you only steal one pattern from this list, you might try Pattern 1 (Implementation) first. It's the one that compounds.
 
 ## Related posts
 

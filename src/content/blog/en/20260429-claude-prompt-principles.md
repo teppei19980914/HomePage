@@ -7,6 +7,8 @@ tags: ["Claude Code", "AI-driven development", "prompt engineering", "Anthropic"
 
 ## Series part 2
 
+Ever felt like Claude is reading your mind one day and reading sea shells the next?
+
 [Part 1](/HomePage/en/blog/20260428-claude-code-prompt-guide/) covered the overall shape of the series. This post zeroes in on the three prompt principles the official guide highlights above everything else.
 
 Nail these three and you're already at 90 percent.
@@ -21,11 +23,11 @@ Anthropic describes Claude as a **brilliant new hire who doesn't yet know your t
 
 > Think of Claude as a brilliant but new employee who lacks context on your norms and workflows.
 
-Competent, eager — but missing all the tribal knowledge. So you need to spell things out explicitly.
+Competent, eager — but missing all the tribal knowledge. So you have to spell things out, explicitly.
 
 ### My take
 
-Looking back, my earliest prompts were full of vague asks like "clean this up" or "make it nicer." I was assuming Claude shared the picture in my head. It didn't. Rewriting those prompts to include explicit **context, goal, and constraints** was a turning point.
+Looking back, my earliest prompts were full of vague asks like "clean this up" or "make it nicer." I was assuming Claude shared the picture in my head. It didn't. Rewriting those prompts to include explicit **context, goal, and constraints** was a real turning point.
 
 ## Principle 2 — Manage the context window
 
@@ -52,7 +54,7 @@ And the strongest piece of guidance:
 
 ### My take
 
-Before I knew this, I'd keep thinking: "Claude was sharp an hour ago — why is it suddenly mediocre?" The answer was always context pollution. **One task equals one session** is a surprisingly powerful rule.
+Before I knew this rule, I'd keep thinking: "Claude was sharp an hour ago — why is it suddenly mediocre?" The answer was always context pollution. **One task equals one session** is a surprisingly powerful rule.
 
 ## Principle 3 — Always provide a way to verify (highest priority)
 
@@ -69,7 +71,7 @@ Anthropic explicitly calls this "the single highest-leverage thing you can do":
 
 ### My take
 
-This really does move the needle. In my HomePage work I always ask Claude to run `npm run build` after touching Astro components and report the result. It's dramatically reduced the amount of "silent regressions" where Claude breaks the build and doesn't notice.
+This really does move the needle. In my HomePage work I always ask Claude to run `npm run build` after touching Astro components and report the result. It has dramatically reduced "silent regressions" — where Claude breaks the build and somehow doesn't notice.
 
 ## Priority recap
 
@@ -79,7 +81,7 @@ This really does move the needle. In my HomePage work I always ask Claude to run
 | 2. Context management | "performance degrades as it fills" |
 | 3. Verification | "single highest-leverage thing" |
 
-**If you only adopt one thing today, make it verification.** The quality difference is immediate.
+**If you only adopt one thing today, make it verification.** The quality difference shows up immediately.
 
 ## Related posts
 

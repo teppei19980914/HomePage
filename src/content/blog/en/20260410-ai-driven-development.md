@@ -6,9 +6,11 @@ tags: ["AI-Driven Development", "Claude Code", "Flutter", "Side Project", "Produ
 featured: true
 ---
 
-Starting from zero Flutter and zero scratch-development experience, I built a production-quality web app in 3 weeks with AI (Claude Code).
+Ever had a senior tell you "you can't ship anything serious in 3 weeks"? I used to nod along too.
 
-This article shares exactly what changed — and by how much — compared to traditional human-led development, with real numbers.
+Then I shipped a production-quality web app in 3 weeks — with zero Flutter experience and zero scratch-development experience — using AI (Claude Code). It surprised me as much as anyone.
+
+This article shares what changed in each phase, and by exactly how much, compared to traditional human-led development. With real numbers.
 
 ## Judge the quality yourself — try the app built in 3 weeks
 
@@ -16,13 +18,13 @@ It opens right in your browser. Free, no account required.
 
 **[Try YumeHashi](/HomePage/en/product/yumehashi/)**
 
-If you feel "this was really built in 3 weeks?", then the power of AI-driven development has been communicated.
+If you find yourself thinking "this was *really* built in 3 weeks?" — then the point of AI-driven development just landed.
 
 ---
 
 ## Developer Background
 
-First, let me be transparent about my starting point.
+First, let me be transparent about my starting point — because context matters.
 
 | Item | Value |
 |---|---|
@@ -32,7 +34,7 @@ First, let me be transparent about my starting point.
 | Flutter / Dart Experience | **None** (this was my first project) |
 | Mobile / Web App Development | **None** |
 
-In other words, I started with **zero experience in the framework, language, and architecture design**.
+In other words, I started with **zero experience in the framework, language, and architecture design**. This is not a hidden expert story.
 
 **Author's portfolio**: [Developer Homepage](https://teppei19980914.github.io/HomePage/)
 
@@ -40,7 +42,7 @@ In other words, I started with **zero experience in the framework, language, and
 
 ## Before: How Long Would Traditional Development Take?
 
-Here's the scale of the app:
+Here's the scale of the app, to set the scene:
 
 | Item | Value |
 |---|---|
@@ -50,7 +52,7 @@ Here's the scale of the app:
 | Screens | 8 screens + 21 dialogs |
 | DB Tables | 6 tables |
 
-Based on IPA's Software Development Data White Paper and COCOMO II model estimates, traditional development would take **6-9 months**. Framework learning alone would be 1-2 months.
+Based on IPA's Software Development Data White Paper and COCOMO II estimates, traditional development would take **6-9 months**. Framework learning alone would eat 1-2 months.
 
 ---
 
@@ -63,7 +65,7 @@ Based on IPA's Software Development Data White Paper and COCOMO II model estimat
 | **Test Density** | 0-3 cases/KLOC | **16.9 cases/KLOC** | 6x+ |
 | **Learning Cost** | 1-2 months | **0 days** | Eliminated |
 
-The biggest impact is **zero learning cost**. I started writing production code on day one without studying Flutter at all.
+The biggest single shift is **zero learning cost**. I wrote production code on day one without studying Flutter at all. That part still feels unreal when I say it out loud.
 
 ---
 
@@ -79,23 +81,23 @@ The biggest impact is **zero learning cost**. I started writing production code 
 | Testing | **Parallel with dev** | 1-2 months | **90-95%** |
 | **Total** | **~21 days** | **7-14 months** | **~90%** |
 
-The key insight: **testing disappeared as a separate phase**. The AI generates tests simultaneously with code, eliminating the dedicated testing phase entirely.
+The interesting insight: **testing as a separate phase basically disappeared**. The AI generates tests alongside the code, so the dedicated test phase folds into development itself.
 
 ---
 
 ## How Is This Possible?
 
-It's not magic — it's **systems**. Claude Code has 5 optimization levels.
+It's not magic. It's **systems**. Claude Code has 5 optimization levels.
 
 | Level | Addition | What Gets Automated |
 |---|---|---|
-| 1 | Raw prompts | Nothing (manual each time) |
+| 1 | Raw prompts | Nothing (manual every time) |
 | 2 | + CLAUDE.md | Project rules auto-loaded |
 | 3 | + Skills | Procedures injected on demand |
 | 4 | + Hooks | Code formatting, test execution automatic |
 | 5 | + Agents | Security/performance reviews run in parallel |
 
-At Level 5, the human's job is only **"decide what to build"** and **"verify it works."**
+At Level 5, the human's job shrinks to **"decide what to build"** and **"verify it works."** Everything else is conveyor belt.
 
 ---
 
@@ -108,23 +110,23 @@ At Level 5, the human's job is only **"decide what to build"** and **"verify it 
 | **Quality** | Manual testing, visual checks | Test generation, static analysis, security |
 | **Release** | Commit & push | Automated checklist execution |
 
-AI isn't omniscient. The "keyboard covers the input field on mobile" issue was only found through human device testing.
+AI is not omniscient. The "keyboard covers the input field on mobile" bug? Only caught through human device testing. AI doesn't have thumbs.
 
-**AI functions as an "engine that rapidly materializes human decisions."**
+**AI works best as an "engine that rapidly materializes human decisions."** The decisions still belong to you.
 
 ---
 
 ## What Did I Build?
 
-The app built with this system is "[YumeHashi](/HomePage/en/product/yumehashi/)" (originally developed as "YumeLog" and later renamed — see [the story behind the rename](/HomePage/en/blog/20260408-yumehashi-story/)).
+The app built with this system is "[YumeHashi](/HomePage/en/product/yumehashi/)" (originally "YumeLog" and later renamed — see [the story behind the rename](/HomePage/en/blog/20260408-yumehashi-story/)).
 
-**An app that turns dreams into action.** 3 steps:
+**An app that turns dreams into action.** Three steps:
 
 1. **Write it down** — Put your dream into words
 2. **Break it down** — Decompose dreams into goals, goals into tasks
 3. **Keep going** — Your activities light up as constellations
 
-The app packs 32 features. For the detailed tech stack, see the [tech stack article](/HomePage/en/blog/20260407-yumehashi-tech-stack/).
+The app packs 32 features. For the deep tech stack write-up, see the [tech stack article](/HomePage/en/blog/20260407-yumehashi-tech-stack/).
 
 ---
 
@@ -134,4 +136,4 @@ It opens right in your browser. Free, no account required.
 
 **[Try YumeHashi](/HomePage/en/product/yumehashi/)**
 
-If you feel "this was really built in 3 weeks?", then the power of AI-driven development has been communicated.
+If you find yourself thinking "this was *really* built in 3 weeks?" — that's the whole pitch, landing.

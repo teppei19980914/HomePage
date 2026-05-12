@@ -7,17 +7,17 @@ tags: ["Git", "GitHub", "GitHub Actions", "CI/CD", "New Programmers"]
 
 ## Target Audience
 
-- You've started using Git/GitHub but can't see the big picture
-- You can type `git add` and `git commit` but don't know why
-- You've heard of GitHub Actions and CI/CD but haven't tried them
+- You've started using Git/GitHub but the big picture is still blurry
+- You can type `git add` and `git commit` but you're not sure *why*
+- You've heard of GitHub Actions and CI/CD but never actually tried them
 
 ## Introduction — I Started From "I Don't Understand Git" Too
 
 Honestly: when I started my career, I **didn't even know the difference between Git and GitHub**.
 
-When a senior said "submit a pull request," I had to look up what that meant. Everyone starts from zero — and understanding comes from researching.
+A senior said "submit a pull request" and I had to go look up what that meant. Everyone starts somewhere near zero — understanding shows up later, after enough googling.
 
-This article is for my past self: **"If I'd known just this, I wouldn't have been scared."** Based on official documentation, with real configurations from actual projects.
+This article is for my past self: **"if I'd just known this much, I wouldn't have been scared."** Based on official documentation, with real configurations from real projects.
 
 ---
 
@@ -29,7 +29,7 @@ This article is for my past self: **"If I'd known just this, I wouldn't have bee
 | **GitHub** | Git repository hosting service | [github.com](https://github.com/) |
 | **GitHub Actions** | CI/CD automation built into GitHub | [GitHub Actions Docs](https://docs.github.com/en/actions) |
 
-**Git is required for GitHub to work.** GitHub is a service built on top of Git.
+**Git is what makes GitHub work.** GitHub is a service built on top of Git.
 
 ---
 
@@ -43,7 +43,7 @@ This article is for my past self: **"If I'd known just this, I wouldn't have bee
                     Select changes    Record changes
 ```
 
-**"Why separate `git add` and `git commit`?"** Because sometimes you want to commit only part of your changes — e.g., committing just the bug fix before the new feature.
+**"Why split `git add` and `git commit`?"** Because sometimes you only want to commit part of your changes — e.g., committing the bug fix first, before the new feature mixed into the same files.
 
 ### 5 Essential Commands
 
@@ -59,7 +59,7 @@ This article is for my past self: **"If I'd known just this, I wouldn't have bee
 
 ## Part 2: Branches — Why You Should Never Touch Main Directly
 
-Branches are **parallel universes**. Work in a separate timeline without affecting production.
+Branches are **parallel universes**. You work in a separate timeline without affecting production.
 
 ```
 main:     A --- B --- C --- D (production)
@@ -67,7 +67,7 @@ main:     A --- B --- C --- D (production)
 feature:        E --- F --- G (in development)
 ```
 
-Even if feature branch fails, main is untouched. **Merge only when complete.** Use GitHub's branch protection rules ("Require a pull request before merging") to enforce this.
+Even if the feature branch falls over, main is untouched. **Only merge when it's actually done.** Use GitHub's branch protection rules ("Require a pull request before merging") to make this enforceable, not just a hope.
 
 ---
 
@@ -75,11 +75,11 @@ Even if feature branch fails, main is untouched. **Merge only when complete.** U
 
 ### Pull Requests = "Please Review This Code"
 
-A PR is a **request to merge your branch into main**. It creates a space for code review — teammates catch bugs and design issues you'd miss.
+A PR is a **request to merge your branch into main**. It opens a space for code review — where teammates catch bugs and design issues you couldn't see from inside the work.
 
 ### Issues = Task Management
 
-Write `closes #42` in a PR, and the issue auto-closes on merge.
+Write `closes #42` in a PR, and the issue auto-closes the moment it merges. Small thing, but oddly satisfying.
 
 ---
 
@@ -108,15 +108,15 @@ Articles with future `date` fields automatically publish when the daily build ru
 
 #### ③ Monthly Batch: Auto-Update Dynamic Data
 
-Qiita article count auto-fetched via API → JSON updated → auto commit → push → deploy triggers. **No manual updates needed.**
+Qiita article count auto-fetched via API → JSON updated → auto commit → push → deploy triggers. **No manual updates required.**
 
 #### ④ PR CI: Auto Test + Version Check
 
-[YumeHashi](/HomePage/en/product/yumehashi/) runs `flutter analyze` + `flutter test` + version 4-file set consistency check on every PR. **Prevents merging without passing tests or forgetting version updates.**
+[YumeHashi](/HomePage/en/product/yumehashi/) runs `flutter analyze` + `flutter test` + version 4-file set consistency check on every PR. **No merging without passing tests or remembering to bump versions.**
 
 #### ⑤ Weekly Stress Test + Auto Issue Creation
 
-Every Sunday, stress tests run automatically. If performance thresholds are exceeded, a GitHub Issue is automatically created. **Quality monitored weekly without human intervention.**
+Every Sunday, stress tests fire automatically. If performance thresholds get blown, a GitHub Issue is auto-created. **Quality monitored weekly without anyone lifting a finger.**
 
 #### ⑥ Deploy-Time Version Stamp
 
@@ -126,7 +126,7 @@ Every Sunday, stress tests run automatically. If performance thresholds are exce
     sed -i "s|const appVersion = '.*';|const appVersion = '$VERSION';|" lib/app_version.dart
 ```
 
-Embeds deploy timestamp directly into the build output.
+Embeds the deploy timestamp directly into the build output.
 
 ---
 
@@ -165,9 +165,9 @@ This homepage runs on GitHub Pages at **zero monthly cost**.
 
 | Your Situation | Next Step |
 |---|---|
-| Never used Git | Experience `git status` → `git add` → `git commit` |
-| Use Git but afraid of branches | Try `git checkout -b` and submit a PR |
-| Know GitHub but not Actions | Copy the `deploy.yml` above and run it in your repo |
+| Never used Git | Try `git status` → `git add` → `git commit` once |
+| Use Git but afraid of branches | Run `git checkout -b` and submit a PR |
+| Know GitHub but not Actions | Copy the `deploy.yml` above and try it in your repo |
 
 ## Related Articles
 

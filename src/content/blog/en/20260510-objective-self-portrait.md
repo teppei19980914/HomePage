@@ -8,9 +8,11 @@ featured: true
 
 ## Why This Article Exists
 
+Ever read someone's self-introduction and thought, "okay, but what are they actually like to work with"?
+
 The [profile page](/HomePage/en/profile/) and the [self-introduction guide](/HomePage/en/blog/20260417-about-me-guide/) describe the subjective me — the values and dreams I hold.
 
-But that view alone risks being a self-flattering edit. This article takes a different angle: a **fact-based** portrait, organized by a third party from job-search interviews, conversations, and retrospectives. Both strengths and weaknesses are included.
+That view alone, though, risks being a self-flattering edit. This article takes a different angle: a **fact-based** portrait, pulled together by a third party from job-search interviews, conversations, and retrospectives. Both strengths and weaknesses included.
 
 I open up the weaknesses too for two reasons:
 
@@ -96,7 +98,7 @@ To stop carrying decisions forever, I set a deadline for myself: "decide by this
 
 ### 5. "Three-year horizon" as the operating premise
 
-To keep myself from over-correcting in the short term, I assume that real results take about three years to show. This connects to [the essentialism post](/HomePage/en/blog/20260508-essentialism-saying-no/) — "anything but absolute yes is a no."
+To keep myself from over-correcting in the short term, I assume that real results take about three years to show. The **courage to drop and not be dragged by sunk cost** that I wrote about in [the essentialism post](/HomePage/en/blog/20260508-essentialism-saying-no/) is what holds back the urge to compensate too fast.
 
 ## In One Sentence
 
@@ -114,7 +116,7 @@ If you've read this far, the rest of the site will fill in the picture more comp
 - [Projects](/HomePage/en/project/) — engagements at work
 - [All blog posts](/HomePage/en/blog/all/) — tech, philosophy, reading
 
-For anything that doesn't match, or you'd like to ask about, the [contact page](/HomePage/en/contact/) is always open.
+For anything that doesn't quite match, or you'd like to ask about directly, the [contact page](/HomePage/en/contact/) is always open. Honest first impressions are more useful to me than polite ones.
 
 ## Related Articles
 

@@ -90,7 +90,7 @@ src/i18n/index.ts: getLabels(lang)  ← ロケール別に辞書を返す
        │
        ├─ Qiita API → 記事数取得
        ├─ キャリア開始日 → エンジニア歴計算
-       └─ Cloudflare Analytics API → PV 上位記事を featuredSlugs に
+       └─ featuredSlugs → 既存値を保持（手動キュレーション運用）
        ↓
 src/data/dynamic-stats.json (auto commit)
        ↓

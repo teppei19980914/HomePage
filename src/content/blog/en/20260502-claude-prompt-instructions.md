@@ -7,7 +7,9 @@ tags: ["Claude Code", "AI-driven development", "prompt engineering", "CLAUDE.md"
 
 ## Series part 5
 
-[Part 4](/HomePage/en/blog/20260501-claude-prompt-dev-patterns/) covered 11 prompt patterns. This post is about the **five techniques** that sharpen any prompt template.
+Ever caught yourself typing the same setup instructions to Claude for the fifth time in a week?
+
+[Part 4](/HomePage/en/blog/20260501-claude-prompt-dev-patterns/) covered 11 prompt patterns. This post is about the **five techniques** that sharpen any prompt template — and quietly kill the "say it again" tax.
 
 ## Technique 1 — Persist project rules in `CLAUDE.md`
 
@@ -131,9 +133,11 @@ Reverse order (question first, doc after) can make Claude "forget" the question 
 
 ## My take — CLAUDE.md has the best ROI
 
-Of the five, **CLAUDE.md is by far the highest leverage**. Write it once, benefit every session.
+Of the five, **CLAUDE.md is by far the highest leverage**. Write it once, benefit every session forever after.
 
-Putting the "pre-commit checks" list into my HomePage `CLAUDE.md` means Claude runs tests, builds, and security checks before every commit automatically. Done manually I'd forget. Done as a rule, it's permanent.
+Putting the "pre-commit checks" list into my HomePage `CLAUDE.md` means Claude runs tests, builds, and security checks before every commit, automatically. Done manually, I'd forget. Done as a rule, it's permanent.
+
+If you don't have a `CLAUDE.md` yet, you might try writing just five lines today — the rules you most commonly repeat. That alone is usually enough to feel the difference.
 
 ## Related posts
 

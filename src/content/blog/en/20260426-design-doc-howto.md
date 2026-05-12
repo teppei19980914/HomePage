@@ -7,9 +7,11 @@ tags: ["AI-Driven Development", "Design", "Productivity", "Side Project", "New P
 
 ## Publishing the Table of Contents
 
-In [the previous article](/HomePage/en/blog/20260425-design-doc-speed/), I wrote that design doc completeness determines development speed. So what exactly makes a "complete" design doc?
+You know that feeling when AI keeps asking, "and what about X?" mid-implementation? Honestly, every one of those questions is a hole in your design doc.
 
-Here's the structure that achieved 16 person-days → 2 hours.
+In [the previous article](/HomePage/en/blog/20260425-design-doc-speed/), I argued that design doc completeness sets development speed. So what exactly makes a "complete" design doc?
+
+Here's the structure that pulled off 16 person-days → 2 hours.
 
 ---
 
@@ -30,7 +32,7 @@ Here's the structure that achieved 16 person-days → 2 hours.
 | 11 | **Screen flow** | ★★★ | Which screen leads where |
 | 12-20 | Testing, seeds, etc. | ★☆☆ | As needed |
 
-The **7 ★★★ sections** are what prevent AI from having to think.
+The **7 ★★★ sections** are what keep AI from having to think.
 
 ---
 
@@ -42,7 +44,7 @@ Not "Use React" but "Next.js 15.x (App Router) — SSR/SSG integration needed."
 
 ### Data Model: Write down to column constraints
 
-AI asks questions every time if types and constraints are ambiguous.
+If types and constraints are fuzzy, AI asks questions every single time.
 
 ### API Design: List every endpoint
 
@@ -50,11 +52,11 @@ Path, method, auth requirement, response type — all in one table.
 
 ### Permission Design: RBAC matrix
 
-Without this, AI asks "who can do this?" for every operation.
+Without this, AI asks "who can do this?" for every operation. Painful.
 
 ### Screen Flow: Express as directory structure
 
-Maps 1:1 to routing, so AI never hesitates about file placement.
+It maps 1:1 to routing, so AI never hesitates about file placement.
 
 ---
 
@@ -73,10 +75,11 @@ Maps 1:1 to routing, so AI never hesitates about file placement.
 
 ## In Closing
 
-Start with just the 7 ★★★ sections. That alone will dramatically change AI-driven development speed.
+Start with just the 7 ★★★ sections. Even that, on its own, dramatically changes AI-driven development speed.
+
+If your next AI session pauses to ask questions, you might try noting which one and turning it into a section in your design doc. That's how a complete design doc grows — one missing answer at a time.
 
 ## Related Articles
 
 - [16 Person-Days Done in 2 Hours — Design Doc Completeness Determines Speed](/HomePage/en/blog/20260425-design-doc-speed/) — Why completeness matters
 - ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — AI development performance data
-- ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260419-failure-science/) — Accumulating judgments as systems

@@ -57,11 +57,11 @@
 |---|---|
 | ワークフロー | `.github/workflows/update-stats.yml` |
 | トリガー | 毎月1日 0:00 JST (UTC 15:00) + 手動（workflow_dispatch） |
-| 処理内容 | Qiita API から記事数を取得、エンジニア歴を計算、Cloudflare Analytics からピックアップ記事を自動選定 |
+| 処理内容 | Qiita API から記事数を取得、エンジニア歴を計算（`featuredSlugs` は手動キュレーション値を保持） |
 | 更新ファイル | `src/data/dynamic-stats.json` |
 | 動作 | 変更があれば auto commit → push → deploy.yml が自動起動 |
-| Secrets | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_SITE_TAG` |
-| ピックアップ選定 | 直近30日のブログ記事をPV降順で上位3件を `featuredSlugs` に設定。API 未設定時は既存値を維持 |
+| Secrets | なし（Qiita API は認証不要、Cloudflare 自動選定は廃止） |
+| ピックアップ選定 | **手動キュレーション運用**。`src/data/dynamic-stats.json` の `featuredSlugs` を直接編集する。月次バッチは既存値を維持するのみ |
 
 ### 2.3 Formspree（お問い合わせフォーム）
 

@@ -7,9 +7,11 @@ tags: ["SEO", "Personal Blog", "GitHub Pages", "Astro", "Search Console"]
 
 ## "Personal Blogs Can't Win at SEO" Was a Myth
 
-I used to think personal sites had no chance against the giants in SEO. So I never bothered.
+Ever opened your personal blog's analytics, seen "0 clicks this week," and quietly assumed SEO just wasn't for the little guy?
 
-Then, in one month after publishing, I went from **avg. position 38 → 18.97** (page 4 → page 2 of search results) and CTR **7.8% → 10.89%**. All I did was implement the basics that Google officially recommends — adapted for a static site.
+Honestly, I used to believe that. Personal sites couldn't fight the giants — so I never bothered.
+
+Then, one month after publishing, I went from **avg. position 38 → 18.97** (page 4 → page 2 of search results) and CTR **7.8% → 10.89%**. All I did was implement the basics that Google officially recommends — adapted for a static site.
 
 This article is the **9 SEO tactics that actually moved the needle** on a zero-cost personal blog (GitHub Pages + Astro), with rationale and implementation steps.
 
@@ -120,10 +122,11 @@ A one-shot install is brittle. The point is **a system that maintains it**:
 
 SEO for a personal blog is mostly **a quiet stack of official basics**. No tricks, no paid tools required. GitHub Pages + Astro at zero cost is enough.
 
+If your blog's been quietly publishing without any of these, you might try just tactics #1 and #8 this week. That alone got me out of the "invisible to Google" zone.
+
 The next article will quantify how far the above tactics moved my actual numbers — a one-month before/after report from Search Console.
 
 ## Related Articles
 
 - [Why I Built This Homepage — Walking with Astro v6](/HomePage/en/blog/20260418-astro-v6-homepage/) — Why and how this site was built
 - [From Built-and-Never-Used to Three Apps at Zero Cost](/HomePage/en/blog/20260427-zero-cost-and-claude-code/) — Technical choices behind zero-cost ops
-- [An Objective Self-Portrait — Five Strengths, Five Weaknesses](/HomePage/en/blog/20260510-objective-self-portrait/) — About the author

@@ -7,7 +7,9 @@ tags: ["Reading", "Management", "Team Building", "Psychological Safety", "Essay"
 
 ## I Was the One Hosting the Funeral Meeting
 
-No one speaks. You ask for opinions and get "nothing in particular." As a rookie manager, I treated this as **a problem with the team**. Then I read **The New Art of Asking** and realized the real cause was elsewhere — **my own questions were hosting the funeral**.
+Ever stood in front of a silent meeting room and felt the dread of "okay, who wants to start"?
+
+No one speaks. You ask for opinions and get "nothing in particular." As a rookie manager, I treated this as **a problem with the team**. Then I read **The New Art of Asking** and realized the real cause was somewhere else entirely — **my own questions were hosting the funeral**.
 
 > **To unlock the diverse talents of your team, change the quality of the questions you throw at them.**
 
@@ -82,7 +84,7 @@ So how do you face the teammate you find difficult?
 
 > **Don't try to change the other person. Look at why your own deep psyche labels them difficult.**
 
-The source of the discomfort is almost always something inside **you**: a past experience, an unprocessed emotion, the inverse of a value you hold tightly. Once you put that into words, the other person quietly becomes "just different." This connects to [the words-are-blades post](/HomePage/en/blog/20260412-power-of-words/) — let words mature before throwing them.
+The source of the discomfort is almost always something inside **you**: a past experience, an unprocessed emotion, the inverse of a value you hold tightly. Once you put that into words, the other person quietly becomes "just different." In the sense of inspecting yourself before speaking, this is the same posture as [the words-are-blades post](/HomePage/en/blog/20260412-power-of-words/) — letting words mature before throwing them.
 
 ## Closing Thoughts
 
@@ -92,9 +94,10 @@ I still catch myself leading with answers. Even so, just being conscious of the 
 
 Like [the post on not bringing motivation to work](/HomePage/en/blog/20260423-motivation-is-not-needed/), asking isn't a manager's personal talent — it's **a system that produces team output**. That's the message I'm taking away.
 
+If your next 1-on-1 is on the calendar, you might try walking in with no answers and just one good question prepared. The conversation that follows is usually a different one entirely.
+
 ## Related Articles
 
 - [Words Are Blades — Once Spoken, They Stay With the Other Person](/HomePage/en/blog/20260412-power-of-words/) — Letting words mature before throwing them
 - [Don't Bring Motivation to Work — Like Brushing Your Teeth, Let Systems Deliver Results](/HomePage/en/blog/20260423-motivation-is-not-needed/) — Systems instead of willpower
-- [INTJ-AS, the Solitary Grand Designer — How My Personality Shapes the Way I Work](/HomePage/en/blog/20260411-mbti-intj-working-style/) — Building team behavior on top of your personality
 - [Anything But Absolute Yes Is a No — Essentialism in Practice](/HomePage/en/blog/20260508-essentialism-saying-no/) — Discerning what truly matters

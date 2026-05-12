@@ -59,7 +59,7 @@
 | プロジェクト | `src/content/project/{ja,en}/{slug}.md` |
 | プロフィール思想セクション | `src/content/profile/{ja,en}/{philosophy,motto,dream,goal}.md` |
 | Qiita 上位記事 | ビルド時に Qiita API から取得（直近 1 年・Organization 未紐付け・likes + stocks×2 で上位 5 件）|
-| ピックアップ記事 | `src/data/dynamic-stats.json` の `featuredSlugs`（月次バッチで自動更新、または手動指定）|
+| ピックアップ記事 | `src/data/dynamic-stats.json` の `featuredSlugs`（**手動キュレーション運用**。月次バッチは既存値を保持するのみ）|
 | UI ラベル | `src/i18n/ja.ts` / `src/i18n/en.ts` に集約（ハードコーディング禁止）|
 
 ### 2.5 SEO 機能

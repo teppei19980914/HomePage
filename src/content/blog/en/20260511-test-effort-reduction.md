@@ -7,9 +7,11 @@ tags: ["Test Automation", "Unit Testing", "Effort Reduction", "Quality Assurance
 
 ## "Regression Tests Are Eating the Release Schedule"
 
-In enterprise system work, you hear it constantly: every feature change burns 2–3 days on regression, the test spec isn't maintained, automation is wanted but nobody knows where to start.
+Ever finished a sprint, looked up, and realized the next two days were just regression testing all over again?
 
-In a past project I cut **regression test effort by 90%** — replacing hundreds of manual hours with a few CI hours. Here's how I think about it, in **three layers: selection, automation, operations**.
+In enterprise system work, you hear it constantly: every feature change burns 2–3 days on regression, the test spec isn't maintained, automation is wanted but nobody quite knows where to start.
+
+In a past project I cut **regression test effort by 90%** — replacing hundreds of manual hours with a few CI hours. Here's how I think about it now, in **three layers: selection, automation, operations**.
 
 ## Don't Treat Effort Reduction as One-Off
 
@@ -138,16 +140,16 @@ For reference, here's the breakdown from a project I worked on.
 
 ## Closing Thoughts
 
-Test effort reduction is not a tool problem. It is **a design and operations problem**.
+Test effort reduction isn't a tool problem. It's **a design and operations problem**.
 
 - **Selection**: don't automate everything; drop what you don't need
 - **Automation**: push tests down the pyramid; migrate without stopping manual
 - **Operations**: run on every commit, enforce coverage, review test code
+
+If your regression spec hasn't been pruned in a year, you might try just running the four selection lenses on it tomorrow morning. The number of "we don't actually need this" rows is usually shocking.
 
 See also [the unit-test automation engagement](/HomePage/en/project/implem-unittest/).
 
 ## Related Articles
 
 - ["Tests Disappeared as a Phase" — Comparing AI-Driven and Traditional Development](/HomePage/en/blog/20260410-ai-driven-development/) — How AI-driven development compresses tests further
-- [From Funeral to Adventure: A Manager's Real Art of Asking](/HomePage/en/blog/20260509-art-of-asking-questions/) — Spreading automation through dialogue
-- [An Objective Self-Portrait — Five Strengths, Five Weaknesses](/HomePage/en/blog/20260510-objective-self-portrait/) — How automation became one of my core strengths

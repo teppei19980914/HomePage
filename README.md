@@ -278,7 +278,7 @@ Claude Code への依頼例:
 
 ### 7.2 機密情報
 
-ソースコード内に APIキー・トークンの埋め込みなし。GitHub Secrets 経由で管理しているのは `.github/workflows/update-stats.yml` の Cloudflare Analytics 用トークンのみ。詳細は [INFRASTRUCTURE.md §4](docs/Operation/INFRASTRUCTURE.md#4-セキュリティ)。
+ソースコード内に APIキー・トークンの埋め込みなし。Cloudflare Web Analytics トークンは `BaseLayout.astro` に直接埋め込んでいるが、書き込み専用 ID のため公開しても安全（[INFRASTRUCTURE.md §4](docs/Operation/INFRASTRUCTURE.md#4-セキュリティ) 参照）。`update-stats.yml` から呼び出す外部 API は Qiita（認証不要）のみで、GitHub Secrets は現状不要。
 
 ---
 

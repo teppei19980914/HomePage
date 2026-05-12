@@ -7,23 +7,25 @@ tags: ["Career", "Team Building", "Self-Growth", "Essay", "Reading"]
 
 ## "Some Efforts Are Wasted" — I Used to Think
 
-I used to view effort on a **vertical axis**.
+Honestly, I used to think effort was a simple equation.
+
+I drew it on a **vertical axis**:
 
 ```
 Self → Goal
 ```
 
-If I achieved the goal, the effort was "rewarded." If not, it was "wasted." Simple.
+Hit the goal: effort "rewarded." Miss it: effort "wasted." Done.
 
-Pass a certification exam — effort rewarded. Fail — effort wasted. Get promoted — effort paid off. Don't — it was meaningless.
+Pass a cert exam — rewarded. Fail — wasted. Get the promotion — paid off. Miss it — meaningless. Clean. Logical. Brutal.
 
-Then I read a book that fundamentally overturned this premise.
+Then one book quietly took an axe to that whole premise.
 
 ---
 
 ## The Axis of Effort Shifted
 
-The book presented a completely different definition of effort.
+The book proposed a completely different definition of effort.
 
 | | My Definition (Before) | The Book's Definition (After) |
 |---|---|---|
@@ -31,49 +33,49 @@ The book presented a completely different definition of effort.
 | **Measure of Effort** | Am I closer to my goal? | **Am I spending time for others?** |
 | **Is It Rewarded?** | Depends on results | **Always (it accumulates)** |
 
-"Rewarded" here doesn't mean visible returns. It means **time spent for others accumulates as "luck" and eventually comes back as serendipity**.
+"Rewarded," in this frame, isn't about visible returns. It means **time spent for others accumulates as "luck" and eventually comes back as serendipity**.
 
 ---
 
 ## Luck Accumulates Like a Point Card
 
-A striking metaphor from the book:
+A line from the book that stuck with me:
 
 > Luck isn't about "good or bad" — it's about "accumulated or not." It builds up like a point card through effort.
 
-The "lucky people" around us aren't inherently lucky — we're just witnessing the **moment they spend their accumulated luck**.
+The "lucky people" around us aren't innately lucky. We're just witnessing the **moment they cash in luck they've quietly been stacking up**.
 
-And the trigger for withdrawing that luck is **staying in good spirits**. Enjoying what happens and embracing it positively creates encounters with opportunities.
+And the trigger that lets you spend that luck is **staying in good spirits**. Enjoying what happens, embracing it positively — that's what cracks open the doors where opportunities come through.
 
 ---
 
 ## Applying This to Engineering Work
 
-Since learning this concept, I've become conscious of "spending time for others" in my daily work.
+Since absorbing this idea, I've gotten more deliberate about "spending time for others" at work.
 
 ### Taking Time for Thorough Code Reviews
 
-Reviews mean stopping your own tasks to engage with someone else's code. The temptation to rush exists, but **thorough review comments contribute to the other person's growth and elevate the team's overall code quality**.
+Reviews mean pausing your own work to seriously engage with someone else's code. The pull to rush is always there. But **a careful review comment lifts the other person's growth and the team's overall code quality** in one stroke.
 
 ### Stopping to Help When a Junior Is Struggling
 
-While studying for certifications and reading after work, a junior colleague once told me: "Seeing you put in effort inspired me to buy and start reading technical books too."
+While studying for certifications and reading after work, a junior colleague told me one day: "Watching you put in effort made me actually buy and start reading tech books too."
 
-I hadn't taught them directly. **Effort quietly propagates and sometimes moves people's hearts.** This moment gave me tangible proof that horizontal effort accumulates.
+I'd never taught them directly. **Effort propagates quietly, and sometimes it nudges someone's heart.** That moment was my first tangible evidence that horizontal effort really does accumulate.
 
 ### Writing Documentation
 
-Choosing to write READMEs and design docs for code that "only I need to understand." It's for my future self too, but it's also **an act of spending time for team members and successors**.
+Choosing to write READMEs and design docs for code "only I need to understand." Yes, it's for my future self. But it's also **time spent for teammates and successors I may never meet**.
 
 ---
 
 ## Positive Thinking Increases Your "Total Luck"
 
-Between someone who declines everything that doesn't benefit them and someone who gives their time when asked — who will encounter better opportunities over time?
+Imagine two people: one declines anything that doesn't directly benefit them, the other says yes when asked for time. Over years, who runs into better opportunities?
 
-The answer is clear: **the more time you spend for others, the more luck accumulates**. To others, that person appears "lucky."
+Pretty obvious: **the more time you spend for others, the more luck quietly piles up**. From the outside, that person ends up looking "lucky."
 
-This isn't about self-sacrifice, though. **Maintain your own goals (vertical axis) while not neglecting contributions to others (horizontal axis).** The balance of both axes is what matters.
+This is not a self-sacrifice pitch. **Keep your own goals (vertical axis) honest, while not neglecting contributions to others (horizontal axis).** It's the balance of the two that matters.
 
 ---
 
@@ -81,24 +83,23 @@ This isn't about self-sacrifice, though. **Maintain your own goals (vertical axi
 
 | Before | After |
 |---|---|
-| Tended to decline requests unrelated to my results | Accept them as **"opportunities to accumulate luck"** |
-| Minimal answers to juniors' questions | **Include background and reasoning** |
-| Passive about study groups and events | **Participate, knowing good spirits unlock luck** |
+| Tended to decline requests unrelated to my outcomes | Accept them as **"chances to accumulate luck"** |
+| Minimal answers to junior questions | **Include background and reasoning** |
+| Passive about study groups and events | **Show up, knowing good spirits unlock luck** |
 
 ---
 
 ## In Closing
 
-Effort is always rewarded — but **you need to redefine what "rewarded" means**.
+Effort is always rewarded — but **you have to redefine what "rewarded" means**.
 
-For someone who only measured reward by goal achievement, the perspective that "time spent for others accumulates as luck" was a major turning point.
+For someone who only ever measured reward by goal achievement, the line that "time spent for others accumulates as luck" was a quiet turning point.
 
-Even without visible results, time spent helping others is never wasted. That accumulation will someday return in unexpected ways.
+Even without visible results, time spent helping others is never wasted. That accumulation will, somewhere down the line, come back in shapes you didn't plan.
 
-I want to keep practicing this philosophy in my work and career.
+If you've been weighing some "should I help, or should I just push my own work?" decision recently, maybe lean toward help this once. You might be quietly stamping a point card you can't see yet.
 
 ## Related Articles
 
 - ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/20260412-power-of-words/) — Communication with awareness of impact on others
-- ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — How to use limited time
 - [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — How an independent type learned to invest time in others

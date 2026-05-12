@@ -12,12 +12,12 @@ const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
 const { home, site, readingTime: readingTimeLabel, product: productLabels } = t;
 
-// 月次バッチで更新される動的データ(update-stats.yml が自動更新)
+// 月次バッチで更新される動的データ(update-stats.yml が Qiita/エンジニア歴を更新)
 import dynamicStats from "../../data/dynamic-stats.json";
 
-// Home の Blog セクションはアクセス数ベースのピックアップ記事を表示する。
-// dynamic-stats.json の featuredSlugs(Cloudflare Analytics から月次自動更新)を
-// 優先し、該当記事が未公開 or 空の場合は frontmatter の featured: true にフォールバック。
+// Home の Blog セクションは手動キュレーションのピックアップ記事を表示する。
+// dynamic-stats.json の featuredSlugs を直接編集して指定する。
+// 該当記事が未公開 or 空の場合は frontmatter の featured: true にフォールバック。
 const publishedPosts = (await getLocalizedCollection("blog", lang))
   .filter(isPublished)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());

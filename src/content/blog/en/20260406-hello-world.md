@@ -7,75 +7,81 @@ tags: ["Portfolio", "Introduction", "Astro", "Side Project", "AI-Driven Developm
 
 ## Nice to Meet You
 
-I'm Teppei Suyama. I've just launched my personal homepage.
+Honestly, I've been wanting a place to call "home" online for a long time.
 
-I work as a full-time SES engineer while continuing full-stack development on my own.
+My information was scattered everywhere — Qiita for tech articles, Wantedly for career, GitHub for code, my own apps off in another corner. Each one held a slice of me, but no single place showed the whole shape.
+
+So I built one. This is it.
+
+I'm Teppei Suyama. By day I work as a full-time SES engineer, by night and weekend I keep building things on my own.
 
 ## Why I Built This Homepage
 
-I've spent 5 years in the IT industry, progressing from Programmer to SE to Project Leader. I've found inefficiencies on my own and proposed improvements: 90% reduction in regression testing, 60% reduction in overtime, and full RPA automation saving 40 person-hours per month.
+I've spent 5 years in IT — Programmer, then SE, then Project Leader. Along the way I found my own inefficiencies and pitched fixes: 90% reduction in regression testing, 60% reduction in overtime, a full RPA automation worth 40 person-hours a month.
 
-However, these achievements are only known within my company. I wanted a place where more people could learn about my work and think, "I'd like to work with this person." That's what motivated me to build this homepage.
+Useful numbers. The problem is, they only existed **inside the company**.
 
-Until now, my information was **scattered** across Qiita, Wantedly, GitHub, and personal apps. No single source showed the full picture. This homepage serves as a centralized hub for everything about me.
+I wanted somewhere people outside that bubble could look and think, "I'd like to work with this person." That impulse — equal parts pride and frustration — is what finally tipped me into building this.
 
 ## What I Want to Achieve
 
 ### 1. Help Clients and Recruiters Get to Know Me
 
-Beyond objective facts like skills, certifications, and career history, I've included my philosophy, dreams, and guiding principles. I want people to evaluate not just my technical ability, but who I am as a person.
+Skills, certs, career history — those are the objective facts. But I've also written down my philosophy, my dreams, my guiding principles.
+
+A resume tells you what someone has done. I wanted a place that also hints at **who that someone actually is**.
 
 ### 2. Showcase My Side Projects
 
-I'm currently developing two apps:
+Two apps live here right now:
 
-- **YumeHashi** — An app that breaks dreams into goals and turns them into daily actions. Built with Flutter / Dart.
-- **Defrago** — An app that defragments mental clutter so you can focus on what matters. Built with Python / FastAPI.
+- **YumeHashi** — Breaks dreams into goals, goals into daily action. Flutter / Dart.
+- **Defrago** — Defragments mental clutter so you can focus on what matters. Python / FastAPI.
 
-Both are developed using AI-driven development (Claude Code). YumeHashi took 3 weeks with zero prior Flutter experience, and Defrago took 2 weeks.
+Both built with AI-driven development (Claude Code). YumeHashi: 3 weeks from zero Flutter experience. Defrago: 2 weeks.
 
 ### 3. Share Technical Knowledge Through Blogging
 
-I've published over 211 technical articles on [Qiita](https://qiita.com/teppei19980914). This blog covers different angles:
+I've already published 211+ technical articles on [Qiita](https://qiita.com/teppei19980914). This blog leans into the angles Qiita doesn't quite fit:
 
 - Retrospectives on side projects
-- Real experiences with AI-driven development
-- Career reflections
-- Project management insights
-- Reading and daily observations
+- Real numbers from AI-driven development
+- Career reflections, the messy human kind
+- Project management lessons
+- Reading notes, daily observations
 
 ## "Simplicity That Gets You to the Goal Fastest"
 
-This homepage — and everything I've built — follows the same design philosophy.
+That's the design philosophy behind everything here — and behind the apps too.
 
 - Minimal navigation (Home / Profile / Products / Projects / Blog / Contact)
-- Profile page has a table of contents for section jumping
-- All text managed in `src/i18n/ja.ts` for multilingual support, no hardcoding
-- Minimal client-side JS (leveraging Astro's zero-JS default)
+- Profile page has a TOC so you can jump straight to the section you care about
+- All text managed in `src/i18n/ja.ts` for multilingual support — no hardcoding
+- Minimal client-side JS (Astro's zero-JS default does the heavy lifting)
 
-The priority is not "packing in information" but "helping users find what they need without getting lost."
+The goal isn't to pack in information. It's to help you find what you actually came for, fast, without getting lost.
 
 ## Technical Stack
 
-As an engineer, I built this site with technical intent:
+As an engineer, I built this site with a bit of technical intent:
 
-- **Astro v6** — Zero-JS default static site generation. Performance first.
+- **Astro v6** — Zero-JS static site generation. Performance first.
 - **GitHub Pages** — Free hosting at zero cost.
 - **Cloudflare Web Analytics** — Cookie-free analytics.
 - **Formspree** — Cookie-free contact form.
 - **SEO Optimization** — sitemap / OGP / JSON-LD / RSS / Google Search Console.
-- **AI-Driven Development** — The entire site built with Claude Code.
+- **AI-Driven Development** — The entire site, built with Claude Code.
 
 ## Related Articles
 
-- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — Performance data from building an app in 3 weeks with AI
+- ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — Real numbers from building an app in 3 weeks with AI
 - [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — The philosophy behind my side project
-- [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/20260407-yumehashi-tech-stack/) — Design decisions with Flutter Web / Drift / Riverpod
+- [YumeHashi's Tech Stack and 5 Implementation Challenges](/HomePage/en/blog/20260407-yumehashi-tech-stack/) — Flutter Web / Drift / Riverpod design decisions
 
 ## In Closing
 
-This homepage is a **centralized place** for my achievements, philosophy, and products that were previously scattered.
+So — this homepage is a **single place** where the achievements, philosophy, and products that used to be scattered finally sit together.
 
-If you have any questions or feedback, please feel free to reach out via the [contact form](/HomePage/en/contact/).
+If you have questions or feedback, the [contact form](/HomePage/en/contact/) is always open. I'd genuinely love to hear what brought you here.
 
 Thank you for visiting.

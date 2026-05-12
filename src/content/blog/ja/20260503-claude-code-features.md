@@ -7,9 +7,13 @@ tags: ["Claude Code", "AI駆動開発", "Skills", "Subagents", "新人プログ�
 
 ## 連載第 6 回です
 
+「Claude Code、機能はいろいろあるけれど、結局どれをいつ使えばいいか分からない」
+
+そう感じたこと、ありませんか？私も最初はそうでした。
+
 [前回](/HomePage/ja/blog/20260502-claude-prompt-instructions/)で指示の書き方 5 技法をお伝えしました。今回は **Claude Code の固有機能** の使い分けです。
 
-Web 版の Claude や API 版にはない、Claude Code 専用機能がいくつもあります。それぞれの特徴と、いつ使うべきかを整理します。
+Web 版の Claude や API 版にはない、Claude Code 専用機能がいくつもあります。それぞれの特徴と、いつ使うべきかを整理してみます。
 
 ## Claude Code 固有機能 一覧
 
@@ -124,6 +128,8 @@ Claude のトークン消費を抑える観点で、効果の大きい順に並�
 | 巨大な調査を任せたい | Subagents |
 | 書いたコードをレビューしたい | Writer/Reviewer |
 | CI で自動化したい | Auto Mode |
+
+いま自分が一番困っていることを 1 行で選んで、対応する機能をひとつだけ試してみるのが、たぶん一番続きます。
 
 ## 関連記事
 

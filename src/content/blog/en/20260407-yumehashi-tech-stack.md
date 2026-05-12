@@ -7,13 +7,15 @@ tags: ["Flutter", "Dart", "Drift", "Riverpod", "Firebase", "Side Project", "AI-D
 
 ## Introduction
 
-[YumeHashi](/HomePage/en/product/yumehashi/) is a personal Flutter Web app that breaks dreams into goals, goals into tasks, and turns them into action. Renamed from "YumeLog" in April 2026, it's now at v2.1.0.
+Ever shipped a personal app and then watched it slowly fall apart under real-world use? Yeah — me too.
 
-This article focuses on the **technical internals**:
+[YumeHashi](/HomePage/en/product/yumehashi/) is my personal Flutter Web app that breaks dreams into goals, goals into tasks, and turns the whole thing into action. Renamed from "YumeLog" in April 2026, now at v2.1.0. It's been live long enough to hit the interesting problems.
 
-- The tech stack and selection rationale
-- Serverless, zero-cost infrastructure design
-- 5 implementation challenges encountered during operation and their solutions
+This article zooms in on the **technical internals**:
+
+- The tech stack and why I picked each piece
+- The serverless, zero-cost infrastructure
+- 5 real problems that surfaced in production, and the fixes
 
 ---
 
@@ -33,19 +35,19 @@ This article focuses on the **technical internals**:
       +-- [Browser SQLite]     Drift ORM + drift_worker.js (WASM)
 ```
 
-The key design: **primary storage is browser-side SQLite**. Firestore is a "full JSON cloud backup." Most reads and writes complete locally, keeping Firestore free-tier writes (20,000/day) well within bounds up to DAU 3,000.
+The key design call: **the primary store lives in the browser as SQLite**. Firestore is just a "full JSON cloud backup." Most reads and writes finish locally, which keeps Firestore's free-tier write quota (20,000/day) comfortably safe up to DAU 3,000.
 
 ### Key Tech Stack
 
 | Layer | Technology | Why |
 |---|---|---|
-| UI | Flutter (Dart) | Single codebase for Web / Windows |
+| UI | Flutter (Dart) | One codebase, Web + Windows |
 | State | Riverpod | Compile-time DI, testable |
 | Local DB | Drift (SQLite) | Type-safe queries, WASM for Web |
-| Auth | Firebase Auth | Seamless anonymous → email migration |
-| Payment | Stripe (via Apps Script) | No secret keys on client |
+| Auth | Firebase Auth | Smooth anonymous → email migration |
+| Payment | Stripe (via Apps Script) | No secret keys on the client |
 
-Running at **zero monthly cost** for over a year. The only variable cost factor is Firestore writes (DAU 3,000 threshold).
+Running at **zero monthly cost** for over a year now. The only thing that could ever turn the meter on is Firestore writes (the DAU 3,000 threshold).
 
 ---
 
@@ -53,31 +55,31 @@ Running at **zero monthly cost** for over a year. The only variable cost factor 
 
 ### Challenge #1: Slow Initial Load
 
-HAR analysis showed First Paint at 3.4s (cached), 6-10s cold start.
+HAR analysis showed First Paint at 3.4s when cached, 6-10s on cold start. Not great.
 
-**Problem:** Apps Script's Stripe verification took 1.8s, blocking the serial dependency chain.
+**Problem:** Apps Script's Stripe verification took 1.8s and sat right in the middle of a serial dependency chain.
 
-**Solution:** Three-pronged approach — cache premium state before `runApp()`, defer external calls via `addPostFrameCallback`, and add preconnect/preload hints to `index.html`.
+**Solution:** Three moves in parallel — cache premium state before `runApp()`, push external calls into `addPostFrameCallback`, and add preconnect/preload hints to `index.html`.
 
 ### Challenge #2: Inbox Data Growth
 
-After 1 year of operation, accumulated notifications pressured memory and Firestore. **Solution:** Auto-delete read notifications older than 30 days. Unread notifications protected regardless of age — deleting unread items would erode user trust.
+After a year of operation, accumulated notifications started pressuring both memory and Firestore. **Solution:** Auto-delete read notifications older than 30 days. Unread notifications are protected regardless of age — deleting unread items would quietly erode user trust, which is exactly the kind of thing you don't notice until it's too late.
 
 ### Challenge #3: Completed Task Accumulation
 
-After 10 months, task list rendering became noticeably slower on real devices. **Solution:** Default-hide completed tasks + auto-delete completed tasks older than 30 days via `DataRetentionService`. Added FAQ entry: "Export data you want to keep before it's auto-deleted."
+After 10 months, task list rendering got noticeably sluggish on real devices. **Solution:** Default-hide completed tasks plus auto-delete completed tasks older than 30 days via `DataRetentionService`. Added an FAQ entry: "Export anything you want to keep before auto-deletion kicks in."
 
 ### Challenge #4: Duplicate Announcements
 
 **Problem:** Removing entries from `announcements.json` didn't remove them from users' inboxes.
 
-**Solution:** Treat `announcements.json` as the single source of truth — delete DB records whose dedup_key no longer exists in JSON.
+**Solution:** Treat `announcements.json` as the single source of truth — delete DB records whose `dedup_key` no longer exists in JSON.
 
 ### Challenge #5: CI Version Check Race Condition
 
-**Problem:** CI's version-check ran after merge due to queue delay, comparing identical versions.
+**Problem:** CI's version-check ran after merge because of queue delay, so it compared identical versions and yelled.
 
-**Solution:** Skip check when `git merge-base --is-ancestor HEAD origin/main` — meaning the PR is already merged.
+**Solution:** Skip the check when `git merge-base --is-ancestor HEAD origin/main` — meaning the PR has already landed.
 
 ---
 
@@ -95,6 +97,6 @@ App: [YumeHashi](/HomePage/en/product/yumehashi/) (free trial available). Reposi
 
 ## Related Articles
 
-- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — The rename story and development philosophy
+- [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — The rename story and the philosophy behind it
 - [Firestore Free Tier Optimization — 4 Things I Did](/HomePage/en/blog/20260409-yumehashi-cost-optimization/) — gzip compression, debounce, format versioning
 - ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — Building an app in 3 weeks

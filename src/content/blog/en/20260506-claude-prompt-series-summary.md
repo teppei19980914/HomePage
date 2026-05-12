@@ -7,7 +7,9 @@ tags: ["Claude Code", "AI-driven development", "prompt engineering", "summary", 
 
 ## Series wrap-up
 
-Nine days and a lot of words later, the **"Claude Prompt Mastery"** series comes to a close here.
+Honestly, nine straight days of writing about prompts felt much longer than nine days.
+
+The **"Claude Prompt Mastery"** series comes to a close here.
 
 As I wrote [on day one](/HomePage/en/blog/20260428-claude-code-prompt-guide/), the playbook was hiding in the official docs. Built on those sources, the series delivered **42 patterns + 18 principles** across 8 guide posts.
 
@@ -107,6 +109,8 @@ This series is a snapshot of where I am today. Anthropic updates the docs. Claud
 The homepage version prioritizes personal takeaways and readability. The **reference-grade series, with full official quotations**, is on Qiita.
 
 - [Qiita profile](https://qiita.com/teppei19980914)
+
+If a single pattern from this series ends up living in your workflow next month, that — for me — is the whole point.
 
 Thank you for reading.
 

@@ -7,19 +7,21 @@ tags: ["Personal Dev", "Claude Code", "Zero Cost", "Design", "GitHub Pages", "Ve
 
 ## Programming Study Without a Goal
 
+Ever spent months "learning programming" and quietly wondered, *what am I actually building toward?*
+
 Before my career as an engineer began, I was practicing programming as "study for study's sake."
 
-Type the sample code from a book or website into the IDE, run it, see output in the console. If it works, advance to the next chapter. Nothing wrong with that, but I had no clear answer to **what I wanted to build through the learning**.
+Type the sample code from a book or website into the IDE, run it, see output in the console. If it works, move on to the next chapter. Nothing wrong with that — except I had no honest answer to **what I wanted to build through all this learning**.
 
-"I learned Java syntax." "I can write SQL." Knowledge was accumulating, but I had no real sense of producing anything with it. Input was piling up with no outlet for output, and that state lasted for years.
+"I learned Java syntax." "I can write SQL." Knowledge was stacking up. But I had no real sense of producing anything with it. Input piling up with no outlet for output. That state lasted years.
 
 ## The "Built and Never Used" Loop
 
-I eventually started building personal apps, but I hit another wall.
+I eventually started building personal apps. Then I hit another wall.
 
-**I didn't know how to publish what I built to the internet.**
+**I had no idea how to publish what I built to the internet.**
 
-To be precise, I was held back by assumptions: "I have to build a server." "Server operations cost money." Looking at the AWS or Azure service catalog, simulating monthly bills, I'd flinch — and ended up only building apps that ran locally.
+More precisely, I was held back by assumptions: "I have to build a server." "Servers cost money." Looking at the AWS or Azure service catalog, simulating monthly bills, I'd flinch and retreat — and end up only building apps that ran locally.
 
 This is how the **"built and never used" loop** was born.
 
@@ -29,21 +31,21 @@ This is how the **"built and never used" loop** was born.
 4. Abandon it and move to the next idea
 5. Back to 1
 
-I cycled through this loop many times. Technical skill rose slowly, but nothing reached anyone else. Frustration was the only thing that piled up.
+I cycled through this many times. Technical skill rose slowly. Nothing reached anyone else. Frustration was the only thing that piled up.
 
 ## Meeting Claude Code
 
 The turning point was meeting Claude Code.
 
-What Claude Code changed for me wasn't only coding speed. **The hurdle of server setup dropped dramatically** — that was the biggest impact for me.
+What Claude Code changed for me wasn't only coding speed. **The hurdle of server setup dropped dramatically** — that was the actual biggest shift.
 
-"Static sites can be hosted free on GitHub Pages." "Vercel deploys Next.js as-is." "Supabase has a free PostgreSQL tier." I had vaguely known these, but the actual steps — writing the config files, building the CI/CD, hooking up domains — were a region I couldn't step into alone.
+"Static sites can be hosted free on GitHub Pages." "Vercel deploys Next.js as-is." "Supabase has a free PostgreSQL tier." I'd vaguely known these — but the actual steps — writing config files, building CI/CD, hooking up domains — was a region I couldn't step into alone.
 
-With Claude Code, I could walk through those **concrete steps** one at a time. As a result, I published an app to the internet for the first time and gained an environment where someone besides me could touch what I built.
+With Claude Code, I could walk through those **concrete steps** one at a time. As a result, I published an app to the internet for the first time, and gained an environment where someone besides me could touch what I'd built.
 
 ## Constraint-Driven Design
 
-Once I could publish, learning accelerated further. But what deepened the learning by another level was **constraint-driven design**.
+Once I could publish, learning sped up. What deepened it by another level was **constraint-driven design**.
 
 If you use AWS or Azure freely, technical constraints almost vanish. But **that's not interesting**.
 
@@ -60,21 +62,21 @@ Under that rule, every technical choice becomes a series of trade-offs.
 | Storage | S3 | inside the Git repository / browser IndexedDB |
 | Batch jobs | Lambda + EventBridge | GitHub Actions (cron) |
 
-By continuously asking "if the service I want is paid, how do I deliver the same experience for free?", I came to deeply understand each service's essential function and its cost structure. This is **design skill that only practice teaches** — not the textbook.
+By repeatedly asking, "if the service I want is paid, how do I deliver the same experience for free?", I came to deeply understand each service's essential function and its cost structure. This is **design skill that only practice teaches** — not the textbook.
 
 ## The Pursuit of Maintenance-Free
 
-Beyond ¥0 cost, the other thing I am pursuing is **maintenance-free**.
+Beyond ¥0 cost, the other thing I'm chasing is **maintenance-free**.
 
-In personal dev, "operations after building" is the biggest enemy. Manual deployment, manual data updates — that operational burden eventually drains motivation, and the product gets abandoned.
+In personal dev, "operations after building" is the actual final boss. Manual deployment, manual data updates — that operational drag drains motivation, and the product quietly gets abandoned.
 
-So I built a daily automated batch on GitHub Actions, automating the following:
+So I built a daily automated batch on GitHub Actions, automating:
 
 - **Scheduled blog publishing** — articles whose `date` is today or earlier auto-publish
 - **External API data fetching** — periodically pull Qiita articles into the site
 - **Build & deploy** — main-branch push triggers automatic deployment
 
-So all I need to do is write an article and push to Git — the rest goes all the way to publishing automatically. Zero need to look after a server. **Zero cost, zero maintenance.**
+So all I do is write an article and push to Git. The rest carries through to publication on its own. Zero server-tending. **Zero cost, zero maintenance.**
 
 ## The Products Currently Live
 
@@ -86,35 +88,35 @@ Currently, three products run at ¥0 / month operations cost.
 | [Defrago](/HomePage/en/product/defrago/) | Flutter Web / Drift / Riverpod | GitHub Pages |
 | [HomePage](/HomePage/en/) | Astro / TypeScript | GitHub Pages |
 
-All three have **completely ¥0** monthly operations cost.
+All three at **completely ¥0** monthly.
 
 ## Claude Code as an Up-Front Investment
 
-Claude Code carries a monthly subscription. That is undeniably a cost.
+Claude Code carries a monthly subscription. Undeniably a cost.
 
 But I treat it as **an up-front investment**.
 
-Before Claude Code, I was trapped in the loop of building local-only apps and abandoning them. Today, I publish three products, run a portfolio site, and ship blog posts on a regular cadence.
+Before Claude Code, I was trapped in the "build local, abandon, repeat" loop. Today I publish three products, run a portfolio site, and ship blog posts on a regular cadence.
 
-What made the difference is dialogue with Claude Code. I feel the return I get — in the form of **skill growth** — clearly exceeds what I pay.
+The difference is dialogue with Claude Code. The return I get — in the form of **skill growth** — clearly exceeds what I pay.
 
 ## From "Goal-less Learning" to "Practice Under Constraint"
 
-Looking back, my programming learning has had three phases.
+Looking back, my programming learning had three phases.
 
 1. **Input phase** — learning syntax via books and the web (no goal)
 2. **Local phase** — building apps but unable to publish (no outlet)
-3. **Publishing phase** — designing under constraint and publishing to the internet (now)
+3. **Publishing phase** — designing under constraint and shipping to the internet (now)
 
-The transition from phase 1 to phase 2 happened naturally. The transition from phase 2 to phase 3, however, required **an external trigger**. For me, that trigger was Claude Code.
+Phase 1 → 2 happened naturally. Phase 2 → 3, however, required **an external trigger**. For me, that trigger was Claude Code.
 
-If anyone is in the same "build and never use" loop today, what I want to say is one thing.
+If you're in the same "build and never use" loop today, here's the one thing I want to say.
 
 > **Servers don't have to cost money. Publishing is much easier than you imagine.**
 
-GitHub Pages, Vercel, Supabase — there are mountains of free infrastructure. And as a partner who walks through the configuration steps with you, AI tools are extremely capable.
+GitHub Pages, Vercel, Supabase — mountains of free infrastructure. And as a partner who walks through the configuration steps with you, AI tools are extremely capable.
 
-Once you take that first step, the speed of learning shifts dramatically. Beyond "build and never use" lies an entirely different view: **"build and deliver."**
+Once you take that first step, the speed of learning shifts dramatically. Beyond "build and never use" lies a different view entirely: **"build and deliver."**
 
 ## Related Articles
 

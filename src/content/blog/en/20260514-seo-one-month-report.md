@@ -7,7 +7,9 @@ tags: ["SEO", "Personal Blog", "Search Console", "Analysis", "Retrospective"]
 
 ## "7× in One Month" Sounds Like a Sales Pitch
 
-When someone says "search traffic 7×'d in one month," it usually sounds like marketing copy.
+Ever scrolled past a "I 10x'd my traffic in 30 days" headline and instinctively rolled your eyes?
+
+Honestly, me too. When someone says "search traffic 7×'d in one month," it usually reads as marketing copy.
 
 But this is the actual **Google Search Console data** for my personal blog ([this site](/HomePage/en/)). Nothing inflated, just the numbers.
 
@@ -116,10 +118,11 @@ This past month let me confirm — quantitatively — that **personal blogs can 
 
 No special tools. No paid plans. Just the **basics that Google officially recommends**, implemented thoughtfully on a static site, one at a time.
 
+If you've been quietly assuming your own blog's invisible, you might try just opening Search Console today and looking at your top-impression / zero-click queries. The gaps that show up are usually the easiest wins.
+
 The implementation steps are in the [previous post](/HomePage/en/blog/20260513-seo-tactics-for-personal-blog/). The internal-implementation tricks are in the [next post (publishing 5/15)](/HomePage/en/blog/20260515-internal-seo-tactics/). I hope they're useful as the middle chapter of a 3-part series.
 
 ## Related Articles
 
 - [Personal Blog SEO — How I Lifted Avg. Position to 18 at Zero Cost](/HomePage/en/blog/20260513-seo-tactics-for-personal-blog/) — The 9 tactics implemented
 - [Why I Built This Homepage — Walking with Astro v6](/HomePage/en/blog/20260418-astro-v6-homepage/) — Site design rationale
-- [An Objective Self-Portrait — Five Strengths, Five Weaknesses](/HomePage/en/blog/20260510-objective-self-portrait/) — About the author

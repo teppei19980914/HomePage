@@ -7,7 +7,9 @@ tags: ["RPA", "Power Platform", "Power Automate", "Requirements", "Business Impr
 
 ## "We Adopted RPA, But the Effect Wasn't What We Expected"
 
-You hear it often: automated, yet maintenance still eats time monthly; forced the business to fit the tool and the floor got confused; "we just replaced an Excel macro" was the whole project.
+Ever rolled out RPA with high hopes and quietly watched it become "yet another thing to maintain"?
+
+You hear it often: automated, yet maintenance still eats time monthly; the business got forced to fit the tool and the floor turned confused; "we just replaced an Excel macro" was the whole project.
 
 In a past engagement I delivered **40 hours per month of savings**. Here is the requirements pattern I now use, in **five steps**. This isn't about tool selection (UiPath / Power Automate / WinActor) — it's about **the tool-independent way to approach requirements**.
 
@@ -148,12 +150,12 @@ For reference, the breakdown from a project I worked on.
 
 ## Closing Thoughts
 
-The key to 40h/month RPA savings is not the tool — it is **the quality of requirements**. Target selection (four lenses + the courage not to automate), decomposition (don't mirror As-Is; redesign in To-Be), design patterns, operations design, and phased release — these five steps deliver the result.
+The key to 40h/month RPA savings isn't the tool — it's **the quality of requirements**. Target selection (four lenses plus the courage not to automate), decomposition (don't mirror As-Is; redesign in To-Be), design patterns, operations design, and phased release — these five steps deliver the result.
+
+If you have a candidate process sitting in front of you right now, you might try just the four selection lenses on it before opening any tool. Half the answer usually lives there.
 
 See also [the Power Platform engagement](/HomePage/en/project/lts-power-platform/) and [the RPA implementation engagement](/HomePage/en/project/implem-rpa/).
 
 ## Related Articles
 
 - [How I Cut Regression Test Effort by 90% — Selection, Automation, Operations](/HomePage/en/blog/20260511-test-effort-reduction/) — The same pattern applied to test effort
-- [From Funeral to Adventure: A Manager's Real Art of Asking](/HomePage/en/blog/20260509-art-of-asking-questions/) — Dialogue between the field and requirements
-- [An Objective Self-Portrait — Five Strengths, Five Weaknesses](/HomePage/en/blog/20260510-objective-self-portrait/) — How automation became a core strength
