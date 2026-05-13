@@ -128,7 +128,6 @@ Inbox の各アイテムに対し、4 つの分類ボタンから 1 つを選ぶ
 利用者・開発者の交流やフィードバックを以下で受け付けています。
 
 - [GitHub Discussions（質問・要望・議論）](https://github.com/teppei19980914/Defrago/discussions)
-- [Discord サーバー（リアルタイム交流）](https://discord.gg/KThVePenzz)
 
 ---
 

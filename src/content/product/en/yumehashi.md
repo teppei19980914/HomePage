@@ -96,7 +96,6 @@ Dream: become an IT engineer
 Open channels for users and developers.
 
 - [GitHub Discussions (questions, ideas, talk)](https://github.com/teppei19980914/YumeHashi/discussions)
-- [Discord server (real-time)](https://discord.gg/HcZKVsJdcn)
 
 ---
 
