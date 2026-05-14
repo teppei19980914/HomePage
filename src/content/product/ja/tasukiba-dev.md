@@ -90,6 +90,140 @@ audience: "developer"
 | **役割** | 一つのサービスを構成する **網羅的な内容（プログラミング・インフラ・データベース など）** について経験を積みたい方を歓迎します |
 | **「卒業」という文化** | 離れることは「離脱」ではなく「次のステップへの卒業」として扱います |
 
+## 技術スタック（2026年5月時点の構成）
+
+参考までに、現在のたすきばで使っている技術をひと通りご紹介します。
+**ここに書かれている技術を「知っていなくても」「触ったことがなくても」全く問題ありません**。むしろ「初めて触る技術が多い」のは、ご自身の学びの場として大きなチャンスだと思います。
+
+> 各バージョン・スタックは継続的に更新されています。本ページの内容は **2026年5月時点のスナップショット** としてご覧ください。
+
+### 1. 言語・ランタイム
+
+| 技術 | バージョン | 役割 |
+|---|---|---|
+| **TypeScript** | 6.x | 型付き JavaScript。フロント／バック共通言語 |
+| **Node.js** | 22 LTS | サーバ実行環境 |
+| **pnpm** | — | パッケージマネージャ（npm より高速・省ディスク） |
+
+> TypeScript は JavaScript に「変数の型（=形）」をつけて間違いを早期発見できるようにした拡張版です。Node.js はそれをブラウザの外で動かすエンジンです。
+
+### 2. フロントエンド
+
+| 技術 | バージョン | 役割 |
+|---|---|---|
+| **Next.js** (App Router) | 16.2.6 | フロントとサーバを統合した React フレームワーク。Turbopack で高速ビルド |
+| **React** | 19.2.6 | UI を「部品（コンポーネント）」単位で組み立てる仕組み |
+| **Tailwind CSS** | 4.x | クラス名で見た目を指定する CSS 設計 |
+| **shadcn/ui + @base-ui/react** | — | ボタン・ダイアログ等の UI 部品集 |
+| **lucide-react** | — | アイコン |
+| **next-intl** | 4.x | 多言語対応（i18n） |
+| **react-markdown + remark-gfm** | — | ナレッジ本文の Markdown 表示 |
+| **class-variance-authority / clsx / tailwind-merge** | — | Tailwind クラスの動的組み立て |
+
+> shadcn/ui は完成品のボタン部品を **コピペで使う代わりに、自分のプロジェクトにソースごと取り込んで自由にカスタマイズできる** のが特徴です。
+
+### 3. バックエンド（Next.js サーバサイド）
+
+| 技術 | バージョン | 役割 |
+|---|---|---|
+| **Next.js Route Handlers / Server Actions** | — | API エンドポイント実装 |
+| **Prisma + @prisma/adapter-pg** | 7.8.0 | 型安全な ORM（DB アクセス層） |
+| **pg (node-postgres)** | 8.20 | PostgreSQL クライアント |
+| **Zod** | 4.x | スキーマ定義 + 入力バリデーション |
+
+> ORM は「DB のテーブルを TypeScript の変数のように扱える翻訳機」です。SQL を直接書く代わりに `prisma.project.findMany()` のように書けて、しかも型が効くので名前の打ち間違いをコンパイル時に検出できます。
+
+### 4. データベース・検索・ベクトル
+
+| 技術 | バージョン | 役割 |
+|---|---|---|
+| **PostgreSQL** | 16.x（本番は Supabase 提供の 15.x） | RDB 本体 |
+| **pgvector** | — | ベクトル類似検索（PostgreSQL 拡張） |
+| **pg_trgm** | — | 部分一致・あいまい全文検索（PostgreSQL 標準拡張） |
+| **Voyage AI** voyage-4-lite | 1024 次元 | テキスト → ベクトル変換（提案エンジンで利用） |
+| **Anthropic Claude** (@anthropic-ai/sdk) | 0.92 | LLM 呼び出し（自動タグ抽出など） |
+
+> 文章を 1024 個の数字（ベクトル）に変換すると、「意味が似ている文章は近い位置に並ぶ」性質が出てきます。これを使って「過去の似たプロジェクト」を機械的に探すのが pgvector + Voyage の組み合わせです。
+
+### 5. 認証・セキュリティ
+
+| 技術 | バージョン | 役割 |
+|---|---|---|
+| **NextAuth.js** (Auth.js) | 5.0.0-beta.31 | 認証セッション管理（Credentials 方式） |
+| **bcryptjs** | 3.x | パスワードハッシュ化 |
+| **otplib** | 13.x | MFA（TOTP / RFC 6238、Google Authenticator 互換） |
+| **qrcode** | 1.5 | MFA 設定用 QR コード生成 |
+| **自前のセキュリティスコアチェック** | — | CI で 90/100 強制 |
+
+> パスワードは bcrypt で「片方向に変換」して保存します（元には戻せません）。TOTP はスマホ認証アプリの 6 桁数字、QR コードは「秘密鍵をカメラで読み込ませる」ためのものです。
+
+### 6. 外部 SaaS / インフラ
+
+| レイヤー | サービス | プラン | 月額 |
+|---|---|---|---|
+| ホスティング | **Vercel** | Hobby | $0 |
+| DB | **Supabase** (PostgreSQL 15, pooler 経由) | Free 500MB | $0 |
+| メール送信 | **Brevo** | Free 300通/日 | $0 |
+| CI/CD | **GitHub Actions** | 無料枠 2,000分/月 | $0 |
+
+> 総額 **$0/月** で MVP を運用する設計です。Vercel は git push したら自動でデプロイされる仕組みが標準装備。Supabase は「Firebase の PostgreSQL 版」と呼ばれる無料 BaaS です。メール送信は MailProvider インターフェース化されており、Brevo / Resend / console / inbox（E2E 用）を環境変数で切り替えできます。
+
+### 7. テスト・品質保証
+
+| 技術 | バージョン | 役割 |
+|---|---|---|
+| **Vitest** | 4.x | 単体テスト（現在 **141 件超**） |
+| **Playwright** | 1.59 | E2E テスト（ブラウザ自動操作） |
+| **ESLint 9 + eslint-config-next** | — | 静的解析 |
+| **Prettier** | 3.8 | コード整形 |
+| **E2E カバレッジゲート** | — | `page.tsx` / `route.ts` 追加時に E2E 漏れを検出する自前ガード |
+
+> 単体テストは「関数1つ1つが正しく動くかチェック」、E2E テストは「実際にブラウザでログイン → クリック → 保存まで再現するロボット」。Playwright は Microsoft 製で、Chrome / Firefox / Safari を同じコードで操作できます。
+
+### 8. 開発ツール
+
+| 技術 | 役割 |
+|---|---|
+| **Docker / Docker Compose** | ローカル PostgreSQL 立ち上げ用 |
+| **tsx** | TypeScript をビルド無しで直接実行（スクリプト用） |
+| **dotenv** | `.env` 読み込み |
+| **csv-parse / jszip / diff** | CSV エクスポート・ZIP 生成・差分表示 |
+| **@holiday-jp/holiday_jp** | 日本の祝日判定（営業日計算） |
+
+### 9. CI 構成（GitHub Actions）
+
+| ワークフロー | 内容 |
+|---|---|
+| `ci.yml` | lint / tsc / Vitest / build / E2E カバレッジゲート |
+| `e2e.yml` | Playwright E2E 実行 |
+| `e2e-visual-baseline.yml` | 視覚回帰テスト |
+| `security.yml` | セキュリティスコアゲート（90/100 未満で fail） |
+| `dependency-review.yml` / `dependency-outdated.yml` | 依存パッケージの脆弱性・更新監視 |
+
+### 10. アーキテクチャ層構造
+
+```
+Browser
+  ↓ HTTPS
+Vercel (Next.js)
+  ├─ Middleware (認証・RBAC)
+  ├─ Route Handlers / Server Actions
+  ├─ Service Layer  ← ビジネスロジックはここに集約
+  └─ Prisma + pg adapter
+  ↓ Pooler (Transaction mode)
+Supabase PostgreSQL
+  (拡張: pgvector, pg_trgm)
+  ↓ 外部 API
+Brevo (メール) / Voyage AI (embedding) / Anthropic (LLM)
+```
+
+> 「Middleware → Service → Prisma」と層を分けるのは、それぞれの責任を明確にするためです。「ログインしてない人を弾く」処理は Middleware、「プロジェクトの状態遷移ルール」は Service、「実際の DB 操作」は Prisma、と役割が分担されています。
+
+---
+
+繰り返しになりますが、**これらをすべて知っている必要はまったくありません**。
+「知っているものから手をつける」「知らないものは触ってみたい順から学ぶ」 —— そんな関わり方を歓迎します。
+
 ## 募集タイミングと、最初の一歩
 
 - **募集開始**: 2026 年 6 月 1 日（正式リリースと同時）
