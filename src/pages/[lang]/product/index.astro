@@ -12,6 +12,7 @@ const t = getLabels(lang);
 const { product: productLabels } = t;
 
 const products = (await getLocalizedCollection("product", lang))
+  .filter((p) => !p.data.parent)
   .sort((a, b) => a.data.order - b.data.order);
 ---
 

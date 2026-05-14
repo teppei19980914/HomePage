@@ -309,6 +309,12 @@ export const ja = {
     suspendedLink: "新規受付停止中",
     suspendedNotice: "現在、新規ユーザーの受け入れを停止しています。",
     githubLink: "GitHub", // brand
+    subPagesTitle: "目的に合わせて選ぶ",
+    subPagesIntro: "このプロダクトのページは、読みたい内容に合わせて分かれています。",
+    audienceLabels: {
+      user: "アプリが気になっている方へ",
+      developer: "開発メンバーに加わってみたい方へ",
+    },
   },
 
   // --- Project ページ ---

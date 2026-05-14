@@ -34,6 +34,7 @@ const recentPosts = (
 ).slice(0, 4);
 
 const products = (await getLocalizedCollection("product", lang))
+  .filter((p) => !p.data.parent)
   .sort((a, b) => a.data.order - b.data.order);
 
 ---

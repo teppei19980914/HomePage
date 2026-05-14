@@ -389,6 +389,12 @@ export const en: Labels = {
     suspendedLink: "Not accepting new users",
     suspendedNotice: "We are currently not accepting new users.",
     githubLink: "GitHub",
+    subPagesTitle: "Pick the page that matches what you're here for",
+    subPagesIntro: "This product page is split based on what you want to read.",
+    audienceLabels: {
+      user: "If you're curious about the app",
+      developer: "If you might join the dev team",
+    },
   },
 
   // --- Contact page ---

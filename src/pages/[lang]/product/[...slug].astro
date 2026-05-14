@@ -24,6 +24,12 @@ const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
 const { common, product: productLabels } = t;
 const { Content } = await render(product);
+
+const currentSlug = stripLocale(product.id);
+const allProducts = await getLocalizedCollection("product", lang);
+const childProducts = allProducts
+  .filter((p) => p.data.parent === currentSlug)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout title={product.data.title} description={product.data.description}>
@@ -86,21 +92,296 @@ const { Content } = await render(product);
         }
       </div>
     </header>
-    <div class="content reveal">
-      <Content />
+
+    <!-- モバイル: 折りたたみ目次 -->
+    <nav class="toc-mobile reveal" aria-label={common.tocTitle}>
+      <button class="toc-mobile-toggle" type="button" aria-expanded="false">
+        <span class="toc-mobile-icon">&#9776;</span>
+        <span>{common.tocTitle}</span>
+        <span class="toc-mobile-chevron">&#9660;</span>
+      </button>
+      <ol class="toc-mobile-list" id="tocMobileList"></ol>
+    </nav>
+
+    <div class="product-layout">
+      <div class="content reveal">
+        <Content />
+      </div>
+
+      <!-- PC: サイドバー固定目次 -->
+      <aside class="toc-sidebar" aria-label={common.tocTitle}>
+        <nav class="toc-sidebar-inner">
+          <p class="toc-sidebar-title">{common.tocTitle}</p>
+          <ol class="toc-sidebar-list" id="tocSidebarList"></ol>
+        </nav>
+      </aside>
     </div>
+    {childProducts.length > 0 && (
+      <section class="sub-pages reveal" aria-labelledby="sub-pages-heading">
+        <h2 id="sub-pages-heading">{productLabels.subPagesTitle}</h2>
+        <p class="sub-pages-intro">{productLabels.subPagesIntro}</p>
+        <div class="sub-pages-grid">
+          {childProducts.map((child) => (
+            <a
+              href={localeUrl(lang, `product/${stripLocale(child.id)}/`)}
+              class:list={["sub-page-card", child.data.audience && `sub-page-card-${child.data.audience}`]}
+            >
+              {child.data.audience && (
+                <span class={`audience-badge audience-${child.data.audience}`}>
+                  {productLabels.audienceLabels[child.data.audience]}
+                </span>
+              )}
+              <h3>{child.data.title}</h3>
+              <p class="sub-page-tagline">{child.data.tagline}</p>
+              <p class="sub-page-description">{child.data.description}</p>
+              <div class="tags">
+                {child.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+              <span class="sub-page-detail">{productLabels.detailLink} &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
   </article>
-  <section class="bottom-cta reveal">
-    <h2>{common.ctaTitle}</h2>
-    <p>{common.ctaBody}</p>
-    <a href={localeUrl(lang, "contact/")} class="btn-cta">{common.ctaButton}</a>
-  </section>
+  {!product.data.audience && (
+    <section class="bottom-cta reveal">
+      <h2>{common.ctaTitle}</h2>
+      <p>{common.ctaBody}</p>
+      <a href={localeUrl(lang, "contact/")} class="btn-cta">{common.ctaButton}</a>
+    </section>
+  )}
   <nav class="back reveal">
     <a href="#" onclick="history.back(); return false;">&larr; {common.backLink}</a>
   </nav>
+
+  <script is:inline>
+    // ===== 目次（TOC）の自動生成 =====
+    function initProductToc() {
+      var content = document.querySelector(".content");
+      var mobileList = document.getElementById("tocMobileList");
+      var sidebarList = document.getElementById("tocSidebarList");
+      if (!content || (!mobileList && !sidebarList)) return;
+
+      // 記事内の H2/H3 を取得（H4 以下は目次に含めない）
+      var headings = content.querySelectorAll("h2, h3");
+      if (headings.length === 0) {
+        // 見出しがない記事では目次を非表示
+        var tocMobile = document.querySelector(".toc-mobile");
+        var tocSidebar = document.querySelector(".toc-sidebar");
+        if (tocMobile) tocMobile.style.display = "none";
+        if (tocSidebar) tocSidebar.style.display = "none";
+        return;
+      }
+
+      // 既存の目次項目をクリア（astro:after-swap での再生成に対応）
+      if (mobileList) mobileList.innerHTML = "";
+      if (sidebarList) sidebarList.innerHTML = "";
+
+      var fragment1 = document.createDocumentFragment();
+      var fragment2 = document.createDocumentFragment();
+      var observeTargets = [];
+      var h2Count = 0;
+      var h3Count = 0;
+
+      headings.forEach(function (h, i) {
+        if (!h.id) {
+          h.id = "heading-" + i;
+        }
+
+        var text = (h.textContent || "").trim();
+        if (!text) return;
+
+        var isH3 = h.tagName === "H3";
+
+        var num;
+        if (isH3) {
+          h3Count++;
+          num = h2Count + "." + h3Count;
+        } else {
+          h2Count++;
+          h3Count = 0;
+          num = String(h2Count);
+        }
+
+        observeTargets.push(h);
+
+        function createTocItem(className) {
+          var li = document.createElement("li");
+          if (isH3) li.className = "toc-indent";
+          var a = document.createElement("a");
+          a.href = "#" + h.id;
+          var numSpan = document.createElement("span");
+          numSpan.className = "toc-num";
+          numSpan.textContent = num;
+          var labelSpan = document.createElement("span");
+          labelSpan.className = "toc-label";
+          labelSpan.textContent = text;
+          a.appendChild(numSpan);
+          a.appendChild(labelSpan);
+          if (className) a.setAttribute("data-heading-id", h.id);
+          li.appendChild(a);
+          return li;
+        }
+
+        if (mobileList) {
+          var li1 = createTocItem(null);
+          li1.querySelector("a").addEventListener("click", function () {
+            var toggle = document.querySelector(".toc-mobile-toggle");
+            var list = document.getElementById("tocMobileList");
+            if (toggle && list) {
+              toggle.setAttribute("aria-expanded", "false");
+              list.classList.remove("is-open");
+            }
+          });
+          fragment1.appendChild(li1);
+        }
+
+        if (sidebarList) {
+          fragment2.appendChild(createTocItem("sidebar"));
+        }
+      });
+
+      if (mobileList) mobileList.appendChild(fragment1);
+      if (sidebarList) sidebarList.appendChild(fragment2);
+
+      // モバイル: 折りたたみトグル
+      var toggleBtn = document.querySelector(".toc-mobile-toggle");
+      if (toggleBtn && mobileList) {
+        // 既存のリスナーをクリアするため、ボタンを差し替え
+        var newToggle = toggleBtn.cloneNode(true);
+        toggleBtn.parentNode.replaceChild(newToggle, toggleBtn);
+        newToggle.addEventListener("click", function () {
+          var isOpen = newToggle.getAttribute("aria-expanded") === "true";
+          newToggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+          mobileList.classList.toggle("is-open", !isOpen);
+        });
+      }
+
+      // PC: Intersection Observer で現在位置をハイライト
+      if (sidebarList && observeTargets.length > 0 && typeof IntersectionObserver !== "undefined") {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var links = sidebarList.querySelectorAll("a");
+            links.forEach(function (link) {
+              link.classList.toggle(
+                "is-active",
+                link.getAttribute("data-heading-id") === entry.target.id
+              );
+            });
+          });
+        }, { rootMargin: "-80px 0px -60% 0px", threshold: 0 });
+
+        observeTargets.forEach(function (target) {
+          observer.observe(target);
+        });
+      }
+    }
+    initProductToc();
+    document.addEventListener("astro:after-swap", initProductToc);
+  </script>
 </BaseLayout>
 
 <style>
+  /* ===== Product Layout (本文と TOC は分離。TOC は画面右に fixed) ===== */
+  .product-layout {
+    display: block;
+  }
+  .product-layout .content {
+    width: 100%;
+  }
+
+  /* ===== コンテンツ内の H2 セクション区切り ===== */
+  .content :global(h2) {
+    margin-top: 3.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .content :global(h2:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  /* ===== コンテンツ内のテーブル装飾 ===== */
+  .content :global(table) {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5rem 0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    font-size: 0.92rem;
+  }
+  .content :global(thead) {
+    background-color: rgba(99, 102, 241, 0.08);
+  }
+  :global(.dark) .content :global(thead) {
+    background-color: rgba(139, 92, 246, 0.12);
+  }
+  .content :global(th) {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-border);
+  }
+  .content :global(td) {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+  .content :global(tbody tr:last-child td) {
+    border-bottom: none;
+  }
+  .content :global(tbody tr:nth-child(even)) {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+  :global(.dark) .content :global(tbody tr:nth-child(even)) {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  /* ===== コンテンツ内の blockquote（引用ブロック）強調 ===== */
+  .content :global(blockquote) {
+    margin: 1.25rem 0;
+    padding: 0.9rem 1.25rem;
+    border-left: 4px solid var(--color-accent);
+    background-color: rgba(139, 92, 246, 0.06);
+    border-radius: 0 0.4rem 0.4rem 0;
+    color: var(--color-text);
+  }
+  :global(.dark) .content :global(blockquote) {
+    background-color: rgba(139, 92, 246, 0.1);
+  }
+
+  /* ===== レスポンシブ ===== */
+  @media (min-width: 1080px) {
+    .toc-mobile { display: none; }
+    .toc-sidebar { display: block; }
+    :global(main) { max-width: 1200px; }
+  }
+  @media (max-width: 1079px) {
+    .product-layout { flex-direction: column; }
+    .toc-sidebar { display: none; }
+  }
+
+  /* ===== 画面幅 1620px 以上：目次を画面右上に常時固定 ===== */
+  @media (min-width: 1620px) {
+    .toc-sidebar {
+      position: fixed;
+      top: 90px;
+      right: 24px;
+      width: 360px;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      z-index: 10;
+    }
+  }
+
   header {
     margin-bottom: 2rem;
   }
@@ -237,9 +518,279 @@ const { Content } = await render(product);
     border-top: 1px solid var(--color-border);
   }
 
+  .sub-pages {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .sub-pages h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sub-pages-intro {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sub-pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .sub-page-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+
+  .sub-page-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-primary);
+  }
+
+  :global(.dark) .sub-page-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .audience-badge {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    border-radius: 9999px;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.25rem;
+  }
+
+  .audience-user {
+    background-color: rgba(59, 130, 246, 0.12);
+    color: #2563eb;
+  }
+
+  :global(.dark) .audience-user {
+    background-color: rgba(96, 165, 250, 0.18);
+    color: #93c5fd;
+  }
+
+  .audience-developer {
+    background-color: rgba(139, 92, 246, 0.12);
+    color: #7c3aed;
+  }
+
+  :global(.dark) .audience-developer {
+    background-color: rgba(167, 139, 250, 0.18);
+    color: #c4b5fd;
+  }
+
+  .sub-page-card-user:hover {
+    border-color: #3b82f6;
+  }
+
+  .sub-page-card-developer:hover {
+    border-color: #8b5cf6;
+  }
+
+  .sub-page-card h3 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .sub-page-tagline {
+    font-style: italic;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .sub-page-description {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .sub-page-detail {
+    margin-top: 0.5rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
   .bottom-cta { margin-top: 3rem; padding: 2.5rem 1.5rem; text-align: center; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); }
   .bottom-cta h2 { margin-bottom: 0.5rem; }
   .bottom-cta p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
   .btn-cta { display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; background: linear-gradient(135deg, var(--color-primary), #8b5cf6); color: white; font-weight: 600; background-image: none; transition: transform 0.25s, box-shadow 0.25s; }
   .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--color-primary-glow); color: white; }
+</style>
+
+<!-- NOTE: TOC 項目 (li/a/span) は client-side JS で動的生成されるため、
+     Astro のスコープ属性 (data-astro-cid-xxx) が付与されない。
+     そのため is:global を使ってスコープ外で適用する必要がある。 -->
+<style is:global>
+  /* ===== Mobile TOC (折りたたみ) ===== */
+  .toc-mobile {
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    overflow: hidden;
+  }
+  .toc-mobile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .toc-mobile-toggle:hover { color: var(--color-primary); }
+  .toc-mobile-icon { font-size: 0.9rem; }
+  .toc-mobile-chevron {
+    margin-left: auto;
+    font-size: 0.6rem;
+    transition: transform 0.3s;
+  }
+  .toc-mobile-toggle[aria-expanded="true"] .toc-mobile-chevron {
+    transform: rotate(180deg);
+  }
+  .toc-mobile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    border-top: 1px solid var(--color-border);
+  }
+  .toc-mobile-list.is-open { display: block; }
+  .toc-mobile-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    background-image: none;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .toc-mobile-list li a:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-glow);
+  }
+  .toc-mobile-list .toc-indent a {
+    padding-left: 2.5rem;
+    font-size: 0.78rem;
+    border-left: 2px solid var(--color-border);
+    margin-left: 1rem;
+  }
+  .toc-mobile-list .toc-indent a:hover {
+    border-left-color: var(--color-primary);
+  }
+  .toc-mobile-list .toc-num {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    min-width: 2rem;
+    text-align: right;
+  }
+  .toc-mobile-list .toc-label { flex: 1; }
+
+  /* ===== Sidebar TOC (PC: 画面右に fixed) ===== */
+  .toc-sidebar {
+    display: none;
+  }
+  .toc-sidebar-inner {
+    scrollbar-width: thin;
+    padding: 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+  :global(.dark) .toc-sidebar-inner {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+  .toc-sidebar-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .toc-sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .toc-sidebar-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
+    color: var(--color-text);
+    background-image: none;
+    border-left: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+  }
+  .toc-sidebar-list .toc-num {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    min-width: 2rem;
+    text-align: right;
+  }
+  .toc-sidebar-list .toc-label { flex: 1; }
+  .toc-sidebar-list li a:hover {
+    color: var(--color-primary);
+    background-color: rgba(99, 102, 241, 0.06);
+  }
+  .toc-sidebar-list li a.is-active {
+    color: var(--color-primary);
+    border-left-color: var(--color-primary);
+    font-weight: 600;
+    background-color: rgba(99, 102, 241, 0.08);
+  }
+  .toc-sidebar-list .toc-indent a {
+    padding-left: 2rem;
+    font-size: 0.8rem;
+    margin-left: 0.75rem;
+    border-left: 2px solid var(--color-border);
+  }
+  .toc-sidebar-list .toc-indent a:hover,
+  .toc-sidebar-list .toc-indent a.is-active {
+    border-left-color: var(--color-primary);
+  }
+
+  /* ===== Mobile TOC リストの視認性向上 ===== */
+  .toc-mobile-list li a {
+    font-size: 0.9rem;
+    color: var(--color-text);
+  }
+  .toc-mobile-list .toc-num {
+    font-size: 0.8rem;
+  }
 </style>

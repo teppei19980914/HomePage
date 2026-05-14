@@ -394,14 +394,12 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
     min-width: 0; /* flex child のオーバーフロー防止 */
   }
 
-  /* ===== Blog Layout (PC: サイドバー付き 2カラム) ===== */
+  /* ===== Blog Layout (本文と TOC は分離。TOC は画面右に fixed) ===== */
   .blog-layout {
-    display: flex;
-    gap: 2rem;
+    display: block;
   }
   .blog-layout .content {
-    flex: 1;
-    min-width: 0;
+    width: 100%;
   }
 
   /* ===== レスポンシブ ===== */
@@ -409,11 +407,24 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
     .toc-mobile { display: none; }
     .toc-sidebar { display: block; }
     /* ブログ記事ページだけ main の幅を拡張（サイドバー分） */
-    :global(main) { max-width: 1080px; }
+    :global(main) { max-width: 1200px; }
   }
   @media (max-width: 1079px) {
     .blog-layout { flex-direction: column; }
     .toc-sidebar { display: none; }
+  }
+
+  /* ===== 画面幅 1620px 以上：目次を画面右上に常時固定 ===== */
+  @media (min-width: 1620px) {
+    .toc-sidebar {
+      position: fixed;
+      top: 90px;
+      right: 24px;
+      width: 360px;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      z-index: 10;
+    }
   }
 
   /* Share buttons */
@@ -568,27 +579,29 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
   }
   .toc-mobile-list .toc-label { flex: 1; }
 
-  /* ===== Sidebar TOC (PC: sticky) ===== */
+  /* ===== Sidebar TOC (PC: 画面右に fixed) ===== */
   .toc-sidebar {
     display: none;
-    width: 220px;
-    flex-shrink: 0;
   }
   .toc-sidebar-inner {
-    position: sticky;
-    top: 4rem;
-    max-height: calc(100vh - 5rem);
-    overflow-y: auto;
     scrollbar-width: thin;
+    padding: 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+  :global(.dark) .toc-sidebar-inner {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   }
   .toc-sidebar-title {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: var(--color-text-muted);
+    color: var(--color-text);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.6rem;
     border-bottom: 1px solid var(--color-border);
   }
   .toc-sidebar-list {
@@ -600,40 +613,51 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
     display: flex;
     align-items: baseline;
     gap: 0.6rem;
-    padding: 0.35rem 0.5rem;
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
+    color: var(--color-text);
     background-image: none;
     border-left: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-    line-height: 1.4;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+    line-height: 1.5;
+    border-radius: 0.25rem;
   }
   .toc-sidebar-list .toc-num {
     flex-shrink: 0;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--color-accent);
-    min-width: 1.8rem;
+    min-width: 2rem;
     text-align: right;
   }
   .toc-sidebar-list .toc-label { flex: 1; }
   .toc-sidebar-list li a:hover {
     color: var(--color-primary);
+    background-color: rgba(99, 102, 241, 0.06);
   }
   .toc-sidebar-list li a.is-active {
     color: var(--color-primary);
     border-left-color: var(--color-primary);
     font-weight: 600;
+    background-color: rgba(99, 102, 241, 0.08);
   }
   .toc-sidebar-list .toc-indent a {
     padding-left: 2rem;
-    font-size: 0.72rem;
-    opacity: 0.85;
+    font-size: 0.8rem;
     margin-left: 0.75rem;
     border-left: 2px solid var(--color-border);
   }
   .toc-sidebar-list .toc-indent a:hover,
   .toc-sidebar-list .toc-indent a.is-active {
     border-left-color: var(--color-primary);
+  }
+
+  /* ===== Mobile TOC リストの視認性向上 ===== */
+  .toc-mobile-list li a {
+    font-size: 0.9rem;
+    color: var(--color-text);
+  }
+  .toc-mobile-list .toc-num {
+    font-size: 0.8rem;
   }
 </style>

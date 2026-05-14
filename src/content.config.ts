@@ -25,6 +25,8 @@ const product = defineCollection({
     repo: z.string().url().optional(),
     status: z.enum(["active", "beta", "archived", "suspended"]).default("active"),
     order: z.number().default(0),
+    parent: z.string().optional(),
+    audience: z.enum(["user", "developer"]).optional(),
   }),
 });
 
