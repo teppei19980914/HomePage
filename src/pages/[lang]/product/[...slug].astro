@@ -345,6 +345,138 @@ const childProducts = allProducts
     background-color: rgba(255, 255, 255, 0.03);
   }
 
+  /* ===== コンテンツ内の details カテゴリ（FAQ のグループ見出し） ===== */
+  .content :global(details.faq-category) {
+    margin: 1.5rem 0;
+    border: 2px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-bg);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .content :global(details.faq-category[open]) {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.1);
+  }
+  .content :global(details.faq-category > summary) {
+    padding: 1.1rem 1.5rem;
+    font-weight: 700;
+    font-size: 1.15rem;
+    cursor: pointer;
+    color: var(--color-text);
+    list-style: none;
+    position: relative;
+    padding-right: 3rem;
+    background-color: rgba(139, 92, 246, 0.05);
+    transition: background-color 0.2s, color 0.2s;
+  }
+  :global(.dark) .content :global(details.faq-category > summary) {
+    background-color: rgba(139, 92, 246, 0.1);
+  }
+  .content :global(details.faq-category > summary::-webkit-details-marker) {
+    display: none;
+  }
+  .content :global(details.faq-category > summary::after) {
+    content: "▼";
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    transition: transform 0.25s;
+  }
+  .content :global(details.faq-category[open] > summary::after) {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .content :global(details.faq-category > summary:hover) {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--color-accent);
+  }
+  :global(.dark) .content :global(details.faq-category > summary:hover) {
+    background-color: rgba(139, 92, 246, 0.18);
+  }
+  /* カテゴリ内のアイテム余白 */
+  .content :global(details.faq-category > details.faq-item) {
+    margin: 0.5rem 1rem;
+  }
+  .content :global(details.faq-category > details.faq-item:first-of-type) {
+    margin-top: 1rem;
+  }
+  .content :global(details.faq-category > details.faq-item:last-of-type) {
+    margin-bottom: 1rem;
+  }
+
+  /* ===== コンテンツ内の details アコーディオン（FAQ等） ===== */
+  .content :global(details.faq-item) {
+    margin: 0.75rem 0;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: var(--color-surface);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .content :global(details.faq-item[open]) {
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  }
+  .content :global(details.faq-item summary) {
+    padding: 1rem 1.25rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--color-text);
+    list-style: none;
+    position: relative;
+    padding-right: 2.5rem;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .content :global(details.faq-item summary::-webkit-details-marker) {
+    display: none;
+  }
+  .content :global(details.faq-item summary::after) {
+    content: "+";
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--color-accent);
+    transition: transform 0.25s;
+    line-height: 1;
+  }
+  .content :global(details.faq-item[open] summary::after) {
+    content: "−";
+  }
+  .content :global(details.faq-item summary:hover) {
+    background-color: rgba(99, 102, 241, 0.04);
+    color: var(--color-primary);
+  }
+  :global(.dark) .content :global(details.faq-item summary:hover) {
+    background-color: rgba(99, 102, 241, 0.08);
+  }
+  .content :global(details.faq-item[open] summary) {
+    border-bottom: 1px solid var(--color-border);
+  }
+  /* details 内部の本文余白 */
+  .content :global(details.faq-item > *:not(summary)) {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .content :global(details.faq-item > *:not(summary):first-of-type) {
+    margin-top: 1rem;
+  }
+  .content :global(details.faq-item > *:not(summary):last-child) {
+    margin-bottom: 1rem;
+  }
+  /* details 内部の H2 区切り線は不要（faq-item 自体が枠なので） */
+  .content :global(details.faq-item h2) {
+    margin-top: 1rem;
+    padding-top: 0;
+    border-top: none;
+  }
+
   /* ===== コンテンツ内の blockquote（引用ブロック）強調 ===== */
   .content :global(blockquote) {
     margin: 1.25rem 0;

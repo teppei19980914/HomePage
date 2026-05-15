@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(*)",
-      "Read"
+      "Read",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\SF02512\\\\GitHub\\\\Private\\\\BusinessManagementPlatform\\\\\" | Where-Object { $_.Name -notmatch '^\\(node_modules|\\\\.next|\\\\.git\\)$' } | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\SF02512\\\\GitHub\\\\Private\\\\BusinessManagementPlatform\\\\docs\\\\\" -File | ForEach-Object { $_.Name })"
     ]
   },
   "hooks": {

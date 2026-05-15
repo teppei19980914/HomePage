@@ -352,7 +352,12 @@ export const ja = {
       email: { label: "メールアドレス", placeholder: "example@mail.com" },
       type: {
         label: "お問い合わせ種別",
-        options: ["技術相談", "フィードバック", "その他"],
+        options: [
+          "たすきばに関するお問い合わせ",
+          "技術相談",
+          "フィードバック",
+          "その他",
+        ],
       },
       message: {
         label: "お問い合わせ内容",

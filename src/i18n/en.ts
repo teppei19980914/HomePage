@@ -415,7 +415,12 @@ export const en: Labels = {
       email: { label: "Email", placeholder: "you@example.com" },
       type: {
         label: "Inquiry type",
-        options: ["Technical consultation", "Feedback", "Other"],
+        options: [
+          "About Tasukiba",
+          "Technical consultation",
+          "Feedback",
+          "Other",
+        ],
       },
       message: {
         label: "Message",
