@@ -404,19 +404,21 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
 
   /* ===== レスポンシブ ===== */
   @media (min-width: 1080px) {
-    .toc-mobile { display: none; }
-    .toc-sidebar { display: block; }
     /* ブログ記事ページだけ main の幅を拡張（サイドバー分） */
     :global(main) { max-width: 1200px; }
   }
-  @media (max-width: 1079px) {
+
+  /* ===== 画面幅 1620px 未満：サイドバー目次は出さず、先頭の折りたたみ目次のみ表示 ===== */
+  @media (max-width: 1619px) {
     .blog-layout { flex-direction: column; }
     .toc-sidebar { display: none; }
   }
 
   /* ===== 画面幅 1620px 以上：目次を画面右上に常時固定 ===== */
   @media (min-width: 1620px) {
+    .toc-mobile { display: none; }
     .toc-sidebar {
+      display: block;
       position: fixed;
       top: 90px;
       right: 24px;
