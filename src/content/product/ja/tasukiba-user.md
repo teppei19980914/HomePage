@@ -18,7 +18,7 @@ audience: "user"
 > 🚀 **正式リリースは 2026 年 6 月 1 日を予定しています。** それまでサインアップはまだご利用いただけません。準備が整い次第こちらでご案内します。
 
 - **まずは試してみる（90日間無料）** — 2026 年 6 月 1 日リリース予定。それまでお楽しみに！
-- [Discord で話を聞いてみる](https://discord.com/invite/AYekewZg2S)
+- [Discord で話を聞いてみる](https://discord.com/invite/EqY82YvxuG)
 
 ---
 
@@ -274,7 +274,7 @@ audience: "user"
 
 ここで生まれたつながりが、プロジェクトの枠を超えたプライベートな関係にまで広がってくれたら嬉しいと考えています。
 
-- [コミュニティを覗いてみる](https://discord.com/invite/AYekewZg2S)
+- [コミュニティを覗いてみる](https://discord.com/invite/EqY82YvxuG)
 
 ---
 
@@ -713,7 +713,7 @@ Backlog / Notion などとの直接連携は現在は未対応ですが、ナレ
 > 🚀 **正式リリースは 2026 年 6 月 1 日を予定しています。** リリース日以降、こちらのページに新しいサインアップ導線をご案内します。クレジットカードのご登録は不要です。
 
 - **90日間無料でたすきばを使ってみる** — 2026 年 6 月 1 日リリース予定。それまでお楽しみに！
-- [Discord で話を聞いてみる](https://discord.com/invite/AYekewZg2S)
+- [Discord で話を聞いてみる](https://discord.com/invite/EqY82YvxuG)
 
 ### 90日後の景色
 

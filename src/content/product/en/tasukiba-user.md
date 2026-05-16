@@ -18,7 +18,7 @@ We cut the time you spend hunting for documents so you can focus on work that ac
 > 🚀 **General availability is planned for June 1, 2026.** Sign-up is not yet open. We'll announce here as soon as the service is ready.
 
 - **Try it free for 90 days** — Launching June 1, 2026. Stay tuned!
-- [Drop by Discord to chat](https://discord.com/invite/AYekewZg2S)
+- [Drop by Discord to chat](https://discord.com/invite/EqY82YvxuG)
 
 ---
 
@@ -273,7 +273,7 @@ We've set up a Discord community as a place where developers, users, and the ope
 
 If the connections that form here go beyond projects and into private friendships, all the better.
 
-- [Take a peek at the community](https://discord.com/invite/AYekewZg2S)
+- [Take a peek at the community](https://discord.com/invite/EqY82YvxuG)
 
 ---
 
@@ -712,7 +712,7 @@ Whether it fits is, in the end, something best judged by you.
 > 🚀 **General availability is planned for June 1, 2026.** From launch day onward we'll publish a new sign-up link on this page. No credit card required.
 
 - **Try it free for 90 days** — Launching June 1, 2026. Stay tuned!
-- [Drop by Discord to chat](https://discord.com/invite/AYekewZg2S)
+- [Drop by Discord to chat](https://discord.com/invite/EqY82YvxuG)
 
 ### After 90 days
 

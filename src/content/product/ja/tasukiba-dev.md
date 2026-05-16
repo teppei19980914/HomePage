@@ -290,7 +290,7 @@ Brevo (メール) / Voyage AI (embedding) / Anthropic (LLM)
 
 ### Step 2. Discord に入って、雰囲気を眺める（負担ゼロで OK）
 
-[Discord コミュニティ](https://discord.com/invite/AYekewZg2S) に入ってください。**自己紹介はまだ不要** です。流れているメッセージを眺めるだけで構いません。
+[Discord コミュニティ](https://discord.com/invite/EqY82YvxuG) に入ってください。**自己紹介はまだ不要** です。流れているメッセージを眺めるだけで構いません。
 
 ### Step 3. 自己紹介して、質問する（あなたのペースで）
 

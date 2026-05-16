@@ -290,7 +290,7 @@ If you've read this far — Step 1 is already done. Thank you.
 
 ### Step 2. Join the Discord and just watch (zero pressure)
 
-Join the [Discord community](https://discord.com/invite/AYekewZg2S). **No self-introduction needed yet.** Just watching the messages flow by is fine.
+Join the [Discord community](https://discord.com/invite/EqY82YvxuG). **No self-introduction needed yet.** Just watching the messages flow by is fine.
 
 ### Step 3. Say hi and ask anything (at your own pace)
 
