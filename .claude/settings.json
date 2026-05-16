@@ -4,7 +4,8 @@
       "Bash(*)",
       "Read",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\SF02512\\\\GitHub\\\\Private\\\\BusinessManagementPlatform\\\\\" | Where-Object { $_.Name -notmatch '^\\(node_modules|\\\\.next|\\\\.git\\)$' } | ForEach-Object { $_.Name })",
-      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\SF02512\\\\GitHub\\\\Private\\\\BusinessManagementPlatform\\\\docs\\\\\" -File | ForEach-Object { $_.Name })"
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\SF02512\\\\GitHub\\\\Private\\\\BusinessManagementPlatform\\\\docs\\\\\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"dist\" -Directory -Recurse | Where-Object { $_.Name -match \"real-gap|cognitive-closure|designing-psychological\" } | Select-Object FullName)"
     ]
   },
   "hooks": {
