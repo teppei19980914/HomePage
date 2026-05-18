@@ -57,9 +57,9 @@ export const ja = {
         link: "project/implem-rpa/",
       },
       {
-        number: "+25",
-        unit: "%",
-        label: "単価アップ",
+        number: "PG → PL",
+        unit: "",
+        label: "役割昇格",
         detail: "PG → PL 昇格。信頼獲得で契約延長も実現",
         link: "project/lts-power-platform/",
       },
