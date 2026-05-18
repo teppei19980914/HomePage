@@ -61,7 +61,7 @@ Three personal products currently in operation:
 | Regression test automation | **90% reduction** |
 | VBA workflow optimization | Overtime **60% reduction** |
 | Power Automate RPA | **40h**/month saved |
-| PG → PL promotion | Unit price **+25%** |
+| Role promotion | **PG → PL** |
 
 **[Project History](/HomePage/en/project/)**
 

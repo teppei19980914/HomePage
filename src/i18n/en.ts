@@ -63,9 +63,9 @@ export const en: Labels = {
         link: "project/implem-rpa/",
       },
       {
-        number: "+25",
-        unit: "%",
-        label: "Rate increase",
+        number: "PG → PL",
+        unit: "",
+        label: "Role promotion",
         detail: "Promoted from PG to PL, trusted to extend the contract",
         link: "project/lts-power-platform/",
       },
@@ -90,7 +90,7 @@ export const en: Labels = {
         },
         {
           heading: "Business outcomes through trust",
-          body: "I build alignment with stakeholders and turn it into results: +33% contract value, a PG-to-PL promotion (+25% rate), and renewed engagements after three-month trials.",
+          body: "I build alignment with stakeholders and turn it into results: +33% contract value, a PG-to-PL role promotion, and renewed engagements after three-month trials.",
         },
       ],
     },

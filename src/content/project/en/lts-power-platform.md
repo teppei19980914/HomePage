@@ -1,6 +1,6 @@
 ---
 title: "Invoicing System Build-Out on Power Platform"
-description: "DX initiative for an invoicing system using Power Apps / Power Automate / Dataverse. Promoted from PG to PL on trust earned (rate +25%)."
+description: "DX initiative for an invoicing system using Power Apps / Power Automate / Dataverse. Earned trust led to a role promotion from PG to PL and a contract extension."
 period: "May 2025 - present"
 role: "PL / TL / PG"
 company: "LTS Software Technology Inc."

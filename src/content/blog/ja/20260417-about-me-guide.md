@@ -83,7 +83,7 @@ featured: true
 | 退行テスト自動化 | **90% 削減** |
 | VBA 業務効率化 | 残業時間 **60% 削減** |
 | Power Automate RPA | 月 **40h** 工数削減 |
-| PG → PL 昇格 | 単価 **+25%** |
+| 役割昇格 | **PG → PL** |
 
 👉 **[プロジェクト実績](/HomePage/ja/project/)**
 
