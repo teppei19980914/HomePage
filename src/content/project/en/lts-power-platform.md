@@ -20,7 +20,7 @@ Project to digitally transform the previously manual issuing of invoices to inte
 
 - Drove the project as PL / TL
 - In requirements and spec discussions with user departments, judged technical feasibility and selected the design approach
-- Built the system optimally for the customer environment (consulting-firm context)
+- Built the system optimally for the customer environment
 - Proposed and executed business / development process improvements based on the system build
 - Directly handled customer- and user-side communication
 
@@ -28,6 +28,6 @@ Project to digitally transform the previously manual issuing of invoices to inte
 
 | Achievement | Detail |
 |---|---|
-| +25% rate | Based on the PM's evaluation of my work, was promoted from PG (¥800K / month) to PL (¥1.0M / month) |
+| Role promotion | Based on the PM's evaluation of my work, was promoted from PG to PL |
 | Contract extension | Originally a 3-month short-term contract; through earned customer trust, secured a contract extension |
 | Direct user-side ownership | Led the customer's process improvements, earning the trust to handle user-side communication directly |
