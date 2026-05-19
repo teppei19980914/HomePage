@@ -90,7 +90,7 @@ export const en: Labels = {
         },
         {
           heading: "Business outcomes through trust",
-          body: "I build alignment with stakeholders and turn it into business outcomes — +33% contract value at one engagement. On this self-operated portfolio I have also lifted search CTR to 15.45% (~3x industry average) through SEO improvements.",
+          body: "I build alignment with stakeholders and turn it into business outcomes — 4× project-scale expansion at one engagement. On this self-operated portfolio I have also lifted search CTR to 15.45% (~3x industry average) through SEO improvements.",
         },
       ],
     },

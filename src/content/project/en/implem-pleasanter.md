@@ -28,6 +28,6 @@ Project to replace a major manufacturer's traditionally manual-heavy management 
 
 | Achievement | Detail |
 |---|---|
-| Contract value +33% | Expanded the engagement from ¥1.5M / 1 person-month to ¥2.0M / approx. 4 person-months (4× scale) |
+| Project scale ×4 | Expanded the engagement from ¥1.5M / 1 person-month to ¥1.5M / approx. 4 person-months |
 | Earned trust | Built consensus and trust with stakeholders, leading to ongoing customer confidence |
 | Fast incident resolution | Identified a PostgreSQL SEQUENCE primary-key uniqueness violation through self-acquired knowledge and resolved it quickly |

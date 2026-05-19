@@ -255,8 +255,28 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 | **Service name** | Tasukiba (Tasukiba Knowledge Relay) |
 | **Operator** | Teppei Suyama (operated as a sole proprietorship) |
 | **Contact** | [Contact form](/HomePage/en/contact/) / `teppei09141998@gmail.com` |
-| **Statutory disclosure under Japan's Specified Commercial Transactions Act** | Currently being prepared. Planned to be published by general availability (June 1, 2026) |
-| **Terms of service / Privacy policy** | Will be drafted with legal review at the transition from β to general availability and published on this page |
+| **Terms of service** | [https://tasukiba.netlify.app/terms](https://tasukiba.netlify.app/terms) |
+| **Privacy policy** | [https://tasukiba.netlify.app/privacy](https://tasukiba.netlify.app/privacy) |
+
+### Statutory disclosure under Japan's Specified Commercial Transactions Act
+
+| Item | Details |
+|---|---|
+| **Seller** | Teppei Suyama |
+| **Responsible operator** | Teppei Suyama |
+| **Address** | Disclosed promptly upon request |
+| **Phone number** | Disclosed promptly upon request |
+| **Email** | `teppei09141998@gmail.com` |
+| **Pricing** | See the "[Pricing plans](#pricing-plans)" section above |
+| **Additional fees** | Communication costs (your internet connection fees, etc.) |
+| **Sales tax handling** | Listed prices are tax-exclusive. Japanese consumption tax (JCT) is added separately at invoicing |
+| **Payment methods** | Bank transfer (invoice-based) / Credit card payment (via Stripe) / Other online payment methods |
+| **Payment timing** | Monthly billing cycle. Bank transfer: by the 25th of the following month / Credit card: auto-debited at the beginning of the following month |
+| **Service delivery timing** | Available immediately after sign-up completion |
+| **Returns and cancellation** | Due to the nature of the service, refunds for periods already provided are not accepted. Cancellation can be done anytime from the tenant administrator screen and takes effect at the end of the current month (current month's charges apply as usual) |
+| **System requirements** | Latest versions of Chrome / Edge / Safari / Firefox |
+
+> Under Japanese consumer protection law, sole proprietors are permitted to use the "disclosed promptly upon request" format for personal address and phone number. These will be disclosed individually to anyone who inquires.
 
 ---
 
