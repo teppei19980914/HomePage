@@ -39,7 +39,7 @@ const project = defineCollection({
     role: z.string(),
     company: z.string(),
     companyUrl: z.string().url().optional(),
-    contractType: z.enum(["employee", "contract"]),
+    contractType: z.enum(["employee", "contract", "personal"]),
     tags: z.array(z.string()).default([]),
     order: z.number().default(0),
   }),

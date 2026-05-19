@@ -145,7 +145,7 @@ RPA 月 40h 削減の鍵は、ツールではなく **要件定義の質** で�
 
 もし、いま「自動化候補」が並んだリストを前にしているなら、まず 4 軸で点数を付けてみてください。やらない決断こそが、いちばん効きます。
 
-[Power Platform 案件](/HomePage/ja/project/lts-power-platform/) と [RPA 実装案件](/HomePage/ja/project/implem-rpa/) も合わせてどうぞ。
+[RPA 実装案件](/HomePage/ja/project/implem-rpa/) も合わせてどうぞ。
 
 ## 関連記事
 

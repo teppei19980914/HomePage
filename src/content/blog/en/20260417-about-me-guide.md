@@ -48,7 +48,7 @@ Three personal products currently in operation:
 |---|---|---|
 | **YumeHashi** | Break dreams into goals, turn them into action | [Details](/HomePage/en/product/yumehashi/) |
 | **Defrago** | Defragment mental clutter, focus on what matters | [Details](/HomePage/en/product/defrago/) |
-| **HomePage** | This site itself is an AI-driven development artifact | [Project](/HomePage/en/project/) |
+| **HomePage** | This site itself is an AI-driven development artifact | [Track Record](/HomePage/en/project/) |
 
 **[All Products](/HomePage/en/product/)**
 
@@ -63,7 +63,7 @@ Three personal products currently in operation:
 | Power Automate RPA | **40h**/month saved |
 | Role promotion | **PG → PL** |
 
-**[Project History](/HomePage/en/project/)**
+**[Full Track Record](/HomePage/en/project/)**
 
 ---
 

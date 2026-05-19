@@ -38,9 +38,7 @@ const projects = (await getLocalizedCollection("project", lang))
                 <span
                   class={`contract-badge contract-${project.data.contractType}`}
                 >
-                  {project.data.contractType === "employee"
-                    ? projectLabels.contractTypes.employee
-                    : projectLabels.contractTypes.contract}
+                  {projectLabels.contractTypes[project.data.contractType]}
                 </span>
                 <span class="period">{project.data.period}</span>
               </div>
@@ -154,6 +152,15 @@ const projects = (await getLocalizedCollection("project", lang))
 
   :global(.dark) .contract-contract {
     color: #a78bfa;
+  }
+
+  .contract-personal {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: #047857;
+  }
+
+  :global(.dark) .contract-personal {
+    color: #34d399;
   }
 
   .period {

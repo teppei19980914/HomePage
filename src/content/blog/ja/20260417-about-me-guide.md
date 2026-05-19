@@ -68,7 +68,7 @@ featured: true
 |---|---|---|
 | **ユメハシ** | 夢を目標に分解し、行動に変えるアプリ | [詳細](/HomePage/ja/product/yumehashi/) |
 | **Defrago** | 頭の断片化を解放し、集中すべきタスクに脳を向ける | [詳細](/HomePage/ja/product/defrago/) |
-| **HomePage** | このサイト自体が AI 駆動開発の成果物 | [プロジェクト](/HomePage/ja/project/) |
+| **HomePage** | このサイト自体が AI 駆動開発の成果物 | [実績](/HomePage/ja/project/) |
 
 👉 **[プロダクト一覧](/HomePage/ja/product/)**
 
@@ -76,7 +76,7 @@ featured: true
 
 ## 仕事の実績を知りたい方
 
-正社員として参画したプロジェクトを公開しています:
+正社員として参画した実績を公開しています:
 
 | 実績 | 成果 |
 |---|---|
@@ -85,7 +85,7 @@ featured: true
 | Power Automate RPA | 月 **40h** 工数削減 |
 | 役割昇格 | **PG → PL** |
 
-👉 **[プロジェクト実績](/HomePage/ja/project/)**
+👉 **[実績一覧](/HomePage/ja/project/)**
 
 ---
 

@@ -66,7 +66,7 @@ Which redefines what money even is:
 
 Clients don't pay for lines of code. They pay for **the business problem the code solves** — for "making someone's work lighter."
 
-Looking back at my [project history](/HomePage/en/project/), the 90% regression-test reduction and the 40-hour-per-month RPA automation — at their core, those were really **"reclaiming people's time."**
+Looking back at my [track record](/HomePage/en/project/), the 90% regression-test reduction and the 40-hour-per-month RPA automation — at their core, those were really **"reclaiming people's time."**
 
 ### The Value of Spending Your Time for Others
 

@@ -1,7 +1,7 @@
 // ============================================================
 // en.ts — English labels
 //
-// Phase 5: Home / Profile / Project を優先的に英訳済み。
+// Phase 5: Home / Profile / Track Record を優先的に英訳済み。
 // Product / Blog / Contact は Phase 6 で順次翻訳予定で、現時点では ja を継承する。
 //
 // 翻訳方針:
@@ -28,7 +28,7 @@ export const en: Labels = {
     home: "Home",
     profile: "Profile",
     product: "Product",
-    project: "Project",
+    project: "Track Record",
     blog: "Blog",
     contact: "Contact",
     themeToggleLabel: "Toggle dark mode",
@@ -39,7 +39,7 @@ export const en: Labels = {
   // --- Home page ---
   home: {
     pageTitle: "Portfolio — Workflow Automation, AI Engineer",
-    statsHeadline: "Measurable impact in every project",
+    statsHeadline: "Measurable impact across my track record",
     stats: [
       {
         number: "90",
@@ -63,11 +63,11 @@ export const en: Labels = {
         link: "project/implem-rpa/",
       },
       {
-        number: "PG → PL",
-        unit: "",
-        label: "Role promotion",
-        detail: "Promoted from PG to PL, trusted to extend the contract",
-        link: "project/lts-power-platform/",
+        number: "15.45",
+        unit: "%",
+        label: "Search CTR",
+        detail: "Personal site SEO improvements reached ~3x the industry average (78 clicks in 25 days)",
+        link: "project/homepage-seo/",
       },
     ],
     heroTagline: "The engineer who cut regression tests by 90% and team overtime by 60%.",
@@ -90,7 +90,7 @@ export const en: Labels = {
         },
         {
           heading: "Business outcomes through trust",
-          body: "I build alignment with stakeholders and turn it into results: +33% contract value, a PG-to-PL role promotion, and renewed engagements after three-month trials.",
+          body: "I build alignment with stakeholders and turn it into business outcomes — +33% contract value at one engagement. On this self-operated portfolio I have also lifted search CTR to 15.45% (~3x industry average) through SEO improvements.",
         },
       ],
     },
@@ -109,9 +109,9 @@ export const en: Labels = {
       linkText: "See all products",
     },
     projects: {
-      title: "Projects",
-      desc: "In my day job I drive projects from problem discovery through execution, turning them into measurable business outcomes.",
-      linkText: "See my project history",
+      title: "Track Record",
+      desc: "In my day job I drive each engagement from problem discovery through execution, turning it into measurable business outcomes.",
+      linkText: "See my full track record",
     },
     blog: {
       title: "Blog",
@@ -240,19 +240,20 @@ export const en: Labels = {
     ],
   },
 
-  // --- Project page ---
+  // --- Track Record page ---
   project: {
-    title: "Project",
-    description: "Projects delivered by Teppei Suyama as full-time and contract engineer: 90% regression test reduction, 40h/month RPA savings, and core business system rollouts.",
-    subtitle: "Projects I have delivered as a full-time engineer",
-    emptyMessage: "No projects yet.",
+    title: "Track Record",
+    description: "Track record of engagements delivered by Teppei Suyama as a full-time and contract engineer: 90% regression test reduction, 40h/month RPA savings, and core business system rollouts.",
+    subtitle: "Engagements I have delivered as a full-time engineer",
+    emptyMessage: "Track record coming soon.",
     maxDisplay: 5,
-    viewAllText: "See all projects",
-    allTitle: "All Projects",
-    allSubtitle: "Every project I have delivered as a full-time engineer",
+    viewAllText: "See full track record",
+    allTitle: "Full Track Record",
+    allSubtitle: "Every engagement in my full-time engineering track record",
     contractTypes: {
       employee: "Full-time",
       contract: "Contract",
+      personal: "Personal",
     },
     detailLink: "View details",
   },

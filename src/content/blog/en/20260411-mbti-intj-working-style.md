@@ -11,7 +11,7 @@ Ever joined a team and thought, "I wish I'd known how this person actually works
 
 Skills and experience are usually visible up front. But "how does this person think, communicate, and what makes them tense up?" doesn't fit on a resume.
 
-Technical ability is already on [my profile](/HomePage/en/profile/) and [project history](/HomePage/en/project/). This article fills in the part that always seems to get missed: **self-disclosure for future collaborators**.
+Technical ability is already on [my profile](/HomePage/en/profile/) and [track record](/HomePage/en/project/). This article fills in the part that always seems to get missed: **self-disclosure for future collaborators**.
 
 ---
 

@@ -107,7 +107,7 @@ featured: true
 
 - [プロフィール](/HomePage/ja/profile/) — 主観的な価値観・哲学・座右の銘
 - [自己紹介ガイド記事](/HomePage/ja/blog/20260417-about-me-guide/) — 5 分で全体像を把握する案内
-- [プロダクト一覧](/HomePage/ja/product/) / [プロジェクト一覧](/HomePage/ja/project/) — 個人開発と業務参画案件
+- [プロダクト一覧](/HomePage/ja/product/) / [実績一覧](/HomePage/ja/project/) — 個人開発と業務参画案件
 - [ブログ全件](/HomePage/ja/blog/all/) — 技術・哲学・読書感想までの全記事
 
 不一致や違和感、もっと知りたいことがあれば [お問い合わせページ](/HomePage/ja/contact/) からお気軽にどうぞ。

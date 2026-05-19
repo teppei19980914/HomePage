@@ -12,7 +12,7 @@ export const ja = {
     name: "Teppei Suyama", // 人名(brand): 翻訳不要
     role: "ソフトウェアエンジニア",
     defaultDescription:
-      "業務自動化・フルスタック開発が強みのソフトウェアエンジニア須山哲平のポートフォリオサイト。退行テスト90%削減・RPA月40h工数削減などの主要実績、個人開発プロダクト3つ、技術ブログ・エッセイ・参画プロジェクトを毎日更新で公開しています。",
+      "業務自動化・フルスタック開発が強みのソフトウェアエンジニア須山哲平のポートフォリオサイト。退行テスト90%削減・RPA月40h工数削減などの主要実績、個人開発プロダクト3つ、技術ブログ・エッセイ・参画実績を毎日更新で公開しています。",
     titleSuffix: "Teppei Suyama", // サイト名(brand): 翻訳不要
     copyright: "Teppei Suyama. All rights reserved.",
   },
@@ -22,7 +22,7 @@ export const ja = {
     home: "ホーム",
     profile: "プロフィール",
     product: "プロダクト",
-    project: "プロジェクト",
+    project: "実績",
     blog: "ブログ",
     contact: "お問い合わせ",
     themeToggleLabel: "ダークモード切替",
@@ -33,7 +33,7 @@ export const ja = {
   // --- Home ページ ---
   home: {
     pageTitle: "須山哲平のポートフォリオ — 業務自動化・AI駆動開発のソフトウェアエンジニア",
-    statsHeadline: "各プロジェクトでの実績",
+    statsHeadline: "主な実績ハイライト",
     stats: [
       {
         number: "90",
@@ -57,11 +57,11 @@ export const ja = {
         link: "project/implem-rpa/",
       },
       {
-        number: "PG → PL",
-        unit: "",
-        label: "役割昇格",
-        detail: "PG → PL 昇格。信頼獲得で契約延長も実現",
-        link: "project/lts-power-platform/",
+        number: "15.45",
+        unit: "%",
+        label: "検索 CTR",
+        detail: "個人サイトの SEO 改善で業界平均の 3 倍を達成（25 日で 78 クリック獲得）",
+        link: "project/homepage-seo/",
       },
     ],
     heroTagline: "退行テストを 90% 減らし、チームの残業を 60% 減らしたエンジニア。",
@@ -84,7 +84,7 @@ export const ja = {
         },
         {
           heading: "信頼構築を通じたビジネス成果",
-          body: "ステークホルダーとの合意形成を積み重ね、契約額 +33% 拡大や PG → PL への役割昇格を実現。3 か月の短期契約を延長に導いた実績があります。",
+          body: "ステークホルダーとの合意形成を積み重ね、契約額 +33% 拡大などのビジネス成果につなげてきました。個人運用の本サイトでも SEO 改善で 検索 CTR 15.45%（業界平均の約 3 倍）を達成しています。",
         },
       ],
     },
@@ -103,9 +103,9 @@ export const ja = {
       linkText: "プロダクト一覧はこちら",
     },
     projects: {
-      title: "プロジェクト",
+      title: "実績",
       desc: "業務では課題発見から改善実行まで一気通貫で推進し、定量的な成果を生み出してきました。",
-      linkText: "プロジェクト実績はこちら",
+      linkText: "実績一覧はこちら",
     },
     blog: {
       title: "ブログ",
@@ -317,19 +317,20 @@ export const ja = {
     },
   },
 
-  // --- Project ページ ---
+  // --- 実績ページ ---
   project: {
-    title: "プロジェクト",
-    description: "ソフトウェアエンジニア須山哲平が正社員・業務委託として参画したプロジェクトの紹介ページです。退行テスト工数90%削減・RPA月40h削減・基幹業務システム導入などの主要実績を、業務ドメイン・技術スタック・担当工程とあわせて一覧で公開しています。",
-    subtitle: "正社員として参画したプロジェクトの紹介",
-    emptyMessage: "プロジェクトはまだありません。",
+    title: "実績",
+    description: "ソフトウェアエンジニア須山哲平が正社員・業務委託として積み上げてきた実績の紹介ページです。退行テスト工数90%削減・RPA月40h削減・基幹業務システム導入などの主要実績を、業務ドメイン・技術スタック・担当工程とあわせて一覧で公開しています。",
+    subtitle: "正社員として参画した実績の紹介",
+    emptyMessage: "実績はまだありません。",
     maxDisplay: 5,
-    viewAllText: "全プロジェクトはこちら",
-    allTitle: "プロジェクト一覧",
-    allSubtitle: "正社員として参画したすべてのプロジェクト",
+    viewAllText: "全実績はこちら",
+    allTitle: "実績一覧",
+    allSubtitle: "正社員として参画したすべての実績",
     contractTypes: {
       employee: "正社員",
       contract: "業務委託",
+      personal: "個人",
     },
     detailLink: "詳細を見る",
   },

@@ -113,7 +113,7 @@ If you've read this far, the rest of the site will fill in the picture more comp
 - [Profile](/HomePage/en/profile/) — subjective values, philosophy, mottos
 - [About me — 5-minute guide](/HomePage/en/blog/20260417-about-me-guide/) — quick orientation to the site
 - [Products](/HomePage/en/product/) — what I'm building on the side
-- [Projects](/HomePage/en/project/) — engagements at work
+- [Track Record](/HomePage/en/project/) — engagements at work
 - [All blog posts](/HomePage/en/blog/all/) — tech, philosophy, reading
 
 For anything that doesn't quite match, or you'd like to ask about directly, the [contact page](/HomePage/en/contact/) is always open. Honest first impressions are more useful to me than polite ones.

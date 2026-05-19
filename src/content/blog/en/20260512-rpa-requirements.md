@@ -154,7 +154,7 @@ The key to 40h/month RPA savings isn't the tool — it's **the quality of requir
 
 If you have a candidate process sitting in front of you right now, you might try just the four selection lenses on it before opening any tool. Half the answer usually lives there.
 
-See also [the Power Platform engagement](/HomePage/en/project/lts-power-platform/) and [the RPA implementation engagement](/HomePage/en/project/implem-rpa/).
+See also [the RPA implementation engagement](/HomePage/en/project/implem-rpa/).
 
 ## Related Articles
 
