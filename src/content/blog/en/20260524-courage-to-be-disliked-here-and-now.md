@@ -57,6 +57,23 @@ Imagining the future is fine. But I want it as a **frame for stacking present po
 Knowing there's a check-in point in three years means today, this one day, is not just *something that passes by* — it's **a single point pointed at a three-year deposit.**
 *Dance, seriously, at this moment.* That, I think, is what the book is naming.
 
+## Three axes that hold the three-year cycle together
+
+A "three-year cycle" by itself doesn't produce anything. **It only starts working once you decide *what you check* inside it.**
+Looking back at what I wrote over April and May, what I was actually circling — without quite naming it — was **three axes** of self-review.
+
+| Axis | What to check | Companion article |
+| --- | --- | --- |
+| **1. Inner cognition** | Catching your own judgment habits as structure | [The urge to decide fast is your strength's shadow — Need for Cognitive Closure and the 2-week rule](/HomePage/en/blog/20260520-cognitive-closure-and-2-week-rule/) |
+| **2. Outer evaluation** | Borrowing other people's eyes to see your own blind spots | [When I realized my biggest gap wasn't technical — what an outside review showed me](/HomePage/en/blog/20260519-real-gap-isnt-technical/) |
+| **3. Team reproducibility** | Writing down how I run a team, so I can reproduce it elsewhere | [Knowing psychological safety isn't enough — the four stages](/HomePage/en/blog/20260521-designing-psychological-safety/) |
+
+Every three years, run **all three axes in one pass.**
+Look only at the inner axis and you slide into excessive introspection. Look only at outer evaluation and you slide back into approval-seeking. Look only at the team and your own self-check gets postponed.
+**Only when all three line up does the three-year cycle become a foundation for living "now, here" seriously.**
+
+When I wrote those three articles separately, I thought they were independent insights. Writing today, I notice: **without realizing it, they were each touching one face of the same single system.**
+
 ## The "thank you" that I felt as contribution
 
 The final night also offers another sturdy prescription: **contribution to others.**
@@ -122,5 +139,5 @@ One last sentence for myself, before closing:
 ## Related Articles
 
 - ["Only I protect me" — how The Courage to Be Disliked handed me back the steering wheel](/HomePage/en/blog/20260522-courage-to-be-disliked-teleology/) — Part 1: teleology and resolve
-- [The night the rice went hard — when Adler's separation of tasks finally clicked](/HomePage/en/blog/20260523-courage-to-be-disliked-separation-of-tasks/) — Part 2: separation of tasks, at home and at work
+- [The day I stopped trying to move other people — Adler's separation of tasks, finally landing](/HomePage/en/blog/20260523-courage-to-be-disliked-separation-of-tasks/) — Part 2: separation of tasks, at home and at work
 - [When I realized my biggest gap wasn't technical — what an outside review showed me](/HomePage/en/blog/20260519-real-gap-isnt-technical/) — Stacking points where you can, "now, here"
