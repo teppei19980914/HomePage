@@ -3,8 +3,7 @@ title: "Parts Management App — Java to TypeScript Migration"
 description: "Migrated a parts management app from Java to TypeScript, owning unit/integration tests and code review. Built a VBA tool that cut team overtime by 60%."
 period: "April 2021 - December 2022"
 role: "PG"
-company: "Acmos Inc."
-companyUrl: "https://www.acmos.co.jp/"
+company: "Company A"
 contractType: employee
 tags: ["Java", "TypeScript", "VBA", "Eclipse", "VS Code"]
 order: 10

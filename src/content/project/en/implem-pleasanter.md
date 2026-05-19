@@ -3,8 +3,7 @@ title: "Major Manufacturer — Pleasanter Environment Build-Out"
 description: "Replaced manual-heavy management work with the no-code platform Pleasanter, delivering business efficiency. Owned end-to-end from requirements to operations."
 period: "January 2023 - April 2025"
 role: "SE"
-company: "Implem Inc."
-companyUrl: "https://www.implem.co.jp/"
+company: "Company B"
 contractType: employee
 tags: ["C#", "HTML", "CSS", "JavaScript", "PostgreSQL", "AWS", "Linux"]
 order: 20

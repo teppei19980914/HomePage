@@ -3,8 +3,7 @@ title: "大手メーカー向け Pleasanter 環境構築"
 description: "手作業中心の管理業務をノーコード基盤 Pleasanter に置き換え、業務効率化と工数削減を実現。要件定義から設計・開発・テスト・運用保守まで一気通貫で担当しました。"
 period: "2023年1月 - 2025年4月"
 role: "SE"
-company: "株式会社インプリム"
-companyUrl: "https://www.implem.co.jp/"
+company: "B社"
 contractType: employee
 tags: ["C#", "HTML", "CSS", "JavaScript", "PostgreSQL", "AWS", "Linux"]
 order: 20

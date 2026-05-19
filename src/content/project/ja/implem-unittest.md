@@ -3,8 +3,7 @@ title: "C# を用いた Pleasanter ユニットテストの実装"
 description: "C# による Pleasanter ユニットテスト自動化で手動退行テスト業務を 90% 削減。PL として 5 名チームのマネジメント・コードレビュー・品質基盤構築を推進しました。"
 period: "2024年1月 - 2025年4月"
 role: "PL"
-company: "株式会社インプリム"
-companyUrl: "https://www.implem.co.jp/"
+company: "B社"
 contractType: employee
 tags: ["C#", "Visual Studio", "VS Code"]
 order: 40

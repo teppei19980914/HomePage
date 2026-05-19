@@ -137,8 +137,8 @@ export const en: Labels = {
     birthDateDisplay: "September 14, 1998",
     location: "Kawasaki, Kanagawa, Japan",
     employer: {
-      name: "LTS Software Technology Co., Ltd.",
-      url: "https://www.softec-ic.co.jp/",
+      name: "Company C",
+      url: "",
     },
     // sideJob: hidden (intentionally empty for privacy reasons)
     sideJob: {
@@ -232,11 +232,11 @@ export const en: Labels = {
     // sideBusiness: hidden (intentionally empty for privacy reasons)
     sideBusiness: { name: "", date: "", suffix: "" },
     history: [
-      { name: "Joined LTS Software Technology", dateSuffix: "2025.05" },
-      { name: "Left Implem Inc.", dateSuffix: "2025.04" },
-      { name: "Joined Implem Inc.", dateSuffix: "2023.01" },
-      { name: "Left Acmos Inc.", dateSuffix: "2022.12" },
-      { name: "Joined Acmos Inc.", dateSuffix: "2021.04" },
+      { name: "Joined Company C", dateSuffix: "2025.05" },
+      { name: "Left Company B", dateSuffix: "2025.04" },
+      { name: "Joined Company B", dateSuffix: "2023.01" },
+      { name: "Left Company A", dateSuffix: "2022.12" },
+      { name: "Joined Company A", dateSuffix: "2021.04" },
     ],
   },
 

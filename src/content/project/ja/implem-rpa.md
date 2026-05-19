@@ -3,8 +3,7 @@ title: "Power Automate による営業事務の完全自動化"
 description: "Power Automate を活用した契約更新業務の完全 RPA 化により、月 40 人時の工数を削減しヒューマンエラー発生率ゼロを達成。PM として要件定義から運用定着まで推進しました。"
 period: "2023年4月 - 2024年2月"
 role: "PM"
-company: "株式会社インプリム"
-companyUrl: "https://www.implem.co.jp/"
+company: "B社"
 contractType: employee
 tags: ["Power Automate", "RPA"]
 order: 30

@@ -3,8 +3,7 @@ title: "大手メーカー向け 部品管理業務アプリ 老朽化対応"
 description: "Java から TypeScript への移行・リライト、単体/結合テスト、コードレビューを担当。並行して VBA 業務効率化ツールを開発し、チーム全体の残業時間 60% 削減を達成しました。"
 period: "2021年4月 - 2022年12月"
 role: "PG"
-company: "アクモス株式会社"
-companyUrl: "https://www.acmos.co.jp/"
+company: "A社"
 contractType: employee
 tags: ["Java", "TypeScript", "VBA", "Eclipse", "VS Code"]
 order: 10

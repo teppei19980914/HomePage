@@ -131,8 +131,8 @@ export const ja = {
     birthDateDisplay: "1998年9月14日",
     location: "神奈川県川崎市",
     employer: {
-      name: "株式会社LTS ソフトウェアテクノロジー",
-      url: "https://www.softec-ic.co.jp/",
+      name: "C社",
+      url: "",
     },
     // sideJob: 非公開扱い(空文字で profile.astro 側で非表示分岐)
     sideJob: {
@@ -228,11 +228,11 @@ export const ja = {
     // sideBusiness: 副業情報の非公開化に伴い空文字化(CareerGraph 側で非表示分岐)
     sideBusiness: { name: "", date: "", suffix: "" },
     history: [
-      { name: "株式会社LTS ソフトウェアテクノロジー 入社", dateSuffix: "2025.05" },
-      { name: "株式会社インプリム 退職", dateSuffix: "2025.04" },
-      { name: "株式会社インプリム 入社", dateSuffix: "2023.01" },
-      { name: "アクモス株式会社 退職", dateSuffix: "2022.12" },
-      { name: "アクモス株式会社 入社", dateSuffix: "2021.04" },
+      { name: "C社 入社", dateSuffix: "2025.05" },
+      { name: "B社 退職", dateSuffix: "2025.04" },
+      { name: "B社 入社", dateSuffix: "2023.01" },
+      { name: "A社 退職", dateSuffix: "2022.12" },
+      { name: "A社 入社", dateSuffix: "2021.04" },
     ],
   },
 

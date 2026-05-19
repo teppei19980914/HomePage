@@ -3,8 +3,7 @@ title: "Full Sales-Ops Automation with Power Automate"
 description: "Full RPA of contract-renewal via Power Automate, saving 40 person-hours/month with zero error rate. Drove from requirements to adoption as PM."
 period: "April 2023 - February 2024"
 role: "PM"
-company: "Implem Inc."
-companyUrl: "https://www.implem.co.jp/"
+company: "Company B"
 contractType: employee
 tags: ["Power Automate", "RPA"]
 order: 30

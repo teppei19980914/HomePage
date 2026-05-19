@@ -3,8 +3,7 @@ title: "Pleasanter Unit Test Implementation in C#"
 description: "Cut manual regression-test effort by 90% via C# Pleasanter unit-test automation. Drove a 5-person team as PL: management, code review, quality."
 period: "January 2024 - April 2025"
 role: "PL"
-company: "Implem Inc."
-companyUrl: "https://www.implem.co.jp/"
+company: "Company B"
 contractType: employee
 tags: ["C#", "Visual Studio", "VS Code"]
 order: 40
