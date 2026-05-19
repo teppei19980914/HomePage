@@ -731,9 +731,7 @@ Backlog / Notion などとの直接連携は現在は未対応ですが、ナレ
 
 ---
 
-<a id="operator-info"></a>
-
-## 📃 運営者情報
+<h2 id="operator-info">📃 運営者情報</h2>
 
 | 項目 | 内容 |
 |---|---|
@@ -743,9 +741,7 @@ Backlog / Notion などとの直接連携は現在は未対応ですが、ナレ
 | **利用規約** | [https://tasukiba.netlify.app/terms](https://tasukiba.netlify.app/terms) |
 | **プライバシーポリシー** | [https://tasukiba.netlify.app/privacy](https://tasukiba.netlify.app/privacy) |
 
-<a id="tokushoho"></a>
-
-### 特定商取引法に基づく表記
+<h3 id="tokushoho">特定商取引法に基づく表記</h3>
 
 | 項目 | 内容 |
 |---|---|

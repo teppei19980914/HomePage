@@ -1,123 +1,116 @@
 ---
-title: "Whose task is this? — Adler's separation of tasks, from a team lead's seat"
-description: "When you can't sleep because the team won't move, or because the boss doesn't seem to get it, The Courage to Be Disliked asks one sharp question — whose task is this? A reading note on Adler's most famous concept, applied to 1-on-1s and the moment not stepping in becomes the kindest thing you can do."
+title: "The night the rice went hard — when Adler's separation of tasks finally clicked"
+description: "I asked my wife to scoop the rice, came back later, and found it had been left on warm until it was bone-dry. That single small moment is when the separation of tasks I had only understood on paper from The Courage to Be Disliked finally landed at home, and at work. A reading note, with the 1-on-1 phrase I use to keep this principle alive daily."
 date: 2026-05-23
 tags: ["reading", "Adler", "Courage to Be Disliked", "separation of tasks", "management"]
 ---
 
-## "The team won't move" nights, "the boss doesn't get it" mornings
+## The night the rice went hard
 
-When you lead a team, these two states alternate.
+There was one evening when something clicked inside me, very quietly.
 
-**At night**: that task you delegated — somehow not moving. You've explained it more than once and it still won't climb the priority list. Why won't they just *act*?
+I'd cooked the rice. I asked my wife — *"can you scoop it into the bowls?"* — and went off to do something else.
+When I came back, the rice cooker was still in **warm mode**, and the rice had gone bone-dry. *After all that — really?*
 
-**In the morning**: your proposal still hasn't landed with your boss. You did the prep. You think they should see it. Why don't they *get it*?
+Anyone who has ever pushed through the housework for a family will probably recognize the feeling.
+It isn't anger. It's something closer to **a quiet weariness**.
 
-Both of these feelings are real. I've cycled through them more times than I can count.
-And on those nights and mornings, the concept that has rescued me — over and over again — is the **most famous idea** in the book I started writing about [yesterday](/HomePage/en/blog/20260522-courage-to-be-disliked-teleology/): *The Courage to Be Disliked*.
+This is the second post in my [series on *The Courage to Be Disliked*](/HomePage/en/blog/20260522-courage-to-be-disliked-teleology/), my bible. Today I want to start from that night — the moment when **the separation of tasks**, the concept I'd only understood on paper, finally landed in my body.
 
-## The Separation of Tasks — whose problem is this, really?
+## A three-story house and a partner who can't quite get going
 
-The single question Adlerian psychology asks the most often is this:
+A bit of context.
 
-> **Whose task is this?**
+We live in a three-story house, and the housework that fact implies is real. Cleaning, laundry, cooking, shopping, taking out the trash, seasonal sorts. Not a side gig.
 
-There's a simple test. **Who ultimately lives with the consequences of this choice?** That's whose task it is.
+Most of it I do.
+But even so, one person can't actually keep the whole thing running solo, so I ask my wife to take small pieces. And there, things stall.
 
-- Does that team member move their task forward? → Their task
-- How does my boss evaluate my proposal? → My boss's task
-- How do I design the work I take on, and how do I actually do it? → My task
+She isn't angry, she isn't resisting. She herself says she **knows in her head that she should** — her body just won't quite get going.
 
-And then the book quietly puts this in front of you:
+For a long time, I was trying to **make her move**.
+*"A bit earlier today" — "this one needs to happen by tonight" — "if we change the flow here, maybe it'll feel easier?"* I tried just about every angle.
+Same result, mostly. It wouldn't go the way I expected.
+And every time I pushed harder, both of us, and the air inside the house, got more depleted.
 
-> **Don't step into other people's tasks. That's the starting point for every interpersonal problem.**
+## The night I gave up on "making her move"
 
-This isn't "be cold." It's *put your energy in the territory where you're actually responsible*.
+The night of the hard rice, something in me shifted. Not angrily, not resignedly. Quieter than that.
 
-## What to do with the "team member who won't move"
+> **Whether she moves or not — that's her task.**
+> **My task is what I do to keep my life running.**
 
-This is where most leads stumble. *"But as a lead, I have to get them moving…"*
+I don't think I would have arrived at that sentence without this book.
+This is, almost word for word, the **separation of tasks** that *The Courage to Be Disliked* keeps coming back to.
 
-I did the same. My instincts were to push harder:
+So I made a decision: I gave up on the very idea of *moving the family*. From that night on, I shifted entirely to the side of "I move."
 
-- explain more carefully
-- communicate the priority more clearly
-- empathize more, listen more
+*"Stop expecting"* can sound cold. But I think it's actually the opposite: choosing not to expect is **a form of respecting the other person, including the part of them that won't move**. The air in the house got noticeably quieter after.
 
-Through Adler's lens, I noticed that all three of those moves were me **trying to carry their task as if it were mine**.
+## The same lesson, again, at work
 
-A clean separation looks like this:
+The same realization hit me a second time, from a completely different direction. At work. From a performance review.
 
-1. **My task**: provide the necessary information / clarify deadlines and definition of done / make it easy to come ask for help
-2. **Their task**: whether to actually move the work / how they prioritize / when they choose to come ask
+Honest version: I had read the line *"how others evaluate you is their task"* many times. I'd written my own notes on it. I could explain it to other people. *In my head*, I understood.
 
-Once that line is drawn, the lead's job becomes radically simpler.
+But I only felt it in my body **the first time I expected to be promoted, and wasn't.** Salary, level — neither moved the way I had imagined.
 
-> *"I cannot run the race for them. I can make the track easier to run on."*
+In that moment, the sentence finally clicked.
 
-That's the stance, applied. It's the same view I described in [the Reinventing Organizations note](/HomePage/en/blog/20260518-teal-organization/) — "*you decide, but you must consult.*"
+> **Obviously. The company is the one doing the evaluating. I am not. No matter how I move, the steering wheel of *that* particular evaluation is on the other side of the table.**
 
-## Three kinds of questions I now use in 1-on-1s
+A sentence I had read as theory turned into lived experience that day.
+What I'd assumed I'd "eventually understand" had quietly *already* arrived.
 
-In practice, I separate questions in 1-on-1s into three buckets:
+## The book's core — "whose task is this?"
 
-| Question type | Example | What task am I stepping into? |
-| --- | --- | --- |
-| **Status check** (my task) | "Can I share what I'm seeing from my side on progress?" | My task: supporting visibility |
-| **Decision support** (shared) | "Want to lay out the options together?" | Shared task: up to the edge of decision |
-| **Their decision** (their task) | "So — how do you want to move?" | Their task: I don't cross this line |
+Back to Adler.
 
-The hardest move, and the one that pays the most, is **not deciding for them** on that last question.
-When silence falls there, I stay quiet and wait.
+The most famous concept in *The Courage to Be Disliked* — the separation of tasks — has exactly one test:
 
-> **The silence is the separation of tasks doing its work.**
+> **Who ultimately lives with the consequences of this choice?**
 
-Once I started thinking of silence that way, 1-on-1s changed.
+That's whose task it is.
 
-## It also works upward — "the boss who doesn't get it"
+- Does my wife scoop the rice → her task
+- How my company evaluates me → my company's task
+- How I keep my own life running → my task
+- What I choose to give my best to → my task
 
-Applied upward, this lens releases you from another kind of weight.
+What's left after the lines are drawn is simpler than I thought.
+Stop trying to move other people's tasks. Concentrate on your own. That alone halves the weight of the night.
 
-*"How my boss evaluates my proposal"* — that's **my boss's task.**
-What's actually in my hands is:
+[The Reinventing Organizations note](/HomePage/en/blog/20260518-teal-organization/) — *"you decide, but you must consult"* — is fundamentally the same view: respect the other person's decision-making territory while concentrating fully on your own.
 
-- Sharpening the proposal itself (my task)
-- Handing it over in a form that's easy for them to read (my task)
-- If the evaluation is poor, going back and asking again (my task)
+## How I run this daily — "this is just my personal opinion, but"
 
-What they ultimately do with it is theirs.
-When I confuse the two, I slide into the trap of believing *"a poor evaluation = I am a poor person."*
+One last piece. To keep the separation of tasks alive in conversation, there's a single **phrase I deliberately use** with team members.
 
-The book is clear-eyed about this. It calls the exit **freedom from the desire for recognition**.
+> **"This is just my personal opinion, but —"**
 
-> **Your life is not lived to satisfy the expectations of others.**
+That's all. The effect, though, is bigger than I expected.
 
-This isn't "don't care about feedback." It's: knowing the evaluation isn't your task makes you free to do your best work without dreading it.
+**For the listener.**
+What I say next gets labeled, before they hear it, as *one person's view*, not as a verdict. They can take it, modify it, or propose something else entirely. The conversation starts with **the decision-making weight on their side of the table.**
 
-## Nights I failed to separate
+**For me.**
+Saying that phrase out loud is also me whispering, to myself, *"I'll also hear what you say as just one view."* If they disagree with me, my ego doesn't get bruised — we're just **exchanging views.**
 
-For the record, I have crossed this line plenty of times.
+It's a tiny linguistic move that re-draws the line. A small phrase says, *"your decision and my opinion live in different territories."*
 
-Nights when a team member's work isn't moving and I stay late and quietly do it myself.
-Nights when my boss's reaction was tepid and I start drafting a vent post in my Notes app.
-
-When that happens, I stop and ask myself: *"Whose task am I currently living in?"*
-Almost always, the answer is: I have **moved in to someone else's house**.
-
-When I notice, I walk back to my own. That single move drops the weight of the night by half.
+It's the same view I described in [A manager's job is asking, not answering](/HomePage/en/blog/20260509-art-of-asking-questions/) — the "expedition mode" stance toward conversation, not the "military mode" one.
 
 ## Summary
 
-- **The separation of tasks** has one test: *who lives with the consequence?* That's whose task it is
-- The reflex to "empathize more / push harder" on a stalled team member is you carrying their task. Your task is **making the track easier to run on**, not running it
-- In 1-on-1s, separate **status check / decision support / their decision**. On the last one, **wait in the silence** rather than deciding for them
-- Your boss's evaluation is **your boss's task**. Free from that, you get to actually do your best work
-- When you've crossed the line, name it and walk back. That alone halves the weight
+- The separation of tasks has one test: **who lives with the consequences?**
+- Giving up on *moving people* — at home or at work — and concentrating on your own task is what quiets the air
+- "Evaluation is their task" is easy to understand in your head. It only lands in your body the first time you experience it firsthand
+- In 1-on-1s and daily talk, **"this is just my personal opinion, but —"** is a one-line tool that visibly draws the territory line, for both sides
 
-Tomorrow, the climax of the book: **self-acceptance, trust in others, contribution to others** — and the practice of taking **"now, here"** seriously. The last prescription, for nights when the future and the need for recognition have you in their grip.
+Tomorrow, the closing piece: the book's climax — **"live now, here, seriously."** How to keep this "focus on your own task" stance on the nights when the future and the desire for approval try to drag you off it.
 
 ## Related Articles
 
-- [The night you blame the past — Adler's teleology in The Courage to Be Disliked](/HomePage/en/blog/20260522-courage-to-be-disliked-teleology/) — Part 1 of the series: causality vs. teleology
-- [Reading Notes on Reinventing Organizations — Why Pyramids Fail and How to Build a Self-Driven Team](/HomePage/en/blog/20260518-teal-organization/) — "You decide, I'll advise" — the same view from a different door
-- [Knowing psychological safety isn't enough — the four stages](/HomePage/en/blog/20260521-designing-psychological-safety/) — Designing 1-on-1s with the separation of tasks built in
+- ["Only I protect me" — how The Courage to Be Disliked handed me back the steering wheel](/HomePage/en/blog/20260522-courage-to-be-disliked-teleology/) — Part 1: teleology and resolve
+- [Reading Notes on Reinventing Organizations](/HomePage/en/blog/20260518-teal-organization/) — *"You decide, I'll advise"* — the same view from a different door
+- [A manager's job is asking, not answering](/HomePage/en/blog/20260509-art-of-asking-questions/) — Drawing the territory line in 1-on-1 questions

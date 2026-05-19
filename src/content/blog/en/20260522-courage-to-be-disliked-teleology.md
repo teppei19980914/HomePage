@@ -1,109 +1,127 @@
 ---
-title: "The night you blame the past — Adler's teleology in The Courage to Be Disliked"
-description: "Adler's framing in The Courage to Be Disliked says present behavior is chosen for a present goal, not caused by past trauma. A reading note on the teleological turn, with the moments I caught myself saying 'because of that boss' and what changed when I switched lenses as an engineering team lead."
+title: "'Only I protect me' — how The Courage to Be Disliked handed me back the steering wheel"
+description: "From caring deeply about how others saw me, to noticing 'how others evaluate me is their task' and starting to show up as myself. The Courage to Be Disliked's teleology rejects causal blame of the past and returns the steering wheel of life to your own hands. A reading note on the path through a job change and side-project that the book quietly backed me through."
 date: 2026-05-22
 tags: ["reading", "Adler", "Courage to Be Disliked", "teleology", "essay"]
 featured: true
 ---
 
-## "It's because of that boss…"
+## "If I'd quit halfway, I shouldn't have started."
 
-There's a voice that sometimes slips in at night.
+When I first started building side projects in earnest, there was a moment late one night, mid-code, when I asked myself something:
 
-*"I burned out on that project, so now I instinctively hold back."*
-*"That manager said something cutting once, so now I can't speak up in meetings."*
-*"That company's culture broke me, so I no longer expect anything from a team."*
+— *Do I actually intend to finish this?*
 
-Each of these has its own logic. Something happened in the past, that thing caused my current behavior, end of story. It's the most natural way humans narrate themselves.
+And what came back from inside me was a sentence that still sits in the center of my head:
 
-*The Courage to Be Disliked* by Ichiro Kishimi and Fumitake Koga **denies this very natural story**.
-For me this book is a **bible** — I re-read it and my back straightens every time. Across the next three articles I'll walk through its core, side by side with how it has actually shaped how I work.
+> **"If I were going to quit halfway, I shouldn't have started in the first place."**
 
-## Read it again — but with teleology, not causality
+That probably reads as slightly extreme. But it was honest.
+Job change. Side project. Both turned out heavier than I had pictured. Which is exactly why **whether I had truly chosen them** would, later, become the spine that held me up. If the only resolve I could muster was the quitting-halfway kind, then I wanted to be the person who could just *not start*.
 
-At the center of Adler's thinking is **teleology**. The book puts it like this:
+Getting to that stance took me a long time. Over the next three articles I'm walking through *The Courage to Be Disliked* by Ichiro Kishimi and Fumitake Koga — for me, a bible — because it built that spine. This first article is about the book's central frame: **teleology**.
 
-> Past causes do not determine present feelings and behavior.
-> We deploy past events as "causes" in service of a present goal.
+## I used to live by other people's eyes
 
-In practice:
+Honestly, in my student years, I cared a lot about how I was perceived.
 
-- "I can't speak up because of that boss" → ❌ (causal reading)
-- "I have a present goal of not taking the risk of speaking up — and that boss is what I'm using to justify it" → ✅ (teleological reading)
+How to come across as a "proper person."
+Choosing words so no one would think anything strange.
+A polite, conflict-free posture.
 
-The first time you hear it, it sounds almost cruelly inverted.
-Read it a few more times, though, and something clicks: we are not always doing what we do because of the past. Sometimes we **need the past** in order to keep ourselves from changing.
+It took real energy. Nothing about it looked broken from the outside. But looking back, I was presenting a **diluted** version of myself. I was scared to put either my strengths or my flaws on the table.
 
-It's a move that takes responsibility from "out there" and quietly puts it back inside.
+At some point, that posture changed. The hinge was a single realization:
 
-## Where I caught my own teleological excuses
+> **"The person evaluating me is someone else. No matter how well I move, that doesn't mean their evaluation will be good. So expecting it in the first place was the mistake."**
 
-To be honest, this lens uncovered a few of my own scripts.
+The moment I gave up *trying to win* an evaluation, I gave myself permission to **show up as myself.**
 
-Whenever I'm about to take on something genuinely new, I tend to say *"the current project is too busy."* Watching closer, the business isn't actually the cause. What's underneath is:
+That bit of the story — "evaluation is someone else's task" — lives in the book as a different concept called **the separation of tasks.** I'll write the full version of it tomorrow (Part 2). For today I only need it as background.
 
-- I don't want to look bad if I fail
-- I don't want to grope around blind in unfamiliar territory
-- I don't want to lose my current "this person delivers" reputation
+## "Because of the past" vs. "what am I choosing right now?"
 
-Those are **the actual goals.** "Too busy" is the **alibi** I'm hiring in their service.
+Here's the core.
 
-This connects directly to what I wrote about in [Thinking 101 — Fluency, Confirmation Bias, and the Opposite Question](/HomePage/en/blog/20260516-yale-thinking-holes/): we are extraordinarily good at collecting evidence that supports a conclusion we've already secretly reached (don't do it).
+The thinking that runs through *The Courage to Be Disliked* is called **teleology**:
 
-As long as you keep blaming the past or the situation, your behavior stays locked. Teleology hands the key back.
+> **Past causes do not determine present feelings and behavior.**
+> **We deploy past events as "causes" in service of a present goal.**
 
-## In a team — replace "whose fault" with "what are you protecting right now?"
+Read straight, that sounds almost cruel. When we feel "I'm like this because of X that happened," the book insists what's actually going on is that **the current me who doesn't want to change needs that past event** to stay where I am.
 
-This is where Adler's framing got most useful for me as a team lead.
+When I was stepping into the job change and side-project work, I caught my own mind starting these sentences over and over:
 
-Engineers raise this kind of voice all the time:
+- *"My current job is too busy, so I can't study."*
+- *"I have prior experience, so I don't need to push."*
+- *"That manager shut me down once, so I shouldn't say new things."*
 
-- *"That design exploded on the last project, so I'm scared to propose the same thing again."*
-- *"That customer chewed us out last time, so let's keep it conservative this round."*
-- *"My idea got shot down in a review before, so I think staying quiet is the safe move."*
+Each is grammatically defensible. But every time I re-read this book, I saw them clearly: those sentences were **tools** for protecting *the current me who is choosing not to change*.
 
-If a lead jumps in with *"no, that's not how it works"*, the person closes. But if you stop at *"yeah, that was rough"*, you've just frozen the causal narrative in place.
+The past won't move. The only thing that moves is what I choose right now.
 
-Holding teleology in mind, I shifted to a quieter question:
+## Where I landed: "Only I protect me"
 
-> *"Is there a piece here where you're choosing not to change? If so, what is it that you're protecting right now?"*
+Going through that job change and that side project, I crystallized a belief I now hold pretty firmly. I know it sounds a bit extreme.
 
-This is not an accusation. It's **a question that hands the steering back to them.**
-[A manager's job is asking, not answering](/HomePage/en/blog/20260509-art-of-asking-questions/) — exactly that move.
+> **The only person who protects me is me.**
 
-Translating "it's because of last time" into "what am I protecting right now" is the first moment someone takes the wheel back.
+For example: if my company's evaluation came back unfairly low.
+The old me might have asked them to reconsider, made a case, requested a re-evaluation.
+The current me, in most cases, doesn't. **I quietly start preparing the next move.**
 
-## "Can't change" usually means "won't change"
+Not because I resent them. Because **evaluation is their task** — no matter what I do to it, I can't move the task itself. My task is just **the choice between staying here or moving on**. That's mine.
 
-There's a famous line in the book:
+The inverse happened too: I once received a promotion I hadn't been angling for. Pleasant — but at the structural level, the same situation. **A result of someone else's task happened to land favorably for me.** That's all it is.
 
-> *"You are choosing to be who you are right now."*
+Once you stop letting "evaluation" (someone else's task) yank you around, the world goes quiet. And inside that quiet, I can focus on the only question that's actually mine: *what am I choosing for myself?*
 
-The first time I read this, I bristled. *"No, I'm not — circumstances are forcing this."*
+## "You are choosing to be who you are right now."
 
-Months later, sitting somewhere unrelated, it hit me. What I'd been calling "I can't change" was almost always **"I'd lose something I currently hold if I changed."**
+A line in the book's dialogue section:
 
-The exercise that made this real: write down what you'd lose. Mine looked like this.
+> **"You are choosing to be who you are right now."**
 
-- Don't want to lose: people's perception of me as "solid"
-- Don't want to lose: the right to a clean excuse ("I was too busy")
-- Don't want to lose: the comfort of where I am now
+The first time I read this, I bristled. *"No I'm not — circumstances are forcing this."*
 
-The moment that list goes onto paper, what's holding you back stops being the past. It becomes a **current** decision you're making to protect a current asset.
+But after coming through those two big choices — job change, side project — I re-read it and the weight had changed.
 
-That hurts. But it's the starting line.
+Yes. I am, right now, **choosing**.
+Choosing to stay here, or choosing to move. Choosing to write a blog post, or not. All of it is my choice. And the consequences of those choices come back to me — not to anyone else.
+
+That's a heavy way to live.
+But it's also **the philosophy that hands the steering wheel of life back to your own hands.**
+As long as I keep blaming someone or the past, I can't change. The moment I take ownership — "this is what I'm choosing" — I can also choose to change it.
+
+## Asking myself the same question I ask the team
+
+One quick note on how this looks at work.
+
+When a team member says "*I can't move because of X*," I don't push back. I ask, quietly:
+
+> **"Is there a piece here where you're choosing not to change? If so, what is it you're protecting right now?"**
+
+That's not a rejection. It's **a question that returns the steering wheel to them.**
+
+I keep aiming the same question at myself.
+Write the blog post or not. Try something or not. Say the honest thing or swallow it.
+Each one — I'm choosing. Nobody else. I'm choosing, right now, right here.
+
+Once you own that, *"the only person who protects me is me"* stops being extreme.
+It just turns out to be **the quietest, most honest shape of living** I've found so far.
 
 ## Summary
 
-- *The Courage to Be Disliked* rejects **causality** as the explanation for our suffering and proposes a **teleological** read instead
-- "Because of that boss" / "because I'm too busy" is often an **alibi** for a present-day choice to not change
-- As a lead, asking **"what are you protecting right now?"** instead of blaming or sympathizing puts the steering wheel back in someone's hands
-- "I can't change" usually means "I don't want to lose what I currently have." Write down what you'd lose — it gets uncomfortably clear
+- *The Courage to Be Disliked* rejects **causality** as the explanation for current suffering and proposes a **teleological** read
+- "Because of that boss" / "because I'm too busy" is a **tool** for protecting a self that's currently choosing not to change
+- The moment you stop expecting "evaluation" (someone else's task), you give yourself permission to show up as yourself
+- **"The only person who protects me is me"** isn't extreme — it's the stance that hands the steering wheel back to you
+- The same question works on the team, and on myself: *"what are you choosing, right now?"*
 
-Tomorrow I'll go into the book's most famous concept — **"the separation of tasks"** — and how it kept saving me on nights when "the team won't move" and "my boss doesn't get it" were stuck in my head.
+Tomorrow, I'll dig into the concept I only touched on today — **the separation of tasks** — and what happens on the ground when you actually stop expecting an evaluation.
 
 ## Related Articles
 
-- [Thinking 101 — Fluency, Confirmation Bias, and the Opposite Question](/HomePage/en/blog/20260516-yale-thinking-holes/) — The trap of collecting evidence for the conclusion you already reached
-- [A manager's job is asking, not answering](/HomePage/en/blog/20260509-art-of-asking-questions/) — How "what are you choosing right now?" works as a question
-- [Failure Science — life is too short to experience every failure firsthand](/HomePage/en/blog/20260419-failure-science/) — Treating past failure as raw material, not as cause
+- [Thinking 101 — Fluency, Confirmation Bias, and the Opposite Question](/HomePage/en/blog/20260516-yale-thinking-holes/) — The trap of collecting evidence only for the conclusion you've already reached
+- [A manager's job is asking, not answering](/HomePage/en/blog/20260509-art-of-asking-questions/) — Turning "what are you choosing right now?" into a question
+- [Failure Science — life is too short to experience every failure firsthand](/HomePage/en/blog/20260419-failure-science/) — Treating past failure as material rather than as cause
