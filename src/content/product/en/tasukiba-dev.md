@@ -28,12 +28,41 @@ That's why we keep the door wide open.
 
 Skill, title, formal background — none of those come first. **"I want to give it a try"** plus **"I want to respect the people around me"** is enough to open the door. That's the spirit this page is written in.
 
-## What this page is for
+## Who we want to build with
+
+Technical skill and programming experience truly aren't required.
+But there is one thing we want to hold dear — the wish to **respect team-based development**.
+
+And there's one starting behavior, in my mind, that everything else flows from:
+
+> **Receive someone's opinion first, before debating it.**
+
+Just this single habit, I believe, creates a lot.
+
+- An atmosphere where saying "**I don't know**" or "**please teach me**" feels safe
+- The ability to share your **own mistakes and stuck points** early, without hiding them
+- And, as a result, **catching risks together, before they grow** into something big
+
+—— That whole chain starts, in my view, with "not denying the other person."
+
+### You don't have to arrive with all of this in place
+
+You don't need to perform any of these behaviors perfectly from day one. **Just the wish to grow them with us** is enough.
+
+I'm still someone with room to grow myself, and I want to make this a place where **we practice these things together** as we build. These are skills that pay back in your day job and your life, too.
+
+Tech skill, commit count, years of experience — those, we can build up together later.
+
+<details class="faq-item">
+<summary>What this page is for</summary>
 
 Service features and how-to-use are on the [user-facing page](/HomePage/en/product/tasukiba-user/).
 What we keep here is the layer just before that: **"why we build it," "what we want to hold dear," and "how you yourself can grow,"** as compactly as possible.
 
-## Where Tasukiba is today (for full transparency)
+</details>
+
+<details class="faq-item">
+<summary>Where Tasukiba is today (for full transparency)</summary>
 
 To be honest: Tasukiba is currently developed by **Suyama alone** — a small project. Which means anyone joining now becomes an **early member of the community**, shaping the culture from the start.
 
@@ -43,10 +72,12 @@ To be honest: Tasukiba is currently developed by **Suyama alone** — a small pr
 | Automated tests | 141+ (Vitest + Playwright) |
 | Security score | 90/100 enforced in CI |
 | Operating cost | **$0/mo** (Vercel Hobby + Supabase Free) |
-| Source code | Currently private. **Planned to go Public alongside general release** |
-| Release plan | General release: 2026-06-01 |
+| Source code | **Public repository**: [BusinessManagementPlatform](https://github.com/teppei19980914/BusinessManagementPlatform) |
+| Release plan | General release: 2026-06-01 (code is already Public — feel free to look ahead) |
 
 The "zero to one" moment of a service only comes once.
+
+</details>
 
 ## The core of the service — in one line
 
@@ -56,7 +87,8 @@ Most knowledge-management tools are good at *storing* data — and bad at *using
 
 Tasukiba aims to change that structure by **surfacing past assets at the right moment**, using **semantic search** instead of plain full-text.
 
-## The world we're trying to reach
+<details class="faq-item">
+<summary>The world we're trying to reach</summary>
 
 What we actually want to build is this landscape:
 
@@ -67,7 +99,10 @@ Once the time burnt on firefighting and information searching comes back, attent
 
 We also want this service to be a **"third place"** — alongside home and work.
 
-## Three years from now — what we want for *you*
+</details>
+
+<details class="faq-item">
+<summary>Three years from now — what we want for you</summary>
 
 While building the service, we want changes like these to happen for *you*, the developer. Read this as **"a shared landscape we'd both like to head toward,"** not as obligation.
 
@@ -81,7 +116,10 @@ While building the service, we want changes like these to happen for *you*, the 
 
 Choosing to "graduate" mid-way to your own next step is a perfectly good outcome. **This doesn't have to be the destination.**
 
-## The direction Tasukiba is heading
+</details>
+
+<details class="faq-item">
+<summary>The direction Tasukiba is heading</summary>
 
 These are the values Tasukiba holds dear. If they resonate with you, that means a lot.
 
@@ -112,7 +150,10 @@ This is not just a slogan. Concretely, we want to grow these four into **operati
 
 Making the 5th item one we **genuinely live by** is, we believe, the foundation that lets Tasukiba's developer community last.
 
-## There's more than one way to contribute
+</details>
+
+<details class="faq-item">
+<summary>There's more than one way to contribute</summary>
 
 If "I'm not confident in programming yet" describes you, there are still many ways in. **Code is not the only contribution.**
 
@@ -122,12 +163,15 @@ If "I'm not confident in programming yet" describes you, there are still many wa
 | **Tester** | New feature checks, bug reports, user-perspective feedback | notice details others miss |
 | **Documentation** | README, FAQ, tutorials, ops manuals | enjoy writing |
 | **UX reviewer** | Screen flow, copy, confusing-spot calls | can put the user's feel into words |
-| **Discord moderator** | First-line replies, greeting newcomers | enjoy talking with people |
+| **Discussions moderator** | First-line replies on GitHub Discussions, greeting newcomers | enjoy talking with people |
 | **Design** | Icons, logo, UI colors, diagrams | are strong on visual expression |
 
 Even if you don't yet know "where I'd fit" — just reach out. **Finding it together, as we talk, is part of the fun.**
 
-## The shape of the relationship
+</details>
+
+<details class="faq-item">
+<summary>The shape of the relationship</summary>
 
 | Item | Content |
 |---|---|
@@ -137,14 +181,20 @@ Even if you don't yet know "where I'd fit" — just reach out. **Finding it toge
 | **Decision-making** | Important directions are discussed and agreed. **No one voice decides on its own** |
 | **"Graduation" culture** | Leaving isn't framed as "drop-out" — it's framed as **"graduation to the next step"** |
 
-## Tech stack (snapshot, May 2026)
+</details>
+
+<details class="faq-category">
+<summary>Tech stack (snapshot, May 2026)</summary>
 
 For reference, here is the technology Tasukiba currently uses.
 **You do not need to "already know" or "have touched" any of this**. In fact, "lots of things I've never touched" is a feature, not a bug — it makes this a strong learning environment.
 
 > Versions and stack evolve continuously. Treat this as a **May 2026 snapshot**.
 
-### 1. Languages / runtimes
+> Click any area title to expand the details.
+
+<details class="faq-item">
+<summary>1. Languages / runtimes</summary>
 
 | Tech | Version | Role |
 |---|---|---|
@@ -154,7 +204,10 @@ For reference, here is the technology Tasukiba currently uses.
 
 > TypeScript adds "shape (= type) of each variable" to JavaScript, so mistakes get caught early. Node.js is the engine that runs that outside the browser.
 
-### 2. Frontend
+</details>
+
+<details class="faq-item">
+<summary>2. Frontend</summary>
 
 | Tech | Version | Role |
 |---|---|---|
@@ -169,7 +222,10 @@ For reference, here is the technology Tasukiba currently uses.
 
 > shadcn/ui differs from typical UI libraries: instead of importing finished components, **you copy the source into your own project and customize freely**.
 
-### 3. Backend (Next.js server-side)
+</details>
+
+<details class="faq-item">
+<summary>3. Backend (Next.js server-side)</summary>
 
 | Tech | Version | Role |
 |---|---|---|
@@ -180,7 +236,10 @@ For reference, here is the technology Tasukiba currently uses.
 
 > An ORM is a "translator" that lets you treat DB tables like TypeScript variables. Instead of raw SQL, you write `prisma.project.findMany()` — and the compiler catches typos.
 
-### 4. Database, search, vector
+</details>
+
+<details class="faq-item">
+<summary>4. Database, search, vector</summary>
 
 | Tech | Version | Role |
 |---|---|---|
@@ -192,7 +251,10 @@ For reference, here is the technology Tasukiba currently uses.
 
 > Turning a sentence into 1024 numbers (a vector) means "sentences with similar meaning end up near each other." pgvector + Voyage uses that to mechanically find "past similar projects."
 
-### 5. Authentication / security
+</details>
+
+<details class="faq-item">
+<summary>5. Authentication / security</summary>
 
 | Tech | Version | Role |
 |---|---|---|
@@ -204,7 +266,10 @@ For reference, here is the technology Tasukiba currently uses.
 
 > bcrypt stores passwords by "one-way transformation" (cannot be reversed). TOTP is the 6-digit code in your phone authenticator app; the QR is "load the secret key with your camera."
 
-### 6. External SaaS / infra
+</details>
+
+<details class="faq-item">
+<summary>6. External SaaS / infra</summary>
 
 | Layer | Service | Plan | Monthly |
 |---|---|---|---|
@@ -215,7 +280,10 @@ For reference, here is the technology Tasukiba currently uses.
 
 > The MVP is designed to run at **$0/month**. Vercel auto-deploys on git push. Supabase is sometimes called "the PostgreSQL version of Firebase." Email is wrapped in a MailProvider interface — Brevo / Resend / console / inbox (E2E) switch via env vars.
 
-### 7. Testing / quality
+</details>
+
+<details class="faq-item">
+<summary>7. Testing / quality</summary>
 
 | Tech | Version | Role |
 |---|---|---|
@@ -227,7 +295,10 @@ For reference, here is the technology Tasukiba currently uses.
 
 > Unit tests = "is each function correct"; E2E tests = "a robot that logs in, clicks, and saves in a real browser." Playwright is from Microsoft and drives Chrome / Firefox / Safari with one codebase.
 
-### 8. Dev tools
+</details>
+
+<details class="faq-item">
+<summary>8. Dev tools</summary>
 
 | Tech | Role |
 |---|---|
@@ -237,7 +308,10 @@ For reference, here is the technology Tasukiba currently uses.
 | **csv-parse / jszip / diff** | CSV export, ZIP generation, diff view |
 | **@holiday-jp/holiday_jp** | Japanese holiday detection (business-day math) |
 
-### 9. CI (GitHub Actions)
+</details>
+
+<details class="faq-item">
+<summary>9. CI (GitHub Actions)</summary>
 
 | Workflow | Content |
 |---|---|
@@ -247,7 +321,10 @@ For reference, here is the technology Tasukiba currently uses.
 | `security.yml` | Security-score gate (fails below 90/100) |
 | `dependency-review.yml` / `dependency-outdated.yml` | Dependency vulnerability / outdated tracking |
 
-### 10. Architecture layers
+</details>
+
+<details class="faq-item">
+<summary>10. Architecture layers</summary>
 
 ```
 Browser
@@ -266,19 +343,26 @@ Brevo (email) / Voyage AI (embedding) / Anthropic (LLM)
 
 > Splitting "Middleware → Service → Prisma" is about making each layer's responsibility clear. "Reject unauthenticated visitors" → Middleware. "Project state-transition rules" → Service. "Actual DB ops" → Prisma.
 
+</details>
+
 ---
 
 To repeat: **you do not need to know any of this up front.**
 "Start with what you know" and "learn the unknown in the order you want to try it" are both welcome.
 
-## You might not fit if…
+</details>
 
-Honestly written. **This isn't "if any apply, you're out"** — it's a checklist to avoid a relationship that hurts either side. If you're unsure, let's just talk first.
+<details class="faq-item">
+<summary>"Maybe the timing isn't right for me" — read this if that sounds familiar</summary>
 
-- **You have a clear thing *you* want to build, and want to build it *here*** — please pursue it as your own project or company instead
-- **You're chasing short-term big profit or rapid scaling** — "slowly, but seriously" is the premise
-- **You see growing features as the point in itself** — that said, **delivering high functionality through a simple UI is very welcome**
-- **You'd rather pin failure on individuals, or hide it** — that breaks the "thanks for telling me" culture
+"Doesn't fit" doesn't mean "no." It means **maybe another place can put your passion and time to better use, right now**. We share these honestly as signposts. If you're unsure, please just talk to us first. Continuing after the conversation, or choosing a different path — both are welcome outcomes.
+
+- **You already have a clear service *you* want to build** — Your **own project or company** may let your passion flow more directly. Realizing it within Tasukiba may be hard
+- **You're chasing short-term big profit or rapid scaling** — We chose "slowly, but seriously," so the **pace you're hoping for may not match**
+- **You see growing features as the point in itself** — On the other hand, **delivering high functionality through a simple UI is very welcome**
+- **You'd rather debate "whose fault" a failure was** — That style and our "thanks for telling me" culture may not line up **right now**. But if you'd like to try shifting, you're welcome too
+
+</details>
 
 ## The first step — four small steps
 
@@ -288,29 +372,47 @@ You do not need to **decide everything in one jump**. Use these steps to find yo
 
 If you've read this far — Step 1 is already done. Thank you.
 
-### Step 2. Join the Discord and just watch (zero pressure)
+### Step 2. Peek at GitHub Discussions (zero pressure)
 
-Join the [Discord community](https://discord.com/invite/EqY82YvxuG). **No self-introduction needed yet.** Just watching the messages flow by is fine.
+Open [BusinessManagementPlatform's GitHub Discussions](https://github.com/teppei19980914/BusinessManagementPlatform/discussions). **Reading is free without a GitHub account** (posting will require one). Just watching the threads is fine.
+
+> There's also a [Discord community](https://discord.com/invite/EqY82YvxuG) for end users. If you'd like to feel the "user side" temperature, drop in. **Developer-side conversations — intros, questions, ideas — live on GitHub Discussions.**
 
 ### Step 3. Say hi and ask anything (at your own pace)
 
-When you've got the vibe, drop a one-liner in the intros channel — "I was just watching, got curious" is enough. Questions are welcome at this stage too.
+When you've got the vibe, drop a one-liner in the **Introductions** category — "I was just watching, got curious" is enough. Questions go in the **Q&A** category, anytime.
 
 ### Step 4. Talk through "what I'd like to try"
 
-Write code, try tests, fix docs, just observe first — whatever it is, **let's design your first step together**.
+Write code, try tests, fix docs, just observe first — whatever it is, **let's design your first step together**. Open a thread in the **Ideas** category and I'll reply.
+
+#### Concrete examples of "first steps" — pick whichever feels right
+
+| Option | What it is | Time |
+|---|---|---|
+| **Pair-programming on a tiny task** | From dev-env setup to opening a PR, side-by-side over screen-share | 30–60 min |
+| **Just observe** | Read an existing PR / Issue and post your "this part feels good / could be better" on Discussions. No code needed | 15–30 min |
+| **A one-character typo PR** | Fix a single typo in the docs. The smallest possible PR — also a hands-on Git / GitHub practice | 15 min |
+| **Read one existing test** | See which code is guarded how. Share your impression on Discussions, that's it | 20–30 min |
+| **Report what felt off** | Try the β version, write up any rough edges as an Issue / Discussion | 15 min |
+
+"**Just reading**," "**just watching**," "**just asking questions**" — all welcome, as many times as you like. **No pressure to write code.**
 
 > No rush. Stopping at Step 2, or pausing at Step 3 — both are fine, in your own time.
 
-## Timing
+<details class="faq-item">
+<summary>Timing</summary>
 
 - **Recruiting opens**: 2026-06-01 (with general release)
-- **Before that**: Say hi in Discord any time
-- **GitHub Public**: Planned alongside general release. If you'd like to see the code before deciding, waiting until then is perfectly fine
+- **Before that**: Say hi on [GitHub Discussions](https://github.com/teppei19980914/BusinessManagementPlatform/discussions) any time
+- **GitHub**: The code is already [Public](https://github.com/teppei19980914/BusinessManagementPlatform). Feel free to look around before deciding
 
 The selection process will be designed later. For now, **"let's just talk first"** is enough. Whatever your reason — to learn, to experience, to be involved — you're welcome.
 
-## About the person writing this
+</details>
+
+<details class="faq-item">
+<summary>About the person writing this</summary>
 
 Hi, I'm [Teppei Suyama](/HomePage/en/profile/). I work in software development for my day job — quality assurance and test design — and I'm currently growing this service on my own.
 
@@ -318,7 +420,9 @@ Hi, I'm [Teppei Suyama](/HomePage/en/profile/). I work in software development f
 
 While building the service, I'm still very much someone with room to grow, too. Not a fixed **"I teach / you learn"** dynamic — let's build a place where **we grow with each other**.
 
-I'm looking forward to the day you drop in to Discord.
+I'm looking forward to the day you drop in to [GitHub Discussions](https://github.com/teppei19980914/BusinessManagementPlatform/discussions).
+
+</details>
 
 ---
 

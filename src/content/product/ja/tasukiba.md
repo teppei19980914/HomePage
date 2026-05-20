@@ -4,6 +4,7 @@ description: "プロジェクトで得た知見を次のチームへ襷のよう
 tagline: "回すほど、次がうまくいく。知識をつなぐプロジェクト管理。"
 date: 2026-04-16
 tags: ["プロジェクト管理", "ナレッジマネジメント", "業務管理", "Next.js", "PostgreSQL"]
+repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
 status: beta
 order: 3
 ---

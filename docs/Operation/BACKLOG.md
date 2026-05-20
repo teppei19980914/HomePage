@@ -15,40 +15,25 @@
 
 ## アクティブ項目
 
-### 1. たすきばの公開リポジトリ整備とリンク反映
-
-**背景**:
-- たすきばの本体リポジトリは現在 private（`BusinessManagementPlatform`）で開発中
-- 統合済み `/product/tasukiba/` ページの「コミュニティ」セクションには Discord のみ掲載、GitHub Discussions は「公開リポジトリ整備後に開設予定」と記載
-
-**実施タイミング**:
-- `BusinessManagementPlatform` リポジトリを公開化したタイミング
-- または、たすきばの正式リリース準備が整ったタイミング
-
-**実施内容**:
-1. `BusinessManagementPlatform` リポジトリを Public 化
-2. リポジトリの **Settings → General → Features → Discussions** を有効化
-3. `src/content/product/ja/tasukiba.md` の frontmatter に `repo` を追加:
-   ```yaml
-   repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
-   ```
-4. 同 md の「コミュニティ」セクションに Discussions URL を追加（プレースホルダ「公開リポジトリ整備後に開設予定」を置換）
-5. 必要に応じて `url`（公式サイト URL）も追加
-6. `src/content/product/en/tasukiba.md` も同様に更新
-7. `npm run build` でビルド確認、main へ commit & push
-
-**関連ファイル**:
-- `src/content/product/ja/tasukiba.md`（frontmatter + コミュニティセクション）
-- `src/content/product/en/tasukiba.md`（同）
-
-**補足**:
-- 旧リポジトリ `AnonymousKnowledgePlatform` は実質廃止（リポジトリ自体は残存）。LP からのリンクなし
-
----
+（現在アクティブ項目なし）
 
 ---
 
 ## 完了済み項目
+
+### ✅ たすきばの公開リポジトリ整備とリンク反映（2026-05 完了）
+
+**実施内容**:
+- `BusinessManagementPlatform` リポジトリを Public 化
+- リポジトリの **Settings → General → Features → Discussions** を有効化
+- `src/content/product/ja/tasukiba.md` / `en/tasukiba.md` の frontmatter に `repo` を追加（product ページのヘッダーから GitHub リンクが表示されるようになった）
+- 開発者向けサブページ `tasukiba-dev.md` に GitHub Discussions リンクを反映し、Step 2-4 のコンタクト導線を Discord から Discussions に移行
+- 「現在のたすきばの状態」表と「募集タイミング」セクションの Private/Public 表記を実態に合わせて更新
+
+**補足**:
+- 親ページ `tasukiba.md` には現在「コミュニティ」セクション自体がないため、プレースホルダ「公開リポジトリ整備後に開設予定」の置換作業は発生せず
+- 旧リポジトリ `AnonymousKnowledgePlatform` は実質廃止（リポジトリ自体は残存）。LP からのリンクなし
+- `url`（公式サイト URL）は正式リリース後に追加検討
 
 ### ✅ `/apps/` と `/product/` の統合（A 案: 完全統合、2026-05 完了）
 

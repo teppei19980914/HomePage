@@ -4,6 +4,7 @@ description: "Tasukiba passes knowledge between projects like a baton. WBS, risk
 tagline: "The more you run it, the better the next one goes. Project management that connects knowledge."
 date: 2026-04-16
 tags: ["Project Management", "Knowledge Management", "Business Software", "Next.js", "PostgreSQL"]
+repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
 status: beta
 order: 3
 ---
