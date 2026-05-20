@@ -183,7 +183,7 @@ audience: "developer"
 
 </details>
 
-<details class="faq-category">
+<details class="faq-item">
 <summary>技術スタック（2026 年 5 月時点の構成）</summary>
 
 参考までに、現在のたすきばで使っている技術をひと通りご紹介します。

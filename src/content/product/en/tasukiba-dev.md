@@ -183,7 +183,7 @@ Even if you don't yet know "where I'd fit" — just reach out. **Finding it toge
 
 </details>
 
-<details class="faq-category">
+<details class="faq-item">
 <summary>Tech stack (snapshot, May 2026)</summary>
 
 For reference, here is the technology Tasukiba currently uses.
