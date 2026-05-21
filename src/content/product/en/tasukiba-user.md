@@ -215,9 +215,9 @@ Sample screens showing how past assets are stored in a form you can actually reu
 ---
 
 <details class="faq-item">
-<summary>🛡️ Enterprise-grade security features</summary>
+<summary>🛡️ Security features</summary>
 
-For corporate use, we ship the following security features as standard.
+For all users — individuals and companies alike — the following security features ship as standard.
 
 | Feature | Summary |
 |---|---|
@@ -255,7 +255,8 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 
 </details>
 
-## 📃 Operator information
+<details class="faq-item" id="operator-info">
+<summary>📃 Operator information</summary>
 
 | Item | Details |
 |---|---|
@@ -265,7 +266,10 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 | **Terms of service** | [https://tasukiba.netlify.app/terms](https://tasukiba.netlify.app/terms) |
 | **Privacy policy** | [https://tasukiba.netlify.app/privacy](https://tasukiba.netlify.app/privacy) |
 
-### Statutory disclosure under Japan's Specified Commercial Transactions Act
+</details>
+
+<details class="faq-item" id="tokushoho">
+<summary>Statutory disclosure under Japan's Specified Commercial Transactions Act</summary>
 
 | Item | Details |
 |---|---|
@@ -274,7 +278,7 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 | **Address** | Disclosed promptly upon request |
 | **Phone number** | Disclosed promptly upon request |
 | **Email** | `teppei09141998@gmail.com` |
-| **Pricing** | See the "[Pricing plans](#pricing-plans)" section above |
+| **Pricing** | See the "Pricing" section above |
 | **Additional fees** | Communication costs (your internet connection fees, etc.) |
 | **Sales tax handling** | Listed prices are tax-exclusive. Japanese consumption tax (JCT) is added separately at invoicing |
 | **Payment methods** | Bank transfer (invoice-based) / Credit card payment (via Stripe) / Other online payment methods |
@@ -284,6 +288,8 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 | **System requirements** | Latest versions of Chrome / Edge / Safari / Firefox |
 
 > Under Japanese consumer protection law, sole proprietors are permitted to use the "disclosed promptly upon request" format for personal address and phone number. These will be disclosed individually to anyone who inquires.
+
+</details>
 
 ---
 
@@ -624,7 +630,7 @@ No. Cancellation completes in **a few clicks** from the tenant settings screen. 
 
 It's stored in a state of **complete isolation per tenant**. The design does not allow any view from another tenant. In addition, **all data changes, authentication events, and permission changes are automatically recorded as an audit log**.
 
-See the "[🛡️ Enterprise-grade security features](#enterprise-grade-security-features)" section above for a full list (MFA, account lockout, auto-deactivation of unused accounts, and more).
+See the "🛡️ Security features" section above for a full list (MFA, account lockout, auto-deactivation of unused accounts, and more — available to individuals and companies alike).
 
 </details>
 
