@@ -38,7 +38,8 @@ That knowledge **accumulates across every project you run**.
 
 ---
 
-## Do any of these sound familiar?
+<details class="faq-item">
+<summary>Do any of these sound familiar?</summary>
 
 For everyone running projects — whether solo or as a team — do these moments ring a bell?
 
@@ -59,9 +60,10 @@ Judgment patterns and handling techniques that lived in one person's head disapp
 
 — If any of this resonates, please read on.
 
----
+</details>
 
-## "Doesn't using some tool already solve this?"
+<details class="faq-item">
+<summary>"Doesn't using some tool already solve this?"</summary>
 
 Plenty of project management and knowledge management tools exist.
 The reason they don't actually solve the problems above is **three structural limits**.
@@ -92,9 +94,10 @@ In short, existing tools fail because **they are built on the assumption that th
 | **Meeting notes / chat** | Real-time conversation | Not structured. Buried in time-ordered streams |
 | **Tasukiba** | Project operations and knowledge structured **in one place**, **semantic search + proactive suggestions** | β phase: direct integrations with Backlog / Notion etc. not yet available (CSV import is partially supported) |
 
----
+</details>
 
-## How Tasukiba addresses each one
+<details class="faq-item">
+<summary>How Tasukiba addresses each one</summary>
 
 ### Solution 1: The system proactively surfaces what you need
 
@@ -116,9 +119,10 @@ Instead of "eyeball 100 results," you reach **"a handful of the closest matches 
 For each frequent element of project operations — **risks / issues / retrospectives / knowledge** — we provide **structured record types**.
 You can capture experience in a form that is **searchable, referenceable, and reusable later** while keeping the writer's burden low.
 
----
+</details>
 
-## Key features
+<details class="faq-item">
+<summary>Key features</summary>
 
 | Feature | What changes |
 |---|---|
@@ -155,9 +159,10 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 > Gantt: light = plan, dark = actual, red = delay. Progress, delays, and milestones are obvious at a glance.
 
----
+</details>
 
-## What the daily view becomes
+<details class="faq-item">
+<summary>What the daily view becomes</summary>
 
 ### Scene 1: Sunday night → Monday morning
 
@@ -183,7 +188,7 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 > Your kindness is backed by past experience.
 
----
+</details>
 
 ## Pricing
 
@@ -209,7 +214,8 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 ---
 
-## 🛡️ Enterprise-grade security features
+<details class="faq-item">
+<summary>🛡️ Enterprise-grade security features</summary>
 
 For corporate use, we ship the following security features as standard.
 
@@ -226,9 +232,10 @@ For corporate use, we ship the following security features as standard.
 
 **Vulnerability reports**: If you find a vulnerability, please contact us via GitHub Security Advisory (preferred) or `teppei09141998@gmail.com`. We follow a Coordinated Disclosure policy.
 
----
+</details>
 
-## 📦 What we offer when you adopt as a company
+<details class="faq-item">
+<summary>📦 What we offer when you adopt as a company</summary>
 
 A summary of the items most frequently asked when evaluating Tasukiba for corporate use.
 
@@ -246,7 +253,7 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 
 > **How to contact us**: For corporate adoption inquiries, please use the [Contact form](/HomePage/en/contact/). Selecting **"About Tasukiba"** as the inquiry type ensures it lands as a Tasukiba-related question.
 
----
+</details>
 
 ## 📃 Operator information
 
@@ -280,7 +287,8 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 
 ---
 
-## Community
+<details class="faq-item">
+<summary>Community</summary>
 
 Tasukiba is meant to be valuable not only as a tool but as **"a third place" beyond home and work**.
 
@@ -295,13 +303,14 @@ If the connections that form here go beyond projects and into private friendship
 
 - [Take a peek at the community](https://discord.com/invite/EqY82YvxuG)
 
----
+</details>
 
-## FAQ
+<details class="faq-item">
+<summary>FAQ</summary>
 
 Click a category title to expand the questions inside. Then click each question to expand the answer.
 
-<details class="faq-category" open>
+<details class="faq-category">
 <summary>🎁 Trial period and choosing a plan</summary>
 
 <details class="faq-item">
@@ -722,6 +731,8 @@ We don't yet have direct integrations with Backlog / Notion etc., but **CSV impo
 
 </details>
 
+</details>
+
 ---
 
 ## Give it a try
@@ -746,7 +757,8 @@ After 90 days of consistent use, your projects look like this:
 
 ---
 
-## Anything we didn't cover here?
+<details class="faq-item">
+<summary>Anything we didn't cover here?</summary>
 
 Thank you for reading this far.
 
@@ -759,3 +771,5 @@ If there's anything left — "I'd like to know more," "this part still bothers m
 The developer reads every message personally. No sales pressure, no aggressive follow-up.
 
 - [Get in touch via the contact form](/HomePage/en/contact/)
+
+</details>
