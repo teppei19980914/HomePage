@@ -441,9 +441,11 @@ a.tag:hover, a.tag-link:hover {
   font-weight: 600;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .prose table {
     display: block;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }

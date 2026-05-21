@@ -317,6 +317,20 @@ const childProducts = allProducts
     overflow: hidden;
     font-size: 0.92rem;
   }
+  /* モバイル/タブレットでは横スクロール可能にする（列が画面幅を超えた場合の見切れ防止） */
+  @media (max-width: 1024px) {
+    .content :global(table) {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .content :global(th:first-child),
+    .content :global(td:first-child) {
+      white-space: nowrap;
+    }
+  }
   .content :global(thead) {
     background-color: rgba(99, 102, 241, 0.08);
   }
