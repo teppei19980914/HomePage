@@ -263,8 +263,8 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 | **Service name** | Tasukiba (Tasukiba Knowledge Relay) |
 | **Operator** | Teppei Suyama (operated as a sole proprietorship) |
 | **Contact** | [Contact form](/HomePage/en/contact/) / `teppei09141998@gmail.com` |
-| **Terms of service** | [https://tasukiba.netlify.app/terms](https://tasukiba.netlify.app/terms) |
-| **Privacy policy** | [https://tasukiba.netlify.app/privacy](https://tasukiba.netlify.app/privacy) |
+| **Terms of service** | [Japanese version (authoritative)](/HomePage/ja/product/tasukiba-user/#terms) — English translation not yet available |
+| **Privacy policy** | [Japanese version (authoritative)](/HomePage/ja/product/tasukiba-user/#privacy) — English translation not yet available |
 
 </details>
 
