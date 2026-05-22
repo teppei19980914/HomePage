@@ -180,7 +180,7 @@ SVG 手書きの Git ブランチ風グラフ:
 
 | エリア | 内容 |
 |---|---|
-| **検索ボックス** | タイトル + description + タグの部分一致でカードをクライアント側フィルター。`URL` は変更しない（履歴を汚さず SEO 影響なし）。JS 無効環境では `<input>` を CSS で非表示 |
+| **検索ボックス** | **全記事**を対象に、タイトル + description + タグの部分一致でクライアント側フィルター。検索クエリ入力中は通常ビュー（ピックアップ / 直近 / Qiita / カレンダー）を `hidden` 化し、隠し配置している全記事カード一覧 (`#blogSearchResults`) をマッチ件のみ表示。クリアで通常ビューに復帰。`URL` は変更しない（履歴を汚さず SEO 影響なし）。JS 無効環境では `<input>` を CSS で非表示 |
 | **タグ一覧へのリンク** | `#タグ一覧 →` リンクで `/{lang}/blog/tags/` へ遷移 |
 | **Featured Articles**（ピックアップ）| `dynamic-stats.json` の `featuredSlugs` で**手動キュレーション**した記事を最大 4 件表示。空の場合は `frontmatter.featured: true` をフォールバック |
 | **直近の記事**（regular）| ピックアップ以外の最新記事を `blog.maxPerSection` 件（既定 5 件）表示。各カードのタグはクリック可能なリンク（`/{lang}/blog/tag/{slug}/`）|

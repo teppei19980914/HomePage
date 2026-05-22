@@ -98,7 +98,12 @@ if (import.meta.env.PROD) {
 
   <!-- 検索 + タグ一覧導線（JS 無効時は検索ボックスは非表示、タグ導線は表示） -->
   <section class="blog-toolbar reveal">
-    <div class="blog-search" id="blogSearchWrapper" hidden>
+    <div
+      class="blog-search"
+      id="blogSearchWrapper"
+      data-result-template={blog.search.resultCountTemplate}
+      hidden
+    >
       <input
         type="search"
         id="blogSearchInput"
@@ -119,9 +124,54 @@ if (import.meta.env.PROD) {
   <p class="blog-search-status" id="blogSearchStatus" aria-live="polite" hidden></p>
   <p class="blog-search-empty" id="blogSearchEmpty" hidden>{blog.search.noResults}</p>
 
+  <!--
+    検索結果セクション（クライアントサイド検索）。
+    JS 無効時 / 通常表示時は hidden。検索クエリ入力時のみ表示し、その間は data-search-hide
+    の通常ビュー（ピックアップ / 最新 / Qiita / カレンダー）を非表示にする。
+    全記事をカード化して埋め込むことで、index ページに非表示の古い記事も検索可能にする。
+  -->
+  <section class="section" id="blogSearchResults" hidden>
+    <ul class="card-list">
+      {allPosts.map((post) => (
+        <li
+          class="card-item"
+          data-search-title={post.data.title}
+          data-search-desc={post.data.description}
+          data-search-tags={post.data.tags.join(",")}
+        >
+          <a
+            href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
+            class="card blog-card"
+            data-astro-reload
+          >
+            {isDev && post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
+            {isDev && !post.data.draft && post.data.date > new Date() && <span class="scheduled-badge">{blog.scheduledBanner}</span>}
+            <h3>{post.data.title}</h3>
+            <div class="card-meta">
+              <span class="date">{post.data.date.toLocaleDateString(BCP47[lang])}</span>
+              <span class="meta-divider"></span>
+              <span class="reading-time">{readingTimeLabel(estimateReadingTime(post.body ?? ""))}</span>
+            </div>
+            <p>{post.data.description}</p>
+          </a>
+          <div class="card-tags-row">
+            {post.data.tags.slice(0, 4).map((tag) => (
+              <a
+                href={localeUrl(lang, `blog/tag/${tagToSlug(tag)}/`)}
+                class="tag tag-link"
+                data-astro-reload
+              >{tag}</a>
+            ))}
+            {post.data.tags.length > 4 && <span class="tag tag-more">+{post.data.tags.length - 4}</span>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   <!-- Featured Section -->
   {featuredPosts.length > 0 && (
-    <section class="section reveal">
+    <section class="section reveal" data-search-hide>
       <h2 class="featured-heading">
         <span class="featured-icon">&#9733;</span>
         {blog.featuredSection.title}
@@ -134,9 +184,6 @@ if (import.meta.env.PROD) {
             class="featured-card reveal"
             style={`transition-delay: ${i * 0.1}s`}
             data-astro-reload
-            data-search-title={post.data.title}
-            data-search-desc={post.data.description}
-            data-search-tags={post.data.tags.join(",")}
           >
             <div class="featured-card-inner">
               <span class="featured-badge">{blog.featuredSection.title}</span>
@@ -160,7 +207,7 @@ if (import.meta.env.PROD) {
   )}
 
   <!-- Blog Section -->
-  <section class="section reveal">
+  <section class="section reveal" data-search-hide>
     {
       displayPosts.length === 0 ? (
         <p class="empty-msg">{blog.emptyMessage}</p>
@@ -172,9 +219,6 @@ if (import.meta.env.PROD) {
                 href={localeUrl(lang, `blog/${stripLocale(post.id)}/`)}
                 class="card blog-card"
                 data-astro-reload
-                data-search-title={post.data.title}
-                data-search-desc={post.data.description}
-                data-search-tags={post.data.tags.join(",")}
               >
                 {isDev && post.data.draft && <span class="draft-badge">{blog.draftBanner}</span>}
                 {isDev && !post.data.draft && post.data.date > new Date() && <span class="scheduled-badge">{blog.scheduledBanner}</span>}
@@ -213,7 +257,7 @@ if (import.meta.env.PROD) {
   <!-- Tech Blog (Qiita) Section -->
   {
     qiitaArticles.length > 0 && (
-      <section class="section reveal">
+      <section class="section reveal" data-search-hide>
         <h2>{blog.qiitaSection.title}</h2>
         <p class="section-subtitle">{blog.qiitaSection.subtitle}</p>
         <ul class="card-list">
@@ -262,35 +306,42 @@ if (import.meta.env.PROD) {
   }
 
   <!-- 投稿カレンダー（予約投稿含む全記事） -->
-  <BlogCalendar posts={postsAllDates} lang={lang} labels={blog.calendar} />
+  <div data-search-hide>
+    <BlogCalendar posts={postsAllDates} lang={lang} labels={blog.calendar} />
+  </div>
 
   <!--
     クライアントサイド検索（タイトル + description + タグ部分一致）。
-    JS 有効時のみ検索ボックス表示。data-search-* 属性を持つカードを動的フィルター。
+    JS 有効時のみ検索ボックス表示。検索結果セクション (#blogSearchResults) には全記事の
+    カードを埋め込んでおり、検索クエリ入力時は通常ビュー (data-search-hide) を隠して
+    検索結果セクションのみを表示する。
+    マッチ判定ロジックは src/utils/blog-search.ts と同等（テストはそちらで担保）。
     URL は変更しない（ブラウザ履歴を汚さず、SEO にも影響しない）。
   -->
-  <script
-    is:inline
-    data-result-template={blog.search.resultCountTemplate}
-  >
+  <script is:inline>
     function initBlogSearch() {
       var wrapper = document.getElementById("blogSearchWrapper");
       var input = document.getElementById("blogSearchInput");
       var clearBtn = document.getElementById("blogSearchClear");
       var status = document.getElementById("blogSearchStatus");
       var emptyMsg = document.getElementById("blogSearchEmpty");
-      if (!wrapper || !input || !clearBtn || !status || !emptyMsg) return;
+      var searchResults = document.getElementById("blogSearchResults");
+      if (!wrapper || !input || !clearBtn || !status || !emptyMsg || !searchResults) return;
+
+      // 多重初期化ガード（astro:after-swap で複数回呼ばれた場合の二重バインド防止）
+      if (wrapper.dataset.searchInitialized === "1") return;
+      wrapper.dataset.searchInitialized = "1";
 
       // JS 有効環境で検索ボックスを表示
       wrapper.hidden = false;
 
-      // 検索対象カード収集（featured + regular の両方）
-      var cards = Array.prototype.slice.call(
-        document.querySelectorAll("[data-search-title]"),
+      var normalSections = Array.prototype.slice.call(
+        document.querySelectorAll("[data-search-hide]"),
       );
-
-      var script = document.querySelector("script[data-result-template]");
-      var resultTemplate = script ? script.getAttribute("data-result-template") : "{count} hit(s)";
+      var searchCards = Array.prototype.slice.call(
+        searchResults.querySelectorAll("[data-search-title]"),
+      );
+      var resultTemplate = wrapper.getAttribute("data-result-template") || "{count}";
 
       function normalize(s) {
         return (s || "").toLowerCase().replace(/\s+/g, " ").trim();
@@ -298,25 +349,38 @@ if (import.meta.env.PROD) {
 
       function applyFilter(query) {
         var q = normalize(query);
+
         if (!q) {
-          cards.forEach(function (c) { c.style.display = ""; });
+          // クエリなし: 通常ビューを表示し、検索結果セクションは隠す
+          normalSections.forEach(function (s) { s.hidden = false; });
+          searchResults.hidden = true;
+          // 次回検索のためカードの display を初期化（前回の絞り込み結果を残さない）
+          searchCards.forEach(function (card) {
+            var container = card.closest(".card-item") || card;
+            container.style.display = "";
+          });
           status.hidden = true;
           emptyMsg.hidden = true;
           clearBtn.hidden = true;
           return;
         }
+
+        // クエリあり: 通常ビューを隠し、検索結果セクションを表示
         clearBtn.hidden = false;
+        normalSections.forEach(function (s) { s.hidden = true; });
+        searchResults.hidden = false;
+
         var hits = 0;
-        cards.forEach(function (card) {
+        searchCards.forEach(function (card) {
           var title = normalize(card.getAttribute("data-search-title"));
           var desc = normalize(card.getAttribute("data-search-desc"));
           var tags = normalize(card.getAttribute("data-search-tags"));
           var match = title.indexOf(q) >= 0 || desc.indexOf(q) >= 0 || tags.indexOf(q) >= 0;
-          // li.card-item または featured-card 自体を表示制御
           var container = card.closest(".card-item") || card;
           container.style.display = match ? "" : "none";
           if (match) hits++;
         });
+
         status.textContent = resultTemplate.replace("{count}", String(hits));
         status.hidden = false;
         emptyMsg.hidden = hits > 0;

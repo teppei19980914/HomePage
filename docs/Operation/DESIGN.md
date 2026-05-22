@@ -254,17 +254,22 @@ src/pages/[lang]/blog/tag/[tag].astro
 ```
 [ユーザー入力]
    ↓
-HTML 内 data-search-* 属性（title / description / tags）に対する部分一致
+全記事カードを埋め込んだ #blogSearchResults（既定 hidden）を表示モードに切替
+data-search-hide が付いた通常ビュー（ピックアップ / 直近 / Qiita / カレンダー）を hidden 化
    ↓
-カードを CSS display で表示/非表示（URL は変更しない）
+data-search-* 属性（title / description / tags）に対する部分一致でカードごとに display 制御
+マッチ判定ロジックは src/utils/blog-search.ts に純関数として切り出し（vitest で網羅）
    ↓
 ヒット件数を aria-live で通知（アクセシビリティ配慮）
+   ↓
+クリア時: 通常ビューを復元し、検索結果セクションを再び hidden 化
 ```
 
 **設計判断**:
 - 検索インデックスを別 JSON で配信せず、HTML の `data-*` 属性に埋め込み（追加 fetch なし、キャッシュ管理不要）
-- 約 50 記事 × 200 文字 = 10KB 程度の HTML 増加に収まる（gzip で半分以下）
+- index ページの表示制限（直近 5 件＋ピックアップ）に左右されず**全記事**を検索対象にするため、独立した `#blogSearchResults` セクションに全記事カードを埋め込む。HTML は約 12KB（gzip 後）増えるが、検索 UX を「期待通り」にする費用対効果は十分
 - 検索範囲は **タイトル + description + タグ** のみ（本文全文は除外）。スモールスタート方針
+- 0 件ヒット時は通常ビューも検索結果も非表示にし、空メッセージのみを示す（古いカードや見出しが残らないクリーンな UX）
 - 将来本文全文検索が必要になった場合は、`src/pages/blog-search-index.json.ts` を別途生成して遅延ロード方式に切り替え可能（既存 JS の構造はそのまま流用可能）
 
 ## 5. SEO 設計
