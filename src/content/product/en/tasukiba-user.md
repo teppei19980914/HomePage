@@ -114,6 +114,8 @@ Even with rewording or different phrasing, you can reach genuinely close informa
 
 Instead of "eyeball 100 results," you reach **"a handful of the closest matches is enough."**
 
+**For the moments when you want to actively search**: A 💬 floating button is always shown at the bottom-right of every screen. Type a natural-language query like "give me past cases where scope creep led to schedule overrun" and Tasukiba semantically searches **six asset types simultaneously** — projects, knowledge, risks, issues, retrospectives, and memos. The top few relevant matches are returned in seconds (Chat Semantic Search).
+
 ### Solution 3: A way to keep experience as structure
 
 For each frequent element of project operations — **risks / issues / retrospectives / knowledge** — we provide **structured record types**.
@@ -128,6 +130,7 @@ You can capture experience in a form that is **searchable, referenceable, and re
 |---|---|
 | **Proactive suggestions** | Even without searching, the information you need reaches you |
 | **Semantic search** | Different wording still gets you to genuinely close information |
+| **Chat semantic search** | A 💬 floating button on every screen — type a natural-language question and surface the top relevant assets across six types in seconds |
 | **Structured records** | Risks, issues, retrospectives, and knowledge are saved in a form you can actually reuse |
 | **Simple UI** | Same role, same position, same color, same label across screens. Intuitive without studying |
 | **User-led control** | Cancellation, plan change, and export are **done by you, without any back-and-forth with the operator** |
@@ -142,6 +145,7 @@ You can capture experience in a form that is **searchable, referenceable, and re
 | Gantt chart | Timeline view of schedule, progress, delays, milestones |
 | Risk / Issue management | Filing, state transitions, and CSV export |
 | Knowledge management | Knowledge entries with full-text and semantic search, plus visibility control |
+| Chat semantic search | Floating 💬 button on every screen. Natural-language queries semantically search projects, knowledge, risks, issues, retrospectives, and memos in one shot, returning the top few matches |
 | Retrospective | Wrap-ups, comments, and promotion into knowledge after project completion |
 | My Tasks | Personal task list with quick progress updates |
 | Comments / mentions | Conversation captured against each entity |
