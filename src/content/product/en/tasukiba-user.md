@@ -38,6 +38,45 @@ That knowledge **accumulates across every project you run**.
 
 ---
 
+## 💬 Pull past assets in natural language — Chat semantic search
+
+Proactive suggestions arrive **the moment you open a project**, but there are also moments when you need to **surface a past case mid-meeting** or **recall that one judgment rationale right now**.
+
+Tasukiba provides natural-language semantic search via a **💬 floating button that is always visible at the bottom-right of every screen**.
+
+**Just type something like this:**
+
+```
+What past cases ended in scope creep and schedule blow-up from accepting too many user requests?
+```
+
+And Tasukiba lines up semantically close matches from **six asset types — projects, knowledge, risks, issues, retrospectives, and memos** — within 0.3–0.5 seconds.
+
+```
+💡 5 related assets found
+
+▼ Strongly related (2)               ← Just look here first
+  ⚠️ Past risk: Workload explosion from multi-tier subcontracting (similarity 0.62)
+  📕 Knowledge: Scope-change decision checklist (similarity 0.55)
+
+▼ Possibly related (3)               ← If you have time
+  📋 Retrospective: 2025-Q3 e-commerce rebuild...
+  ...
+
+▶ Weakly related (12)                ← Just in case, collapsed by default
+```
+
+| | Full-text search (typical tools) | Chat semantic search (Tasukiba) |
+|---|---|---|
+| Input | Keywords | Natural language (with work context) |
+| Result count | 100+ hits, scroll everything | **Top few** are enough |
+| Wording drift | "workload" and "schedule slip" treated separately | **Linked by meaning** — both surface |
+| Cross-type | Search one asset type at a time | **Six asset types in one shot** |
+
+> Instead of "eyeball 100 results," you reach **"the top few are enough to decide."** Two complementary modes — "it reaches you" and "you ask for it" — structurally change how knowledge gets surfaced.
+
+---
+
 <details class="faq-item">
 <summary>Do any of these sound familiar?</summary>
 
