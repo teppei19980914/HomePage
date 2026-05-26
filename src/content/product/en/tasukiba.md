@@ -17,6 +17,27 @@ order: 3
 
 The name "Tasukiba (襷場)" comes from the place where one runner hands the relay baton (襷, *tasuki*) to the next. Tasukiba aims to be **the place where the person who ran one leg can reliably hand the baton of insight to the next**.
 
+## Meet the Mascot — "Tasuki Owl"
+
+<figure style="text-align: center; margin: 2rem auto;">
+  <img src="/HomePage/mascot-owl.png" alt="Tasuki Owl — a deep-navy owl holding a document under its wings, with a shield and keyhole on its chest and a soft circular barrier in the background" width="280" height="280" style="border-radius: 16px; max-width: 100%; height: auto;" />
+  <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--color-text-muted);">Tasuki Owl (たすきフクロウ)</figcaption>
+</figure>
+
+Tasukiba's official mascot is the **Tasuki Owl**. Owls have long been associated with **wisdom, memory, and watching over things even at night** — values that map directly to the three pillars Tasukiba cares about.
+
+- **Wisdom & memory** — Remember the insight you earned, and offer it back to whoever needs it now.
+- **Watching even at night** — Keep an eye on every project so nothing slips through the cracks.
+- **A guardian's calm presence** — Stand quietly between your knowledge and the rest of the world, keeping both safe.
+
+Every detail in the artwork carries meaning.
+
+- **Wings wrapped around a document** — The core promise: protect the knowledge, then pass the baton forward.
+- **Shield with a keyhole** — Tenant isolation, access control, and authentication that hold up for business use.
+- **Soft circular barrier in the background** — A protected space where your project can run with confidence.
+
+"Watch through the night. Protect what you know. Show it when it matters." The Tasuki Owl is the friendly shape of that promise, quietly there beside you as you work.
+
 ## Status & Roadmap
 
 - **2026-04-15**: All MVP phases complete
