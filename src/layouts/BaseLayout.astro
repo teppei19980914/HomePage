@@ -152,11 +152,23 @@ const jsonLd = ogType === "article"
       href={`${import.meta.env.BASE_URL}rss.xml`}
     />
 
+    <!--
+      公式マスコット「たすきフクロウ」(2026-05-27): 派生は scripts/generate-mascot-derivatives.cjs で生成。
+      旧 favicon.svg は廃止し、PNG ベースの favicon-32 + apple-touch-icon に統一。
+      ICO は legacy fallback として残置 (古い browser / Slack の crawler 等)。
+    -->
     <link
       rel="icon"
-      type="image/svg+xml"
-      href={`${import.meta.env.BASE_URL}favicon.svg`}
+      type="image/png"
+      sizes="32x32"
+      href={`${import.meta.env.BASE_URL}favicon-32.png`}
     />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={`${import.meta.env.BASE_URL}apple-touch-icon.png`}
+    />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="any" />
     <title>{siteTitle}</title>
     <ClientRouter />
 
