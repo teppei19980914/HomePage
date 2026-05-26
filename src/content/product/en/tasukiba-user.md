@@ -240,10 +240,11 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 |  | **Beginner**<br>Start free | **Expert**<br>Recommended | **Pro**<br>Most capable |
 |---|---|---|---|
-| **Price** | ¥0 | ¥5 / API call | ¥15 / API call |
+| **Price** | ¥0 | ¥10 / project create-or-update | ¥15 / project create-or-update + AI explanation |
 | **Seats** (invitable users) | up to 5 | unlimited | unlimited |
-| **Storage** | 20 MB (add-ons available) | 20 MB (add-ons available) | 20 MB (add-ons available) |
-| **Monthly API calls** | 100 / month (fixed cap) | unlimited | unlimited |
+| **Data capacity** | 50 MB free, then **¥50/GB/month** (per 1 GB tier) | same as left | same as left |
+| **Monthly project create/update** | 50 / month (fixed cap) | unlimited | unlimited |
+| **Knowledge input & chat search** | **all free** | **all free** | **all free** |
 | **API call cap setting** | — | **Set a monthly budget cap in JPY** | **Set a monthly budget cap in JPY** |
 | **LLM model** | Haiku | Haiku | Sonnet (with rich explanations) |
 | **Trial** | **90 days free** | — | — |
@@ -251,7 +252,9 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 > **What is a "seat"**: The number of users you can invite to your tenant (your organization). Beginner allows up to 5 invitees; Expert / Pro have no limit.
 >
-> **Storage add-ons**: If 20 MB isn't enough, additional plans (Plus / Pro Storage / Enterprise) are available as options. Please ask via [Contact](/HomePage/en/contact/).
+> **Usage-based data capacity (revised 2026-05-25)**: 50 MB is fully free. Above that, **¥50 per 1 GB per month** (e.g., 100 MB → ¥50, 1 GB → ¥50, 1.5 GB → ¥100). For technical safety, the hard cap per tenant is **50 GB** (for larger needs, please [contact us](/HomePage/en/contact/)).
+>
+> **Knowledge input & chat search are all free**: Creating/updating knowledge assets (Knowledge / RiskIssue / Retrospective / Memo) under a project, chat-based semantic search, and CSV import are **all free** (revised 2026-05-24). Charges only apply to "AI auto-tagging on project create/update" and "AI deep explanations (Pro only)".
 
 "Try it and decide for yourself whether it fits" — that's our basic posture.
 
@@ -355,6 +358,19 @@ If the connections that form here go beyond projects and into private friendship
 </details>
 
 <details class="faq-item">
+<summary>Official social media</summary>
+
+We also share the latest news, updates, and behind-the-scenes development notes on social media. We'd love it if you followed along.
+
+- [Instagram (@tasukiba)](https://www.instagram.com/tasukiba/?hl=ja)
+- [X / formerly Twitter (@tasukiba)](https://x.com/tasukiba)
+- [Facebook (Tasukiba)](https://www.facebook.com/tasukiba?locale=ja_JP)
+
+We use Discord for two-way, flat conversation, and social media for release announcements, feature updates, and development progress. Feel free to follow from whichever platform you already use day-to-day.
+
+</details>
+
+<details class="faq-item">
 <summary>FAQ</summary>
 
 Click a category title to expand the questions inside. Then click each question to expand the answer.
@@ -380,7 +396,7 @@ There are **three** main differences.
 
 | Difference | Expert | Pro |
 |---|---|---|
-| **Per-call price** | ¥5 | ¥15 (3×) |
+| **Per-project-update price** | ¥10 | ¥15 (1.5×) + ¥15 for "Why?" |
 | **Underlying AI** | Claude Haiku (light & fast) | Claude Sonnet (deep & smart) |
 | **"Why?" button** | — | ✅ Pro-only (see Q3) |
 
@@ -407,16 +423,16 @@ For each suggestion Tasukiba returns ("this looks related"), the "Why?" button a
 
 **Immediately.** From the **next API call** after the upgrade, the new price and AI model apply.
 
-Example: switching from Expert (Haiku, ¥5/call) to Pro (Sonnet, ¥15/call) → from the next operation onward, Sonnet runs and ¥15/call is counted.
+Example: switching from Expert (Haiku, ¥10/call) to Pro (Sonnet, ¥15/call) → from the next operation onward, Sonnet runs and ¥15/call is counted.
 
-If you switch mid-month, the month-end invoice shows a **period-by-period breakdown** (e.g., "Pro period ¥15 × 10 + Expert period ¥5 × 20 = ¥250").
+If you switch mid-month, the month-end invoice shows a **period-by-period breakdown** (e.g., "Pro period ¥15 × 10 + Expert period ¥10 × 20 = ¥350").
 
 </details>
 
 <details class="faq-item">
 <summary>Q5. When is a plan downgrade reflected?</summary>
 
-Also **immediately**. From the next operation after switching from Pro to Expert, **Haiku (light & fast AI)** and the **¥5/call** rate apply.
+Also **immediately**. From the next operation after switching from Pro to Expert, **Haiku (light & fast AI)** and the **¥10/call** rate apply.
 
 **Notes**:
 
@@ -591,7 +607,7 @@ Instead of "stop everything when the cap is hit," we switch into **a gentle "deg
 
 | Plan | Condition |
 |---|---|
-| Beginner | When the monthly call count hits the fixed cap (100/month) |
+| Beginner | When the monthly project create/update count hits the fixed cap (50/month) |
 | Expert / Pro | When the monthly charge hits the budget cap set by the tenant admin (**does not trigger if unset**) |
 
 **How is it lifted?**
