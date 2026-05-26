@@ -29,6 +29,19 @@ const languageLinks: { loc: Locale; label: string; href: string }[] = LOCALES.ma
 
 <header class="header">
   <nav class="nav">
+    <!-- ブランド: 公式マスコット「たすきフクロウ」+ サービス名 (2026-05-27) -->
+    <a href={localeUrl(locale, "")} class="brand" aria-label={t.nav.home}>
+      <img
+        src={`${import.meta.env.BASE_URL}mascot-owl.png`}
+        alt="たすきフクロウ"
+        width="32"
+        height="32"
+        class="brand-logo"
+        loading="eager"
+      />
+      <span class="brand-name">たすきば</span>
+    </a>
+
     <!-- ハンバーガーボタン（モバイル） -->
     <button
       id="menuToggle"
@@ -177,6 +190,35 @@ const languageLinks: { loc: Locale; label: string; href: string }[] = LOCALES.ma
     align-items: center;
     gap: 0.5rem;
     padding: 0 0.75rem;
+  }
+
+  /* ===== ブランド (ロゴ + サービス名) ===== */
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 1.05rem;
+    background-image: none;
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+  .brand:hover {
+    color: var(--color-primary);
+  }
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: block;
+  }
+  /* モバイルではサービス名を隠してアイコンのみ表示し横幅を節約 */
+  @media (max-width: 480px) {
+    .brand-name {
+      display: none;
+    }
   }
 
   /* ===== ハンバーガーボタン（モバイルのみ表示） ===== */
