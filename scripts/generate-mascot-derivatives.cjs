@@ -44,19 +44,19 @@ async function main() {
 
   // 1) 汎用 512x512 (Header / hero)
   await writePng(
-    await sharp(srcBuf).resize(512, 512, { fit: 'cover' }).png({ quality: 90, compressionLevel: 9 }).toBuffer(),
+    await sharp(srcBuf).resize(512, 512, { fit: 'cover' }).png({ palette: false, compressionLevel: 9 }).toBuffer(),
     path.join(ROOT, 'public/mascot-owl.png'),
   );
 
   // 2) Favicon — PNG 32x32 (modern browsers サポート)
   await writePng(
-    await sharp(srcBuf).resize(32, 32, { fit: 'cover' }).png({ quality: 90, compressionLevel: 9 }).toBuffer(),
+    await sharp(srcBuf).resize(32, 32, { fit: 'cover' }).png({ palette: false, compressionLevel: 9 }).toBuffer(),
     path.join(ROOT, 'public/favicon-32.png'),
   );
 
   // 3) Apple touch icon 180x180
   await writePng(
-    await sharp(srcBuf).resize(180, 180, { fit: 'cover' }).png({ quality: 90, compressionLevel: 9 }).toBuffer(),
+    await sharp(srcBuf).resize(180, 180, { fit: 'cover' }).png({ palette: false, compressionLevel: 9 }).toBuffer(),
     path.join(ROOT, 'public/apple-touch-icon.png'),
   );
 
@@ -88,7 +88,7 @@ async function main() {
       { input: logoBuf, top: 35, left: 35 },
       { input: ogSvg, top: 0, left: 0 },
     ])
-    .png({ quality: 90, compressionLevel: 9 })
+    .png({ palette: false, compressionLevel: 9 })
     .toBuffer();
   await writePng(og, path.join(ROOT, 'public/og-image.png'));
 
