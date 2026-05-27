@@ -71,7 +71,7 @@ To be honest: Tasukiba is currently developed by **Suyama alone** — a small pr
 | Developers | 1 (Suyama) — you could be the 2nd |
 | Automated tests | 141+ (Vitest + Playwright) |
 | Security score | 90/100 enforced in CI |
-| Operating cost | **$0/mo** (Vercel Hobby + Supabase Free) |
+| Operating cost | **~$9/mo** (Netlify Personal $9/seat + Supabase Free + LLM/Voyage usage) |
 | Source code | **Public repository**: [BusinessManagementPlatform](https://github.com/teppei19980914/BusinessManagementPlatform) |
 | Release plan | General release: 2026-06-01 (code is already Public — feel free to look ahead) |
 
@@ -273,12 +273,12 @@ For reference, here is the technology Tasukiba currently uses.
 
 | Layer | Service | Plan | Monthly |
 |---|---|---|---|
-| Hosting | **Vercel** | Hobby | $0 |
+| Hosting | **Netlify** | Personal | **$9** |
 | DB | **Supabase** (PostgreSQL 15, via pooler) | Free 500MB | $0 |
 | Email | **Brevo** | Free 300/day | $0 |
-| CI/CD | **GitHub Actions** | Free tier 2,000 min/mo | $0 |
+| CI/CD | **GitHub Actions** | Unlimited & free for public repos | $0 |
 
-> The MVP is designed to run at **$0/month**. Vercel auto-deploys on git push. Supabase is sometimes called "the PostgreSQL version of Firebase." Email is wrapped in a MailProvider interface — Brevo / Resend / console / inbox (E2E) switch via env vars.
+> The MVP is designed to run at **~$9/month** (Netlify Personal) plus LLM/Voyage usage-based fees. Netlify auto-deploys on git push. Supabase is sometimes called "the PostgreSQL version of Firebase." Email is wrapped in a MailProvider interface — Brevo / Resend / console / inbox (E2E) switch via env vars.
 
 </details>
 
@@ -329,7 +329,7 @@ For reference, here is the technology Tasukiba currently uses.
 ```
 Browser
   ↓ HTTPS
-Vercel (Next.js)
+Netlify (Next.js)
   ├─ Middleware (auth / RBAC)
   ├─ Route Handlers / Server Actions
   ├─ Service Layer  ← business logic lives here
