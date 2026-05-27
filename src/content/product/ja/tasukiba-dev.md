@@ -71,7 +71,7 @@ audience: "developer"
 | 開発者数 | 1 名（須山）— あなたが 2 人目になり得ます |
 | 自動テスト | 141 件超（Vitest + Playwright） |
 | セキュリティスコア | 90/100 を CI で強制 |
-| 運用コスト | 月額 **$0**（Vercel Hobby + Supabase Free） |
+| 運用コスト | 月額 **約 $9**（Netlify Personal $9/seat + Supabase Free + 従量 LLM / Voyage） |
 | ソースコード | **Public リポジトリ**: [BusinessManagementPlatform](https://github.com/teppei19980914/BusinessManagementPlatform) |
 | 公開状態 | 2026 年 6 月 1 日 正式リリース予定（コードは先行して Public 化済み） |
 
@@ -273,12 +273,12 @@ audience: "developer"
 
 | レイヤー | サービス | プラン | 月額 |
 |---|---|---|---|
-| ホスティング | **Vercel** | Hobby | $0 |
+| ホスティング | **Netlify** | Personal | **$9** |
 | DB | **Supabase** (PostgreSQL 15, pooler 経由) | Free 500MB | $0 |
 | メール送信 | **Brevo** | Free 300 通/日 | $0 |
-| CI/CD | **GitHub Actions** | 無料枠 2,000 分/月 | $0 |
+| CI/CD | **GitHub Actions** | Public リポは無制限・無料 | $0 |
 
-> 総額 **$0/月** で MVP を運用する設計です。Vercel は git push したら自動でデプロイされる仕組みが標準装備。Supabase は「Firebase の PostgreSQL 版」と呼ばれる無料 BaaS です。メール送信は MailProvider インターフェース化されており、Brevo / Resend / console / inbox（E2E 用）を環境変数で切り替えできます。
+> 総額 **約 $9/月**（Netlify Personal 課金分）+ LLM / Voyage の従量で運用する設計です。Netlify は git push したら自動でデプロイされる仕組みが標準装備。Supabase は「Firebase の PostgreSQL 版」と呼ばれる無料 BaaS です。メール送信は MailProvider インターフェース化されており、Brevo / Resend / console / inbox（E2E 用）を環境変数で切り替えできます。
 
 </details>
 
@@ -329,7 +329,7 @@ audience: "developer"
 ```
 Browser
   ↓ HTTPS
-Vercel (Next.js)
+Netlify (Next.js)
   ├─ Middleware (認証・RBAC)
   ├─ Route Handlers / Server Actions
   ├─ Service Layer  ← ビジネスロジックはここに集約
