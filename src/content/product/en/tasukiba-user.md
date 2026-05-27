@@ -240,21 +240,25 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 |  | **Beginner**<br>Start free | **Expert**<br>Recommended | **Pro**<br>Most capable |
 |---|---|---|---|
-| **Price** | ¥0 | ¥10 / project create-or-update | ¥15 / project create-or-update + AI explanation |
+| **Price** | ¥0 | ¥10 / project create-or-update<br>+ ¥1 / Embedding business operation | ¥15 / project create-or-update + AI explanation<br>+ ¥1 / Embedding business operation |
 | **Seats** (invitable users) | up to 5 | unlimited | unlimited |
 | **Data capacity** | 50 MB free, then **¥50/GB/month** (per 1 GB tier) | same as left | same as left |
 | **Monthly project create/update** | 50 / month (fixed cap) | unlimited | unlimited |
-| **Knowledge input & chat search** | **all free** | **all free** | **all free** |
+| **Knowledge input & chat search** | **all free / unlimited** | **¥1 / business operation** (from 2026-06-01) | **¥1 / business operation** (from 2026-06-01) |
 | **API call cap setting** | — | **Set a monthly budget cap in JPY** | **Set a monthly budget cap in JPY** |
 | **LLM model** | Haiku | Haiku | Sonnet (with rich explanations) |
-| **Trial** | **90 days free** | — | — |
+| **Trial** | **90 days fully free** | — | — |
 | **Best fit** | Individuals and small teams who want to try | Individuals and teams in real operation | Users who prioritize the quality of judgment most |
 
 > **What is a "seat"**: The number of users you can invite to your tenant (your organization). Beginner allows up to 5 invitees; Expert / Pro have no limit.
 >
 > **Usage-based data capacity (revised 2026-05-25)**: 50 MB is fully free. Above that, **¥50 per 1 GB per month** (e.g., 100 MB → ¥50, 1 GB → ¥50, 1.5 GB → ¥100). For technical safety, the hard cap per tenant is **50 GB** (for larger needs, please [contact us](/HomePage/en/contact/)).
 >
-> **Knowledge input & chat search are all free**: Creating/updating knowledge assets (Knowledge / RiskIssue / Retrospective / Memo) under a project, chat-based semantic search, and CSV import are **all free** (revised 2026-05-24). Charges only apply to "AI auto-tagging on project create/update" and "AI deep explanations (Pro only)".
+> **★ Beginner "Knowledge input & chat search are all free" ★ (revised 2026-06-01 ADR-0022)**: Beginner plan continues to offer creating/updating knowledge assets (Knowledge / RiskIssue / Retrospective / Memo), chat-based semantic search, CSV import, and attachment file body embedding — **all free / unlimited** (preserving the "90-day fully free" promise).
+>
+> **Expert / Pro Embedding charges (from 2026-06-01 ADR-0022)**: On Expert / Pro plans, knowledge asset input, chat search, and attachment file body embedding are **¥1 per business operation**. CSV bulk import is aggregated as "1 import operation = ¥1" (e.g., a 100-row CSV import is still ¥1). The monthly cron's automatic recovery of failed embeddings stays free on all plans (avoiding "unjust charges" for user-non-initiated repair operations).
+>
+> **What gets charged**: AI auto-tagging on project create/update (Beginner free up to 50/mo, Expert ¥10, Pro ¥15), the "Why?" feature (Pro-only ¥15), Embedding business operations (Beginner free, Expert/Pro ¥1), data capacity overage (¥50/GB), and file storage overage (¥10/GB).
 
 "Try it and decide for yourself whether it fits" — that's our basic posture.
 
