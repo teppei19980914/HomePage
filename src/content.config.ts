@@ -26,7 +26,7 @@ const product = defineCollection({
     status: z.enum(["active", "beta", "archived", "suspended"]).default("active"),
     order: z.number().default(0),
     parent: z.string().optional(),
-    audience: z.enum(["user", "developer"]).optional(),
+    audience: z.enum(["user", "firstLogin", "developer"]).optional(),
   }),
 });
 

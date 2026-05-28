@@ -7,7 +7,7 @@ tags: ["first login", "sign-up", "setup guide", "tenant admin", "onboarding"]
 status: beta
 order: 33
 parent: "tasukiba"
-audience: "user"
+audience: "firstLogin"
 ---
 
 ## About this page

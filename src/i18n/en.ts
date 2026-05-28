@@ -401,6 +401,7 @@ export const en: Labels = {
     subPagesIntro: "This product page is split based on what you want to read.",
     audienceLabels: {
       user: "If you're curious about the app",
+      firstLogin: "If you need help with first-time login",
       developer: "If you might join the dev team",
     },
   },

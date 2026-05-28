@@ -751,12 +751,26 @@ const childProducts = allProducts
     color: #c4b5fd;
   }
 
+  .audience-firstLogin {
+    background-color: rgba(8, 145, 178, 0.12);
+    color: #0891b2;
+  }
+
+  :global(.dark) .audience-firstLogin {
+    background-color: rgba(34, 211, 238, 0.18);
+    color: #67e8f9;
+  }
+
   .sub-page-card-user:hover {
     border-color: #3b82f6;
   }
 
   .sub-page-card-developer:hover {
     border-color: #8b5cf6;
+  }
+
+  .sub-page-card-firstLogin:hover {
+    border-color: #0891b2;
   }
 
   .sub-page-card h3 {
