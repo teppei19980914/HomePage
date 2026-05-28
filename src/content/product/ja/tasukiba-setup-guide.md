@@ -7,7 +7,7 @@ tags: ["初回ログイン", "サインアップ", "セットアップガイド"
 status: beta
 order: 33
 parent: "tasukiba"
-audience: "user"
+audience: "firstLogin"
 ---
 
 **たすきばの製品ページは、[こちら](https://teppei19980914.github.io/HomePage/ja/product/tasukiba-user/)をご参照ください。**  

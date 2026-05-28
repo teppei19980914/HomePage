@@ -313,6 +313,7 @@ export const ja = {
     subPagesIntro: "このプロダクトのページは、読みたい内容に合わせて分かれています。",
     audienceLabels: {
       user: "アプリが気になっている方へ",
+      firstLogin: "初回ログイン方法が知りたい方へ",
       developer: "開発メンバーに加わってみたい方へ",
     },
   },
