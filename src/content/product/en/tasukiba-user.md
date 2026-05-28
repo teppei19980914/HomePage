@@ -44,27 +44,9 @@ Proactive suggestions arrive **the moment you open a project**, but there are al
 
 Tasukiba provides natural-language semantic search via a **💬 floating button that is always visible at the bottom-right of every screen**.
 
-**Just type something like this:**
+![Tasukiba chat semantic search screen — a natural-language question surfaces related knowledge across six asset types](/HomePage/products/tasukiba/chat.png)
 
-```
-What past cases ended in scope creep and schedule blow-up from accepting too many user requests?
-```
-
-And Tasukiba lines up semantically close matches from **six asset types — projects, knowledge, risks, issues, retrospectives, and memos** — within 0.3–0.5 seconds.
-
-```
-💡 5 related assets found
-
-▼ Strongly related (2)               ← Just look here first
-  ⚠️ Past risk: Workload explosion from multi-tier subcontracting (similarity 0.62)
-  📕 Knowledge: Scope-change decision checklist (similarity 0.55)
-
-▼ Possibly related (3)               ← If you have time
-  📋 Retrospective: 2025-Q3 e-commerce rebuild...
-  ...
-
-▶ Weakly related (12)                ← Just in case, collapsed by default
-```
+> Just type a natural-language question into the 💬 button at the bottom-right of every screen. Tasukiba lines up semantically close matches from **six asset types — projects, knowledge, risks, issues, retrospectives, and memos** — in 0.3–0.5 seconds, grouped into **Strongly related / Possibly related / Weakly related**.
 
 | | Full-text search (typical tools) | Chat semantic search (Tasukiba) |
 |---|---|---|

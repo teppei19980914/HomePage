@@ -104,6 +104,14 @@ Tasukiba isn't officially released yet. On the product page it shows as **"in de
 
 Looking forward to the official release in June 2026. If you've ever lost a colleague mid-project and felt your team's "history" walk out the door with them, I'd love to hear how you've handled it.
 
+## Continued in a series
+
+After this trial-run post, I started a deeper series on building Tasukiba — covering the origin philosophy, the suggestion engine, billing, community, the roadmap, and the six-month retrospective. Suggested entry points:
+
+- [An hour a day was evaporating — why I built Tasukiba](/HomePage/en/blog/20260526-tasukiba-why-i-made-it/) — series part 1, the original problem statement
+- [Release announcement — Tasukiba Knowledge Relay launches June 1, 2026](/HomePage/en/blog/20260601-tasukiba-release-knowledge-relay/) — the official launch post
+- [Six months to a SaaS — a solo-development retrospective](/HomePage/en/blog/20260614-tasukiba-6-month-retrospective/) — closing post of the series's first half
+
 ## Related posts
 
 - [From "Yumelog" to "YumeHashi" — building a bridge between dreams and reality](/HomePage/en/blog/20260408-yumehashi-story/) — philosophy of my first personal product

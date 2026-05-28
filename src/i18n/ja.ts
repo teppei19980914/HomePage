@@ -444,4 +444,11 @@ export const ja = {
     copied: "コピーしました！",
   },
 
+  // --- 画像ライトボックス（記事内の画像クリックで拡大表示） ---
+  lightbox: {
+    openLabel: "画像を拡大表示",
+    closeLabel: "閉じる",
+    dialogLabel: "画像プレビュー",
+  },
+
 };

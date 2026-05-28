@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ImageLightbox from "../../../components/ImageLightbox.astro";
 import { render } from "astro:content";
 import { getLabels, normalizeLocale, BCP47, LOCALES } from "../../../i18n";
 import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
@@ -25,7 +26,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const lang = normalizeLocale(Astro.params.lang);
 const t = getLabels(lang);
-const { common, share, blog, readingTime: readingTimeLabel } = t;
+const { common, share, blog, readingTime: readingTimeLabel, lightbox } = t;
 const readingMin = estimateReadingTime(post.body ?? "");
 const { Content } = await render(post);
 // dev 環境でのみ下書き/予約投稿バナーを表示（本番では表示しない）
@@ -164,6 +165,8 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
   <nav class="back reveal">
     <a href="#" onclick="history.back(); return false;">&larr; {common.backLink}</a>
   </nav>
+
+  <ImageLightbox labels={lightbox} />
 
   <script is:inline>
     // コピーボタン共通ハンドラ
@@ -408,21 +411,26 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
     :global(main) { max-width: 1200px; }
   }
 
-  /* ===== 画面幅 1620px 未満：サイドバー目次は出さず、先頭の折りたたみ目次のみ表示 ===== */
-  @media (max-width: 1619px) {
+  /* ===== 画面幅 1720px 未満：サイドバー目次は出さず、先頭の折りたたみ目次のみ表示 =====
+     ブレイクポイント設計: 1620px 時点では main 右端(1410px) と TOC 左端(1236px)が重なるため、
+     main(max 1080px 中央寄せ) と TOC(280px) が重ならない 1720px に閾値を引き上げる。 */
+  @media (max-width: 1719px) {
     .blog-layout { flex-direction: column; }
     .toc-sidebar { display: none; }
   }
 
-  /* ===== 画面幅 1620px 以上：目次を画面右上に常時固定 ===== */
-  @media (min-width: 1620px) {
+  /* ===== 画面幅 1720px 以上：目次を画面右上に常時固定 =====
+     重なり防止のため main の最大幅を 1080px に縮め、 TOC は 280px 幅で右に固定。
+     1720px 時点で main 右端 1400px / TOC 左端 1416px、 16px の余白で衝突しない。 */
+  @media (min-width: 1720px) {
     .toc-mobile { display: none; }
+    :global(main) { max-width: 1080px; }
     .toc-sidebar {
       display: block;
       position: fixed;
       top: 90px;
       right: 24px;
-      width: 360px;
+      width: 280px;
       max-height: calc(100vh - 110px);
       overflow-y: auto;
       z-index: 10;

@@ -1,0 +1,243 @@
+---
+/**
+ * ImageLightbox — 記事本文（.content）内の <img> をクリック / タップで拡大表示する。
+ *
+ * 仕様:
+ * - .content img を対象に zoom-in カーソル + クリックハンドラを付与
+ * - クリック時にオーバーレイ全画面表示 (背景: 半透明黒、画像は max 95vw / 95vh で fit)
+ * - 閉じる手段: 閉じるボタン / 背景クリック / Esc キー
+ * - 既に <a> で包まれた画像はリンク遷移を優先するため対象外
+ * - data-no-lightbox 属性で個別に除外可能
+ * - ClientRouter (SPA 遷移) に対応するため astro:after-swap で再初期化
+ * - prefers-reduced-motion 環境ではフェードアニメーションを無効化
+ *
+ * Props:
+ *   labels: { openLabel, closeLabel, dialogLabel } — i18n 経由で渡す
+ */
+import type { Labels } from "../i18n/types";
+
+interface Props {
+  labels: Labels["lightbox"];
+}
+
+const { labels } = Astro.props;
+---
+
+<div
+  id="imgLightbox"
+  class="img-lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label={labels.dialogLabel}
+  aria-hidden="true"
+  hidden
+>
+  <button
+    type="button"
+    class="img-lightbox-close"
+    aria-label={labels.closeLabel}
+    data-img-lightbox-close
+  >&times;</button>
+  <figure class="img-lightbox-figure">
+    <img class="img-lightbox-img" alt="" />
+    <figcaption class="img-lightbox-caption"></figcaption>
+  </figure>
+</div>
+
+<script
+  is:inline
+  data-lightbox-open-label={labels.openLabel}
+>
+  (function () {
+    function initImageLightbox() {
+      var overlay = document.getElementById("imgLightbox");
+      if (!overlay) return;
+
+      var openLabel =
+        document.querySelector("script[data-lightbox-open-label]")?.getAttribute(
+          "data-lightbox-open-label",
+        ) || "";
+      var imgEl = overlay.querySelector(".img-lightbox-img");
+      var captionEl = overlay.querySelector(".img-lightbox-caption");
+      var closeBtn = overlay.querySelector("[data-img-lightbox-close]");
+      if (!imgEl || !captionEl || !closeBtn) return;
+
+      var lastFocused = null;
+
+      function open(src, alt) {
+        imgEl.setAttribute("src", src);
+        imgEl.setAttribute("alt", alt || "");
+        captionEl.textContent = alt || "";
+        captionEl.style.display = alt ? "block" : "none";
+        overlay.hidden = false;
+        overlay.setAttribute("aria-hidden", "false");
+        // 次フレームでクラス付与してフェードイン
+        requestAnimationFrame(function () {
+          overlay.classList.add("is-open");
+        });
+        document.body.style.overflow = "hidden";
+        lastFocused = document.activeElement;
+        closeBtn.focus();
+      }
+
+      function close() {
+        overlay.classList.remove("is-open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        // フェードアウト完了後に hidden 化（CSS の transition と整合）
+        setTimeout(function () {
+          if (!overlay.classList.contains("is-open")) {
+            overlay.hidden = true;
+            imgEl.setAttribute("src", "");
+          }
+        }, 200);
+        if (lastFocused && typeof lastFocused.focus === "function") {
+          try {
+            lastFocused.focus();
+          } catch (_) {
+            // 要素が消えていれば無視
+          }
+        }
+      }
+
+      // 記事本文の img に拡大トリガを付与（リンク内 img と data-no-lightbox は除外）
+      var imgs = document.querySelectorAll(".content img");
+      imgs.forEach(function (img) {
+        if (!img.getAttribute("src")) return;
+        if (img.hasAttribute("data-no-lightbox")) return;
+        var parent = img.parentElement;
+        if (parent && parent.tagName === "A") return;
+        // 二重初期化防止
+        if (img.dataset.lightboxBound === "1") return;
+        img.dataset.lightboxBound = "1";
+        img.style.cursor = "zoom-in";
+        img.setAttribute("role", "button");
+        img.setAttribute("tabindex", "0");
+        if (openLabel && !img.getAttribute("aria-label")) {
+          img.setAttribute("aria-label", openLabel);
+        }
+        img.addEventListener("click", function () {
+          open(img.getAttribute("src") || "", img.getAttribute("alt") || "");
+        });
+        img.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            open(img.getAttribute("src") || "", img.getAttribute("alt") || "");
+          }
+        });
+      });
+
+      // 一度だけ overlay 側のイベントを結線
+      if (!overlay.dataset.lightboxBound) {
+        overlay.dataset.lightboxBound = "1";
+        closeBtn.addEventListener("click", close);
+        overlay.addEventListener("click", function (e) {
+          // 背景（overlay 本体）クリックで閉じる。画像 / 閉じるボタンは伝播停止。
+          if (e.target === overlay) close();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && overlay.classList.contains("is-open")) {
+            close();
+          }
+        });
+      }
+    }
+    initImageLightbox();
+    document.addEventListener("astro:after-swap", initImageLightbox);
+  })();
+</script>
+
+<style is:global>
+  /* ===== 記事本文の画像クリック誘導 ===== */
+  .content img {
+    cursor: zoom-in;
+  }
+  .content a img {
+    cursor: pointer;
+  }
+  .content img[data-no-lightbox] {
+    cursor: default;
+  }
+
+  /* ===== オーバーレイ本体 =====
+     注意: `display: flex` を base に書くと HTML 標準の `hidden` 属性 (= display: none)
+     を上書きしてしまい、非表示時もオーバーレイが画面全体を覆ってクリックを横取りする。
+     base は明示的に `display: none` とし、`hidden` 属性が外れた時のみ flex で表示する。 */
+  .img-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 2rem 1rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .img-lightbox:not([hidden]) {
+    display: flex;
+  }
+  .img-lightbox.is-open {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .img-lightbox {
+      transition: none;
+    }
+  }
+
+  .img-lightbox-figure {
+    margin: 0;
+    max-width: 95vw;
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .img-lightbox-img {
+    max-width: 95vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+  }
+  .img-lightbox-caption {
+    color: #fff;
+    font-size: 0.85rem;
+    text-align: center;
+    max-width: 90vw;
+    line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+
+  .img-lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: none;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  .img-lightbox-close:hover,
+  .img-lightbox-close:focus-visible {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    outline: none;
+  }
+</style>

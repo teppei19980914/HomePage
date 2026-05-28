@@ -317,6 +317,13 @@ export const en: Labels = {
     copied: "Copied!",
   },
 
+  // --- Image lightbox (click an image in an article to enlarge) ---
+  lightbox: {
+    openLabel: "Enlarge image",
+    closeLabel: "Close",
+    dialogLabel: "Image preview",
+  },
+
   // --- Blog page ---
   blog: {
     title: "Blog",

@@ -162,6 +162,7 @@ BaseLayout.astro
 | `Footer.astro` | コピーライト |
 | `CareerGraph.astro` | SVG の Git ブランチ風キャリアグラフ（locale 対応） |
 | `BlogCalendar.astro` | 月別投稿カレンダー（JST 基準で日付計算） |
+| `ImageLightbox.astro` | 記事本文 `.content img` をクリック / タップで全画面拡大表示（blog 詳細 / product 詳細で使用）。リンク内画像と `data-no-lightbox` 属性付き画像は対象外。判定ロジックは `src/utils/image-lightbox.ts` に切り出し vitest で検証 |
 
 ### 3.3 ページ ↔ コンポーネント依存
 
@@ -176,10 +177,10 @@ src/pages/[lang]/             → BaseLayout を使う多言語ページ
    ├── blog/
    │   ├── index.astro        → BaseLayout, BlogCalendar
    │   ├── all.astro          → BaseLayout
-   │   └── [...slug].astro    → BaseLayout（ogType="article"）
+   │   └── [...slug].astro    → BaseLayout, ImageLightbox（ogType="article"）
    ├── product/
    │   ├── index.astro        → BaseLayout
-   │   └── [...slug].astro    → BaseLayout
+   │   └── [...slug].astro    → BaseLayout, ImageLightbox
    └── project/
        ├── index.astro        → BaseLayout
        ├── all.astro          → BaseLayout

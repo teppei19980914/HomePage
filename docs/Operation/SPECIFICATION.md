@@ -164,6 +164,7 @@ SVG 手書きの Git ブランチ風グラフ:
 - 一覧: `order` 昇順で表示。ステータスバッジ（Active/Beta/Archived/Suspended）
 - 詳細: frontmatter + Markdown 本文。「体験する →」「GitHub」ボタン（任意）
 - `status: "suspended"` のとき: 詳細ページに「新規受付停止中」のお知らせバナーを表示し、「体験する」ボタンを非活性表示（クリック不可）に置換。GitHub ボタンは引き続き利用可能
+- **画像ライトボックス**: 本文 `.content` 内の `<img>` をクリック / タップで全画面拡大表示（`ImageLightbox.astro`）。閉じる手段は ✕ ボタン / 背景クリック / Esc キー。リンクで包まれた画像 (`<a><img>`) と `data-no-lightbox` 属性付き画像は対象外
 
 ### 1.6 Project（project/）
 
@@ -200,6 +201,7 @@ SVG 手書きの Git ブランチ風グラフ:
 - `ogType="article"` で Article スキーマ適用、`article:published_time` メタタグ付与
 - 記事メタの**タグはクリック可能なリンク**（`/{lang}/blog/tag/{slug}/`）
 - Markdown 内の外部リンクは `rehype-external-links` で `target="_blank" rel="noopener noreferrer"` を自動付与
+- **画像ライトボックス**: 本文 `.content` 内の `<img>` をクリック / タップで全画面拡大表示（`ImageLightbox.astro`）。閉じる手段は ✕ ボタン / 背景クリック / Esc キー。リンクで包まれた画像 (`<a><img>`) と `data-no-lightbox` 属性付き画像は対象外
 - 未来日付（`date` が今日より後）の記事は本番ビルドで個別ページ非生成（`isPublished` フィルタ）。dev では常に表示
 
 #### 1.7.4 タグ別ページ（`/{lang}/blog/tag/{tag-slug}/`）
