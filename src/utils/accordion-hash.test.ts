@@ -8,12 +8,15 @@ import { fileURLToPath } from "node:url";
 // 利用規約 (#terms) / 特商法 (#tokushoho) 等への直接リンクで、
 // 対象アコーディオンが「開いた状態」で表示されることを保証する。
 // この振る舞いは [...slug].astro の openHashAccordion が担う。
+//
+// 注意: テストは src/pages/ 配下に置かないこと。Astro が src/pages/*.ts を
+//   ルートとして扱い、ビルド時に実行してデプロイを壊すため (本テストは src/utils/ に配置)。
 // ============================================================
 
 const read = (rel: string) =>
   readFileSync(fileURLToPath(new URL(rel, import.meta.url)), "utf-8");
 
-const slugPage = read("./[lang]/product/[...slug].astro");
+const slugPage = read("../pages/[lang]/product/[...slug].astro");
 const userJa = read("../content/product/ja/tasukiba-user.md");
 const userEn = read("../content/product/en/tasukiba-user.md");
 
