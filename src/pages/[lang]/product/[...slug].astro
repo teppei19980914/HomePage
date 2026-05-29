@@ -284,7 +284,44 @@ const childProducts = allProducts
       }
     }
     initProductToc();
-    document.addEventListener("astro:after-swap", initProductToc);
+
+    // ===== URL ハッシュで指定された details アコーディオンを開く =====
+    // 例: .../product/tasukiba-user/#terms で利用規約アコーディオンを開いた状態にする。
+    // ネストした faq-category > faq-item にも対応するため祖先 details も併せて開く。
+    function openHashAccordion() {
+      var hash = location.hash;
+      if (!hash || hash.length < 2) return;
+      var id;
+      try {
+        id = decodeURIComponent(hash.slice(1));
+      } catch (e) {
+        id = hash.slice(1);
+      }
+      var target = document.getElementById(id);
+      if (!target) return;
+      // target 自身が details でなければ、内包する直近の details を対象にする
+      var el = target.tagName === "DETAILS"
+        ? target
+        : (target.closest ? target.closest("details") : null);
+      if (!el) return;
+      // 対象とその祖先の details をすべて開く
+      var node = el;
+      while (node && node.tagName === "DETAILS") {
+        node.open = true;
+        node = node.parentElement ? node.parentElement.closest("details") : null;
+      }
+      // 開いた後に正しい位置へスクロール（閉じた状態での誤ったジャンプを補正）
+      if (target.scrollIntoView) {
+        target.scrollIntoView({ behavior: "auto", block: "start" });
+      }
+    }
+    openHashAccordion();
+    window.addEventListener("hashchange", openHashAccordion);
+
+    document.addEventListener("astro:after-swap", function () {
+      initProductToc();
+      openHashAccordion();
+    });
   </script>
 </BaseLayout>
 

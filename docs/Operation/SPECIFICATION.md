@@ -165,6 +165,7 @@ SVG 手書きの Git ブランチ風グラフ:
 - 詳細: frontmatter + Markdown 本文。「体験する →」「GitHub」ボタン（任意）
 - `status: "suspended"` のとき: 詳細ページに「新規受付停止中」のお知らせバナーを表示し、「体験する」ボタンを非活性表示（クリック不可）に置換。GitHub ボタンは引き続き利用可能
 - **画像ライトボックス**: 本文 `.content` 内の `<img>` をクリック / タップで全画面拡大表示（`ImageLightbox.astro`）。閉じる手段は ✕ ボタン / 背景クリック / Esc キー。リンクで包まれた画像 (`<a><img>`) と `data-no-lightbox` 属性付き画像は対象外
+- **アコーディオン（`<details>`）のディープリンク**: 本文中の `<details id="...">` に対し、URL ハッシュ（例 `#terms` / `#tokushoho`）で直接リンクすると、`[...slug].astro` の `openHashAccordion` が対象アコーディオン（およびネストした祖先 `<details>`）を `open` 状態にし、その位置までスクロールする。初期表示・`hashchange`・`astro:after-swap`（ClientRouter 遷移）の各タイミングで発火。利用規約 (`#terms`) / 特定商取引法表記 (`#tokushoho`) などへの直接リンク用途
 
 ### 1.6 Project（project/）
 
