@@ -36,7 +36,6 @@ const { site, common } = t;
 const description = descriptionOverride ?? site.defaultDescription;
 const siteTitle = `${title} | ${site.titleSuffix}`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const ogImageUrl = new URL(`${import.meta.env.BASE_URL}og-image.png`, Astro.site).toString();
 
 // ===== hreflang 用の代替 URL 生成 =====
 // 現在のパスから言語プレフィックスを剥がして「ニュートラルパス」を得る
@@ -121,18 +120,16 @@ const jsonLd = ogType === "article"
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:locale" content={ogLocale} />
     {ogLocaleAlternates.map((alt) => (
       <meta property="og:locale:alternate" content={alt} />
     ))}
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Twitter Card: 画像を持たないため summary（テキストのみ） -->
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
 
     {publishedDate && (
       <meta property="article:published_time" content={publishedDate} />
@@ -153,22 +150,10 @@ const jsonLd = ogType === "article"
     />
 
     <!--
-      公式マスコット「たすきフクロウ」(2026-05-27): 派生は scripts/generate-mascot-derivatives.cjs で生成。
-      旧 favicon.svg は廃止し、PNG ベースの favicon-32 + apple-touch-icon に統一。
-      ICO は legacy fallback として残置 (古い browser / Slack の crawler 等)。
+      ファビコン/OG 画像は意図的に未設定 (2026-05-29):
+      たすきば製品マスコット「たすきフクロウ」は個人ホームページのアイコンとして不適切なため撤去。
+      たすきば紹介ページ/記事本文内の画像 (public/mascot-owl.png) はコンテンツとして維持。
     -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href={`${import.meta.env.BASE_URL}favicon-32.png`}
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href={`${import.meta.env.BASE_URL}apple-touch-icon.png`}
-    />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="any" />
     <title>{siteTitle}</title>
     <ClientRouter />
 

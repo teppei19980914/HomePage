@@ -2,13 +2,14 @@
  * たすきフクロウ派生アイコン生成スクリプト (HomePage / Astro 用)
  *
  * 用途: docs/design/assets/mascot-owl-source.png (1254×1254 元画像) から
- *   LP で使う派生画像を生成する。
+ *   たすきば紹介ページ/記事本文に挿入する画像を生成する。
  *
  * 出力:
- *   - public/mascot-owl.png         512×512   Header ロゴ / hero 等の汎用利用
- *   - public/favicon-32.png         32×32     <link rel="icon" type="image/png">
- *   - public/apple-touch-icon.png   180×180   iOS apple-touch-icon
- *   - public/og-image.png           1200×630  SNS シェア用 OG image (合成、本リポ BMP と同じレイアウト)
+ *   - public/mascot-owl.png         512×512   たすきば製品ページ / 記事本文の挿絵
+ *
+ * 注意: ホームページのファビコン/OG 画像は意図的に未設定 (2026-05-29)。
+ *   たすきば製品マスコットを個人ホームページの顔として使わない方針のため、
+ *   favicon / apple-touch-icon / og-image の生成は行わない。
  *
  * 再実行:
  *   $ node scripts/generate-mascot-derivatives.cjs
@@ -42,55 +43,11 @@ async function main() {
   console.log(`source: ${srcMeta.width}x${srcMeta.height} ${srcMeta.format} (${(srcBuf.length / 1024 / 1024).toFixed(2)} MB)`);
   console.log('--- 出力 ---');
 
-  // 1) 汎用 512x512 (Header / hero)
+  // 汎用 512x512 (たすきば紹介ページ / 記事本文の挿絵)
   await writePng(
     await sharp(srcBuf).resize(512, 512, { fit: 'cover' }).png({ palette: false, compressionLevel: 9 }).toBuffer(),
     path.join(ROOT, 'public/mascot-owl.png'),
   );
-
-  // 2) Favicon — PNG 32x32 (modern browsers サポート)
-  await writePng(
-    await sharp(srcBuf).resize(32, 32, { fit: 'cover' }).png({ palette: false, compressionLevel: 9 }).toBuffer(),
-    path.join(ROOT, 'public/favicon-32.png'),
-  );
-
-  // 3) Apple touch icon 180x180
-  await writePng(
-    await sharp(srcBuf).resize(180, 180, { fit: 'cover' }).png({ palette: false, compressionLevel: 9 }).toBuffer(),
-    path.join(ROOT, 'public/apple-touch-icon.png'),
-  );
-
-  // 4) OG image 1200x630 (BMP リポと同じレイアウト)
-  const LOGO = 560;
-  const logoBuf = await sharp(srcBuf).resize(LOGO, LOGO, { fit: 'cover' }).png().toBuffer();
-  const ogSvg = Buffer.from(`<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .name { font: 700 88px 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif; fill: #1a3a8a; }
-    .sub { font: 600 36px 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif; fill: #3a5a9a; }
-    .tag { font: 400 28px 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif; fill: #3a5a9a; }
-  </style>
-  <text x="640" y="270" class="name">たすきば</text>
-  <text x="640" y="340" class="sub">Knowledge Relay</text>
-  <text x="640" y="410" class="tag">プロジェクトの知見を、</text>
-  <text x="640" y="450" class="tag">次の判断へ。</text>
-</svg>`);
-
-  const og = await sharp({
-    create: {
-      width: 1200,
-      height: 630,
-      channels: 3,
-      background: { r: 217, g: 236, b: 247 },
-    },
-  })
-    .composite([
-      { input: logoBuf, top: 35, left: 35 },
-      { input: ogSvg, top: 0, left: 0 },
-    ])
-    .png({ palette: false, compressionLevel: 9 })
-    .toBuffer();
-  await writePng(og, path.join(ROOT, 'public/og-image.png'));
 
   console.log('\n完了。');
 }

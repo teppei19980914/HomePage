@@ -44,7 +44,7 @@
 | 項目 | 値 |
 |---|---|
 | ワークフロー | `.github/workflows/deploy.yml` |
-| トリガー | `main` ブランチへの push + 日次 cron (UTC 21:00 / JST 6:00) + 手動 |
+| トリガー | `main` ブランチへの push + 日次 cron (UTC 21:11/22:11/23:11 = JST 06:11/07:11/08:11、予約投稿の取りこぼし防止のため早朝に複数回) + 手動 |
 | ランナー | ubuntu-latest |
 | Node.js | 22 |
 | ビルドコマンド | `npm ci` → `npm run build` |

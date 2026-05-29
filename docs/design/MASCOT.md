@@ -1,9 +1,13 @@
-# 公式マスコット「たすきフクロウ」(LP / HomePage)
+# 製品マスコット「たすきフクロウ」(HomePage 内での利用)
 
-> 製品「たすきば Knowledge Relay」の公式マスコット。LP / 製品紹介ページでの利用ガイド。
+> 製品「たすきば Knowledge Relay」の公式マスコット。HomePage 内のたすきば紹介ページ・関連記事での利用ガイド。
 
-本ドキュメントは LP 視点での運用ルールを記述する。マスコットの選定根拠・象徴・デザイン規範の
+本ドキュメントは HomePage 視点での運用ルールを記述する。マスコットの選定根拠・象徴・デザイン規範の
 正規ドキュメントは **製品リポ** (`BusinessManagementPlatform/docs/design/MASCOT.md`) を参照。
+
+> **重要 (2026-05-29)**: たすきフクロウは **たすきば製品のマスコット** であり、個人ホームページ
+> 自身の顔ではない。ホームページのファビコン / OG 画像 / Header ロゴには **使用しない**。
+> HomePage 内ではあくまで「たすきばを紹介するコンテンツの挿絵」としてのみ使う。
 
 ## 概要
 
@@ -12,7 +16,7 @@
 | 名前 | たすきフクロウ |
 | 制定日 | 2026-05-26 |
 | 元画像 | `docs/design/assets/mascot-owl-source.png` (1254×1254 PNG) |
-| 派生画像 | `public/mascot-owl.png` (512×512), `public/favicon-32.png` (32×32), `public/apple-touch-icon.png` (180×180), `public/og-image.png` (1200×630) |
+| 派生画像 | `public/mascot-owl.png` (512×512) のみ。※ favicon / apple-touch-icon / og-image は撤去済 (2026-05-29) |
 | 再生成スクリプト | `scripts/generate-mascot-derivatives.cjs` |
 
 ## 選定根拠 (要約)
@@ -23,15 +27,21 @@
 
 詳細な選定理由・デザイン要素・コピーの方向性は製品リポの MASCOT.md を参照。
 
-## LP での使い方
+## HomePage での使い方
 
 | 配置先 | 内容 |
 |---|---|
-| Header (`Header.astro`) | 左端にロゴ 32×32 + サービス名「たすきば」(モバイルはアイコンのみ) |
-| Favicon | `public/favicon-32.png` (PNG 32×32) と `public/favicon.ico` (legacy fallback) |
-| Apple touch icon | `public/apple-touch-icon.png` (180×180) |
-| OG image (SNS シェア) | `public/og-image.png` (左にロゴ + 右にサービス名・タグライン) |
-| 製品紹介ページ | 必要に応じて `<img src="/mascot-owl.png">` を挿入可 |
+| たすきば製品紹介ページ | `src/content/product/{ja,en}/tasukiba.md` で `<img src="/HomePage/mascot-owl.png">` を挿入 |
+| たすきば関連ブログ記事 | マスコット由来・たすきば紹介系の記事本文に挿絵として挿入 |
+
+### 使ってはいけない箇所 (ホームページ自身の顔)
+
+| 箇所 | 方針 |
+|---|---|
+| Favicon (ブラウザタブ) | 設定しない (たすきば製品アイコンを個人サイトの顔にしないため) |
+| Apple touch icon | 設定しない |
+| OG image / Twitter card | 設定しない。リンク共有はテキストのみの `summary` カード |
+| Header ロゴ | 設定しない (ナビゲーションのみ) |
 
 ## 派生画像の再生成
 

@@ -18,7 +18,7 @@
    │                   │ trigger
    │            ┌──────┴──────────────────────┐
    │            │ ① main push                │
-   │            │ ② 日次 cron (UTC 21:00)     │
+   │            │ ② 日次 cron (JST 06/07/08時) │
    │            │ ③ 月次 cron (毎月 1 日)     │
    │            └─────────────────────────────┘
    │
@@ -140,7 +140,6 @@ BaseLayout.astro
 │   ├── Twitter Card
 │   ├── JSON-LD（WebSite or Article、inLanguage 含む）
 │   ├── RSS リンク
-│   ├── favicon
 │   ├── ClientRouter（View Transitions）
 │   └── ダークモード初期化スクリプト（描画前に実行）
 └── <body>
