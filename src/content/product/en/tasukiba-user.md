@@ -222,7 +222,7 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 |  | **Beginner**<br>Start free | **Expert**<br>Recommended | **Pro**<br>Most capable |
 |---|---|---|---|
-| **Price** | ¥0 | ¥10 / project create-or-update<br>+ ¥1 / Embedding business operation | ¥15 / project create-or-update + AI explanation<br>+ ¥1 / Embedding business operation |
+| **Price** | ¥0 | ¥10 / project create-or-update<br>+ ¥1 / Embedding business operation | ¥15 / project create-or-update<br>+ ¥15 / "Why?" AI explanation<br>+ ¥1 / Embedding business operation |
 | **Seats** (invitable users) | up to 5 | unlimited | unlimited |
 | **Data capacity** | 50 MB free, then **¥50/GB/month** (per 1 GB tier) | same as left | same as left |
 | **Monthly project create/update** | 50 / month (fixed cap) | unlimited | unlimited |
@@ -313,8 +313,8 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 | **Pricing** | See the "Pricing" section above |
 | **Additional fees** | Communication costs (your internet connection fees, etc.) |
 | **Sales tax handling** | Listed prices are tax-exclusive. Japanese consumption tax (JCT) is added separately at invoicing |
-| **Payment methods** | Bank transfer (invoice-based) / Credit card payment (via Stripe) / Other online payment methods |
-| **Payment timing** | Monthly billing cycle. Bank transfer: by the 25th of the following month / Credit card: auto-debited at the beginning of the following month |
+| **Payment methods** | Bank transfer (invoice-based)<br>※ Credit card payment (via Stripe) is **planned for future release** and is not currently selectable. |
+| **Payment timing** | Monthly billing cycle, due by the 25th of the following month (bank transfer)<br>※ Payment timing for credit card will be announced separately when introduced. |
 | **Service delivery timing** | Available immediately after sign-up completion |
 | **Returns and cancellation** | Due to the nature of the service, refunds for periods already provided are not accepted. Cancellation can be done anytime from the tenant administrator screen and takes effect at the end of the current month (current month's charges apply as usual) |
 | **System requirements** | Latest versions of Chrome / Edge / Safari / Firefox |
