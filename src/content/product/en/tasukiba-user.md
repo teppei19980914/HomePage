@@ -1,6 +1,6 @@
 ---
 title: "Tasukiba — Project platform that turns search into creation"
-description: "Project management platform that surfaces past knowledge via semantic search. MFA, audit logs, tenant isolation, invoice billing — corporate-ready."
+description: "Project management platform that surfaces past knowledge via semantic search. MFA, audit logs, tenant isolation, invoiced bank-transfer / credit-card billing — corporate-ready."
 tagline: "Turn time spent searching into time spent creating."
 date: 2026-04-16
 tags: ["project management", "knowledge management", "semantic search", "PM enablement", "operational efficiency"]
@@ -275,8 +275,8 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 |---|---|
 | **Contract form** | β / early-commercial phase: online sign-up + terms-of-service consent. If you need a separate contract (NDA / DPA / etc.), please reach out via [Contact](/HomePage/en/contact/) |
 | **Data residency** | Data is stored in **ap-northeast-1 (Tokyo region)** |
-| **Cross-border transfer to AI services** | When proactive suggestions and semantic search run, data is sent to Anthropic (US) / Voyage AI (US). Both are configured so your data is **not used for training** (see FAQ Q14) |
-| **Payment methods** | Bank transfer (invoiced) supported. Credit card support is planned |
+| **Cross-border transfer to AI services** | When proactive suggestions and semantic search run, data is sent to Anthropic (US) / Voyage AI (US). Both are configured so your data is **not used for training** (see FAQ Q15) |
+| **Payment methods** | Bank transfer (invoiced) and credit card payment (via Stripe) both supported |
 | **Qualified invoice (Japan's invoice system)** | The operator is **not registered** as a qualified invoice issuer, and **does not plan to register**. Please consider Japan's transitional input-tax-credit measures or your company's accounting policy |
 | **Uptime SLA** | Operating with a single developer + Claude Code, so **we do not publish an explicit SLA at this time**. We prioritize data protection and continuity of operation |
 | **Data backup** | Cloud DB automatic backups, and **CSV export anytime** from your tenant settings |
@@ -313,8 +313,8 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 | **Pricing** | See the "Pricing" section above |
 | **Additional fees** | Communication costs (your internet connection fees, etc.) |
 | **Sales tax handling** | Listed prices are tax-exclusive. Japanese consumption tax (JCT) is added separately at invoicing |
-| **Payment methods** | Bank transfer (invoice-based)<br>※ Credit card payment (via Stripe) is **planned for future release** and is not currently selectable. |
-| **Payment timing** | Monthly billing cycle, due by the 25th of the following month (bank transfer)<br>※ Payment timing for credit card will be announced separately when introduced. |
+| **Payment methods** | Bank transfer (invoice-based) or credit card via Stripe (Visa / Mastercard / Amex / JCB / Diners / Discover / UnionPay). Switchable anytime in tenant settings. |
+| **Payment timing** | Monthly billing cycle.<br>· Bank transfer: due by the 25th of the following month.<br>· Credit card: automatically charged within the first few business days of the following month. |
 | **Service delivery timing** | Available immediately after sign-up completion |
 | **Returns and cancellation** | Due to the nature of the service, refunds for periods already provided are not accepted. Cancellation can be done anytime from the tenant administrator screen and takes effect at the end of the current month (current month's charges apply as usual) |
 | **System requirements** | Latest versions of Chrome / Edge / Safari / Firefox |
@@ -436,7 +436,7 @@ However, **once you have selected Expert / Pro, you cannot revert to Beginner (t
 This is a deliberate rule we set for the sake of operational sustainability.
 Whether you cancelled yourself, the trial expired and the tenant was deleted, or the system administrator deleted the tenant — **in any case, restart is only possible on Expert / Pro**. We do not re-provision a Beginner tenant.
 
-Please think of Beginner as "for people trying Tasukiba for the first time only." Export is always available, so we recommend backing up locally before cancelling (see Q16).
+Please think of Beginner as "for people trying Tasukiba for the first time only." Export is always available, so we recommend backing up locally before cancelling (see Q17).
 
 </details>
 
@@ -448,14 +448,16 @@ Please think of Beginner as "for people trying Tasukiba for the first time only.
 <details class="faq-item">
 <summary>Q7. What payment methods do you offer? Are you a qualified invoice issuer (Japan)?</summary>
 
-We plan to offer **invoiced (bank transfer)** and **credit card** as two options.
+We offer **invoiced (bank transfer)** and **credit card** as two options.
 
 | Payment method | Availability | Detail |
 |---|---|---|
 | **Invoiced (bank transfer)** | ✅ Available | Monthly payment by **bank transfer** |
-| **Credit card** | 🚧 Not currently selectable | **Planned** — we'll announce once it's ready |
+| **Credit card** | ✅ Available | Automatic monthly debit via **Stripe** (Visa / Mastercard / Amex / JCB / Diners / Discover / UnionPay). Switch from tenant settings. |
 
-Organizational customers typically use invoiced payment. Individuals are currently on the same invoiced flow (we'll reach out once credit card becomes available).
+Organizational customers typically use invoiced payment, while individuals and lighter usage often prefer credit card. Both can be **switched anytime from tenant settings** (when switching from credit card to invoiced, the active subscription is canceled automatically and invoicing takes effect from the next month).
+
+**See Q8 below for the credit card details.**
 
 **🧾 About qualified invoices (Japan)**
 
@@ -521,7 +523,54 @@ Please reach out via the [contact form](/HomePage/en/contact/) — we'd love to 
 </details>
 
 <details class="faq-item">
-<summary>Q8. What is the billing cycle (cutoff, invoice issuance, payment due)?</summary>
+<summary>Q8. Can I pay by credit card? Which brands are supported and how do I switch?</summary>
+
+**✅ Yes, credit card payment is available.** You can choose between bank transfer (invoice) and credit card, and switch at any time.
+
+**🌍 Supported card brands**
+
+| Brand | Supported |
+|---|---|
+| Visa | ✅ |
+| Mastercard | ✅ |
+| American Express | ✅ |
+| JCB | ✅ |
+| Diners Club | ✅ |
+| Discover | ✅ |
+| UnionPay | ✅ |
+
+Payment processing is handled by **Stripe** with 3D Secure (cardholder authentication) supported. **Card details are never stored on Tasukiba's servers** — they are managed exclusively within Stripe's PCI DSS–compliant payment infrastructure, so it's secure.
+
+**🔧 How to switch**
+
+1. Sign in as a tenant administrator
+2. Open `Settings` → `Tenant settings` → `Billing` tab
+3. Under the "Billing information" form, change **Payment method** to "Credit card"
+4. Click "Update billing information" → you are automatically redirected to Stripe's secure card-entry screen
+5. Enter your card details → from next month onward, charges are deducted automatically
+
+**💸 Charge timing**
+
+| Item | Schedule |
+|---|---|
+| **Cutoff** | End of the usage month |
+| **Automatic charge** | Within the first few business days of the following month |
+| **Receipt** | Automatically emailed by Stripe |
+
+For credit-card payment, Tasukiba does not issue a PDF invoice — the Stripe receipt serves as your usage statement.
+
+**🔁 Switching back to bank transfer**
+
+Change the payment method back to "Bank transfer" and save — the active subscription is automatically canceled, and invoicing takes effect from the following month. The current month's usage is consolidated into either a Stripe charge or a Tasukiba invoice (whichever flow is active at month-end), so **no double-billing occurs**.
+
+**🔒 If a charge fails**
+
+If a card has expired or there are insufficient funds, **Stripe automatically retries up to 8 times over two weeks (Smart Retries)**. If all attempts fail, an email is sent to the registered Billing Contact, asking you to update the card. Continued failures are subject to the same **90-day grace policy** described in Q10 (payment delays).
+
+</details>
+
+<details class="faq-item">
+<summary>Q9. What is the billing cycle (cutoff, invoice issuance, payment due)?</summary>
 
 For invoiced payment, we operate on the following schedule.
 
@@ -547,7 +596,7 @@ If the 25th falls on a weekend or holiday, the deadline is **extended to the nex
 </details>
 
 <details class="faq-item">
-<summary>Q9. What happens if payment is delayed?</summary>
+<summary>Q10. What happens if payment is delayed?</summary>
 
 Don't worry. **The service does not stop abruptly.** We respond in stages based on elapsed days.
 
@@ -584,7 +633,7 @@ We may set it later at the statutory commercial rate; we will notify in advance 
 <summary>⚙️ How it behaves</summary>
 
 <details class="faq-item">
-<summary>Q10. What happens when the API call cap is exceeded?</summary>
+<summary>Q11. What happens when the API call cap is exceeded?</summary>
 
 Don't worry. **Tasukiba itself continues to work normally.**
 Instead of "stop everything when the cap is hit," we switch into **a gentle "degraded mode" where only the AI behind the scenes pauses temporarily**.
@@ -606,7 +655,7 @@ See Q11 for behavior during degraded mode.
 </details>
 
 <details class="faq-item">
-<summary>Q11. What does and doesn't work in degraded mode?</summary>
+<summary>Q12. What does and doesn't work in degraded mode?</summary>
 
 In one line: **It's like an "energy-saving mode" where the AI takes a break, but normal work continues.**
 
@@ -659,7 +708,7 @@ Note: "Expert / Pro → Beginner" is not possible (see Q6).
 </details>
 
 <details class="faq-item">
-<summary>Q12. Is cancellation complex?</summary>
+<summary>Q13. Is cancellation complex?</summary>
 
 No. Cancellation completes in **a few clicks** from the tenant settings screen. No phone calls, no meetings, no back-and-forth with the operator. "Welcome those who come, and don't block those who leave" is our policy.
 
@@ -671,7 +720,7 @@ No. Cancellation completes in **a few clicks** from the tenant settings screen. 
 <summary>🔐 Data safety</summary>
 
 <details class="faq-item">
-<summary>Q13. How is the data I enter protected?</summary>
+<summary>Q14. How is the data I enter protected?</summary>
 
 It's stored in a state of **complete isolation per tenant**. The design does not allow any view from another tenant. In addition, **all data changes, authentication events, and permission changes are automatically recorded as an audit log**.
 
@@ -680,7 +729,7 @@ See the "🛡️ Security features" section above for a full list (MFA, account 
 </details>
 
 <details class="faq-item">
-<summary>Q14. Is my data used to train AI? Does it leave the country?</summary>
+<summary>Q15. Is my data used to train AI? Does it leave the country?</summary>
 
 **Short answer: It is not used for training. But during proactive suggestions and semantic search, data is sent to overseas AI services (US).**
 
@@ -752,7 +801,7 @@ If you want to verify yourself, or if your enterprise partners ask for the AI ve
 <summary>🚪 Service longevity and data portability</summary>
 
 <details class="faq-item">
-<summary>Q15. Could the service shut down? What's the uptime target?</summary>
+<summary>Q16. Could the service shut down? What's the uptime target?</summary>
 
 Honestly: we're currently operated by **a single developer + Claude Code (AI), a small team**. If we don't reach monetization within two years of launch, we'll stop onboarding new users, but **the service itself is expected to continue because the developer uses it daily**. If we ever have to stop providing the service, **we will always set aside time for you to export your data first**.
 
@@ -773,7 +822,7 @@ Tasukiba is a platform the developer uses daily for project operations. The fact
 </details>
 
 <details class="faq-item">
-<summary>Q16. Can I migrate data from existing tools?</summary>
+<summary>Q17. Can I migrate data from existing tools?</summary>
 
 **Export is always possible.** Regardless of plan limits, post-cancellation, or post-trial, you can download a full export from your tenant settings.
 We don't yet have direct integrations with Backlog / Notion etc., but **CSV import is partially supported** for knowledge, risks, and issues — Excel and spreadsheet imports are fine.
