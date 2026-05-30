@@ -3,6 +3,7 @@ title: "なぜたすきフクロウの絵を 3 枚に分けたのか — 汎用�
 description: "たすきフクロウは 3 つの元画像を持っています。汎用（ロゴ / favicon / OG）、チャット意味検索専用、SNS プロフィール用。1 枚で兼ねず構図を分けた理由と、5 つの派生画像で各文脈を最適化するたすきば Knowledge Relay のマスコット運用の細部を書きます。"
 date: 2026-06-13
 tags: ["たすきば", "マスコット運用", "ブランドガイドライン", "アイコン設計", "個人開発"]
+seriesCategory: "brand"
 ---
 
 <figure style="text-align: center; margin: 2rem auto;">

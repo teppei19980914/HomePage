@@ -412,8 +412,18 @@ export const en: Labels = {
     },
     blogSeries: {
       title: "Blog Series",
-      intro: "I'm writing an ongoing series about the thinking behind this product. Read along for the background and design decisions that shaped it.",
+      intro: "I'm writing an ongoing series about the thinking behind this product. It's organized by theme — start wherever you're curious.",
       readMore: "Read",
+      // Headings for the per-theme accordions (keys map to categoryOrder in src/utils/blog-series.ts)
+      categories: {
+        origin: "Origin & Vision",
+        design: "Design & Features",
+        business: "Business & Sustainability",
+        team: "Team & Culture",
+        brand: "Brand & Mascot",
+        milestone: "Milestones & Log",
+        other: "Other",
+      },
     },
   },
 

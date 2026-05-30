@@ -3,6 +3,7 @@ title: "Meet the Tasuki Owl — Why Tasukiba's Mascot Is an Owl"
 description: "Tasukiba's mascot is an owl. Three symbols converge — wisdom (Athena's bird), memory (night vision), protection (guardian) — onto the product's three axes."
 date: 2026-05-30
 tags: ["tasukiba", "mascot", "brand-design", "indie-saas", "product-philosophy"]
+seriesCategory: "brand"
 ---
 
 <figure style="text-align: center; margin: 2rem auto;">

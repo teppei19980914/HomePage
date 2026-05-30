@@ -3,6 +3,7 @@ title: "An Hour a Day Was Evaporating — Why I Built Tasukiba"
 description: "An hour a day evaporates from every meeting just to find a file. I'm building Tasukiba Knowledge Relay to dissolve that — with a tool, not willpower."
 date: 2026-05-26
 tags: ["tasukiba", "indie-saas", "knowledge-management", "project-management", "essay"]
+seriesCategory: "origin"
 ---
 
 ## "Wait — where was that file again?"

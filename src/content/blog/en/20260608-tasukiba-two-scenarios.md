@@ -3,6 +3,7 @@ title: "Two-Year Monetization Check — But Tasukiba Doesn't Stop"
 description: "If Tasukiba monetizes in two years, growth path. If not, sales stops — but the service doesn't. Separating business judgment from tool continuation, explained."
 date: 2026-06-08
 tags: ["tasukiba", "business-strategy", "indie-saas", "dogfooding", "sustainability"]
+seriesCategory: "business"
 ---
 
 ## What "two-year monetization check" means

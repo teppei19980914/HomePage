@@ -3,6 +3,7 @@ title: "Business SaaS at $0 — Tasukiba's Pricing Philosophy"
 description: "Tasukiba's three plans and usage billing are designed for business continuity, not profit max. Fixed $0, free ops, no Beginner downgrade, billing invariant."
 date: 2026-06-03
 tags: ["tasukiba", "saas-pricing", "stripe", "business-model", "indie-saas"]
+seriesCategory: "business"
 ---
 
 ## The pricing table was, honestly, the hardest decision of the six months

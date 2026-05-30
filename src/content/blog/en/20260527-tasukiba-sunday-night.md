@@ -3,6 +3,7 @@ title: "Changing Sunday Night, Monday Morning — Tasukiba's Worldview"
 description: "Sunday evening, you sigh about Monday. Every Tasukiba Knowledge Relay decision is judged by one question: 'Does this brighten Monday morning?'"
 date: 2026-05-27
 tags: ["tasukiba", "indie-saas", "product-philosophy", "project-management", "essay"]
+seriesCategory: "origin"
 ---
 
 ## That sigh on Sunday evening

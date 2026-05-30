@@ -3,6 +3,7 @@ title: "One Week After Release — Tasukiba Phase 2/3 Roadmap"
 description: "The June 1, 2026 release was Phase 1 done. Phase 2 brings chatbot semantic search and Stripe live. Phase 3 brings LLM re-ranking, multilingual, public API."
 date: 2026-06-09
 tags: ["tasukiba", "roadmap", "product-strategy", "phase-2", "phase-3"]
+seriesCategory: "business"
 ---
 
 ## One week of operation made the picture sharper than I expected

@@ -3,6 +3,7 @@ title: "Return Autonomy — Tasukiba's UI Without a Gatekeeper"
 description: "Plan changes, cancellations, downgrades — all without vendor round-trip in Tasukiba. Data export, self-role exception, UI = API authorization equivalence."
 date: 2026-06-04
 tags: ["tasukiba", "ux", "ui-design", "user-autonomy", "product-philosophy"]
+seriesCategory: "design"
 ---
 
 ## The one sentence behind the design

@@ -3,6 +3,7 @@ title: 'Tasukiba Suggestion Engine — "The Past You Forgot" on Screen'
 description: "Tasukiba's core is the suggestion engine. Three surface moments, a 3-axis weighted score (tag + string + semantic), and zero-cost-at-suggestion-time design."
 date: 2026-06-02
 tags: ["tasukiba", "semantic-search", "suggestion-engine", "product-feature", "pgvector"]
+seriesCategory: "design"
 ---
 
 ## The core feature is actually "suggestion"

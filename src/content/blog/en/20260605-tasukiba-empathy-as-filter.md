@@ -3,6 +3,7 @@ title: "Empathy as Hiring Filter — Building Tasukiba With Me"
 description: "Tasukiba's hiring filter isn't technical skill, it's empathy. Values alignment on three axes (purpose, target, method). Empathy weighted by known vs external."
 date: 2026-06-05
 tags: ["tasukiba", "hiring", "indie-saas", "team-building", "community"]
+seriesCategory: "team"
 ---
 
 ## Why empathy as filter

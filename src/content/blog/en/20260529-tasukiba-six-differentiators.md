@@ -3,6 +3,7 @@ title: "Six Axes That Set Tasukiba Apart — From Stubborn Preference"
 description: "Tasukiba's differentiation came from stubborn preferences, not market research. Six axes: semantic search, pricing, retrieval, community, autonomy, place."
 date: 2026-05-29
 tags: ["tasukiba", "business-saas", "differentiation", "product-strategy", "indie-saas"]
+seriesCategory: "design"
 ---
 
 ## "Different on purpose" isn't quite right

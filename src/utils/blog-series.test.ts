@@ -18,6 +18,13 @@ describe("BLOG_SERIES", () => {
     const keys = BLOG_SERIES.map((s) => s.key);
     expect(new Set(keys).size).toBe(keys.length);
   });
+
+  it("各連載は 1 件以上の categoryOrder を持ち、キーが一意である", () => {
+    for (const series of BLOG_SERIES) {
+      expect(series.categoryOrder.length).toBeGreaterThan(0);
+      expect(new Set(series.categoryOrder).size).toBe(series.categoryOrder.length);
+    }
+  });
 });
 
 describe("findSeriesForSlug", () => {
