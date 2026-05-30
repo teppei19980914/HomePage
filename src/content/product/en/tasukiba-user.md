@@ -222,11 +222,11 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 |  | **Beginner**<br>Start free | **Expert**<br>Recommended | **Pro**<br>Most capable |
 |---|---|---|---|
-| **Price** | ¥0 | ¥10 / project create-or-update<br>+ ¥1 / Embedding business operation | ¥15 / project create-or-update<br>+ ¥15 / "Why?" AI explanation<br>+ ¥1 / Embedding business operation |
+| **Price** | ¥0 | ¥10 / project create-or-update<br>+ ¥5 / Embedding business operation | ¥15 / project create-or-update<br>+ ¥15 / "Why?" AI explanation<br>+ ¥5 / Embedding business operation |
 | **Seats** (invitable users) | up to 5 | unlimited | unlimited |
 | **Data capacity** | 50 MB free, then **¥50/GB/month** (per 1 GB tier) | same as left | same as left |
 | **Monthly project create/update** | 50 / month (fixed cap) | unlimited | unlimited |
-| **Knowledge input & chat search** | **all free / unlimited** | **¥1 / business operation** (from 2026-06-01) | **¥1 / business operation** (from 2026-06-01) |
+| **Knowledge input & chat search** | **all free / unlimited** | **¥5 / business operation** (from 2026-06-01, ADR-0029) | **¥5 / business operation** (from 2026-06-01, ADR-0029) |
 | **API call cap setting** | — | **Set a monthly budget cap in JPY** | **Set a monthly budget cap in JPY** |
 | **LLM model** | Haiku | Haiku | Sonnet (with rich explanations) |
 | **Trial** | **90 days fully free** | — | — |
@@ -238,9 +238,9 @@ Sample screens showing how past assets are stored in a form you can actually reu
 >
 > **★ Beginner "Knowledge input & chat search are all free" ★ (revised 2026-06-01 ADR-0022)**: Beginner plan continues to offer creating/updating knowledge assets (Knowledge / RiskIssue / Retrospective / Memo), chat-based semantic search, CSV import, and attachment file body embedding — **all free / unlimited** (preserving the "90-day fully free" promise).
 >
-> **Expert / Pro Embedding charges (from 2026-06-01 ADR-0022)**: On Expert / Pro plans, knowledge asset input, chat search, and attachment file body embedding are **¥1 per business operation**. CSV bulk import is aggregated as "1 import operation = ¥1" (e.g., a 100-row CSV import is still ¥1). The monthly cron's automatic recovery of failed embeddings stays free on all plans (avoiding "unjust charges" for user-non-initiated repair operations).
+> **Expert / Pro Embedding charges (from 2026-05-30 ADR-0029, previously ¥1)**: On Expert / Pro plans, knowledge asset input, chat search, and attachment file body embedding are **¥5 per business operation**. CSV bulk import is aggregated as "1 import operation = ¥5" (e.g., a 100-row CSV import is still ¥5). The monthly cron's automatic recovery of failed embeddings stays free on all plans (avoiding "unjust charges" for user-non-initiated repair operations).
 >
-> **What gets charged**: AI auto-tagging on project create/update (Beginner free up to 50/mo, Expert ¥10, Pro ¥15), the "Why?" feature (Pro-only ¥15), Embedding business operations (Beginner free, Expert/Pro ¥1), data capacity overage (¥50/GB), and file storage overage (¥10/GB).
+> **What gets charged**: AI auto-tagging on project create/update (Beginner free up to 50/mo, Expert ¥10, Pro ¥15), the "Why?" feature (Pro-only ¥15), Embedding business operations (Beginner free, Expert/Pro ¥5), data capacity overage (¥50/GB), and file storage overage (¥10/GB).
 
 "Try it and decide for yourself whether it fits" — that's our basic posture.
 
