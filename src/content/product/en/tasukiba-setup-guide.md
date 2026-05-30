@@ -1,7 +1,7 @@
 ---
-title: "Tasukiba — First-Login Walkthrough"
-description: "A step-by-step walkthrough for the first administrator of a new organization, written so non-engineers can follow along from sign-up to first login."
-tagline: "So your first login goes smoothly — every step explained."
+title: "Tasukiba First-Time Setup: Sign-Up to First Admin Login"
+description: "A step-by-step guide for a new organization's first admin: from sign-up and tenant provisioning through password setup to your first system-admin login, written for non-engineers."
+tagline: "From tenant provisioning to your first login — without the guesswork."
 date: 2026-05-28
 tags: ["first login", "sign-up", "setup guide", "tenant admin", "onboarding"]
 status: beta
