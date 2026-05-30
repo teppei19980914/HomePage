@@ -3,6 +3,7 @@ title: "たすきば Dogfooding 計画 — 自分が毎日使わない業務 Saa
 description: "たすきば Knowledge Relay は「私自身が最初のユーザ」という前提で作っています。リリース直後から本業のプロジェクト管理を全部たすきばで実施。AI 補助なしで 1 機能を手書きで実装する 6 月 15 日のチャレンジと、Dogfooding を戦略中心に置く理由を書きます。"
 date: 2026-06-10
 tags: ["たすきば", "Dogfooding", "プロダクト品質", "個人開発", "AI駆動開発"]
+seriesCategory: "business"
 ---
 
 ## たすきばは "私自身が最初のユーザ"

@@ -3,6 +3,7 @@ title: "Six Months to a Business SaaS — Tasukiba Solo-Dev Recap"
 description: "From 2025-12 kickoff to 2026-06-01 release, a month-by-month retrospective of Tasukiba's solo build. 450+ PRs, 21 ADRs, 16,000 lines of KDD, 480 hours to MVP."
 date: 2026-06-14
 tags: ["tasukiba", "indie-saas", "ai-assisted-dev", "claude-code", "retrospective"]
+seriesCategory: "milestone"
 ---
 
 ## The six-month map

@@ -3,6 +3,7 @@ title: 'One For All — Designing Out Hidden Failure on Tasukiba'
 description: "Failure on Tasukiba lands with me, not the member. Every report gets 'thank you for reporting.' One For All culture and blame-less postmortems, in detail."
 date: 2026-06-07
 tags: ["tasukiba", "team-culture", "psychological-safety", "failure-science", "indie-saas"]
+seriesCategory: "team"
 ---
 
 ## What we do when failure happens

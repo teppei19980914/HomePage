@@ -3,6 +3,7 @@ title: "Graduation, Not Leaving — Tasukiba Chose Discord, Not Slack"
 description: "Why I picked Discord over Slack for Tasukiba's community, and why I call leaving 'graduating.' A lower exit barrier makes a place more comfortable to stay."
 date: 2026-05-31
 tags: ["tasukiba", "discord", "community-design", "psychological-safety", "indie-saas"]
+seriesCategory: "team"
 ---
 
 ## Why Discord, not Slack

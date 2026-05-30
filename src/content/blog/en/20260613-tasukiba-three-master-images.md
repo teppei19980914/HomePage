@@ -3,6 +3,7 @@ title: "Why I Drew the Tasuki Owl Three Times — General, Chat, SNS"
 description: "The Tasuki Owl has three master images, not one. General (logo / favicon / OG), chat (FAB / avatar), and SNS. Five derivatives cover all contexts."
 date: 2026-06-13
 tags: ["tasukiba", "mascot-ops", "brand-guidelines", "icon-design", "indie-saas"]
+seriesCategory: "brand"
 ---
 
 <figure style="text-align: center; margin: 2rem auto;">

@@ -3,6 +3,7 @@ title: "たすきフクロウはなぜフクロウなのか — マスコット 
 description: "フクロウ、灯台、開いた本、抽象幾何——たすきば Knowledge Relay のマスコット 4 候補を、ナレッジ管理／プロジェクト管理／セキュリティの 3 軸で比較。3 軸すべてで ◎ を取れたのはフクロウだけ。濃紺配色と派手に売り出さない判断の中身を書きます。"
 date: 2026-06-12
 tags: ["たすきば", "マスコット", "ブランド選定", "デザイン判断", "個人開発"]
+seriesCategory: "brand"
 ---
 
 <figure style="text-align: center; margin: 2rem auto;">

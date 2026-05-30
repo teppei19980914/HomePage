@@ -10,6 +10,10 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     featured: z.boolean().default(false),
+    // 連載ブログのテーマ分類キー（src/utils/blog-series.ts の categoryOrder と対応）。
+    // 連載記事の LP 表示時にこのキーでテーマ別アコーディオンにグルーピングする。
+    // 連載記事は必ず設定する（src/utils/series-category.test.ts で検証）。
+    seriesCategory: z.string().optional(),
   }),
 });
 

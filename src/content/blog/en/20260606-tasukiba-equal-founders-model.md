@@ -3,6 +3,7 @@ title: "Equal-Founders Model — Tasukiba's Three-Layer Discussion"
 description: "Final decisions on Tasukiba rest with me, but the team runs as an 'equal-founders model.' A three-layer discussion (team → outside → team) decides."
 date: 2026-06-06
 tags: ["tasukiba", "team-operations", "decision-making", "psychological-safety", "org-design"]
+seriesCategory: "team"
 ---
 
 ## "Equal-founders" — defined

@@ -324,8 +324,18 @@ export const ja = {
     },
     blogSeries: {
       title: "連載ブログ",
-      intro: "このプロダクトをつくる過程で考えたことを、連載として書き残しています。開発の背景や設計判断を読み物としてどうぞ。",
+      intro: "このプロダクトをつくる過程で考えたことを、連載として書き残しています。テーマ別にまとめているので、気になるところから読み物としてどうぞ。",
       readMore: "読む",
+      // テーマ別アコーディオンの見出し（キーは src/utils/blog-series.ts の categoryOrder と対応）
+      categories: {
+        origin: "原点と世界観",
+        design: "設計と機能",
+        business: "事業と継続性",
+        team: "チームと文化",
+        brand: "ブランドとマスコット",
+        milestone: "節目と記録",
+        other: "その他",
+      },
     },
   },
 

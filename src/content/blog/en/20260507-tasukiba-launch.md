@@ -3,6 +3,7 @@ title: "Launching 'Tasukiba Knowledge Relay' — a project platform that passes 
 description: "My fourth personal product, 'Tasukiba Knowledge Relay', enters trial operation. It is a project-management platform built around knowledge — the insights one team accumulates get handed down to the next team, like a relay baton."
 date: 2026-05-07
 tags: ["personal project", "Tasukiba", "project management", "knowledge management", "Next.js"]
+seriesCategory: "milestone"
 ---
 
 ## Starting my fourth personal product

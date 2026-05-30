@@ -3,6 +3,7 @@ title: "月額 0 円から始める業務 SaaS、たすきばが「続けるた�
 description: "たすきば Knowledge Relay の 3 プラン（Beginner / Expert / Pro）と従量課金は、利益最大化ではなく事業継続のための設計です。月額固定 0 円・無料操作の根拠・ダウングレード禁止・容量従量課金・解約セルフサービス・請求 invariant の中身を、判断理由ごと書きます。"
 date: 2026-06-03
 tags: ["たすきば", "SaaS課金", "Stripe", "ビジネスモデル", "個人開発"]
+seriesCategory: "business"
 ---
 
 ## 価格表を作るのに、6 ヶ月の中で一番悩んだ

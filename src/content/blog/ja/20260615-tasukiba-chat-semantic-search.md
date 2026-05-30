@@ -3,6 +3,7 @@ title: "たすきばに自然言語で話しかける — Phase 2 チャット�
 description: "Phase 2 で実装するチャット意味検索は、たすきば Knowledge Relay のユニーク機能の 2 つ目です。「先月の振り返りで…」と話しかけるだけで過去資産が返ってくる体験を、提案機能と同じ embedding 基盤の上にどう乗せるか書きます。"
 date: 2026-06-15
 tags: ["たすきば", "チャット意味検索", "Phase2", "VoyageAI", "pgvector"]
+seriesCategory: "design"
 ---
 
 ## 「先月の振り返りで、リソース不足の話あったよね？」

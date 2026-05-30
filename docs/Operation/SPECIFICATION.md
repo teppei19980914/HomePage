@@ -166,7 +166,8 @@ SVG 手書きの Git ブランチ風グラフ:
 - `status: "suspended"` のとき: 詳細ページに「新規受付停止中」のお知らせバナーを表示し、「体験する」ボタンを非活性表示（クリック不可）に置換。GitHub ボタンは引き続き利用可能
 - **画像ライトボックス**: 本文 `.content` 内の `<img>` をクリック / タップで全画面拡大表示（`ImageLightbox.astro`）。閉じる手段は ✕ ボタン / 背景クリック / Esc キー。リンクで包まれた画像 (`<a><img>`) と `data-no-lightbox` 属性付き画像は対象外
 - **アコーディオン（`<details>`）のディープリンク**: 本文中の `<details id="...">` に対し、URL ハッシュ（例 `#terms` / `#tokushoho`）で直接リンクすると、`[...slug].astro` の `openHashAccordion` が対象アコーディオン（およびネストした祖先 `<details>`）を `open` 状態にし、その位置までスクロールする。初期表示・`hashchange`・`astro:after-swap`（ClientRouter 遷移）の各タイミングで発火。利用規約 (`#terms`) / 特定商取引法表記 (`#tokushoho`) などへの直接リンク用途
-- **連載ブログ一覧（特別セクション）**: frontmatter に `blogSeriesKey` を持つプロダクトは、詳細ページ下部に当該連載のブログ記事一覧セクションを表示。連載判定は `src/utils/blog-series.ts`（`BLOG_SERIES` が単一ソース）で slug の部分一致により行い、ja/en 共通で機能。記事は `isVisibleInDev` で未来日付/下書きを除外し日付降順で一覧化。あわせて `BaseLayout` の `extraJsonLd` prop に schema.org `ItemList` を渡し「連載が一塊のコンテンツ群」であることを検索エンジンに明示。現状 `tasukiba` が `blogSeriesKey: "tasukiba"` を設定（連載記事は slug に `tasukiba` を含む全記事）
+- **連載ブログ一覧（特別セクション）**: frontmatter に `blogSeriesKey` を持つプロダクトは、詳細ページ下部に当該連載のブログ記事一覧セクションを表示。連載判定は `src/utils/blog-series.ts`（`BLOG_SERIES` が単一ソース）で slug の部分一致により行い、ja/en 共通で機能。記事は `isVisibleInDev` で未来日付/下書きを除外（公開判定はブログ一覧と共通のため「ブログ未公開＝連載セクションにも非表示」が自動で一致）。あわせて `BaseLayout` の `extraJsonLd` prop に schema.org `ItemList` を渡し「連載が一塊のコンテンツ群」であることを検索エンジンに明示。現状 `tasukiba` が `blogSeriesKey: "tasukiba"` を設定（連載記事は slug に `tasukiba` を含む全記事）
+  - **テーマ別アコーディオン**: 連載記事は各記事 frontmatter の `seriesCategory` でテーマ分類し、`<details>` アコーディオンにグルーピング表示（記事数増加によるページ縦長化、特にモバイルでの可読性低下を防ぐ）。テーマの表示順は `BlogSeries.categoryOrder`、見出しラベルは i18n `product.blogSeries.categories`（ja/en）で管理。各テーマ内は日付昇順、デフォルトで「最新記事を含むテーマ」のみ開いた状態。各 `<details id="series-{key}">` は `openHashAccordion` のディープリンク対象。`seriesCategory` 未設定/未知キーの記事は「その他」テーマに集約（`series-category.test.ts` が全連載記事の有効な `seriesCategory` を強制するため通常は発生しない）。新記事は予約投稿時に `seriesCategory` を付与するだけで該当テーマへ自動分類される
 
 ### 1.6 Project（project/）
 
@@ -292,6 +293,7 @@ SVG 手書きの Git ブランチ風グラフ:
   tags: string[],         // デフォルト: []
   draft: boolean,         // デフォルト: false
   featured: boolean,      // デフォルト: false（dynamic-stats.json が空の時のフォールバック）
+  seriesCategory: string, // 任意（連載記事のテーマ分類キー。LP 連載セクションのアコーディオン見出しに対応。連載記事は必須・src/utils/series-category.test.ts で検証）
 }
 ```
 

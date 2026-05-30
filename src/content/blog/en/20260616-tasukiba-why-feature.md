@@ -3,6 +3,7 @@ title: 'Suggestions With a "Why" — Tasukiba Phase 3 LLM Re-ranking'
 description: "Phase 3 brings the 'Why?' feature — suggestions include 'why this is related' via LLM re-ranking. Tasukiba Pro plan differentiator, powered by Claude Sonnet."
 date: 2026-06-16
 tags: ["tasukiba", "why-feature", "llm-re-ranking", "phase-3", "pro-plan"]
+seriesCategory: "design"
 ---
 
 ## Suggestions get a "why" alongside them

@@ -3,6 +3,7 @@ title: 'A "Cash Cow in Ten Years" — What Tasukiba Will Do for Me'
 description: "What I want Tasukiba in ten years isn't a hyper-growth IPO — it's a slowly rooted tree. Profits fuel next challenges. A psychological-safety experiment."
 date: 2026-06-11
 tags: ["tasukiba", "long-term-vision", "indie-saas", "founding", "psychological-safety"]
+seriesCategory: "origin"
 ---
 
 ## Writing from a ten-year vantage point
