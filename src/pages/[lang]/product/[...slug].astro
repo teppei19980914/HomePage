@@ -51,15 +51,11 @@ const seriesPostsAll = series
 const seriesGroups = series
   ? groupSeriesPostsByCategory(seriesPostsAll, series)
   : [];
-// JSON-LD・既定で開くグループ判定用に日付降順のフラット配列も保持する。
+// JSON-LD 用に日付降順のフラット配列も保持する。
 const seriesPosts = [...seriesPostsAll].sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
-// 既定で開くテーマ = 最新記事を含むグループ（新着が埋もれないように）。
-const latestPostId = seriesPosts[0]?.id;
-const defaultOpenCategory = seriesGroups.find((g) =>
-  g.posts.some((p) => p.id === latestPostId),
-)?.key;
+// アコーディオンは既定で全て閉じる（初期表示を短く保ち、縦長化を防ぐ）。
 const seriesCategoryLabels = productLabels.blogSeries.categories as Record<
   string,
   string
@@ -210,11 +206,7 @@ const seriesItemList =
         <p class="blog-series-intro">{productLabels.blogSeries.intro}</p>
         <div class="blog-series-groups">
           {seriesGroups.map((group) => (
-            <details
-              class="blog-series-category"
-              id={`series-${group.key}`}
-              open={group.key === defaultOpenCategory}
-            >
+            <details class="blog-series-category" id={`series-${group.key}`}>
               <summary>
                 <span class="blog-series-category-name">
                   {seriesCategoryLabels[group.key] ?? group.key}
