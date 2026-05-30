@@ -166,6 +166,7 @@ SVG 手書きの Git ブランチ風グラフ:
 - `status: "suspended"` のとき: 詳細ページに「新規受付停止中」のお知らせバナーを表示し、「体験する」ボタンを非活性表示（クリック不可）に置換。GitHub ボタンは引き続き利用可能
 - **画像ライトボックス**: 本文 `.content` 内の `<img>` をクリック / タップで全画面拡大表示（`ImageLightbox.astro`）。閉じる手段は ✕ ボタン / 背景クリック / Esc キー。リンクで包まれた画像 (`<a><img>`) と `data-no-lightbox` 属性付き画像は対象外
 - **アコーディオン（`<details>`）のディープリンク**: 本文中の `<details id="...">` に対し、URL ハッシュ（例 `#terms` / `#tokushoho`）で直接リンクすると、`[...slug].astro` の `openHashAccordion` が対象アコーディオン（およびネストした祖先 `<details>`）を `open` 状態にし、その位置までスクロールする。初期表示・`hashchange`・`astro:after-swap`（ClientRouter 遷移）の各タイミングで発火。利用規約 (`#terms`) / 特定商取引法表記 (`#tokushoho`) などへの直接リンク用途
+- **連載ブログ一覧（特別セクション）**: frontmatter に `blogSeriesKey` を持つプロダクトは、詳細ページ下部に当該連載のブログ記事一覧セクションを表示。連載判定は `src/utils/blog-series.ts`（`BLOG_SERIES` が単一ソース）で slug の部分一致により行い、ja/en 共通で機能。記事は `isVisibleInDev` で未来日付/下書きを除外し日付降順で一覧化。あわせて `BaseLayout` の `extraJsonLd` prop に schema.org `ItemList` を渡し「連載が一塊のコンテンツ群」であることを検索エンジンに明示。現状 `tasukiba` が `blogSeriesKey: "tasukiba"` を設定（連載記事は slug に `tasukiba` を含む全記事）
 
 ### 1.6 Project（project/）
 
@@ -204,6 +205,7 @@ SVG 手書きの Git ブランチ風グラフ:
 - Markdown 内の外部リンクは `rehype-external-links` で `target="_blank" rel="noopener noreferrer"` を自動付与
 - **画像ライトボックス**: 本文 `.content` 内の `<img>` をクリック / タップで全画面拡大表示（`ImageLightbox.astro`）。閉じる手段は ✕ ボタン / 背景クリック / Esc キー。リンクで包まれた画像 (`<a><img>`) と `data-no-lightbox` 属性付き画像は対象外
 - 未来日付（`date` が今日より後）の記事は本番ビルドで個別ページ非生成（`isPublished` フィルタ）。dev では常に表示
+- **連載記事の LP 導線**: slug が `BLOG_SERIES`（`src/utils/blog-series.ts`）の連載に一致する記事には、対応プロダクト LP への 2 つの内部リンクを表示。(1) **記事末 CTA カード**（プロダクト名・tagline を動的取得して表示）、(2) **画面端の固定ピル**（フクロウアイコン + プロダクト名、`position: fixed`、右下／モバイルは下部中央、本文を覆わない小型サイズ）。固定ピルのリンクは CSS で初期表示され JS 無効でもクロール可能で、JS は ✕ での閉じ操作と `sessionStorage` による閉状態の記憶のみを担う（Google の「煩わしいインタースティシャル」減点を避ける設計）。非連載記事には一切表示しない
 
 #### 1.7.4 タグ別ページ（`/{lang}/blog/tag/{tag-slug}/`）
 
@@ -306,6 +308,9 @@ SVG 手書きの Git ブランチ風グラフ:
   repo: string (URL),      // 任意
   status: "active" | "beta" | "archived" | "suspended",  // デフォルト: "active"
   order: number,           // デフォルト: 0
+  parent: string,          // 任意（親プロダクトの slug。サブページ化）
+  audience: "user" | "firstLogin" | "developer",  // 任意（サブページの対象読者）
+  blogSeriesKey: string,   // 任意（連載ブログのキー。LP 下部に連載一覧 + ItemList を表示）
 }
 ```
 

@@ -8,7 +8,8 @@
       "PowerShell(Get-ChildItem -Path \"dist\" -Directory -Recurse | Where-Object { $_.Name -match \"real-gap|cognitive-closure|designing-psychological\" } | Select-Object FullName)",
       "WebFetch(domain:docs.github.com)",
       "PowerShell(Get-NetTCPConnection -LocalPort 4321 -ErrorAction SilentlyContinue | Select-Object OwningProcess; if \\(\\(Get-NetTCPConnection -LocalPort 4321 -ErrorAction SilentlyContinue\\)\\) { $pids = \\(Get-NetTCPConnection -LocalPort 4321\\).OwningProcess | Sort-Object -Unique; foreach \\($p in $pids\\) { Stop-Process -Id $p -Force -ErrorAction SilentlyContinue }; Write-Output \"stopped\"} else { Write-Output \"no dev server\"})",
-      "PowerShell(cd c:\\\\Users\\\\SF02512\\\\GitHub\\\\Private\\\\HomePage; git ls-files | Where-Object { $_ -match \"favicon|icon|public/|\\\\.svg$|\\\\.ico$|\\\\.png$|webmanifest\" })"
+      "PowerShell(cd c:\\\\Users\\\\SF02512\\\\GitHub\\\\Private\\\\HomePage; git ls-files | Where-Object { $_ -match \"favicon|icon|public/|\\\\.svg$|\\\\.ico$|\\\\.png$|webmanifest\" })",
+      "Bash(npx astro *)"
     ]
   },
   "hooks": {

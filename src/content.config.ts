@@ -27,6 +27,9 @@ const product = defineCollection({
     order: z.number().default(0),
     parent: z.string().optional(),
     audience: z.enum(["user", "firstLogin", "developer"]).optional(),
+    // 連載ブログのキー（src/utils/blog-series.ts の BlogSeries.key と対応）。
+    // 設定すると LP 下部にこのプロダクトの連載ブログ一覧セクションを表示する。
+    blogSeriesKey: z.string().optional(),
   }),
 });
 

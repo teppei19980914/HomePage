@@ -283,6 +283,12 @@ export const ja = {
       noResults: "該当する記事はありませんでした。検索ワードを変更してお試しください。",
       resultCountTemplate: "{count} 件ヒット",
     },
+    seriesCta: {
+      eyebrow: "この連載でつくっているプロダクト",
+      button: "詳しく見る",
+      floatingAria: "このプロダクトの公式ページを開く",
+      dismissAria: "このご案内を閉じる",
+    },
     tag: {
       titleTemplate: "「{tag}」の記事一覧 — {count} 件",
       titleSingleTemplate: "「{tag}」の記事",
@@ -315,6 +321,11 @@ export const ja = {
       user: "アプリが気になっている方へ",
       firstLogin: "初回ログイン方法が知りたい方へ",
       developer: "開発メンバーに加わってみたい方へ",
+    },
+    blogSeries: {
+      title: "連載ブログ",
+      intro: "このプロダクトをつくる過程で考えたことを、連載として書き残しています。開発の背景や設計判断を読み物としてどうぞ。",
+      readMore: "読む",
     },
   },
 

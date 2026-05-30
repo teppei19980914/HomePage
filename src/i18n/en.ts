@@ -371,6 +371,12 @@ export const en: Labels = {
       noResults: "No articles found. Try different keywords.",
       resultCountTemplate: "{count} hit(s)",
     },
+    seriesCta: {
+      eyebrow: "The product behind this series",
+      button: "Learn more",
+      floatingAria: "Open this product's official page",
+      dismissAria: "Dismiss this notice",
+    },
     tag: {
       titleTemplate: "Articles tagged \"{tag}\" — {count} posts",
       titleSingleTemplate: "Articles tagged \"{tag}\"",
@@ -403,6 +409,11 @@ export const en: Labels = {
       user: "If you're curious about the app",
       firstLogin: "If you need help with first-time login",
       developer: "If you might join the dev team",
+    },
+    blogSeries: {
+      title: "Blog Series",
+      intro: "I'm writing an ongoing series about the thinking behind this product. Read along for the background and design decisions that shaped it.",
+      readMore: "Read",
     },
   },
 

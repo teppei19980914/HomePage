@@ -7,6 +7,7 @@ tags: ["Project Management", "Knowledge Management", "Business Software", "Next.
 repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
 status: beta
 order: 3
+blogSeriesKey: "tasukiba"
 ---
 
 > **Leave the insights. Hand over the judgments. Make every project stronger.**
@@ -37,6 +38,8 @@ Every detail in the artwork carries meaning.
 - **Soft circular barrier in the background** — A protected space where your project can run with confidence.
 
 "Watch through the night. Protect what you know. Show it when it matters." The Tasuki Owl is the friendly shape of that promise, quietly there beside you as you work.
+
+Why an owl, out of every possible motif? I wrote about the meaning behind the name and the design in [The Birth of the Tasuki Owl](/HomePage/en/blog/20260530-tasukiba-owl-origin/).
 
 ## Status & Roadmap
 

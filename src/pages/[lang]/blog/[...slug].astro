@@ -8,6 +8,7 @@ import { localeUrl } from "../../../i18n/url";
 import { buildXShareUrl } from "../../../utils/share";
 import { estimateReadingTime } from "../../../utils/reading-time";
 import { tagToSlug } from "../../../utils/blog-tags";
+import { findSeriesForSlug } from "../../../utils/blog-series";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -29,6 +30,18 @@ const t = getLabels(lang);
 const { common, share, blog, readingTime: readingTimeLabel, lightbox } = t;
 const readingMin = estimateReadingTime(post.body ?? "");
 const { Content } = await render(post);
+
+// 連載記事なら、対応するプロダクト LP への導線（記事末 CTA + 固定ピル）を出す。
+// 判定は slug ベースなので ja / en どちらの記事でも同一に効く。
+const slug = stripLocale(post.id);
+const series = findSeriesForSlug(slug);
+const seriesProduct = series
+  ? (await getLocalizedCollection("product", lang)).find(
+      (p) => stripLocale(p.id) === series.productSlug,
+    ) ?? null
+  : null;
+const seriesProductUrl =
+  series && seriesProduct ? localeUrl(lang, `product/${series.productSlug}/`) : null;
 // dev 環境でのみ下書き/予約投稿バナーを表示（本番では表示しない）
 const isDev = import.meta.env.DEV;
 const isDraft = isDev && post.data.draft === true;
@@ -157,6 +170,19 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
     </div>
   </div>
 
+  {series && seriesProduct && seriesProductUrl && (
+    <aside class="series-cta reveal" aria-label={blog.seriesCta.eyebrow}>
+      <div class="series-cta-body">
+        <p class="series-cta-eyebrow">{blog.seriesCta.eyebrow}</p>
+        <p class="series-cta-title">{seriesProduct.data.title}</p>
+        <p class="series-cta-tagline">{seriesProduct.data.tagline}</p>
+      </div>
+      <a href={seriesProductUrl} class="btn-cta series-cta-btn">
+        {blog.seriesCta.button} &rarr;
+      </a>
+    </aside>
+  )}
+
   <section class="bottom-cta reveal">
     <h2>{common.ctaTitle}</h2>
     <p>{common.ctaBody}</p>
@@ -165,6 +191,33 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
   <nav class="back reveal">
     <a href="#" onclick="history.back(); return false;">&larr; {common.backLink}</a>
   </nav>
+
+  {series && seriesProduct && seriesProductUrl && (
+    <div class="series-float" id="seriesFloat" data-series-key={series.key}>
+      <a
+        href={seriesProductUrl}
+        class="series-float-link"
+        aria-label={blog.seriesCta.floatingAria}
+      >
+        <img
+          src="/HomePage/mascot-owl.png"
+          alt=""
+          width="36"
+          height="36"
+          class="series-float-icon"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="series-float-text">{seriesProduct.data.title}</span>
+        <span class="series-float-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <button
+        type="button"
+        class="series-float-close"
+        aria-label={blog.seriesCta.dismissAria}
+      >&times;</button>
+    </div>
+  )}
 
   <ImageLightbox labels={lightbox} />
 
@@ -327,6 +380,31 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
     }
     initToc();
     document.addEventListener("astro:after-swap", initToc);
+
+    // ===== 連載 LP 導線の固定ピル =====
+    // リンク自体は JS 無効でも表示・クロール可能（CSS で初期表示）。
+    // JS はセッション内の「閉じた」状態の記憶と閉じる操作のみを担う。
+    function initSeriesFloat() {
+      var el = document.getElementById("seriesFloat");
+      if (!el) return;
+      var key = "seriesFloatDismissed:" + (el.getAttribute("data-series-key") || "");
+      try {
+        if (sessionStorage.getItem(key) === "1") {
+          el.classList.add("is-dismissed");
+          return;
+        }
+      } catch (e) {}
+      var closeBtn = el.querySelector(".series-float-close");
+      if (closeBtn && closeBtn.dataset.bound !== "1") {
+        closeBtn.dataset.bound = "1";
+        closeBtn.addEventListener("click", function () {
+          el.classList.add("is-dismissed");
+          try { sessionStorage.setItem(key, "1"); } catch (e) {}
+        });
+      }
+    }
+    initSeriesFloat();
+    document.addEventListener("astro:after-swap", initSeriesFloat);
 
   </script>
 </BaseLayout>
@@ -510,6 +588,107 @@ const shareClipboardText = `${post.data.title} | Teppei Suyama\n${pageUrl}`;
   .bottom-cta p { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
   .btn-cta { display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; background: linear-gradient(135deg, var(--color-primary), #8b5cf6); color: white; font-weight: 600; background-image: none; transition: transform 0.25s, box-shadow 0.25s; }
   .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--color-primary-glow); color: white; }
+
+  /* ===== 連載 LP 導線：記事末 CTA カード ===== */
+  .series-cta {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+  }
+  .series-cta-body { flex: 1; min-width: 220px; }
+  .series-cta-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.35rem;
+  }
+  .series-cta-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .series-cta-tagline { color: var(--color-text-muted); font-size: 0.9rem; margin: 0; }
+  .series-cta-btn { flex-shrink: 0; white-space: nowrap; }
+
+  /* ===== 連載 LP 導線：画面端の固定ピル ===== */
+  /* 本文を覆わない小型サイズ。リンクは初期表示（JS 無効でもクロール可能）。 */
+  .series-float {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.35rem 0.4rem 0.35rem 0.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    max-width: calc(100vw - 2.5rem);
+    animation: seriesFloatIn 0.4s ease both;
+  }
+  :global(.dark) .series-float { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); }
+  .series-float.is-dismissed { display: none; }
+  .series-float-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.1rem 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    background-image: none;
+  }
+  .series-float-link:hover { color: var(--color-primary); }
+  .series-float-icon { border-radius: 50%; flex-shrink: 0; }
+  .series-float-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 11rem;
+  }
+  .series-float-arrow { color: var(--color-primary); flex-shrink: 0; }
+  .series-float-close {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .series-float-close:hover { background-color: var(--color-border); color: var(--color-text); }
+  @keyframes seriesFloatIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .series-float { animation: none; }
+  }
+  @media (max-width: 600px) {
+    .series-float {
+      right: 0.75rem;
+      left: 0.75rem;
+      bottom: 0.75rem;
+      justify-content: center;
+    }
+    .series-float-text { max-width: none; }
+  }
 </style>
 
 <!-- NOTE: TOC 項目 (li/a/span) は client-side JS で動的生成されるため、

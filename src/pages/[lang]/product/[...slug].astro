@@ -2,9 +2,10 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ImageLightbox from "../../../components/ImageLightbox.astro";
 import { render } from "astro:content";
-import { getLabels, normalizeLocale, LOCALES } from "../../../i18n";
-import { getLocalizedCollection, stripLocale } from "../../../i18n/content";
+import { getLabels, normalizeLocale, LOCALES, BCP47 } from "../../../i18n";
+import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
+import { getSeriesByKey, isSeriesPostSlug } from "../../../utils/blog-series";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -31,9 +32,46 @@ const allProducts = await getLocalizedCollection("product", lang);
 const childProducts = allProducts
   .filter((p) => p.data.parent === currentSlug)
   .sort((a, b) => a.data.order - b.data.order);
+
+// 連載ブログ一覧（このプロダクトに blogSeriesKey が設定されている場合のみ）。
+// slug ベースで該当記事を集め、未来日付/下書きを除いて日付降順で並べる。
+const series = product.data.blogSeriesKey
+  ? getSeriesByKey(product.data.blogSeriesKey)
+  : undefined;
+const seriesPosts = series
+  ? (await getLocalizedCollection("blog", lang))
+      .filter(isVisibleInDev)
+      .filter((p) => isSeriesPostSlug(stripLocale(p.id), series))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  : [];
+
+// 連載が一塊のコンテンツ群であることを検索エンジンに伝える ItemList 構造化データ。
+const seriesItemList =
+  seriesPosts.length > 0
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: `${product.data.title} — ${productLabels.blogSeries.title}`,
+          itemListElement: seriesPosts.map((p, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: new URL(
+              localeUrl(lang, `blog/${stripLocale(p.id)}/`),
+              Astro.site,
+            ).toString(),
+            name: p.data.title,
+          })),
+        },
+      ]
+    : [];
 ---
 
-<BaseLayout title={product.data.title} description={product.data.description}>
+<BaseLayout
+  title={product.data.title}
+  description={product.data.description}
+  extraJsonLd={seriesItemList}
+>
   <article class="prose">
     <header class="hero-gradient fade-in">
       <span class={`status status-${product.data.status}`}>
@@ -144,6 +182,30 @@ const childProducts = allProducts
             </a>
           ))}
         </div>
+      </section>
+    )}
+    {seriesPosts.length > 0 && (
+      <section class="blog-series reveal" aria-labelledby="blog-series-heading">
+        <h2 id="blog-series-heading">{productLabels.blogSeries.title}</h2>
+        <p class="blog-series-intro">{productLabels.blogSeries.intro}</p>
+        <ul class="blog-series-list">
+          {seriesPosts.map((p) => (
+            <li class="blog-series-item">
+              <a
+                href={localeUrl(lang, `blog/${stripLocale(p.id)}/`)}
+                class="blog-series-card"
+                data-astro-reload
+              >
+                <span class="blog-series-date">
+                  {p.data.date.toLocaleDateString(BCP47[lang])}
+                </span>
+                <h3>{p.data.title}</h3>
+                <p class="blog-series-desc">{p.data.description}</p>
+                <span class="blog-series-readmore">{productLabels.blogSeries.readMore} &rarr;</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     )}
   </article>
@@ -829,6 +891,74 @@ const childProducts = allProducts
   }
 
   .sub-page-detail {
+    margin-top: 0.5rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  /* ===== 連載ブログ一覧（このプロダクト固有の特別セクション） ===== */
+  .blog-series {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .blog-series h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .blog-series-intro {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .blog-series-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .blog-series-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    height: 100%;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    background-image: none;
+    color: var(--color-text);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .blog-series-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-accent);
+    color: var(--color-text);
+  }
+  :global(.dark) .blog-series-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  .blog-series-date {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+  .blog-series-card h3 {
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  .blog-series-desc {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    flex: 1;
+    line-height: 1.6;
+  }
+  .blog-series-readmore {
     margin-top: 0.5rem;
     color: var(--color-primary);
     font-weight: 600;

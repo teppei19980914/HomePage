@@ -17,6 +17,11 @@ interface Props {
    * 1 記事しかないタグページなど、Google Search Central が "thin content" と判定し得るページに付与する。
    */
   noindex?: boolean;
+  /**
+   * 追加の JSON-LD 構造化データ。ページ固有の schema.org オブジェクト
+   * （例: 連載ブログ一覧の ItemList）を <script type="application/ld+json"> として追記する。
+   */
+  extraJsonLd?: Record<string, unknown>[];
 }
 
 const {
@@ -26,6 +31,7 @@ const {
   publishedDate,
   tags = [],
   noindex = false,
+  extraJsonLd = [],
 } = Astro.props;
 
 // ===== ロケール判定 =====
@@ -140,6 +146,9 @@ const jsonLd = ogType === "article"
 
     <!-- JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {extraJsonLd.map((obj) => (
+      <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+    ))}
 
     <!-- RSS -->
     <link
