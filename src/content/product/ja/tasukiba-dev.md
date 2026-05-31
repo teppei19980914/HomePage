@@ -4,7 +4,8 @@ description: "たすきばはサービスを育てる中で開発者自身も育
 tagline: "サービスを育てる中で、お互いを尊重しながら、開発者自身も育っていく場所。"
 date: 2026-04-16
 tags: ["開発者募集", "コミュニティ開発", "心理的安全性", "相互成長", "TypeScript Next.js"]
-status: beta
+url: "https://tasukiba.com/"
+status: active
 order: 32
 parent: "tasukiba"
 audience: "developer"
@@ -73,7 +74,7 @@ audience: "developer"
 | セキュリティスコア | 90/100 を CI で強制 |
 | 運用コスト | 月額 **約 $9**（Netlify Personal $9/seat + Supabase Free + 従量 LLM / Voyage） |
 | ソースコード | **Public リポジトリ**: [BusinessManagementPlatform](https://github.com/teppei19980914/BusinessManagementPlatform) |
-| 公開状態 | 2026 年 6 月 1 日 正式リリース予定（コードは先行して Public 化済み） |
+| 公開状態 | 2026 年 6 月 1 日 正式リリース済み（コードも Public 化済み） |
 
 「ゼロから一」を一緒に作るタイミングは、サービスの一生で一度きりです。
 
@@ -208,7 +209,7 @@ audience: "developer"
 | データベース定義（Prisma schema） | 42 モデル / マイグレーション 72 本 |
 | ドキュメント | 161 ファイル（Markdown） |
 
-> テストコードがアプリ本体の **約 53%**（56,000 / 106,000 行）を占めています。「テストファースト・品質重視」が数字にも表れています。各数値は開発が進むにつれ増えるため、おおよその目安としてご覧ください。
+> **行数の内訳**：たすきば本体のコード（テスト除く）が **約 106,000 行**、それとは別に存在する **単体テストコード** が **約 56,000 行**、合わせて **約 162,000 行**（本体 106,000 + 単体テスト 56,000）です。本体 106,000 行に対して単体テストを 56,000 行 ——本体の **約 53%** にあたる量の単体テストを書いており、「テストファースト・品質重視」が数字にも表れています。各数値は開発が進むにつれ増えるため、おおよその目安としてご覧ください。
 
 </details>
 
@@ -417,7 +418,7 @@ Brevo (メール) / Voyage AI (embedding) / Anthropic (LLM)
 | **観察だけのタスク** | 既存の PR や Issue を読んで、「ここが良い／改善できそう」と感じた点を Discussions に書いてみる。コードを書かなくて OK | 15〜30 分 |
 | **誤字 1 文字の PR** | ドキュメントの誤字を 1 文字だけ直す。最小の PR を出す体験。Git・GitHub の操作練習にもなります | 15 分 |
 | **既存テストを 1 本読んでみる** | どんなコードがどう守られているかを把握する。読んだ感想を共有するだけで OK | 20〜30 分 |
-| **使ってみての違和感を起票** | β 版を実際に触って、気になった点を Issue / Discussion に書く | 15 分 |
+| **使ってみての違和感を起票** | 正式版を実際に触って、気になった点を Issue / Discussion に書く | 15 分 |
 
 「**読むだけ**」「**観察するだけ**」「**質問するだけ**」のスタートも、何度でも歓迎です。**コードを書くプレッシャーは一切ありません**。
 
@@ -426,7 +427,7 @@ Brevo (メール) / Voyage AI (embedding) / Anthropic (LLM)
 <details class="faq-item">
 <summary>募集タイミング</summary>
 
-- **募集開始**: 2026 年 6 月 1 日（正式リリースと同時）
+- **募集中**: 2026 年 6 月 1 日（正式リリースと同時）に開始しました
 - **その前でも**: [GitHub Discussions](https://github.com/teppei19980914/BusinessManagementPlatform/discussions) でお声がけいただければ、いつでも歓迎します
 - **GitHub 公開**: コードはすでに [Public で公開済み](https://github.com/teppei19980914/BusinessManagementPlatform) です。コードを覗いてから判断していただけます
 

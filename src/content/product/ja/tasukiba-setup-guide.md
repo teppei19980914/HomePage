@@ -4,7 +4,8 @@ description: "たすきばを初めて使う組織の最初の管理者(テナ�
 tagline: "テナントの払い出しから、最初のログインまで迷わず。"
 date: 2026-05-28
 tags: ["初回ログイン", "サインアップ", "セットアップガイド", "テナント管理者", "オンボーディング"]
-status: beta
+url: "https://tasukiba.com/"
+status: active
 order: 33
 parent: "tasukiba"
 audience: "firstLogin"

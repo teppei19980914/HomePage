@@ -4,7 +4,8 @@ description: "Project management platform that surfaces past knowledge via seman
 tagline: "Turn time spent searching into time spent creating."
 date: 2026-04-16
 tags: ["project management", "knowledge management", "semantic search", "PM enablement", "operational efficiency"]
-status: beta
+url: "https://tasukiba.com/"
+status: active
 order: 31
 parent: "tasukiba"
 audience: "user"
@@ -15,9 +16,9 @@ audience: "user"
 Past assets, surfaced at exactly the right moment.
 We cut the time you spend hunting for documents so you can focus on work that actually creates value.
 
-> 🚀 **General availability is planned for June 1, 2026.** Sign-up is not yet open. We'll announce here as soon as the service is ready.
+> 🚀 **Tasukiba went live on June 1, 2026.** [Open Tasukiba](https://tasukiba.com/) to sign up and start right away — no credit card required.
 
-- **Try it free for 90 days** — Launching June 1, 2026. Stay tuned!
+- **[Try it free for 90 days](https://tasukiba.com/)** — no credit card required at sign-up.
 - [Drop by Discord to chat](https://discord.com/invite/EqY82YvxuG)
 
 ---
@@ -113,7 +114,7 @@ In short, existing tools fail because **they are built on the assumption that th
 | **Task management** (ticket / board) | Visualizes tasks and progress | Knowledge lives in another tool. Reasoning isn't preserved |
 | **Knowledge / wiki** | Free-form notes, full-text search | Passive: nothing surfaces unless you go look |
 | **Meeting notes / chat** | Real-time conversation | Not structured. Buried in time-ordered streams |
-| **Tasukiba** | Project operations and knowledge structured **in one place**, **semantic search + proactive suggestions** | β phase: direct integrations with Backlog / Notion etc. not yet available (CSV import is partially supported) |
+| **Tasukiba** | Project operations and knowledge structured **in one place**, **semantic search + proactive suggestions** | Direct integrations with Backlog / Notion etc. not yet available (CSV import is partially supported) |
 
 </details>
 
@@ -287,7 +288,7 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 
 | Item | Current status |
 |---|---|
-| **Contract form** | β / early-commercial phase: online sign-up + terms-of-service consent. If you need a separate contract (NDA / DPA / etc.), please reach out via [Contact](/HomePage/en/contact/) |
+| **Contract form** | Online sign-up + terms-of-service consent. If you need a separate contract (NDA / DPA / etc.), please reach out via [Contact](/HomePage/en/contact/) |
 | **Data residency** | Data is stored in **ap-northeast-1 (Tokyo region)** |
 | **Cross-border transfer to AI services** | When proactive suggestions and semantic search run, data is sent to Anthropic (US) / Voyage AI (US). Both are configured so your data is **not used for training** (see FAQ Q15) |
 | **Payment methods** | Bank transfer (invoiced) and credit card payment (via Stripe) both supported |
@@ -630,7 +631,7 @@ Once payment is confirmed, we lift the restriction **immediately** and writing r
 
 **🧾 About late-payment interest**
 
-We **do not currently set late-payment interest**, prioritizing trust during the β phase.
+We **do not currently set late-payment interest**, prioritizing trust with our users.
 We may set it later at the statutory commercial rate; we will notify in advance if so.
 
 **🔐 Data protection**
@@ -853,9 +854,9 @@ We don't yet have direct integrations with Backlog / Notion etc., but **CSV impo
 90 days free. Cancel anytime.
 Whether it fits is, in the end, something best judged by you.
 
-> 🚀 **General availability is planned for June 1, 2026.** From launch day onward we'll publish a new sign-up link on this page. No credit card required.
+> 🚀 **Tasukiba went live on June 1, 2026.** Sign up from the button below or the always-on link at the bottom-right of the page — [Open Tasukiba](https://tasukiba.com/). No credit card required.
 
-- **Try it free for 90 days** — Launching June 1, 2026. Stay tuned!
+- **[Try it free for 90 days](https://tasukiba.com/)**
 - [Drop by Discord to chat](https://discord.com/invite/EqY82YvxuG)
 
 ### After 90 days

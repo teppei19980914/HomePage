@@ -248,6 +248,35 @@ const seriesItemList =
     <a href="#" onclick="history.back(); return false;">&larr; {common.backLink}</a>
   </nav>
 
+  {product.data.url && product.data.status !== "suspended" && (currentSlug === "tasukiba" || product.data.parent === "tasukiba") && (
+    <div class="app-float" id="appFloat" data-app-key={currentSlug}>
+      <a
+        href={product.data.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="app-float-link"
+        aria-label={productLabels.appFloat.aria}
+      >
+        <img
+          src="/HomePage/mascot-owl.png"
+          alt=""
+          width="36"
+          height="36"
+          class="app-float-icon"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="app-float-text">{productLabels.appFloat.text}</span>
+        <span class="app-float-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <button
+        type="button"
+        class="app-float-close"
+        aria-label={productLabels.appFloat.dismissAria}
+      >&times;</button>
+    </div>
+  )}
+
   <ImageLightbox labels={lightbox} />
 
   <script is:inline>
@@ -408,9 +437,34 @@ const seriesItemList =
     openHashAccordion();
     window.addEventListener("hashchange", openHashAccordion);
 
+    // ===== アプリ導線の固定ピル =====
+    // リンク自体は JS 無効でも表示・クロール可能（CSS で初期表示）。
+    // JS はセッション内の「閉じた」状態の記憶と閉じる操作のみを担う。
+    function initAppFloat() {
+      var el = document.getElementById("appFloat");
+      if (!el) return;
+      var key = "appFloatDismissed:" + (el.getAttribute("data-app-key") || "");
+      try {
+        if (sessionStorage.getItem(key) === "1") {
+          el.classList.add("is-dismissed");
+          return;
+        }
+      } catch (e) {}
+      var closeBtn = el.querySelector(".app-float-close");
+      if (closeBtn && closeBtn.dataset.bound !== "1") {
+        closeBtn.dataset.bound = "1";
+        closeBtn.addEventListener("click", function () {
+          el.classList.add("is-dismissed");
+          try { sessionStorage.setItem(key, "1"); } catch (e) {}
+        });
+      }
+    }
+    initAppFloat();
+
     document.addEventListener("astro:after-swap", function () {
       initProductToc();
       openHashAccordion();
+      initAppFloat();
     });
   </script>
 </BaseLayout>
@@ -1066,6 +1120,80 @@ const seriesItemList =
   }
   .blog-series-category .blog-series-list {
     padding: 1.25rem;
+  }
+
+  /* ===== アプリ導線：画面端の固定ピル ===== */
+  /* 本文を覆わない小型サイズ。リンクは初期表示（JS 無効でもクロール可能）。 */
+  .app-float {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.35rem 0.4rem 0.35rem 0.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    max-width: calc(100vw - 2.5rem);
+    animation: appFloatIn 0.4s ease both;
+  }
+  :global(.dark) .app-float { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); }
+  .app-float.is-dismissed { display: none; }
+  .app-float-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.1rem 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    background-image: none;
+  }
+  .app-float-link:hover { color: var(--color-primary); }
+  .app-float-icon { border-radius: 50%; flex-shrink: 0; }
+  .app-float-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 11rem;
+  }
+  .app-float-arrow { color: var(--color-primary); flex-shrink: 0; }
+  .app-float-close {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .app-float-close:hover { background-color: var(--color-border); color: var(--color-text); }
+  @keyframes appFloatIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .app-float { animation: none; }
+  }
+  @media (max-width: 600px) {
+    .app-float {
+      right: 0.75rem;
+      left: 0.75rem;
+      bottom: 0.75rem;
+      justify-content: center;
+    }
+    .app-float-text { max-width: none; }
   }
 
   .bottom-cta { margin-top: 3rem; padding: 2.5rem 1.5rem; text-align: center; border: 1px solid var(--color-border); border-radius: 0.75rem; background-color: var(--color-surface); }

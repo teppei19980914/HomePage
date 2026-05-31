@@ -4,7 +4,8 @@ description: "Tasukiba and its developers grow together. No experience needed. R
 tagline: "A place where building the service, respecting each other, and growing as a developer happen together."
 date: 2026-04-16
 tags: ["hiring", "community development", "psychological safety", "mutual growth", "TypeScript Next.js"]
-status: beta
+url: "https://tasukiba.com/"
+status: active
 order: 32
 parent: "tasukiba"
 audience: "developer"
@@ -73,7 +74,7 @@ To be honest: Tasukiba is currently developed by **Suyama alone** — a small pr
 | Security score | 90/100 enforced in CI |
 | Operating cost | **~$9/mo** (Netlify Personal $9/seat + Supabase Free + LLM/Voyage usage) |
 | Source code | **Public repository**: [BusinessManagementPlatform](https://github.com/teppei19980914/BusinessManagementPlatform) |
-| Release plan | General release: 2026-06-01 (code is already Public — feel free to look ahead) |
+| Release status | Generally available since 2026-06-01 (code is Public, too) |
 
 The "zero to one" moment of a service only comes once.
 
@@ -208,7 +209,7 @@ Even as "a small project," here is how large it actually is, in numbers (measure
 | Database schema (Prisma) | 42 models / 72 migrations |
 | Documentation | 161 Markdown files |
 
-> Test code accounts for **about 53%** of the app code (56,000 / 106,000 lines) — "test-first, quality-focused" shows up in the numbers, too. These figures grow as development proceeds; treat them as rough indicators.
+> **Line-count breakdown**: the Tasukiba app code itself (excluding tests) is **~106,000 lines**, and the separate **unit test code** is **~56,000 lines** — **~162,000 lines** in total (106,000 app + 56,000 unit tests). That works out to **about 53%** as much unit test code as app code (56,000 vs. 106,000) — "test-first, quality-focused" shows up in the numbers, too. These figures grow as development proceeds; treat them as rough indicators.
 
 </details>
 
@@ -417,7 +418,7 @@ Write code, try tests, fix docs, just observe first — whatever it is, **let's 
 | **Just observe** | Read an existing PR / Issue and post your "this part feels good / could be better" on Discussions. No code needed | 15–30 min |
 | **A one-character typo PR** | Fix a single typo in the docs. The smallest possible PR — also a hands-on Git / GitHub practice | 15 min |
 | **Read one existing test** | See which code is guarded how. Share your impression on Discussions, that's it | 20–30 min |
-| **Report what felt off** | Try the β version, write up any rough edges as an Issue / Discussion | 15 min |
+| **Report what felt off** | Try the live version, write up any rough edges as an Issue / Discussion | 15 min |
 
 "**Just reading**," "**just watching**," "**just asking questions**" — all welcome, as many times as you like. **No pressure to write code.**
 
@@ -426,7 +427,7 @@ Write code, try tests, fix docs, just observe first — whatever it is, **let's 
 <details class="faq-item">
 <summary>Timing</summary>
 
-- **Recruiting opens**: 2026-06-01 (with general release)
+- **Recruiting is open**: started 2026-06-01 (with general release)
 - **Before that**: Say hi on [GitHub Discussions](https://github.com/teppei19980914/BusinessManagementPlatform/discussions) any time
 - **GitHub**: The code is already [Public](https://github.com/teppei19980914/BusinessManagementPlatform). Feel free to look around before deciding
 

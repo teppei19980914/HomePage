@@ -315,6 +315,11 @@ export const ja = {
     suspendedLink: "新規受付停止中",
     suspendedNotice: "現在、新規ユーザーの受け入れを停止しています。",
     githubLink: "GitHub", // brand
+    appFloat: {
+      text: "たすきばを使ってみる",
+      aria: "たすきばアプリを新しいタブで開く",
+      dismissAria: "この案内を閉じる",
+    },
     subPagesTitle: "目的に合わせて選ぶ",
     subPagesIntro: "このプロダクトのページは、読みたい内容に合わせて分かれています。",
     audienceLabels: {

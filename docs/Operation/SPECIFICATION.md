@@ -162,8 +162,9 @@ SVG 手書きの Git ブランチ風グラフ:
 ### 1.5 Product（product/）
 
 - 一覧: `order` 昇順で表示。ステータスバッジ（Active/Beta/Archived/Suspended）
-- 詳細: frontmatter + Markdown 本文。「体験する →」「GitHub」ボタン（任意）
+- 詳細: frontmatter + Markdown 本文。「体験する →」（frontmatter `url`）「GitHub」（`repo`）ボタン（任意）
 - `status: "suspended"` のとき: 詳細ページに「新規受付停止中」のお知らせバナーを表示し、「体験する」ボタンを非活性表示（クリック不可）に置換。GitHub ボタンは引き続き利用可能
+- **アプリ導線の固定ピル**: `url` を持ち `status !== "suspended"` の **たすきば配下ページ**（slug が `tasukiba`、または `parent: "tasukiba"`）に限り、`url`（たすきばアプリ）へ飛ぶ小型の固定ピル（フクロウアイコン + ラベル、`position: fixed`、右下／モバイルは下部中央、本文を覆わない）を表示。連載ブログの固定ピル（1.6）と同一の挙動で、リンクは CSS で初期表示され JS 無効でもクロール可能、JS は ✕ での閉じ操作と `sessionStorage`（キー `appFloatDismissed:<slug>`）による閉状態の記憶のみを担う。ラベル等は i18n `product.appFloat`（`text` / `aria` / `dismissAria`）
 - **画像ライトボックス**: 本文 `.content` 内の `<img>` をクリック / タップで全画面拡大表示（`ImageLightbox.astro`）。閉じる手段は ✕ ボタン / 背景クリック / Esc キー。リンクで包まれた画像 (`<a><img>`) と `data-no-lightbox` 属性付き画像は対象外
 - **アコーディオン（`<details>`）のディープリンク**: 本文中の `<details id="...">` に対し、URL ハッシュ（例 `#terms` / `#tokushoho`）で直接リンクすると、`[...slug].astro` の `openHashAccordion` が対象アコーディオン（およびネストした祖先 `<details>`）を `open` 状態にし、その位置までスクロールする。初期表示・`hashchange`・`astro:after-swap`（ClientRouter 遷移）の各タイミングで発火。利用規約 (`#terms`) / 特定商取引法表記 (`#tokushoho`) などへの直接リンク用途
 - **連載ブログ一覧（特別セクション）**: frontmatter に `blogSeriesKey` を持つプロダクトは、詳細ページ下部に当該連載のブログ記事一覧セクションを表示。連載判定は `src/utils/blog-series.ts`（`BLOG_SERIES` が単一ソース）で slug の部分一致により行い、ja/en 共通で機能。記事は `isVisibleInDev` で未来日付/下書きを除外（公開判定はブログ一覧と共通のため「ブログ未公開＝連載セクションにも非表示」が自動で一致）。あわせて `BaseLayout` の `extraJsonLd` prop に schema.org `ItemList` を渡し「連載が一塊のコンテンツ群」であることを検索エンジンに明示。現状 `tasukiba` が `blogSeriesKey: "tasukiba"` を設定（連載記事は slug に `tasukiba` を含む全記事）

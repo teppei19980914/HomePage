@@ -5,14 +5,30 @@ tagline: "The more you run it, the better the next one goes. Project management 
 date: 2026-04-16
 tags: ["Project Management", "Knowledge Management", "Business Software", "Next.js", "PostgreSQL"]
 repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
-status: beta
+url: "https://tasukiba.com/"
+status: active
 order: 3
 blogSeriesKey: "tasukiba"
 ---
 
-> **Leave the insights. Hand over the judgments. Make every project stronger.**
->
-> A project management platform that supports the entire flow from planning through retrospective, with knowledge at the center.
+## Before you go looking, the knowledge you need finds you
+
+> "We solved this on the last project." "Those retro takeaways? Nobody remembers them." —
+> Until now, project knowledge only surfaced **when you went looking for it.**
+
+Tasukiba flips that. The moment you open a project, **the past knowledge, risks, and retrospectives relevant to you right now line up automatically, ranked by relevance.** And from the bottom-right of any screen, just ask in plain language for "past assets like this." Search *and* delivery — together, they change how knowledge gets pulled out.
+
+| | Typical full-text search | Tasukiba |
+|---|---|---|
+| How you find it | You search by keyword | It surfaces on open + ask in plain language |
+| Results | 100+ hits to scroll through | The **few most relevant**, distilled |
+| Wording gaps | "effort" ≠ "delay" | **Linked by meaning**, so both surface |
+
+**Context, not characters.** Search "bank" and full-text matching can't tell a riverbank from a savings account — semantic search reads the surrounding context and returns the one you actually meant.
+
+From "review 100 results by eye" to "**decide from a handful.**" Knowledge stops living in one person's memory and accumulates as a **team asset.**
+
+**[Try Tasukiba free for 90 days](https://tasukiba.com/)** — no credit card required.
 
 ## What's in the Name
 
@@ -40,15 +56,6 @@ Every detail in the artwork carries meaning.
 "Watch through the night. Protect what you know. Show it when it matters." The Tasuki Owl is the friendly shape of that promise, quietly there beside you as you work.
 
 Why an owl, out of every possible motif? I wrote about the meaning behind the name and the design in [The Birth of the Tasuki Owl](/HomePage/en/blog/20260530-tasukiba-owl-origin/).
-
-## Status & Roadmap
-
-- **2026-04-15**: All MVP phases complete
-- **2026-04-23**: Repository organization phase complete. Team-onboarding ready
-- **2026-05-01**: Pre-release (introduction-only public; external login is invite-only)
-- **2026-06-01**: General release planned (cloud / on-premise / local — three environments)
-
-After GA, the foundation is in place to expand into **AI features such as similar-project recommendation and risk pre-detection**.
 
 ## Pick the page that matches what you're here for
 

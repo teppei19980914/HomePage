@@ -4,7 +4,8 @@ description: "A step-by-step guide for a new organization's first admin: from si
 tagline: "From tenant provisioning to your first login — without the guesswork."
 date: 2026-05-28
 tags: ["first login", "sign-up", "setup guide", "tenant admin", "onboarding"]
-status: beta
+url: "https://tasukiba.com/"
+status: active
 order: 33
 parent: "tasukiba"
 audience: "firstLogin"
