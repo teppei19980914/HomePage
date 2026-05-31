@@ -44,16 +44,16 @@ Proactive suggestions arrive **the moment you open a project**, but there are al
 
 Tasukiba provides natural-language semantic search via a **💬 floating button that is always visible at the bottom-right of every screen**.
 
-![Tasukiba chat semantic search screen — a natural-language question surfaces related knowledge across six asset types](/HomePage/products/tasukiba/chat.png)
+![Tasukiba chat semantic search screen — a natural-language question surfaces related knowledge across five asset types](/HomePage/products/tasukiba/chat.png)
 
-> Just type a natural-language question into the 💬 button at the bottom-right of every screen. Tasukiba lines up semantically close matches from **six asset types — projects, knowledge, risks, issues, retrospectives, and memos** — in 0.3–0.5 seconds, grouped into **Strongly related / Possibly related / Weakly related**.
+> Just type a natural-language question into the 💬 button at the bottom-right of every screen. Tasukiba lines up semantically close matches from **five asset types — projects, knowledge, risks/issues, retrospectives, and memos** — in 0.3–0.5 seconds, grouped into **Strongly related / Moderately related / Weakly related**.
 
 | | Full-text search (typical tools) | Chat semantic search (Tasukiba) |
 |---|---|---|
 | Input | Keywords | Natural language (with work context) |
 | Result count | 100+ hits, scroll everything | **Top few** are enough |
 | Wording drift | "workload" and "schedule slip" treated separately | **Linked by meaning** — both surface |
-| Cross-type | Search one asset type at a time | **Six asset types in one shot** |
+| Cross-type | Search one asset type at a time | **Five asset types in one shot** |
 
 > Instead of "eyeball 100 results," you reach **"the top few are enough to decide."** Two complementary modes — "it reaches you" and "you ask for it" — structurally change how knowledge gets surfaced.
 
@@ -135,7 +135,7 @@ Even with rewording or different phrasing, you can reach genuinely close informa
 
 Instead of "eyeball 100 results," you reach **"a handful of the closest matches is enough."**
 
-**For the moments when you want to actively search**: A 💬 floating button is always shown at the bottom-right of every screen. Type a natural-language query like "give me past cases where scope creep led to schedule overrun" and Tasukiba semantically searches **six asset types simultaneously** — projects, knowledge, risks, issues, retrospectives, and memos. The top few relevant matches are returned in seconds (Chat Semantic Search).
+**For the moments when you want to actively search**: A 💬 floating button is always shown at the bottom-right of every screen. Type a natural-language query like "give me past cases where scope creep led to schedule overrun" and Tasukiba semantically searches **five asset types simultaneously** — projects, knowledge, risks/issues, retrospectives, and memos. The top few relevant matches are returned in seconds (Chat Semantic Search).
 
 ### Solution 3: A way to keep experience as structure
 
@@ -151,7 +151,7 @@ You can capture experience in a form that is **searchable, referenceable, and re
 |---|---|
 | **Proactive suggestions** | Even without searching, the information you need reaches you |
 | **Semantic search** | Different wording still gets you to genuinely close information |
-| **Chat semantic search** | A 💬 floating button on every screen — type a natural-language question and surface the top relevant assets across six types in seconds |
+| **Chat semantic search** | A 💬 floating button on every screen — type a natural-language question and surface the top relevant assets across five types in seconds |
 | **Structured records** | Risks, issues, retrospectives, and knowledge are saved in a form you can actually reuse |
 | **Simple UI** | Same role, same position, same color, same label across screens. Intuitive without studying |
 | **User-led control** | Cancellation, plan change, and export are **done by you, without any back-and-forth with the operator** |
@@ -166,7 +166,7 @@ You can capture experience in a form that is **searchable, referenceable, and re
 | Gantt chart | Timeline view of schedule, progress, delays, milestones |
 | Risk / Issue management | Filing, state transitions, and CSV export |
 | Knowledge management | Knowledge entries with full-text and semantic search, plus visibility control |
-| Chat semantic search | Floating 💬 button on every screen. Natural-language queries semantically search projects, knowledge, risks, issues, retrospectives, and memos in one shot, returning the top few matches |
+| Chat semantic search | Floating 💬 button on every screen. Natural-language queries semantically search projects, knowledge, risks/issues, retrospectives, and memos in one shot, returning the top few matches |
 | Retrospective | Wrap-ups, comments, and promotion into knowledge after project completion |
 | My Tasks | Personal task list with quick progress updates |
 | Comments / mentions | Conversation captured against each entity |
@@ -226,7 +226,7 @@ Sample screens showing how past assets are stored in a form you can actually reu
 | **Seats** (invitable users) | up to 5 | unlimited | unlimited |
 | **Data capacity** | 50 MB free, then **¥50/GB/month** (per 1 GB tier) | same as left | same as left |
 | **Monthly project create/update** | 50 / month (fixed cap) | unlimited | unlimited |
-| **Knowledge input & chat search** | **all free / unlimited** | **¥5 / business operation** (from 2026-06-01, ADR-0029) | **¥5 / business operation** (from 2026-06-01, ADR-0029) |
+| **Knowledge input & chat search** | **free up to 100 items / month** | **¥5 / business operation** | **¥5 / business operation** |
 | **API call cap setting** | — | **Set a monthly budget cap in JPY** | **Set a monthly budget cap in JPY** |
 | **LLM model** | Haiku | Haiku | Sonnet (with rich explanations) |
 | **Trial** | **90 days fully free** | — | — |
@@ -234,13 +234,13 @@ Sample screens showing how past assets are stored in a form you can actually reu
 
 > **What is a "seat"**: The number of users you can invite to your tenant (your organization). Beginner allows up to 5 invitees; Expert / Pro have no limit.
 >
-> **Usage-based data capacity (revised 2026-05-25)**: 50 MB is fully free. Above that, **¥50 per 1 GB per month** (e.g., 100 MB → ¥50, 1 GB → ¥50, 1.5 GB → ¥100). For technical safety, the hard cap per tenant is **50 GB** (for larger needs, please [contact us](/HomePage/en/contact/)).
+> **Usage-based data capacity**: 50 MB is fully free. Above that, **¥50 per 1 GB per month** (e.g., 100 MB → ¥50, 1 GB → ¥50, 1.5 GB → ¥100). **There is no cumulative cap** — you are billed only for what you use, and your data is never blocked from being saved as it grows (a single write is limited to 5 MB).
 >
-> **★ Beginner "Knowledge input & chat search are all free" ★ (revised 2026-06-01 ADR-0022)**: Beginner plan continues to offer creating/updating knowledge assets (Knowledge / RiskIssue / Retrospective / Memo), chat-based semantic search, CSV import, and attachment file body embedding — **all free / unlimited** (preserving the "90-day fully free" promise).
+> **★ Beginner "Knowledge input & chat search" ★**: On the Beginner plan, creating/updating knowledge assets (knowledge / risks / issues / retrospectives / memos), chat-based semantic search, CSV import, and attachment indexing are **free up to 100 items per month in total** (the "90-day fully free" trial allowance). When the cap is reached, only new indexing pauses; viewing and searching existing data continues.
 >
-> **Expert / Pro Embedding charges (from 2026-05-30 ADR-0029, previously ¥1)**: On Expert / Pro plans, knowledge asset input, chat search, and attachment file body embedding are **¥5 per business operation**. CSV bulk import is aggregated as "1 import operation = ¥5" (e.g., a 100-row CSV import is still ¥5). The monthly cron's automatic recovery of failed embeddings stays free on all plans (avoiding "unjust charges" for user-non-initiated repair operations).
+> **Expert / Pro Embedding charges**: On Expert / Pro plans, knowledge asset input, chat search, and attachment indexing are **¥5 per business operation**. CSV bulk import is aggregated as "1 import operation = ¥5" (e.g., a 100-row CSV import is still ¥5). The monthly automatic recovery of failed indexing stays free on all plans.
 >
-> **What gets charged**: AI auto-tagging on project create/update (Beginner free up to 50/mo, Expert ¥10, Pro ¥15), the "Why?" feature (Pro-only ¥15), Embedding business operations (Beginner free, Expert/Pro ¥5), data capacity overage (¥50/GB), and file storage overage (¥10/GB).
+> **What gets charged**: AI auto-tagging on project create/update (Beginner free up to 50/mo, Expert ¥10, Pro ¥15), the "Why?" feature (Pro-only ¥15), Embedding business operations (Beginner free up to 100/mo, Expert/Pro ¥5), data capacity overage (¥50/GB), and file storage overage (¥10/GB).
 
 "Try it and decide for yourself whether it fits" — that's our basic posture.
 
@@ -327,7 +327,7 @@ A summary of the items most frequently asked when evaluating Tasukiba for corpor
 | **Pricing** | See the "Pricing" section above |
 | **Additional fees** | Communication costs (your internet connection fees, etc.) |
 | **Sales tax handling** | Listed prices are tax-exclusive. Japanese consumption tax (JCT) is added separately at invoicing |
-| **Payment methods** | Bank transfer (invoice-based) or credit card via Stripe (Visa / Mastercard / Amex / JCB / Diners / Discover / UnionPay). Switchable anytime in tenant settings. |
+| **Payment methods** | Bank transfer (invoice-based) or credit card via Stripe (Visa / Mastercard / American Express / JCB). Switchable anytime in tenant settings. |
 | **Payment timing** | Monthly billing cycle.<br>· Bank transfer: due by the 25th of the following month.<br>· Credit card: automatically charged within the first few business days of the following month. |
 | **Service delivery timing** | Available immediately after sign-up completion |
 | **Returns and cancellation** | Due to the nature of the service, refunds for periods already provided are not accepted. Cancellation can be done anytime from the tenant administrator screen and takes effect at the end of the current month (current month's charges apply as usual) |
@@ -467,7 +467,7 @@ We offer **invoiced (bank transfer)** and **credit card** as two options.
 | Payment method | Availability | Detail |
 |---|---|---|
 | **Invoiced (bank transfer)** | ✅ Available | Monthly payment by **bank transfer** |
-| **Credit card** | ✅ Available | Automatic monthly debit via **Stripe** (Visa / Mastercard / Amex / JCB / Diners / Discover / UnionPay). Switch from tenant settings. |
+| **Credit card** | ✅ Available | Automatic monthly debit via **Stripe** (Visa / Mastercard / American Express / JCB). Switch from tenant settings. |
 
 Organizational customers typically use invoiced payment, while individuals and lighter usage often prefer credit card. Both can be **switched anytime from tenant settings** (when switching from credit card to invoiced, the active subscription is canceled automatically and invoicing takes effect from the next month).
 
@@ -549,9 +549,8 @@ Please reach out via the [contact form](/HomePage/en/contact/) — we'd love to 
 | Mastercard | ✅ |
 | American Express | ✅ |
 | JCB | ✅ |
-| Diners Club | ✅ |
-| Discover | ✅ |
-| UnionPay | ✅ |
+
+> Cards other than the four brands above (Diners Club / Discover / UnionPay) are not currently supported.
 
 Payment processing is handled by **Stripe** with 3D Secure (cardholder authentication) supported. **Card details are never stored on Tasukiba's servers** — they are managed exclusively within Stripe's PCI DSS–compliant payment infrastructure, so it's secure.
 

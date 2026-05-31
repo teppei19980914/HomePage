@@ -69,7 +69,7 @@ audience: "developer"
 | 項目 | 数値・状態 |
 |---|---|
 | 開発者数 | 1 名（須山）— あなたが 2 人目になり得ます |
-| 自動テスト | 141 件超（Vitest + Playwright） |
+| 自動テスト | 4,000 件超（Vitest 単体 3,842 + Playwright E2E 226） |
 | セキュリティスコア | 90/100 を CI で強制 |
 | 運用コスト | 月額 **約 $9**（Netlify Personal $9/seat + Supabase Free + 従量 LLM / Voyage） |
 | ソースコード | **Public リポジトリ**: [BusinessManagementPlatform](https://github.com/teppei19980914/BusinessManagementPlatform) |
@@ -194,6 +194,25 @@ audience: "developer"
 > 興味のある領域のタイトルをクリックすると、詳細が開きます。
 
 <details class="faq-item">
+<summary>0. コードベースの規模（2026 年 5 月末時点）</summary>
+
+「小さなプロジェクト」と言っても、実際どのくらいの規模なのか、数字でお見せします（リポジトリの実測値）。
+
+| 指標 | 規模 |
+|---|---|
+| アプリ本体コード（TypeScript / TSX、テスト除く） | 約 106,000 行 / 523 ファイル |
+| 単体テストコード（Vitest） | 約 56,000 行 / 239 ファイル・**3,842 ケース** |
+| E2E テストコード（Playwright） | 約 5,900 行 / 23 ファイル・**226 ケース** |
+| API エンドポイント（Route Handlers） | 143 本 |
+| 画面（ページ） | 49 画面 |
+| データベース定義（Prisma schema） | 42 モデル / マイグレーション 72 本 |
+| ドキュメント | 161 ファイル（Markdown） |
+
+> テストコードがアプリ本体の **約 53%**（56,000 / 106,000 行）を占めています。「テストファースト・品質重視」が数字にも表れています。各数値は開発が進むにつれ増えるため、おおよその目安としてご覧ください。
+
+</details>
+
+<details class="faq-item">
 <summary>1. 言語・ランタイム</summary>
 
 | 技術 | バージョン | 役割 |
@@ -217,7 +236,7 @@ audience: "developer"
 | **shadcn/ui + @base-ui/react** | — | ボタン・ダイアログ等の UI 部品集 |
 | **lucide-react** | — | アイコン |
 | **next-intl** | 4.x | 多言語対応（i18n） |
-| **react-markdown + remark-gfm** | — | ナレッジ本文の Markdown 表示 |
+| **react-markdown + remark-gfm + remark-breaks** | — | ナレッジ本文の Markdown 表示 |
 | **class-variance-authority / clsx / tailwind-merge** | — | Tailwind クラスの動的組み立て |
 
 > shadcn/ui は完成品のボタン部品を **コピペで使う代わりに、自分のプロジェクトにソースごと取り込んで自由にカスタマイズできる** のが特徴です。
@@ -233,6 +252,8 @@ audience: "developer"
 | **Prisma + @prisma/adapter-pg** | 7.8.0 | 型安全な ORM（DB アクセス層） |
 | **pg (node-postgres)** | 8.20 | PostgreSQL クライアント |
 | **Zod** | 4.x | スキーマ定義 + 入力バリデーション |
+| **Stripe** (stripe SDK) | 17.x | クレジットカード課金・自動引き落とし（サブスクリプション請求） |
+| **@supabase/supabase-js** | 2.x | Supabase ストレージ（添付ファイル本体の保管）クライアント |
 
 > ORM は「DB のテーブルを TypeScript の変数のように扱える翻訳機」です。SQL を直接書く代わりに `prisma.project.findMany()` のように書けて、しかも型が効くので名前の打ち間違いをコンパイル時に検出できます。
 
@@ -287,8 +308,8 @@ audience: "developer"
 
 | 技術 | バージョン | 役割 |
 |---|---|---|
-| **Vitest** | 4.x | 単体テスト（現在 **141 件超**） |
-| **Playwright** | 1.59 | E2E テスト（ブラウザ自動操作） |
+| **Vitest** | 4.x | 単体テスト（現在 **3,842 ケース**） |
+| **Playwright** | 1.59 | E2E テスト（ブラウザ自動操作、**226 ケース**） |
 | **ESLint 9 + eslint-config-next** | — | 静的解析 |
 | **Prettier** | 3.8 | コード整形 |
 | **E2E カバレッジゲート** | — | `page.tsx` / `route.ts` 追加時に E2E 漏れを検出する自前ガード |
@@ -306,6 +327,8 @@ audience: "developer"
 | **tsx** | TypeScript をビルド無しで直接実行（スクリプト用） |
 | **dotenv** | `.env` 読み込み |
 | **csv-parse / jszip / diff** | CSV エクスポート・ZIP 生成・差分表示 |
+| **pdf-parse / mammoth** | 添付ファイル本文の抽出（PDF / Word）— 意味検索の索引化に利用 |
+| **exceljs** | Excel（.xlsx）形式での出力 |
 | **@holiday-jp/holiday_jp** | 日本の祝日判定（営業日計算） |
 
 </details>

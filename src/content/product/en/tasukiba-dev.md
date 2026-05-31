@@ -69,7 +69,7 @@ To be honest: Tasukiba is currently developed by **Suyama alone** — a small pr
 | Item | Status |
 |---|---|
 | Developers | 1 (Suyama) — you could be the 2nd |
-| Automated tests | 141+ (Vitest + Playwright) |
+| Automated tests | 4,000+ (Vitest unit 3,842 + Playwright E2E 226) |
 | Security score | 90/100 enforced in CI |
 | Operating cost | **~$9/mo** (Netlify Personal $9/seat + Supabase Free + LLM/Voyage usage) |
 | Source code | **Public repository**: [BusinessManagementPlatform](https://github.com/teppei19980914/BusinessManagementPlatform) |
@@ -194,6 +194,25 @@ For reference, here is the technology Tasukiba currently uses.
 > Click any area title to expand the details.
 
 <details class="faq-item">
+<summary>0. Codebase size (end of May 2026)</summary>
+
+Even as "a small project," here is how large it actually is, in numbers (measured from the repository).
+
+| Metric | Size |
+|---|---|
+| App code (TypeScript / TSX, excluding tests) | ~106,000 lines / 523 files |
+| Unit test code (Vitest) | ~56,000 lines / 239 files · **3,842 cases** |
+| E2E test code (Playwright) | ~5,900 lines / 23 files · **226 cases** |
+| API endpoints (Route Handlers) | 143 |
+| Screens (pages) | 49 |
+| Database schema (Prisma) | 42 models / 72 migrations |
+| Documentation | 161 Markdown files |
+
+> Test code accounts for **about 53%** of the app code (56,000 / 106,000 lines) — "test-first, quality-focused" shows up in the numbers, too. These figures grow as development proceeds; treat them as rough indicators.
+
+</details>
+
+<details class="faq-item">
 <summary>1. Languages / runtimes</summary>
 
 | Tech | Version | Role |
@@ -217,7 +236,7 @@ For reference, here is the technology Tasukiba currently uses.
 | **shadcn/ui + @base-ui/react** | — | Buttons, dialogs, and other UI parts |
 | **lucide-react** | — | Icons |
 | **next-intl** | 4.x | Internationalization (i18n) |
-| **react-markdown + remark-gfm** | — | Markdown rendering for knowledge bodies |
+| **react-markdown + remark-gfm + remark-breaks** | — | Markdown rendering for knowledge bodies |
 | **class-variance-authority / clsx / tailwind-merge** | — | Dynamic Tailwind class composition |
 
 > shadcn/ui differs from typical UI libraries: instead of importing finished components, **you copy the source into your own project and customize freely**.
@@ -233,6 +252,8 @@ For reference, here is the technology Tasukiba currently uses.
 | **Prisma + @prisma/adapter-pg** | 7.8.0 | Type-safe ORM (DB access layer) |
 | **pg (node-postgres)** | 8.20 | PostgreSQL client |
 | **Zod** | 4.x | Schema definition + input validation |
+| **Stripe** (stripe SDK) | 17.x | Credit-card billing / automatic debit (subscription invoicing) |
+| **@supabase/supabase-js** | 2.x | Supabase Storage client (storing attachment file bodies) |
 
 > An ORM is a "translator" that lets you treat DB tables like TypeScript variables. Instead of raw SQL, you write `prisma.project.findMany()` — and the compiler catches typos.
 
@@ -287,8 +308,8 @@ For reference, here is the technology Tasukiba currently uses.
 
 | Tech | Version | Role |
 |---|---|---|
-| **Vitest** | 4.x | Unit tests (currently **141+**) |
-| **Playwright** | 1.59 | E2E tests (browser automation) |
+| **Vitest** | 4.x | Unit tests (currently **3,842 cases**) |
+| **Playwright** | 1.59 | E2E tests (browser automation, **226 cases**) |
 | **ESLint 9 + eslint-config-next** | — | Static analysis |
 | **Prettier** | 3.8 | Formatter |
 | **E2E coverage gate** | — | Custom guard catching missing E2E for new `page.tsx` / `route.ts` |
@@ -306,6 +327,8 @@ For reference, here is the technology Tasukiba currently uses.
 | **tsx** | Run TypeScript directly without a build (for scripts) |
 | **dotenv** | Load `.env` |
 | **csv-parse / jszip / diff** | CSV export, ZIP generation, diff view |
+| **pdf-parse / mammoth** | Extract attachment body text (PDF / Word) — used for semantic-search indexing |
+| **exceljs** | Excel (.xlsx) export |
 | **@holiday-jp/holiday_jp** | Japanese holiday detection (business-day math) |
 
 </details>

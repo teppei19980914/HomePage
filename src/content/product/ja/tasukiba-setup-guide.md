@@ -56,7 +56,7 @@ audience: "firstLogin"
 
 ### 1. たすきばの入り口（ログイン画面）にアクセス
 
-まずは[たすきばの入り口（ログイン画面）](https://tasukiba.netlify.app/login)にアクセスしてください。  
+まずは[たすきばの入り口（ログイン画面）](https://tasukiba.com/login)にアクセスしてください。  
 
 ### 2. ログイン画面の下にある「サインアップ」をクリック
 
