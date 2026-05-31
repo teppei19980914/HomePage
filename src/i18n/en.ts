@@ -394,7 +394,7 @@ export const en: Labels = {
   // --- Product page ---
   product: {
     title: "Product",
-    description: "Personal products by Teppei Suyama: YumeHashi (goals), Defrago (PDCA), and Tasukiba (knowledge-driven PM). Flutter, FastAPI, Next.js — zero monthly cost.",
+    description: "Personal products by Teppei Suyama: YumeHashi (goals), Defrago (PDCA), and Tasukiba (AI operations secretary). Flutter, FastAPI, Next.js — zero monthly cost.",
     subtitle: "Products I build and maintain on the side",
     emptyMessage: "No products yet.",
     statusLabels: { active: "Active", beta: "In development — stay tuned", archived: "Archived", suspended: "Not accepting new users" },

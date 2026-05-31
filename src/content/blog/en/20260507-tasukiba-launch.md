@@ -1,6 +1,6 @@
 ---
-title: "Launching 'Tasukiba Knowledge Relay' — a project platform that passes knowledge like a baton"
-description: "My fourth personal product, 'Tasukiba Knowledge Relay', enters trial operation. It is a project-management platform built around knowledge — the insights one team accumulates get handed down to the next team, like a relay baton."
+title: "Launching 'Tasukiba Knowledge Relay' — an AI operations secretary that passes knowledge like a baton"
+description: "My fourth personal product, 'Tasukiba Knowledge Relay', enters trial operation. It is an AI operations secretary built around knowledge — the insights one team accumulates get handed down to the next team, like a relay baton."
 date: 2026-05-07
 tags: ["personal project", "Tasukiba", "project management", "knowledge management", "Next.js"]
 seriesCategory: "milestone"
@@ -12,7 +12,7 @@ Ever felt that quiet pain on a kickoff day — "wait, hasn't someone already fig
 
 Following YumeHashi, Defrago, and HomePage, my **fourth personal product** is entering trial operation.
 
-**"Tasukiba Knowledge Relay"** — a project management platform where the insights captured on one project are **handed like a baton** to the next team.
+**"Tasukiba Knowledge Relay"** — an AI operations secretary where the insights captured on one project are **handed like a baton** to the next team.
 
 👉 **[Product page](/HomePage/en/product/tasukiba/)**
 

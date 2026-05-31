@@ -1,9 +1,9 @@
 ---
-title: "Tasukiba — PM Platform Connecting Knowledge"
-description: "Tasukiba passes knowledge between projects like a baton. WBS, risks, and retrospectives all connect with knowledge at the center. Built on Next.js + PostgreSQL."
-tagline: "The more you run it, the better the next one goes. Project management that connects knowledge."
+title: "Tasukiba — Your AI Operations Secretary"
+description: "An AI operations secretary that remembers your projects, knowledge, risks, and retrospectives — and surfaces what you need, right when you need it. PM built in."
+tagline: "The information you need, delivered right here, right now."
 date: 2026-04-16
-tags: ["Project Management", "Knowledge Management", "Business Software", "Next.js", "PostgreSQL"]
+tags: ["AI operations secretary", "Knowledge Management", "semantic search", "operational efficiency", "Project Management"]
 repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
 url: "https://tasukiba.com/"
 status: active
@@ -16,7 +16,7 @@ blogSeriesKey: "tasukiba"
 > "We solved this on the last project." "Those retro takeaways? Nobody remembers them." —
 > Until now, project knowledge only surfaced **when you went looking for it.**
 
-Tasukiba flips that. The moment you open a project, **the past knowledge, risks, and retrospectives relevant to you right now line up automatically, ranked by relevance.** And from the bottom-right of any screen, just ask in plain language for "past assets like this." Search *and* delivery — together, they change how knowledge gets pulled out.
+Tasukiba is an **AI operations secretary** that remembers your work data — projects, knowledge, risks, issues, retrospectives. The moment you open a project, **the past knowledge, risks, and retrospectives relevant to you right now line up automatically, ranked by relevance.** And from the bottom-right of any screen, just ask in plain language for "past assets like this." Search *and* delivery — together, they change how knowledge gets pulled out.
 
 | | Typical full-text search | Tasukiba |
 |---|---|---|

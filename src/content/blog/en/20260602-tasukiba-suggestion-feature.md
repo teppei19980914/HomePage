@@ -8,7 +8,7 @@ seriesCategory: "design"
 
 ## The core feature is actually "suggestion"
 
-Tasukiba Knowledge Relay is a project-management tool, and a knowledge-management tool. Both of those, though, are **means**.
+Tasukiba Knowledge Relay is an **AI operations secretary**. It is a project-management tool and a knowledge-management tool too — but both of those are **means**.
 
 The core feature is the **suggestion engine**.
 

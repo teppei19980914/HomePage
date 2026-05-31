@@ -306,7 +306,7 @@ export const ja = {
   // --- Product ページ ---
   product: {
     title: "プロダクト",
-    description: "須山哲平が個人開発・運用しているプロダクト一覧。夢を行動に変える「ユメハシ」、ワーキングメモリを解放する「Defrago」、ナレッジ循環型のプロジェクト管理基盤「たすきば」。Flutter / FastAPI / Next.jsで構築し月額0円運用しています。",
+    description: "須山哲平が個人開発・運用しているプロダクト一覧。夢を行動に変える「ユメハシ」、ワーキングメモリを解放する「Defrago」、業務データの管理を手伝うAI業務管理秘書「たすきば」。Flutter / FastAPI / Next.jsで構築し月額0円運用しています。",
     subtitle: "個人で開発しているプロダクトを紹介します",
     emptyMessage: "プロダクトはまだありません。",
     statusLabels: { active: "公開中", beta: "開発中 — こうご期待", archived: "アーカイブ", suspended: "新規受付停止中" },

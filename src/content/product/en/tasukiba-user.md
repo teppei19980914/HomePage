@@ -1,9 +1,9 @@
 ---
-title: "Tasukiba — Project platform that turns search into creation"
-description: "Project management platform that surfaces past knowledge via semantic search. MFA, audit logs, tenant isolation, invoiced bank-transfer / credit-card billing — corporate-ready."
+title: "Tasukiba — The AI secretary that turns search into creation"
+description: "An AI operations secretary for teams and individuals: semantic search surfaces what you need now and turns document-hunting into creative work. PM included."
 tagline: "Turn time spent searching into time spent creating."
 date: 2026-04-16
-tags: ["project management", "knowledge management", "semantic search", "PM enablement", "operational efficiency"]
+tags: ["AI operations secretary", "knowledge management", "semantic search", "operational efficiency", "project management"]
 url: "https://tasukiba.com/"
 status: active
 order: 31
@@ -13,8 +13,8 @@ audience: "user"
 
 ## Turn time spent searching into time spent creating
 
-Past assets, surfaced at exactly the right moment.
-We cut the time you spend hunting for documents so you can focus on work that actually creates value.
+Tasukiba is an **AI operations secretary** that helps you manage your work data.
+It surfaces past assets at exactly the right moment, cutting the time you spend hunting for documents so you can focus on work that actually creates value.
 
 > 🚀 **Tasukiba went live on June 1, 2026.** [Open Tasukiba](https://tasukiba.com/) to sign up and start right away — no credit card required.
 
