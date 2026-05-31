@@ -263,7 +263,21 @@ audience: "user"
 | **エラー情報の機密保護** | 全エラーをサーバ側ログに記録し、画面には固定文言のみ表示（情報漏洩面の最小化） |
 | **自動セキュリティチェック** | コードのセキュリティスコアが **90 点未満ではマージ不可** とする CI 設定 |
 
-**脆弱性のご報告**：もし脆弱性をお見つけになった場合は、GitHub Security Advisory（推奨）または `teppei09141998@gmail.com` までご連絡ください。責任ある開示（Coordinated Disclosure）の方針で対応します。
+**脆弱性のご報告**：もし脆弱性をお見つけになった場合は、GitHub Security Advisory（推奨）または `teppei09141998@gmail.com` までご連絡ください。責任ある開示（Coordinated Disclosure）の方針で対応します（詳細な報告窓口は[セキュリティ報告](#security)セクションをご覧ください）。
+
+</details>
+
+<details class="faq-item" id="security">
+<summary>🔐 セキュリティ報告</summary>
+
+たすきばのセキュリティに関する脆弱性を発見された場合は、責任ある開示（Coordinated Disclosure）の方針に基づき、下記の窓口までご報告ください。開発者本人が直接確認し、影響範囲の調査と修正対応を行います。
+
+| 報告経路 | 宛先 |
+|---|---|
+| **GitHub Security Advisory（推奨）** | [セキュリティ脆弱性を報告する](https://github.com/teppei19980914/HomePage/security/advisories) |
+| **メール** | `teppei09141998@gmail.com` |
+
+ご報告いただいた脆弱性は、修正完了まで非公開で取り扱います。第三者への影響が想定される場合は、修正後に必要な範囲で公表することがあります。
 
 </details>
 

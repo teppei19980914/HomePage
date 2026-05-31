@@ -262,7 +262,21 @@ For all users — individuals and companies alike — the following security fea
 | **Confidentiality of error info** | All errors are logged server-side; the UI shows only fixed messages to minimize information leakage |
 | **Automated security checks** | Code with a security score below **90 cannot be merged**, enforced in CI |
 
-**Vulnerability reports**: If you find a vulnerability, please contact us via GitHub Security Advisory (preferred) or `teppei09141998@gmail.com`. We follow a Coordinated Disclosure policy.
+**Vulnerability reports**: If you find a vulnerability, please contact us via GitHub Security Advisory (preferred) or `teppei09141998@gmail.com`. We follow a Coordinated Disclosure policy (see the [Security report](#security) section for the full reporting channels).
+
+</details>
+
+<details class="faq-item" id="security">
+<summary>🔐 Security report</summary>
+
+If you discover a security vulnerability in Tasukiba, please report it to one of the contacts below under our Coordinated Disclosure policy. The developer reviews every report personally and investigates the scope and remediation.
+
+| Channel | Destination |
+|---|---|
+| **GitHub Security Advisory (recommended)** | [Report a security vulnerability](https://github.com/teppei19980914/HomePage/security/advisories) |
+| **Email** | `teppei09141998@gmail.com` |
+
+Reported vulnerabilities are handled confidentially until a fix is released. Where third parties may be affected, we may disclose the necessary details after remediation.
 
 </details>
 
