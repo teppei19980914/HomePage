@@ -274,7 +274,7 @@ audience: "user"
 
 | 報告経路 | 宛先 |
 |---|---|
-| **GitHub Security Advisory（推奨）** | [セキュリティ脆弱性を報告する](https://github.com/teppei19980914/HomePage/security/advisories) |
+| **GitHub Security Advisory（推奨）** | [セキュリティ脆弱性を報告する](https://github.com/teppei19980914/BusinessManagementPlatform/security/advisories) |
 | **メール** | `teppei09141998@gmail.com` |
 
 ご報告いただいた脆弱性は、修正完了まで非公開で取り扱います。第三者への影響が想定される場合は、修正後に必要な範囲で公表することがあります。
