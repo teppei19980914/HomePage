@@ -1,6 +1,6 @@
 ---
-title: "「なぜ関連するのか」が分かる提案 — Phase 3 LLM Re-ranking の正体"
-description: "提案結果に「なぜ関連するか」の説明が付く、Phase 3 の「なぜ？」機能を書きます。たすきば Knowledge Relay の Pro プラン差別化となる LLM Re-ranking が、上位 N 件を Claude Sonnet に渡して理由文を生成する仕組みと、その体験設計の中身です。"
+title: "「なぜ関連するのか」まで分かる提案 — AI業務管理秘書たすきばの「なぜ？」機能"
+description: "「関連度 0.82」だけでは足りない。AI業務管理秘書たすきばの「なぜ？」機能は、意味検索で並んだ過去の知見に「なぜ関連するか」の説明まで添えます。プロジェクト管理の判断を後押しする第 3 弾機能の体験設計と、その技術判断の中身を書きます。"
 date: 2026-06-16
 tags: ["たすきば", "なぜ機能", "LLM Re-ranking", "Phase3", "Pro プラン"]
 seriesCategory: "design"

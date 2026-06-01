@@ -1,6 +1,6 @@
 ---
-title: "Tasukiba Knowledge Relay Ships Today — Six Months in Review"
-description: "Tasukiba Knowledge Relay launches June 1, 2026. A business SaaS that semantically surfaces past project assets at project start. Three plans from $0/month."
+title: "Tasukiba, an AI Operations Secretary, Ships Today — Six Months in Review"
+description: "Tasukiba Knowledge Relay launches June 1, 2026: an AI operations secretary for project management and knowledge management that uses semantic search to surface past project knowledge, risks, issues, retrospectives, and notes at project start. Three plans from $0/month, the tech stack, and core features — delivered with launch-day emotion intact."
 date: 2026-06-01
 tags: ["tasukiba", "release", "business-saas", "nextjs", "indie-saas"]
 seriesCategory: "milestone"

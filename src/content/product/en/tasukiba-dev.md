@@ -1,6 +1,6 @@
 ---
-title: "Tasukiba — Build the service together, grow together"
-description: "Tasukiba and its developers grow together. No experience needed. Respect, failure-friendly. Practice TypeScript / Next.js beside your day job, one commit/month."
+title: "Join Tasukiba — Help build the AI operations secretary, grow together"
+description: "We're looking for developers to help build Tasukiba, an AI operations secretary. No experience needed, failure-friendly community. Practice TypeScript, Next.js, and PostgreSQL hands-on. Code, tests, docs, and UX review all welcome — join beside your day job, from one commit a month."
 tagline: "A place where building the service, respecting each other, and growing as a developer happen together."
 date: 2026-04-16
 tags: ["hiring", "community development", "psychological safety", "mutual growth", "TypeScript Next.js"]

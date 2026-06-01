@@ -1,8 +1,8 @@
 ---
-title: "One Week After Release — Tasukiba Phase 2/3 Roadmap"
-description: "The June 1, 2026 release was Phase 1 done. Phase 2 brings chatbot semantic search and Stripe live. Phase 3 brings LLM re-ranking, multilingual, public API."
+title: "One Week After Release — AI Operations Secretary Tasukiba's Phase 2/3 Roadmap"
+description: "The June 1, 2026 release of AI operations secretary Tasukiba was only Phase 1 done. Phase 2 brings chatbot semantic search and live payments; Phase 3 brings answer re-ranking, multilingual support, and a public API. The roadmap for strengthening your project management, shared one week in."
 date: 2026-06-09
-tags: ["tasukiba", "roadmap", "product-strategy", "phase-2", "phase-3"]
+tags: ["tasukiba", "ai-operations-secretary", "project-management", "roadmap", "semantic-search"]
 seriesCategory: "business"
 ---
 

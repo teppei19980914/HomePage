@@ -1,6 +1,6 @@
 ---
-title: "Six Axes That Set Tasukiba Apart — From Stubborn Preference"
-description: "Tasukiba's differentiation came from stubborn preferences, not market research. Six axes: semantic search, pricing, retrieval, community, autonomy, place."
+title: "How Is Tasukiba Different From an Ordinary Project Management Tool? Six Axes"
+description: "Where an ordinary project management tool makes you full-text search and hunt yourself, Tasukiba — an AI operations secretary — surfaces related assets by semantic search. The six differentiation axes came from stubborn preference, not market research: semantic suggestions, pricing that keeps you going, retrieval of past assets, cross-tenant community, user autonomy, and a place for knowledge management."
 date: 2026-05-29
 tags: ["tasukiba", "business-saas", "differentiation", "product-strategy", "indie-saas"]
 seriesCategory: "design"

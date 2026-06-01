@@ -1,6 +1,6 @@
 ---
-title: "An Hour a Day Was Evaporating — Why I Built Tasukiba"
-description: "An hour a day evaporates from every meeting just to find a file. I'm building Tasukiba Knowledge Relay to dissolve that — with a tool, not willpower."
+title: "An Hour a Day Was Evaporating — Why I Built Tasukiba, an AI Operations Secretary"
+description: "Six people times ten minutes equals an hour a day, evaporating from meetings just to find a file. Data piles up unused while judgment leans on a few heads. I built Tasukiba, an AI operations secretary, to dissolve that with semantic search across project management and knowledge management."
 date: 2026-05-26
 tags: ["tasukiba", "indie-saas", "knowledge-management", "project-management", "essay"]
 seriesCategory: "origin"

@@ -1,6 +1,6 @@
 ---
-title: "Tasukiba — Your AI Operations Secretary"
-description: "An AI operations secretary that remembers your projects, knowledge, risks, and retrospectives — and surfaces what you need, right when you need it. PM built in."
+title: "Tasukiba — The AI Operations Secretary for Knowledge & Project Management"
+description: "An AI operations secretary that remembers your projects, knowledge, and risks — and surfaces what you need by semantic search, right when you need it. Project and knowledge management built in, with MFA and tenant isolation."
 tagline: "The information you need, delivered right here, right now."
 date: 2026-04-16
 tags: ["AI operations secretary", "Knowledge Management", "semantic search", "operational efficiency", "Project Management"]

@@ -1,6 +1,6 @@
 ---
-title: "Launching 'Tasukiba Knowledge Relay' — an AI operations secretary that passes knowledge like a baton"
-description: "My fourth personal product, 'Tasukiba Knowledge Relay', enters trial operation. It is an AI operations secretary built around knowledge — the insights one team accumulates get handed down to the next team, like a relay baton."
+title: "Launching Tasukiba — an AI Operations Secretary That Passes Knowledge Like a Baton"
+description: "My fourth personal product, Tasukiba Knowledge Relay, enters trial operation: an AI operations secretary for project management built around knowledge management. The insights one team accumulates get handed to the next like a relay baton, surfaced again later by semantic search. Here's the backstory and the world I'm aiming for."
 date: 2026-05-07
 tags: ["personal project", "Tasukiba", "project management", "knowledge management", "Next.js"]
 seriesCategory: "milestone"

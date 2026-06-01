@@ -1,8 +1,8 @@
 ---
-title: "Empathy as Hiring Filter — Building Tasukiba With Me"
-description: "Tasukiba's hiring filter isn't technical skill, it's empathy. Values alignment on three axes (purpose, target, method). Empathy weighted by known vs external."
+title: "Empathy as the Hiring Filter — Building the AI Operations Secretary Tasukiba With Me"
+description: "The hiring filter for AI operations secretary Tasukiba isn't technical skill, it's empathy. Values alignment on three axes (purpose, target, method) comes first: can you share the belief in reshaping project management with semantic search? Why I weight empathy differently for known people vs outside applicants, written honestly."
 date: 2026-06-05
-tags: ["tasukiba", "hiring", "indie-saas", "team-building", "community"]
+tags: ["tasukiba", "ai-operations-secretary", "hiring", "indie-saas", "team-building"]
 seriesCategory: "team"
 ---
 

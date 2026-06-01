@@ -1,8 +1,8 @@
 ---
-title: 'One For All — Designing Out Hidden Failure on Tasukiba'
-description: "Failure on Tasukiba lands with me, not the member. Every report gets 'thank you for reporting.' One For All culture and blame-less postmortems, in detail."
+title: 'One For All — How the AI Operations Secretary Tasukiba Designs Out Hidden Failure'
+description: "Failure on AI operations secretary Tasukiba lands with me, not the member. Every report gets a heartfelt 'thank you for reporting.' We replace the urge to hide with a culture where reporting gets you help — the One For All team culture, blame-less postmortems, and day-job-first norms, in detail."
 date: 2026-06-07
-tags: ["tasukiba", "team-culture", "psychological-safety", "failure-science", "indie-saas"]
+tags: ["tasukiba", "ai-operations-secretary", "team-culture", "psychological-safety", "indie-saas"]
 seriesCategory: "team"
 ---
 

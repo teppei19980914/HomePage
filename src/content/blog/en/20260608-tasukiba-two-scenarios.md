@@ -1,8 +1,8 @@
 ---
-title: "Two-Year Monetization Check — But Tasukiba Doesn't Stop"
-description: "If Tasukiba monetizes in two years, growth path. If not, sales stops — but the service doesn't. Separating business judgment from tool continuation, explained."
+title: "Two-Year Monetization Check — But the AI Operations Secretary Tasukiba Doesn't Stop"
+description: "If AI operations secretary Tasukiba monetizes within two years, it takes the growth path. If not, sales stops — but the service doesn't, because I keep using it as my own project management tool. Separating business judgment from tool continuation, explained honestly."
 date: 2026-06-08
-tags: ["tasukiba", "business-strategy", "indie-saas", "dogfooding", "sustainability"]
+tags: ["tasukiba", "ai-operations-secretary", "project-management", "business-strategy", "indie-saas"]
 seriesCategory: "business"
 ---
 

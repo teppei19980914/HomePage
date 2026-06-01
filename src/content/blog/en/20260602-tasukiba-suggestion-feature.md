@@ -1,8 +1,8 @@
 ---
-title: 'Tasukiba Suggestion Engine — "The Past You Forgot" on Screen'
-description: "Tasukiba's core is the suggestion engine. Three surface moments, a 3-axis weighted score (tag + string + semantic), and zero-cost-at-suggestion-time design."
+title: 'Tasukiba, the AI Operations Secretary — Semantic Search Surfaces "The Past You Forgot"'
+description: "The core of AI operations secretary Tasukiba is its suggestion engine. Unlike ordinary project management tools where you search yourself, semantic search auto-surfaces your knowledge management history at three moments. Why push beats pull, the 3-axis score, and zero-cost-at-suggestion-time design."
 date: 2026-06-02
-tags: ["tasukiba", "semantic-search", "suggestion-engine", "product-feature", "pgvector"]
+tags: ["tasukiba", "ai-operations-secretary", "semantic-search", "project-management", "knowledge-management"]
 seriesCategory: "design"
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Talking to Tasukiba — Phase 2 Chat Semantic Search Detail"
-description: "Phase 2 brings chat semantic search, Tasukiba's second feature. Natural-language queries return past records, on the same embedding base as suggestions."
+title: "Just Talk to Tasukiba — Semantic Search Chat in Your AI Operations Secretary"
+description: "\"Wasn't there a retrospective about resource shortage last month?\" Just ask, and Tasukiba, your AI operations secretary, returns past knowledge management records by semantic search. How it beats a normal project management tool where you hunt records yourself."
 date: 2026-06-15
 tags: ["tasukiba", "chat-semantic-search", "phase-2", "voyage-ai", "pgvector"]
 seriesCategory: "design"

@@ -1,8 +1,8 @@
 ---
-title: "Business SaaS at $0 — Tasukiba's Pricing Philosophy"
-description: "Tasukiba's three plans and usage billing are designed for business continuity, not profit max. Fixed $0, free ops, no Beginner downgrade, billing invariant."
+title: "Starting at $0 — Pricing the AI Operations Secretary Tasukiba, All 3 Plans Open"
+description: "AI operations secretary Tasukiba's three plans (Beginner/Expert/Pro) and usage billing are designed to last, not to maximize profit. Fixed $0/month, the case for free ops, capacity-based usage billing, and self-service cancellation — every pricing decision behind your project management, explained."
 date: 2026-06-03
-tags: ["tasukiba", "saas-pricing", "stripe", "business-model", "indie-saas"]
+tags: ["tasukiba", "ai-operations-secretary", "project-management", "pricing", "indie-saas"]
 seriesCategory: "business"
 ---
 
