@@ -1,6 +1,6 @@
 ---
-title: 'Suggestions With a "Why" — Tasukiba Phase 3 LLM Re-ranking'
-description: "Phase 3 brings the 'Why?' feature — suggestions include 'why this is related' via LLM re-ranking. Tasukiba Pro plan differentiator, powered by Claude Sonnet."
+title: 'Suggestions That Tell You "Why" — Tasukiba, the AI Operations Secretary'
+description: "A relevance score of 0.82 alone isn't enough. The \"Why?\" feature in Tasukiba, your AI operations secretary, adds a plain-language reason to every past record surfaced by semantic search — so your project management decisions get the context behind each suggestion."
 date: 2026-06-16
 tags: ["tasukiba", "why-feature", "llm-re-ranking", "phase-3", "pro-plan"]
 seriesCategory: "design"

@@ -1,6 +1,6 @@
 ---
-title: "Tasukiba — The AI secretary that turns search into creation"
-description: "An AI operations secretary for teams and individuals: semantic search surfaces what you need now and turns document-hunting into creative work. PM included."
+title: "Turn Search Time into Value — Tasukiba, Your AI Operations Secretary"
+description: "An AI operations secretary for teams and individuals: semantic search turns document-hunting into creative work, with project and knowledge management built in. MFA, audit logs, and tenant isolation for smooth business adoption."
 tagline: "Turn time spent searching into time spent creating."
 date: 2026-04-16
 tags: ["AI operations secretary", "knowledge management", "semantic search", "operational efficiency", "project management"]

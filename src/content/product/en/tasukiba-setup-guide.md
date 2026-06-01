@@ -1,6 +1,6 @@
 ---
-title: "Tasukiba First-Time Setup: Sign-Up to First Admin Login"
-description: "A step-by-step guide for a new organization's first admin: from sign-up and tenant provisioning through password setup to your first system-admin login, written for non-engineers."
+title: "Tasukiba First-Time Setup Guide: Sign-Up to Your First Admin Login"
+description: "A step-by-step onboarding guide to Tasukiba, an AI operations secretary, for a new organization's first admin: from sign-up and tenant provisioning through password and recovery-code setup to your first login. Written so even non-engineers can follow it top to bottom without guessing."
 tagline: "From tenant provisioning to your first login — without the guesswork."
 date: 2026-05-28
 tags: ["first login", "sign-up", "setup guide", "tenant admin", "onboarding"]

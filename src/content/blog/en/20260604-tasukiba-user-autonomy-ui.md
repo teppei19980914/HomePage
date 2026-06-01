@@ -1,8 +1,8 @@
 ---
-title: "Return Autonomy — Tasukiba's UI Without a Gatekeeper"
-description: "Plan changes, cancellations, downgrades — all without vendor round-trip in Tasukiba. Data export, self-role exception, UI = API authorization equivalence."
+title: "Return the Controls — AI Operations Secretary Tasukiba's UI Without a Gatekeeper"
+description: "Plan changes, cancellations, downgrades — all done with zero vendor round-trips in AI operations secretary Tasukiba. 'Your data is yours' export, the one self-role-change exception, and matching what the screen offers to what you're authorized to do. Project management put back in your own hands."
 date: 2026-06-04
-tags: ["tasukiba", "ux", "ui-design", "user-autonomy", "product-philosophy"]
+tags: ["tasukiba", "ai-operations-secretary", "project-management", "ui-design", "user-autonomy"]
 seriesCategory: "design"
 ---
 

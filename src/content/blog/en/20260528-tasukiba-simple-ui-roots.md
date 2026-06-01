@@ -1,6 +1,6 @@
 ---
 title: "Tasukiba's Tidy UI — Roots in a High-School Notebook"
-description: "Tasukiba's UI is built on one belief: things belong where they belong. The root traces back to a high-school notebook redesigned for the reader every term."
+description: "Tasukiba, an AI operations secretary, has a UI built on one belief: things belong where they belong. The root traces back to a high-school notebook redesigned for the reader every term — a habit that, twenty years later, shapes how project management and knowledge management feel on screen. Told as five definitions."
 date: 2026-05-28
 tags: ["tasukiba", "ui-design", "design-philosophy", "indie-saas", "essay"]
 seriesCategory: "design"

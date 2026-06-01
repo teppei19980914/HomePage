@@ -1,6 +1,6 @@
 ---
-title: "Why the Tasuki Owl Won — 4 Mascot Candidates on 3 Axes"
-description: "Owl, lighthouse, open book, abstract geometric — Tasukiba's four mascot candidates on three axes. Only the owl scored ◎ on all three. Why navy blue won."
+title: "Why the Tasuki Owl Won — Scoring 4 Mascot Candidates on 3 Axes"
+description: "The Tasuki Owl is the face of Tasukiba, my AI operations secretary. Owl, lighthouse, open book, abstract geometric — four candidates scored on knowledge management, project management, and security. Only the owl hit top marks on all three. Why navy blue won."
 date: 2026-06-12
 tags: ["tasukiba", "mascot", "brand-selection", "design-decision", "indie-saas"]
 seriesCategory: "brand"

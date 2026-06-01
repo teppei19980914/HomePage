@@ -1,8 +1,8 @@
 ---
-title: "Equal-Founders Model — Tasukiba's Three-Layer Discussion"
-description: "Final decisions on Tasukiba rest with me, but the team runs as an 'equal-founders model.' A three-layer discussion (team → outside → team) decides."
+title: "Equal-Founders Model — Why the AI Operations Secretary Tasukiba Refuses Top-Down"
+description: "Final decisions on AI operations secretary Tasukiba rest with me, but the team runs as an 'equal-founders model,' not top-down. When opinions split, a three-layer discussion (team → outside → team) decides. It's designed to prove out a high-psychological-safety org that can sustain a project management service for the long run."
 date: 2026-06-06
-tags: ["tasukiba", "team-operations", "decision-making", "psychological-safety", "org-design"]
+tags: ["tasukiba", "ai-operations-secretary", "team-operations", "decision-making", "psychological-safety"]
 seriesCategory: "team"
 ---
 

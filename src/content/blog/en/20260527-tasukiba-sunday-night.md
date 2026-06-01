@@ -1,6 +1,6 @@
 ---
-title: "Changing Sunday Night, Monday Morning — Tasukiba's Worldview"
-description: "Sunday evening, you sigh about Monday. Every Tasukiba Knowledge Relay decision is judged by one question: 'Does this brighten Monday morning?'"
+title: "Changing Sunday Night and Monday Morning — Tasukiba's Worldview as an AI Operations Secretary"
+description: "Sunday evening, you sigh about Monday's escalation. Tasukiba, an AI operations secretary, surfaces the project management context you need by semantic search before you go looking. Every product decision is judged by one question: does this brighten Monday morning? Here's the worldview, written with its emotional temperature intact."
 date: 2026-05-27
 tags: ["tasukiba", "indie-saas", "product-philosophy", "project-management", "essay"]
 seriesCategory: "origin"

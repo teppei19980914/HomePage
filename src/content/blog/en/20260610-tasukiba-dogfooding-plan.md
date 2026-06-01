@@ -1,6 +1,6 @@
 ---
-title: "Tasukiba Dogfooding — I Won't Sell a SaaS I Don't Use Daily"
-description: "Tasukiba is built on one premise: I'm the first user. From day one, all my day-job project management runs through Tasukiba. June 15 no-AI hand-build challenge."
+title: "I Won't Sell a Tool I Don't Use Daily — Dogfooding My AI Operations Secretary"
+description: "Tasukiba, my AI operations secretary, runs on one premise: I'm the first user. From day one, all my day-job project management flows through it. It surfaces past knowledge by semantic search, and I sharpen it in the field every single day. Here's why."
 date: 2026-06-10
 tags: ["tasukiba", "dogfooding", "product-quality", "indie-saas", "ai-assisted-dev"]
 seriesCategory: "business"
