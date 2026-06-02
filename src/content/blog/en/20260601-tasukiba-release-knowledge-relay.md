@@ -75,7 +75,7 @@ This catches **both surface-form variation and semantic proximity** in the same 
 
 ## Pricing stance
 
-[I'll write about this in detail in post B-3](/HomePage/en/blog/20260603-tasukiba-pricing-philosophy/), but Tasukiba's stance is **"pricing to continue, not pricing to extract."**
+I'll write about this in detail in a separate post, but Tasukiba's stance is **"pricing to continue, not pricing to extract."**
 
 - **Beginner** (5 seats, $0/month) — for individuals and small teams. Project create/update is free up to 50 calls per month. Knowledge / risk / issue / retrospective / memo entry, and chat semantic search, are **free and unlimited**.
 - **Expert** (unlimited seats, $0/month) — usage-based for project create/update (¥10/call). Haiku model for auto tag extraction.

@@ -47,7 +47,7 @@ const seriesPostsAll = series
       .filter(isVisibleInDev)
       .filter((p) => isSeriesPostSlug(stripLocale(p.id), series))
   : [];
-// テーマ別グループ（categoryOrder の順／各グループ内は日付昇順）。
+// テーマ別グループ（categoryOrder の順／各グループ内は日付降順＝最新が先頭）。
 const seriesGroups = series
   ? groupSeriesPostsByCategory(seriesPostsAll, series)
   : [];

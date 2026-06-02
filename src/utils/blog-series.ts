@@ -74,7 +74,7 @@ export interface SeriesPostLike {
 export interface SeriesCategoryGroup<T extends SeriesPostLike> {
   /** カテゴリキー（i18n blogSeries.categories のキー、または "other"） */
   key: string;
-  /** 日付昇順に並んだ記事 */
+  /** 日付降順に並んだ記事（最新が先頭） */
   posts: T[];
 }
 
@@ -82,7 +82,7 @@ export interface SeriesCategoryGroup<T extends SeriesPostLike> {
  * 連載記事をテーマ（seriesCategory）別にグループ化する。
  *
  * - グループは series.categoryOrder の順で返す
- * - 各グループ内は日付昇順（連載として頭から読める並び）
+ * - 各グループ内は日付降順（最新記事が先頭、スクロールで過去へ遡れる並び）
  * - categoryOrder に無い／未設定の記事は "other" グループにまとめて末尾に置く
  * - 記事が 0 件のカテゴリは返さない（空のアコーディオンを描画しない）
  */
@@ -100,19 +100,20 @@ export function groupSeriesPostsByCategory<T extends SeriesPostLike>(
     else byCategory.set(key, [post]);
   }
 
-  const sortByDateAsc = (a: T, b: T) => a.data.date.valueOf() - b.data.date.valueOf();
+  // 最新記事を先頭に（降順）。ユーザは最新を最初に見て、スクロールで過去へ遡れる。
+  const sortByDateDesc = (a: T, b: T) => b.data.date.valueOf() - a.data.date.valueOf();
   const groups: SeriesCategoryGroup<T>[] = [];
   for (const key of order) {
     const bucket = byCategory.get(key);
     if (bucket && bucket.length > 0) {
-      groups.push({ key, posts: [...bucket].sort(sortByDateAsc) });
+      groups.push({ key, posts: [...bucket].sort(sortByDateDesc) });
     }
   }
   const others = byCategory.get(SERIES_CATEGORY_FALLBACK);
   if (others && others.length > 0) {
     groups.push({
       key: SERIES_CATEGORY_FALLBACK,
-      posts: [...others].sort(sortByDateAsc),
+      posts: [...others].sort(sortByDateDesc),
     });
   }
   return groups;

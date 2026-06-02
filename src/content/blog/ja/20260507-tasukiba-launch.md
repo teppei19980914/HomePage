@@ -127,7 +127,6 @@ seriesCategory: "milestone"
 
 - [毎日「1 時間」が蒸発していた — 私がたすきばを作った理由](/HomePage/ja/blog/20260526-tasukiba-why-i-made-it/) — 連載第 1 回・問題意識の起点
 - [【リリース告知】たすきば Knowledge Relay、2026 年 6 月 1 日公開しました](/HomePage/ja/blog/20260601-tasukiba-release-knowledge-relay/) — 正式リリース告知
-- [6 ヶ月で SaaS を立ち上げた振り返り — 個人開発タイムラインの全部](/HomePage/ja/blog/20260614-tasukiba-6-month-retrospective/) — 連載前半の締めくくり
 
 ## 関連記事
 

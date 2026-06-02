@@ -222,4 +222,4 @@ seriesCategory: "brand"
 
 ## たすきば について
 
-たすきフクロウは、 [プロダクトページ](/HomePage/ja/product/tasukiba/) のヘッダ・記事内・チャット意味検索 FAB など、各文脈で異なる顔を見せます。
+たすきフクロウは、 [プロダクトページ](/HomePage/ja/product/tasukiba/) や記事内の挿絵など、各文脈で異なる顔を見せます。

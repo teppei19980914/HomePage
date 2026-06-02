@@ -170,7 +170,7 @@ score = 0.3 × tag_jaccard + 0.2 × string_pg_trgm + 0.5 × cos(query_vec, candi
 - Voyage の従量課金が、 **提案画面の表示回数で増えない**
 - Voyage に障害が起きても、 **提案機能は止まらない**（fail-safe）
 
-「検索時 ¥0 + 障害耐性」というこの構造は、たすきばの中核設計判断のひとつです。 [課金哲学の話](/HomePage/ja/blog/20260603-tasukiba-pricing-philosophy/) で書く「使った分だけ請求する」というスタンスは、こうした **コスト構造を支える技術選択** とセットで成立しています。
+「検索時 ¥0 + 障害耐性」というこの構造は、たすきばの中核設計判断のひとつです。**「使った分だけ請求する」という課金スタンス**は、こうした **コスト構造を支える技術選択** とセットで成立しています。
 
 ## チャットと「なぜ？」 — 同じ embedding 基盤の上に乗る、Phase 2/3 の景色
 
@@ -206,4 +206,4 @@ score = 0.3 × tag_jaccard + 0.2 × string_pg_trgm + 0.5 × cos(query_vec, candi
 
 ## たすきば について
 
-たすきば Knowledge Relay の提案機能は、 [プロダクトページ](/HomePage/ja/product/tasukiba/) の "チャット意味検索" セクションでも実際の操作イメージをご覧いただけます。提案機能の上に乗る Phase 2 [「チャット意味検索」](/HomePage/ja/blog/20260615-tasukiba-chat-semantic-search/) と Phase 3 [「なぜ？」機能](/HomePage/ja/blog/20260616-tasukiba-why-feature/) も、それぞれ別記事で深堀りしています。
+たすきば Knowledge Relay の提案機能の世界観は、 [プロダクトページ](/HomePage/ja/product/tasukiba/) からご覧いただけます。提案機能の上に乗る Phase 2「チャット意味検索」と Phase 3「なぜ？」機能も、それぞれ別記事で深堀りしていく予定です。

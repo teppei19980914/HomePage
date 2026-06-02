@@ -220,4 +220,4 @@ Tomorrow closes the series's first half: **a six-month retrospective on launchin
 
 ## About Tasukiba
 
-The Tasuki Owl shows a different face in the [product page](/HomePage/en/product/tasukiba/) header, in articles, and on the chat semantic-search FAB.
+The Tasuki Owl shows a different face on the [product page](/HomePage/en/product/tasukiba/) and in articles.

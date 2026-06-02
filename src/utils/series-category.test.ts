@@ -47,7 +47,7 @@ describe("groupSeriesPostsByCategory", () => {
     expect(groups.map((g) => g.key)).toEqual(["a", "b", "c"]);
   });
 
-  it("各グループ内は日付昇順に並ぶ", () => {
+  it("各グループ内は日付降順に並ぶ（最新が先頭）", () => {
     const posts = [
       mkPost("2026-05-10", "a"),
       mkPost("2026-05-01", "a"),
@@ -56,9 +56,9 @@ describe("groupSeriesPostsByCategory", () => {
     const groups = groupSeriesPostsByCategory(posts, testSeries);
     expect(groups).toHaveLength(1);
     expect(groups[0].posts.map((p) => p.data.date.valueOf())).toEqual([
-      new Date("2026-05-01").valueOf(),
-      new Date("2026-05-05").valueOf(),
       new Date("2026-05-10").valueOf(),
+      new Date("2026-05-05").valueOf(),
+      new Date("2026-05-01").valueOf(),
     ]);
   });
 

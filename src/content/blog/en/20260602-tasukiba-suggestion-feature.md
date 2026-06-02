@@ -168,7 +168,7 @@ Which means:
 - Voyage's usage-based pricing **doesn't scale with screen views**
 - If Voyage has an outage, **the suggestion feature stays up** (fail-safe)
 
-"Zero cost at search time + failure tolerance" is one of the core design decisions. The [pricing-philosophy stance](/HomePage/en/blog/20260603-tasukiba-pricing-philosophy/) ("only charge what was actually used") only works because of structural choices like this.
+"Zero cost at search time + failure tolerance" is one of the core design decisions. The **"only charge what was actually used" pricing stance** only works because of structural choices like this.
 
 ## Chat and "Why?" — Phase 2/3 on the same embedding foundation
 
@@ -204,4 +204,4 @@ Next post: how the "pricing to continue, not to extract" stance lands in three p
 
 ## About Tasukiba
 
-The [product page](/HomePage/en/product/tasukiba/) has a live walkthrough of the chat semantic search section. Phase 2 [Chat Semantic Search](/HomePage/en/blog/20260615-tasukiba-chat-semantic-search/) and Phase 3 [the "Why?" feature](/HomePage/en/blog/20260616-tasukiba-why-feature/), both built on top of this engine, get their own dedicated deep-dives.
+The [product page](/HomePage/en/product/tasukiba/) walks through the suggestion feature. Phase 2 Chat Semantic Search and Phase 3 the "Why?" feature, both built on top of this engine, will get their own dedicated deep-dives.
