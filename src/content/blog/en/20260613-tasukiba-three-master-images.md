@@ -100,8 +100,6 @@ Derivative:
 
 ## Why a chat-specific composition
 
-[The chat semantic search feature planned in Phase 2](/HomePage/en/blog/20260609-tasukiba-post-release-roadmap/) needs to tell users **"please talk to me."**
-
 A regular logo:
 
 - Reads as a static symbol, doesn't convey dialogue

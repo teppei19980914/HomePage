@@ -226,7 +226,7 @@ The lesson: **decide "what not to do" first** matters as much as the to-do list.
 
 Post-release 6 months (2026-06 → 11):
 
-- Phase 2 implementation (chat semantic search)
+- Accuracy tuning across features (chat semantic search / suggestion engine)
 - Stripe live + initial tenants
 - Dogfooding-driven improvements
 - First teammate joining (planned)
@@ -272,8 +272,8 @@ Thank you for staying with the first 20 posts of the Tasukiba Knowledge Relay se
 
 The series then closes with **two technical bonus posts**. Two of Tasukiba's three unique features that haven't been deep-dived yet:
 
-- 6/15: [Talking to Tasukiba in natural language — Phase 2 chat semantic search](/HomePage/en/blog/20260615-tasukiba-chat-semantic-search/)
-- 6/16: [Suggestions with a "Why" — Phase 3 LLM re-ranking](/HomePage/en/blog/20260616-tasukiba-why-feature/)
+- 6/15: [Talking to Tasukiba in natural language — chat semantic search](/HomePage/en/blog/20260615-tasukiba-chat-semantic-search/)
+- 6/16: [Suggestions with a "Why" — LLM re-ranking](/HomePage/en/blog/20260616-tasukiba-why-feature/)
 
 Coming over the next two days. The deeper technical writing goes to Qiita, but **at the depth where homepage readers can grasp what kind of SaaS this is**, these two posts are worth keeping here.
 

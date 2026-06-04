@@ -2,7 +2,7 @@
 title: 'Suggestions That Tell You "Why" — Tasukiba, the AI Operations Secretary'
 description: "A relevance score of 0.82 alone isn't enough. The \"Why?\" feature in Tasukiba, your AI operations secretary, adds a plain-language reason to every past record surfaced by semantic search — so your project management decisions get the context behind each suggestion."
 date: 2026-06-16
-tags: ["tasukiba", "why-feature", "llm-re-ranking", "phase-3", "pro-plan"]
+tags: ["tasukiba", "why-feature", "llm-re-ranking", "suggestion-engine", "pro-plan"]
 seriesCategory: "design"
 ---
 
@@ -10,9 +10,9 @@ seriesCategory: "design"
 
 This is the last of the three unique features in the series.
 
-1. [Suggestion engine (Phase 1)](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) — structured-form inputs surface past assets
-2. [Chat semantic search (Phase 2)](/HomePage/en/blog/20260615-tasukiba-chat-semantic-search/) — natural-language pull of past assets
-3. **The "Why?" feature (Phase 3, today's topic)** — suggestions come with a "why this is related" explanation
+1. [Suggestion engine (released)](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) — structured-form inputs surface past assets
+2. [Chat semantic search (released)](/HomePage/en/blog/20260615-tasukiba-chat-semantic-search/) — natural-language pull of past assets
+3. **The "Why?" feature (released, today's topic)** — suggestions come with a "why this is related" explanation
 
 Today is feature 3, **the "Why?" feature**. Tasukiba's **Pro plan differentiator**, written alongside the technical decision behind it — LLM re-ranking.
 
@@ -39,7 +39,7 @@ For suggestions to actually **get used**, I started to think, **"why this is rel
 
 ## What the "Why?" feature looks like
 
-After implementation, the screen looks like this:
+The actual screen looks like this (available on the Pro plan):
 
 ```
 Related knowledge (Pro plan, with "Why?")
@@ -108,7 +108,7 @@ The "Why?" feature is positioned as the **Pro plan differentiator** in [B-3's th
 
 Only Pro uses the Sonnet model, for **cost reasons**. Haiku could generate "Why?" text, but at the quality bar needed for business use, **Sonnet is markedly more reliable** — that's the current call.
 
-For users willing to pay for **one layer of deeper experience**, Pro adds **words alongside the numbers**. That's the Phase 3 differentiation.
+For users willing to pay for **one layer of deeper experience**, Pro adds **words alongside the numbers**. That's the Pro plan differentiation.
 
 ## Hallucination prevention — what we don't let the LLM do
 
@@ -124,7 +124,7 @@ Tasukiba's "Why?" feature defines a **"don't do" list** for the LLM upfront.
 | Summarize the candidate's content | Inject general knowledge or speculation |
 | Provide grounds for "why related" | Fabricate numerical scores |
 
-At the prompt level, **"don't bring in information not in the candidate as a reason"** is strongly constrained. A separate check function will also verify the LLM's output and **block the response if a named entity appears that doesn't exist in the candidate**.
+At the prompt level, **"don't bring in information not in the candidate as a reason"** is strongly constrained. On top of that, the LLM's input and output are strictly separated with XML tags, and the output is validated and trimmed before it's returned — **safeguards that are built into the implementation**.
 
 Not "LLM is useful, hand it everything," but **"narrow the LLM's job precisely."** Same stance as [A-4's differentiation axes](/HomePage/en/blog/20260529-tasukiba-six-differentiators/): "don't compromise on functionality; never accept UI complexity." Same root.
 
@@ -138,7 +138,7 @@ Lining up the three unique features:
 | Chat semantic search | **Past assets pulled by conversation** | Voyage + pgvector | Voyage (query embedding) |
 | **"Why?" feature** | **Reasons line up beside the numbers** | Voyage + pgvector | **Claude Sonnet (LLM re-ranking)** |
 
-These three aren't separate features. They're **three different surfaces on the same embedding foundation**. The "surfacing" core from [B-2](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) deepens in stages: Phase 1 → 2 → 3.
+These three aren't separate features. They're **three different surfaces on the same embedding foundation**. The "surfacing" core from [B-2](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) branches into all three.
 
 ## One sentence
 
@@ -148,16 +148,16 @@ The "Why?" feature, compressed:
 
 The suggestion engine puts "the past you forgot" on screen. Chat semantic search sits beside you as "a companion you can talk to." And the "Why?" feature writes, alongside each candidate, **"why is this one sitting here, right now?"**
 
-With these three, Tasukiba's unique features reach completion. Phase 3 (within 2 years) is the implementation target — but the "Why?"-equipped experience is, in my mind, **the feature that genuinely takes on the problem named in [series part 1](/HomePage/en/blog/20260526-tasukiba-why-i-made-it/)**: "humans aren't spending time on the work only humans can do."
+With these three, Tasukiba's unique features reach completion. All three are live as of release — but the "Why?"-equipped experience is, in my mind, **the feature that genuinely takes on the problem named in [series part 1](/HomePage/en/blog/20260526-tasukiba-why-i-made-it/)**: "humans aren't spending time on the work only humans can do."
 
 That closes the technical bonus chapters. From here, I'll keep writing as things unfold — Dogfooding learnings, post-release operational impressions, on a flexible cadence.
 
 ## Related posts
 
-- [Talking to Tasukiba in natural language — Phase 2 chat semantic search](/HomePage/en/blog/20260615-tasukiba-chat-semantic-search/) — bonus chapter 1
+- [Talking to Tasukiba in natural language — chat semantic search](/HomePage/en/blog/20260615-tasukiba-chat-semantic-search/) — bonus chapter 1
 - [The suggestion engine — putting "the past you forgot" on screen](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) — shared embedding foundation
 - [Three plans, usage-based — pricing to continue](/HomePage/en/blog/20260603-tasukiba-pricing-philosophy/) — Pro plan differentiator basis
 
 ## About Tasukiba
 
-The "Why?" feature is the core of Tasukiba Knowledge Relay's Pro plan (Phase 3, within 2 years). The current suggestion-feature experience is on the [product page](/HomePage/en/product/tasukiba/).
+The "Why?" feature is the core of Tasukiba Knowledge Relay's Pro plan, live as of release (2026-06-01). Each feature's experience is on the [product page](/HomePage/en/product/tasukiba/).

@@ -77,9 +77,9 @@ This catches **both surface-form variation and semantic proximity** in the same 
 
 I'll write about this in detail in a separate post, but Tasukiba's stance is **"pricing to continue, not pricing to extract."**
 
-- **Beginner** (5 seats, $0/month) — for individuals and small teams. Project create/update is free up to 50 calls per month. Knowledge / risk / issue / retrospective / memo entry, and chat semantic search, are **free and unlimited**.
-- **Expert** (unlimited seats, $0/month) — usage-based for project create/update (¥10/call). Haiku model for auto tag extraction.
-- **Pro** (unlimited seats, $0/month) — Expert + Sonnet model (¥15/call). Future: LLM re-ranking with "why is this related" explanations.
+- **Beginner** (5 seats, $0/month) — for individuals and small teams. Project create/update is free up to 50 calls per month. Embedding for asset entry (knowledge / risk / issue / retrospective / memo) and chat semantic search is **free up to 100/month**.
+- **Expert** (unlimited seats, $0/month) — usage-based for project create/update (¥10/call). Haiku model for auto tag extraction. Embedding is ¥5/call.
+- **Pro** (unlimited seats, $0/month) — Expert + Sonnet model (¥15/call). LLM re-ranking with "why is this related" explanations, Pro-only. Embedding is ¥5/call.
 
 Detail in ADR-0019 / ADR-0020 / ADR-0021, which I'll unpack later in the series.
 
