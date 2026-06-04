@@ -1,6 +1,6 @@
 ---
 title: "One Week After Release — AI Operations Secretary Tasukiba's Phase 2/3 Roadmap"
-description: "The June 1, 2026 release of AI operations secretary Tasukiba was only Phase 1 done. Phase 2 brings chatbot semantic search and live payments; Phase 3 brings answer re-ranking, multilingual support, and a public API. The roadmap for strengthening your project management, shared one week in."
+description: "The June 1, 2026 release of AI operations secretary Tasukiba shipped all three signature features — suggestions, chat semantic search, and the 'Why?' feature. Phase 2 brings Stripe live billing and dogfooding feedback; Phase 3 brings multilingual support and a public API. The roadmap for strengthening your project management, shared one week in."
 date: 2026-06-09
 tags: ["tasukiba", "ai-operations-secretary", "project-management", "roadmap", "semantic-search"]
 seriesCategory: "business"
@@ -24,11 +24,11 @@ The release plan has three phases.
 
 | Phase | Window | Main milestones |
 |---|---|---|
-| **Phase 1 (MVP)** | through 2026-06-01 | Suggestion engine / multi-tenant / billing foundation |
-| **Phase 2** | release through 6 months | Chatbot semantic search / Stripe live billing / Dogfooding feedback |
-| **Phase 3** | 6 months through 2 years | LLM re-ranking / multilingual / public API |
+| **Phase 1 (MVP)** | through 2026-06-01 | Suggestion engine / chat semantic search / "Why?" feature (LLM re-ranking) / multi-tenant / billing foundation |
+| **Phase 2** | release through 6 months | Stripe live billing / Dogfooding feedback / accuracy tuning |
+| **Phase 3** | 6 months through 2 years | Multilingual / public API |
 
-Capability expands step by step.
+Capability expands step by step. **All three signature features (suggestions, chat semantic search, "Why?") shipped at release.**
 
 ## Phase 1 (MVP) — what's live at release
 
@@ -38,18 +38,20 @@ What runs as of release:
 - **Project management** (7-state one-way state machine / WBS / Gantt / task CSV import)
 - **Asset management** (knowledge / risks / issues / retrospectives / memos / attachments / visibility control)
 - **Suggestion engine v1** (3-axis weighted score / Voyage embedding + pgvector / Graceful Degradation Mode)
+- **Chat semantic search** (pull past assets in natural language from the owl FAB at the bottom-right of every dashboard page)
+- **"Why?" feature / LLM re-ranking** (adds a "why is this related" explanation to suggestion candidates; Pro-only, Claude Sonnet)
 - **Auth / security** (NextAuth Credentials + MFA TOTP / tokenVersion multi-layer defense / security score 90/100 enforced)
-- **Billing foundation** (per-API-call usage billing / DB and file usage billing / ApiCallLog source of truth / Stripe Metered Billing wiring ready)
+- **Billing foundation** (per-API-call usage billing / embedding usage billing / DB and file usage billing / ApiCallLog source of truth / Stripe Metered Billing wiring ready)
 
-MVP-complete on the business-SaaS basics.
+MVP-complete on the business-SaaS basics and all three signature features.
 
 ## Phase 2 — within six months
 
-### 1. Chatbot semantic search
+### 1. Refining chat semantic search (the feature itself already shipped)
 
-Phase 1's suggestion engine took **structured input (project purpose/background/scope)**. Phase 2 extends it to **natural-language chat input**.
+Phase 1's suggestion engine took **structured input (project purpose/background/scope)**. At release, we also shipped **chat semantic search**, which widens that input to **natural-language chat** (available from the owl FAB at the bottom-right of every dashboard page).
 
-The experience target:
+The experience:
 
 > User: "Wasn't there a retrospective last month about resource shortage?"
 >
@@ -59,7 +61,7 @@ The experience target:
 >     > Related risk: R-005 (resource estimation accuracy)
 >     > Related knowledge: K-012 (criteria for introducing QA automation)"
 
-Natural-language queries surface past assets. Extending the [suggestion engine in B-2](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) from structured forms to dialogue.
+Natural-language queries surface past assets — extending the [suggestion engine in B-2](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) from structured forms to dialogue, and **it's already live**. See the [chat semantic search deep-dive](/HomePage/en/blog/20260615-tasukiba-chat-semantic-search/) for details. In Phase 2, the work here is **search-accuracy tuning and UI refinement**.
 
 ### 2. Stripe live billing
 
@@ -87,27 +89,7 @@ This is the largest fuel source for Phase 2.
 
 ## Phase 3 — six months through two years
 
-### 1. LLM re-ranking
-
-Run Phase 1's suggestion results (3-axis weighted score order) through an LLM for re-ranking.
-
-```
-Phase 1 suggestion results (3-axis weighted score)
-  ↓
-LLM re-ranking (Pro plan)
-  ↓
-Final suggestion results (with relevance explanation)
-```
-
-Concretely:
-
-- Send top-N (e.g. top 20) to Anthropic Sonnet
-- LLM generates "why this is relevant" text
-- User sees **suggestions with reasons**
-
-This is the Pro plan's differentiator. Beginner / Expert get up to 3-axis score; Pro gets the LLM-explained version.
-
-### 2. Multilingual
+### 1. Multilingual
 
 Phase 1 is Japanese only. Phase 3 puts English support on the table.
 
@@ -115,7 +97,7 @@ Phase 1 is Japanese only. Phase 3 puts English support on the table.
 - Voyage embeddings are already multilingual (mixed JA/EN OK in the same model)
 - Re-evaluate suggestion accuracy under multilingual conditions
 
-### 3. Public API
+### 2. Public API
 
 Open Tasukiba's API for external system integration.
 
@@ -179,9 +161,9 @@ That cadence sets up the post-release ops shape.
 
 | Phase | Window | Content |
 |---|---|---|
-| Phase 1 (MVP) | through 2026-06-01 | Core capabilities |
-| Phase 2 | through 6 months | Chatbot / Stripe live / Dogfooding |
-| Phase 3 | through 2 years | LLM re-ranking / multilingual / API |
+| Phase 1 (MVP) | through 2026-06-01 | Core capabilities + 3 signature features (suggestions / chat semantic search / "Why?") |
+| Phase 2 | through 6 months | Stripe live / Dogfooding / accuracy tuning |
+| Phase 3 | through 2 years | Multilingual / public API |
 | Beyond | TBD | AI agent / industry templates / ecosystem |
 
 Stepwise phases mean **value ships at every phase**.
@@ -191,7 +173,7 @@ Tomorrow: **Dogfooding plan — using my own service on my own projects**. The c
 ## Related posts
 
 - [Two-year monetization check, but the service doesn't stop](/HomePage/en/blog/20260608-tasukiba-two-scenarios/) — series part 14, Chapter K close
-- [The suggestion feature — putting "the past you forgot" back on screen](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) — current state of the suggestion engine Phase 2 extends
+- [The suggestion feature — putting "the past you forgot" back on screen](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) — the suggestion engine that became the foundation for all three signature features
 - [Return autonomy to the user — a UI with no gatekeeper](/HomePage/en/blog/20260604-tasukiba-user-autonomy-ui/) — root of publishing the roadmap
 
 ## About Tasukiba

@@ -170,21 +170,21 @@ Which means:
 
 "Zero cost at search time + failure tolerance" is one of the core design decisions. The **"only charge what was actually used" pricing stance** only works because of structural choices like this.
 
-## Chat and "Why?" — Phase 2/3 on the same embedding foundation
+## Chat and "Why?" — three features on the same embedding foundation
 
 The "Embedding generated once at create/update, computed in-DB afterward" foundation isn't only there for the suggestion engine.
 
 Tasukiba's **three unique characteristics** all stand on top of it.
 
-| Feature | Phase | Input | Output |
+| Feature | Status | Input | Output |
 |---|---|---|---|
-| **Suggestion engine** | Phase 1 (released) | Structured input on project / issue forms | Up to 50 related candidates across 5 categories |
-| **Chat semantic search** | Phase 2 (~6 months) | Natural-language query | Conversational pull of past assets |
-| **"Why?" feature** | Phase 3 (~2 years) | Top-N suggestion candidates | LLM-generated "why this is related" explanations |
+| **Suggestion engine** | Released | Structured input on project / issue forms | Up to 50 related candidates across 5 categories |
+| **Chat semantic search** | Released | Natural-language query | Conversational pull of past assets |
+| **"Why?" feature** (Pro-only) | Released | Top-N suggestion candidates | LLM-generated "why this is related" explanations |
 
-These three aren't built as separate engines. They all **read the same `content_embedding` column**. The "surfacing" differentiation axis I described in [series part 4](/HomePage/en/blog/20260529-tasukiba-six-differentiators/) evolves through these three, step by step.
+These three aren't built as separate engines. They all **read the same `content_embedding` column**. The "surfacing" differentiation axis I described in [series part 4](/HomePage/en/blog/20260529-tasukiba-six-differentiators/) branches into these three implementations.
 
-Each gets its own deep-dive post (the next 1–2 days). For now, what matters is this: **the suggestion engine's embedding foundation underlies every future Tasukiba experience.**
+Each gets its own deep-dive post (the next 1–2 days). For now, what matters is this: **the suggestion engine's embedding foundation underlies all three Tasukiba experiences.**
 
 ## One sentence
 
@@ -204,4 +204,4 @@ Next post: how the "pricing to continue, not to extract" stance lands in three p
 
 ## About Tasukiba
 
-The [product page](/HomePage/en/product/tasukiba/) walks through the suggestion feature. Phase 2 Chat Semantic Search and Phase 3 the "Why?" feature, both built on top of this engine, will get their own dedicated deep-dives.
+The [product page](/HomePage/en/product/tasukiba/) walks through the suggestion feature. Chat semantic search and the "Why?" feature (both shipped, built on top of this engine) get their own dedicated deep-dives.

@@ -2,7 +2,7 @@
 title: "Just Talk to Tasukiba — Semantic Search Chat in Your AI Operations Secretary"
 description: "\"Wasn't there a retrospective about resource shortage last month?\" Just ask, and Tasukiba, your AI operations secretary, returns past knowledge management records by semantic search. How it beats a normal project management tool where you hunt records yourself."
 date: 2026-06-15
-tags: ["tasukiba", "chat-semantic-search", "phase-2", "voyage-ai", "pgvector"]
+tags: ["tasukiba", "chat-semantic-search", "semantic-search", "voyage-ai", "pgvector"]
 seriesCategory: "design"
 ---
 
@@ -10,11 +10,11 @@ seriesCategory: "design"
 
 This series is walking through Tasukiba Knowledge Relay's **three unique features**, one by one.
 
-1. **Suggestion engine** (Phase 1, released) — [I covered in B-2](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/), past assets get pushed to the screen at project create / issue file time
-2. **Chat semantic search** (Phase 2, today's topic) — pull past assets via natural language
-3. **The "Why?" feature** (Phase 3, [tomorrow's post](/HomePage/en/blog/20260616-tasukiba-why-feature/)) — suggestions get a "why this is related" explanation
+1. **Suggestion engine** (released) — [I covered in B-2](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/), past assets get pushed to the screen at project create / issue file time
+2. **Chat semantic search** (released, today's topic) — pull past assets via natural language
+3. **The "Why?" feature** (released, [tomorrow's post](/HomePage/en/blog/20260616-tasukiba-why-feature/)) — suggestions get a "why this is related" explanation
 
-Today is feature 2, **chat semantic search**. It's not something I can show on release day, but the experience I want to build in Phase 2 is worth publishing now.
+Today is feature 2, **chat semantic search**. It shipped at release — available anytime from the **owl FAB at the bottom-right of every dashboard page**. Here's the experience design behind it.
 
 👉 [Tasukiba product page](/HomePage/en/product/tasukiba/)
 
@@ -69,7 +69,7 @@ Utterance → Voyage → query vector
 
 It looks like a new feature. Under the hood, **it's the same engine as the suggestion feature.** What changed is the entrance and the exit.
 
-That's the design intent behind **"don't build the three features separately."** The embedding foundation built for the suggestion engine **gets reused as-is**, which keeps the Phase 2 marginal cost low.
+That's the design intent behind **"don't build the three features separately."** The embedding foundation built for the suggestion engine **gets reused as-is**, which kept the marginal cost of adding chat low.
 
 ## The experience I want to deliver — "ask the moment you wonder"
 
@@ -89,7 +89,7 @@ In Tasukiba's world, the Tasuki Owl is sitting in the bottom-right corner as a c
 
 A reply comes back. "Matching issue: 2025-09-12, Sprint 3 — 'Migration script underestimated row count, batch timed out.' Related risk: R-018 (batch execution time). Related knowledge: K-031 (PostgreSQL copy batch patterns)."
 
-— that **"ask the moment you wonder"** distance is the experience Phase 2 is aiming at.
+— that **"ask the moment you wonder"** distance is the experience chat semantic search delivers.
 
 The suggestion engine is **a push notification at screen-transition time**. Chat semantic search is **a companion you can talk to the instant something occurs**. Two different surfaces, one shared foundation.
 
@@ -115,24 +115,6 @@ The owl framed by a speech-bubble outline signals "you can talk to me" at a glan
 
 Not "I'll teach you," but "let me help you notice." Not "look here," but "here, this is sitting on the table." The mascot's copy direction becomes the chat reply's voice directly.
 
-## "But isn't this going to be expensive?"
-
-A technical point worth raising.
-
-"Calling Voyage on every chat query — won't that pile up costs?"
-
-Actually, **query embedding cost is overwhelmingly smaller than asset embedding cost**.
-
-| Scene | Voyage call | Cost feel |
-|---|---|---|
-| Asset create/update | 1 call (embedding the full asset body) | hundreds to thousands of tokens |
-| Chat semantic search query | 1 call (embedding the utterance) | **tens of tokens** |
-| Rendering results | **0 calls** (pgvector does it in DB) | $0 |
-
-Voyage's pricing is a 200M-tokens/month free tier plus $0.02/1M tokens beyond ([B-3 pricing philosophy](/HomePage/en/blog/20260603-tasukiba-pricing-philosophy/)). A single chat query is tens of tokens, so **individual users' monthly chat usage fits entirely within the free tier**.
-
-That makes chat one of the operations where [B-3](/HomePage/en/blog/20260603-tasukiba-pricing-philosophy/)'s "free without threatening business continuity" math holds. **Chat semantic search aims to be free and unlimited across all plans at Phase 2 launch.**
-
 ## Chat as a thread connecting "three places"
 
 A closing note on the philosophy side.
@@ -149,14 +131,14 @@ Chat semantic search hits especially hard on B's **"a place to settle"** and **"
 
 A lonely PM has **someone to talk to** sitting beside them. A casual utterance returns **records from your past self or team**. That's the temperature one layer beyond Tasukiba's "business SaaS but also a place" identity.
 
-Tomorrow's post: the third unique feature, **the "Why?" feature**. Phase 3 brings suggestions with "why this is related" explanations. LLM re-ranking and the Pro plan differentiation.
+Tomorrow's post: the third unique feature, **the "Why?" feature** — also shipped — where suggestions carry a "why this is related" explanation. LLM re-ranking and the Pro plan differentiation.
 
 ## Related posts
 
 - [The suggestion engine — putting "the past you forgot" back on screen](/HomePage/en/blog/20260602-tasukiba-suggestion-feature/) — series part 8, foundation chat sits on
-- [Post-release roadmap — Tasukiba Phase 2/3](/HomePage/en/blog/20260609-tasukiba-post-release-roadmap/) — Phase 2 overview
-- [Three plans, usage-based — pricing to continue](/HomePage/en/blog/20260603-tasukiba-pricing-philosophy/) — the math for "chat is free"
+- [Post-release roadmap — Tasukiba Phase 2/3](/HomePage/en/blog/20260609-tasukiba-post-release-roadmap/) — the post-release roadmap overview
+- [Three plans, usage-based — pricing to continue](/HomePage/en/blog/20260603-tasukiba-pricing-philosophy/) — the reasoning behind lightly charging for chat
 
 ## About Tasukiba
 
-Chat semantic search ships in Phase 2 (within 6 months of release). The current suggestion-feature experience is on the [product page](/HomePage/en/product/tasukiba/).
+Chat semantic search shipped at release (2026-06-01). Each feature's experience is on the [product page](/HomePage/en/product/tasukiba/).

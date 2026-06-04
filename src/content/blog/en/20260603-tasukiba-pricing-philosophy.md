@@ -26,34 +26,15 @@ Today's post unpacks how that belief lands in three plans and usage-based detail
 |---|---|---|---|---|
 | **Beginner** | up to 5 | $0 | free up to 50/month, then billed | Haiku |
 | **Expert** | unlimited | $0 | ¥10 / call | Haiku |
-| **Pro** | unlimited | $0 | ¥15 / call | Sonnet (future: LLM re-ranking) |
+| **Pro** | unlimited | $0 | ¥15 / call | Sonnet ("Why?" feature = LLM re-ranking) |
+
+> ※ The usage prices above are for **LLM calls** (tag extraction, "Why?" explanations). Embedding (asset entry, chat semantic search) is billed separately: **free up to 100/month on Beginner, ¥5/call on Expert・Pro**. DB capacity and file storage are usage-based too (below).
 
 ### What's behind the choices
 
 - **Every plan: $0 monthly fixed** — months you don't use cost zero
 - **Usage billed per "business operation"** — many internal API calls collapse into a single user-visible charge
 - **No seat-based markup** — large teams aren't penalized (Expert / Pro have unlimited seats)
-
-## "Billed" vs "free" operations, declared up front
-
-In ADR-0019, billable operations were limited to three.
-
-**Billable Feature Units:**
-
-1. `project-upsert` — tag extraction + embedding on project create/update
-2. `suggestion-explanation` — "why is this related" text (Pro, future)
-3. `auto-tag-extract` — auto tag extraction on knowledge entries (future)
-
-**Operations made free across all plans:**
-
-- Embedding generation for knowledge / risk / issue / retrospective / memo entries
-- Chat semantic search (future)
-- Embedding generation during CSV import
-- Beginning-of-month backfill cron
-
-The reason for making the second list free: **Voyage embedding's actual cost is a 200M-tokens/month free tier plus $0.02/1M tokens beyond — somewhere between 1/50 and 1/150 of LLM cost**. The math showed that making these free didn't threaten business continuity.
-
-LLM calls (Claude Haiku / Sonnet), on the other hand, are expensive enough that the cost has to be passed on. Free vs paid is **drawn with a reason**, not by gut feel.
 
 ## Why "project upsert: 50 free / month" on Beginner
 
@@ -118,7 +99,7 @@ When a user sees "this month's bill," and it's a snapshot from yesterday, they g
 
 Compressed:
 
-> **Charge only for what was used, only for what should be charged, transparently. Make everything else aggressively free.**
+> **Charge only for what was used, only for what should be charged, scaled to its unit cost, transparently. Keep the system's own automation and learning support free.**
 
 That's a different place to stand from "maximize extraction." It's a choice grounded in numbers, and a choice grounded in values.
 

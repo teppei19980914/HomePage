@@ -100,8 +100,6 @@ seriesCategory: "brand"
 
 ## なぜチャット専用の構図が必要か
 
-[Phase 2 で実装予定のチャット意味検索機能](/HomePage/ja/blog/20260609-tasukiba-post-release-roadmap/) は、ユーザに **「話しかけてください」** と伝える必要があります。
-
 通常のロゴだと、
 
 - 静的なシンボル感が強く、対話性が伝わらない
