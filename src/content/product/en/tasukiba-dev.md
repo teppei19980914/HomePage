@@ -425,6 +425,25 @@ Write code, try tests, fix docs, just observe first — whatever it is, **let's 
 > No rush. Stopping at Step 2, or pausing at Step 3 — both are fine, in your own time.
 
 <details class="faq-item">
+<summary>Once you've joined — a suggested way to spend your first month</summary>
+
+Here's one **rough guide** to "I've been assigned — now what do I actually do?"
+**This is not an obligation.** Read it as a "suggested route" for getting a feel for things.
+
+For the first month, rather than building a big feature right away, we suggest spending the time **actually using Tasukiba and getting the whole service and the dev flow into your body**. As a guide, putting in **about 10 hours a week (about 40 hours a month)** on the small loop below will naturally show you "what being a member looks like" (busy months are absolutely fine to scale back — no pressure).
+
+1. **Ask Tasuki Owl (the in-app AI chat)** — whenever you wonder "what is this?" about a screen or feature, just ask the AI right there
+2. **Pick one thing the AI couldn't answer well** — choose a topic where the answer fell short. **That's a marker for "a place where fixing it creates value."**
+3. **Investigate the server-side logic** — read the code to see how that feature actually works (if you get stuck, just ask on Discussions)
+4. **Update the docs and grow the FAQ / how-to guides** — write down what you learned, into the docs and FAQ
+
+The nice thing about this loop is that **the training itself becomes a real contribution.** Every FAQ entry or how-to guide you add **raises Tasuki Owl's answer accuracy by that much.** In other words, your learning turns directly into help for the next person who joins, and for our users.
+
+Whenever you're stuck or want to talk something through, reach out on [GitHub Discussions](https://github.com/teppei19980914/BusinessManagementPlatform/discussions), same as always.
+
+</details>
+
+<details class="faq-item">
 <summary>Timing</summary>
 
 - **Recruiting is open**: started 2026-06-01 (with general release)
