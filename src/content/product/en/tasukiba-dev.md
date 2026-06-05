@@ -390,7 +390,7 @@ To repeat: **you do not need to know any of this up front.**
 
 ## The first step — four small steps
 
-You do not need to **decide everything in one jump**. Use these steps to find your own pace.
+You don't have to **decide everything in one jump**. From here on, let's close the distance little by little, together. Start from whichever step feels right, at your own pace.
 
 ### Step 1. Read this page to the end (5 min)
 
@@ -408,7 +408,7 @@ When you've got the vibe, drop a one-liner in the **Introductions** category —
 
 ### Step 4. Talk through "what I'd like to try"
 
-Write code, try tests, fix docs, just observe first — whatever it is, **let's design your first step together**. Open a thread in the **Ideas** category and I'll reply.
+Write code, try tests, fix docs, just observe first — whatever it is, you're more than welcome. **Let's design that first step together.** No need to figure it out alone. Drop a line in the **Ideas** category and I'll pick it up right away and think through the route with you.
 
 #### Concrete examples of "first steps" — pick whichever feels right
 
@@ -422,24 +422,23 @@ Write code, try tests, fix docs, just observe first — whatever it is, **let's 
 
 "**Just reading**," "**just watching**," "**just asking questions**" — all welcome, as many times as you like. **No pressure to write code.**
 
-> No rush. Stopping at Step 2, or pausing at Step 3 — both are fine, in your own time.
+> No rush. Stopping at Step 2, or pausing at Step 3 — both are fine. I'll match your pace, not the other way around.
 
 <details class="faq-item">
 <summary>Once you've joined — a suggested way to spend your first month</summary>
 
-Here's one **rough guide** to "I've been assigned — now what do I actually do?"
-**This is not an obligation.** Read it as a "suggested route" for getting a feel for things.
+"I've been assigned — now what do I actually do?" Think of this as a picture of **your first month, walked together with me.** It's not a quota or an obligation — just my suggested route for "here's a nice way to get on good terms with Tasukiba."
 
-For the first month, rather than building a big feature right away, we suggest spending the time **actually using Tasukiba and getting the whole service and the dev flow into your body**. As a guide, putting in **about 10 hours a week (about 40 hours a month)** on the small loop below will naturally show you "what being a member looks like" (busy months are absolutely fine to scale back — no pressure).
+For the first month, rather than tackling a big feature right away, let's spend the time **touching Tasukiba together and easing into the whole service and the dev flow**. A rough guide is **about 10 hours a week (about 40 hours a month)**. A few laps around the small loop below, and "what being a member looks like" will settle into you naturally (busy months are totally fine to scale back — we'll adjust that together too).
 
-1. **Ask Tasuki Owl (the in-app AI chat)** — whenever you wonder "what is this?" about a screen or feature, just ask the AI right there
-2. **Pick one thing the AI couldn't answer well** — choose a topic where the answer fell short. **That's a marker for "a place where fixing it creates value."**
-3. **Investigate the server-side logic** — read the code to see how that feature actually works (if you get stuck, just ask on Discussions)
-4. **Update the docs and grow the FAQ / how-to guides** — write down what you learned, into the docs and FAQ
+1. **Ask Tasuki Owl (the in-app AI chat)** — whenever you're poking around a screen and think "what is this?", just ask the AI right there. Ask freely, ask a lot — that's the point
+2. **Pick up one thing the AI couldn't answer well** — choose a topic where the answer fell short. **That's a treasure spot: a place where fixing it, together, creates value.**
+3. **Peek into the server-side logic — together** — read the code to see how that feature works under the hood. Stuck? Just call out on Discussions and we'll read through it together
+4. **Update the docs and grow the FAQ / how-to guides** — write down what you learned, smoothing the path for the next person who joins
 
-The nice thing about this loop is that **the training itself becomes a real contribution.** Every FAQ entry or how-to guide you add **raises Tasuki Owl's answer accuracy by that much.** In other words, your learning turns directly into help for the next person who joins, and for our users.
+The lovely thing about this loop is that **the training itself becomes a real contribution.** Every FAQ entry or how-to guide you add **makes Tasuki Owl that much smarter.** Your "I didn't get it" turns into the next teammate's and user's "now I get it!" — and I'd love for us to enjoy stacking those up, together.
 
-Whenever you're stuck or want to talk something through, reach out on [GitHub Discussions](https://github.com/teppei19980914/BusinessManagementPlatform/discussions), same as always.
+There's no need to carry anything alone. Whenever you're unsure, reach out on [GitHub Discussions](https://github.com/teppei19980914/BusinessManagementPlatform/discussions) — I'll be running alongside you.
 
 </details>
 
