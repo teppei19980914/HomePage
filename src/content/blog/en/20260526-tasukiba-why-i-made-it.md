@@ -82,6 +82,20 @@ It's a deliberately quiet series. No hyper-growth narrative, no founder mytholog
 
 Next post: the same problem, reframed as **changing the texture of Sunday evening and Monday morning**.
 
+## FAQ: Reclaiming the time you spend searching
+
+### Q. How can I cut down the time spent hunting for documents and past information?
+
+A. The shortcut is to change the very structure of "going to look for it yourself." Tasukiba remembers your past projects, knowledge, and retrospectives, and **proactively surfaces what you need now through semantic search**. Because it matches on meaning rather than exact keywords, you skip the whole step of "remembering where it was."
+
+### Q. Why does project knowledge fail to accumulate — or stay impossible to find?
+
+A. Usually because it is scattered across chat, email, and Excel, and search doesn't surface it. Information stored is not yet an asset; it only becomes one when it is **handed to you at the moment you need it**. The "one hour evaporating every day" in this article is exactly what that "can't-find-it" problem adds up to.
+
+### Q. How do I carry retrospectives forward into the next project?
+
+A. The key is keeping retrospectives (KPT, risks, and issues) in a state where they **resurface automatically** in similar situations later. Tasukiba keeps past retrospectives within reach of semantic search and surfaces the relevant ones, along with *why* they are related.
+
 ## Related posts
 
 - [Trial run of Tasukiba Knowledge Relay — a relay baton for project knowledge](/HomePage/en/blog/20260507-tasukiba-launch/) — the first public announcement

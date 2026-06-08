@@ -76,3 +76,8 @@ Reading this book added one more layer of language for me: what I am paying for 
 - **Spending is a skill** — treat dropped options as learning cost
 
 Money advice ends up, in the end, being **the work of editing your own values**. Next time you buy something, try asking: *what exactly am I saying "thank you" for?*
+
+## Related Articles
+
+- [Reading Notes on Reinventing Organizations — Why Pyramids Fail and How to Build a Self-Driven Team](/HomePage/en/blog/20260518-teal-organization/) — "Independence" seen from an organizational angle
+- [Anything But Absolute Yes Is a No — Essentialism in Practice](/HomePage/en/blog/20260508-essentialism-saying-no/) — Deciding what to spend money and time on

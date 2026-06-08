@@ -77,3 +77,4 @@ If you've been using Claude Code "by feel" too, you might try opening just one o
 
 - ["The testing phase disappeared" — comparing AI-driven and traditional development across the full lifecycle](/HomePage/en/blog/20260410-ai-driven-development/) — what AI-driven development actually looks like
 - [From "built but never used" to running three products at zero monthly cost](/HomePage/en/blog/20260427-zero-cost-and-claude-code/) — how Claude Code changed personal development for me
+- [Claude Prompt Mastery — complete guide index across 9 posts](/HomePage/en/blog/20260506-claude-prompt-series-summary/) — the map of the whole series and where to start

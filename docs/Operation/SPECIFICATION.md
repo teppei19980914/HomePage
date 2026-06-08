@@ -164,6 +164,7 @@ SVG 手書きの Git ブランチ風グラフ:
 
 - 一覧: `order` 昇順で表示。ステータスバッジ（Active/Beta/Archived/Suspended）
 - 詳細: frontmatter + Markdown 本文。「体験する →」（frontmatter `url`）「GitHub」（`repo`）ボタン（任意）
+- **構造化データ（SoftwareApplication）**: `url` を持つ製品（＝実アプリ）の詳細ページに `BaseLayout` の `extraJsonLd` 経由で schema.org `SoftwareApplication` JSON-LD を出力。`applicationCategory` は slug に `tasukiba` を含む場合 `BusinessApplication`、それ以外は `ProductivityApplication`。`offers`（`price: "0"` / `JPY`）は `status !== "suspended"` の製品のみ付与（受付停止中は無料オファーを宣言しない）。検索結果でのリッチリザルト露出を高める目的
 - `status: "suspended"` のとき: 詳細ページに「新規受付停止中」のお知らせバナーを表示し、「体験する」ボタンを非活性表示（クリック不可）に置換。GitHub ボタンは引き続き利用可能
 - **アプリ導線の固定ピル**: `url` を持ち `status !== "suspended"` の **たすきば配下ページ**（slug が `tasukiba`、または `parent: "tasukiba"`）に限り、`url`（たすきばアプリ）へ飛ぶ小型の固定ピル（フクロウアイコン + ラベル、`position: fixed`、右下／モバイルは下部中央、本文を覆わない）を表示。連載ブログの固定ピル（1.6）と同一の挙動で、リンクは CSS で初期表示され JS 無効でもクロール可能、JS は ✕ での閉じ操作と `sessionStorage`（キー `appFloatDismissed:<slug>`）による閉状態の記憶のみを担う。ラベル等は i18n `product.appFloat`（`text` / `aria` / `dismissAria`）
 - **画像ライトボックス**: 本文 `.content` 内の `<img>` をクリック / タップで全画面拡大表示（`ImageLightbox.astro`）。閉じる手段は ✕ ボタン / 背景クリック / Esc キー。リンクで包まれた画像 (`<a><img>`) と `data-no-lightbox` 属性付き画像は対象外

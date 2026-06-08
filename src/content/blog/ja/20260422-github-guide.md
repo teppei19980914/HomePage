@@ -1,6 +1,6 @@
 ---
 title: "「Git って何？」から GitHub Actions まで — 新卒エンジニアが最初に知りたかった全体像"
-description: "Git・ブランチ・GitHub・GitHub Actions・GitHub Pages を段階的に解説。個人ホームページとユメハシで実際に動いている CI/CD 構成（自動デプロイ・予約投稿・ストレステスト）をコード付きで公開します。"
+description: "Git・ブランチ・GitHub・GitHub Actions・GitHub Pages を新卒目線で段階的に解説します。個人ホームページとユメハシで実際に動いている CI/CD 構成（自動デプロイ・予約投稿・ストレステスト）を、コード付きで具体的に公開します。"
 date: 2026-04-22
 tags: ["Git", "GitHub", "GitHub Actions", "CI/CD", "新人プログラマ応援"]
 ---

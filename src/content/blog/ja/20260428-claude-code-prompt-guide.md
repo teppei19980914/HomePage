@@ -89,3 +89,4 @@ Anthropic 公式が明言している内容と、私個人の解釈は、ここ�
 
 - [「テスト工程が消滅した」— AI 駆動開発 vs 従来開発を全工程で比較してみた](/HomePage/ja/blog/20260410-ai-driven-development/) — そもそも AI 駆動開発とは何か
 - [「作っては使わない」を繰り返していた私が、運用コスト 0 円でアプリを公開できるようになった話](/HomePage/ja/blog/20260427-zero-cost-and-claude-code/) — Claude Code が個人開発をどう変えたか
+- [Claude プロンプト術 完全ガイド — 全 9 記事まとめ・どこから読むべきか](/HomePage/ja/blog/20260506-claude-prompt-series-summary/) — 連載全体の地図と読む順序

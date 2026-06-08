@@ -86,4 +86,5 @@ This really does move the needle. In my HomePage work I always ask Claude to run
 ## Related posts
 
 - [The Claude Code prompt playbook was hiding in the official docs — kicking off a new series](/HomePage/en/blog/20260428-claude-code-prompt-guide/) — series overview
+- [Never let Claude jump straight into code — the Explore → Plan → Code → Commit workflow](/HomePage/en/blog/20260430-claude-prompt-workflow/) — the concrete workflow to take after the three principles
 - Reference-grade Qiita version: [Qiita profile](https://qiita.com/teppei19980914)

@@ -172,3 +172,7 @@ src/defrago/
 | Testing | pytest + httpx |
 | Quality | ruff + mypy (strict) |
 | Deploy | Docker + Render + Neon PostgreSQL |
+
+## Another product by the same developer
+
+Once personal task management clears your head, the next challenge is handling work and knowledge at the team and project level. **[Tasukiba, an AI work-management secretary](/HomePage/en/product/tasukiba/)**, remembers your past projects, knowledge, issues, and retrospectives, and delivers what you need right now through semantic search. If you want to stop spending time hunting for documents, take a look.

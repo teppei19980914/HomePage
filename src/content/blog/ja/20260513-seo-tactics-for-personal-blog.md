@@ -134,3 +134,4 @@ redirects: {
 
 - [このホームページに込めた思い — Astro v6 という、まだ日本で知られていないフレームワークと歩む](/HomePage/ja/blog/20260418-astro-v6-homepage/) — Astro v6 でサイトを作った経緯と設計判断
 - [「作っては使わない」を繰り返していた私が、運用コスト 0 円でアプリを公開できるようになった話](/HomePage/ja/blog/20260427-zero-cost-and-claude-code/) — 月額 0 円運用の技術選定の詳細
+- [個人ブログ 1 か月で Clicks +733% / Impressions +496% を達成した話](/HomePage/ja/blog/20260514-seo-one-month-report/) — 本記事の施策を実行した1か月後の成果

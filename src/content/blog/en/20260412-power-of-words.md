@@ -77,3 +77,5 @@ If a single line ever stuck with you the way that one stuck with me, you might t
 ## Related Articles
 
 - [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — Facing my own communication challenges
+- [Knowing psychological safety isn't enough — the four stages: understand, design, implement, reproduce](/HomePage/en/blog/20260521-designing-psychological-safety/) — How the way we handle words underpins team safety
+- [From Funeral to Adventure: A Manager's Real Art of Asking](/HomePage/en/blog/20260509-art-of-asking-questions/) — Communication built on questions rather than answers

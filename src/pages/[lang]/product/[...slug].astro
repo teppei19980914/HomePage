@@ -81,12 +81,43 @@ const seriesItemList =
         },
       ]
     : [];
+
+// SoftwareApplication 構造化データ（url を持つ＝実アプリの製品ページに付与）。
+// リッチリザルト対象となり検索結果での露出を高める。
+// offers は「無料で使い始められる」プロダクトのみ（新規受付停止中は付与しない）。
+const appJsonLd = product.data.url
+  ? [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: product.data.title,
+        description: product.data.description,
+        url: new URL(
+          localeUrl(lang, `product/${currentSlug}/`),
+          Astro.site,
+        ).toString(),
+        applicationCategory: currentSlug.includes("tasukiba")
+          ? "BusinessApplication"
+          : "ProductivityApplication",
+        operatingSystem: "Web",
+        inLanguage: BCP47[lang],
+        author: {
+          "@type": "Person",
+          name: t.site.name,
+          url: Astro.site?.toString(),
+        },
+        ...(product.data.status !== "suspended"
+          ? { offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" } }
+          : {}),
+      },
+    ]
+  : [];
 ---
 
 <BaseLayout
   title={product.data.title}
   description={product.data.description}
-  extraJsonLd={seriesItemList}
+  extraJsonLd={[...seriesItemList, ...appJsonLd]}
 >
   <article class="prose">
     <header class="hero-gradient fade-in">

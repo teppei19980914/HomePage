@@ -196,6 +196,20 @@ That's where the energy goes. Equal in weight to ["if it shouldn't be there, don
 
 Next post: how the "pricing to continue, not to extract" stance lands in three plans and usage-based billing.
 
+## FAQ: Semantic search and automatic suggestions
+
+### Q. What is semantic search?
+
+A. It is a way of finding information by **closeness in meaning** rather than exact keyword matches. For example, a past note that says "short on resources" can be surfaced from a differently worded question like "we don't have enough people." Tasukiba uses this to automatically suggest relevant items from your past project assets.
+
+### Q. How is it different from full-text (keyword) search?
+
+A. Full-text search only finds entries that contain the same words. Semantic search judges relevance by meaning even when the wording differs, so it removes the "can't find it unless you remember the exact term" problem. The suggestion feature in this article goes one step further: it **lines up the likely-relevant past before you even search**.
+
+### Q. What do I need to set up to get automatic suggestions?
+
+A. No special tagging is required. As long as you record projects, knowledge, and retrospectives, Tasukiba embeds them (turns them into vectors), computes relevance, and hands them to you when they matter. Your accumulated information reaches you without being searched for.
+
 ## Related posts
 
 - [Release announcement — Tasukiba Knowledge Relay launches June 1, 2026](/HomePage/en/blog/20260601-tasukiba-release-knowledge-relay/) — series part 7, release

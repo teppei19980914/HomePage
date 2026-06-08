@@ -122,3 +122,7 @@ The rest of this page covers the tech stack and key design decisions — for tho
 - **Riverpod for state**: Plays well with static analysis and is easy to test
 - **Catppuccin theme**: Dark and light both supported, balancing legibility and consistency
 - **GitHub Pages delivery**: Zero running cost. Flutter Web's `web` build is hosted directly
+
+## What the same developer is focused on now
+
+YumeHashi is currently closed to new sign-ups. The product I am now building and running as my main focus is **[Tasukiba, an AI work-management secretary](/HomePage/en/product/tasukiba/)**. It remembers your projects, knowledge, and retrospectives and delivers what you need right now through semantic search — free to start, for individuals and teams alike.

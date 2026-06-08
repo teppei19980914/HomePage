@@ -153,3 +153,4 @@ See also [the unit-test automation engagement](/HomePage/en/project/implem-unitt
 ## Related Articles
 
 - ["Tests Disappeared as a Phase" — Comparing AI-Driven and Traditional Development](/HomePage/en/blog/20260410-ai-driven-development/) — How AI-driven development compresses tests further
+- [RPA 40h/Month Savings — A Requirements Pattern That Works](/HomePage/en/blog/20260512-rpa-requirements/) — Another result from cutting operational effort

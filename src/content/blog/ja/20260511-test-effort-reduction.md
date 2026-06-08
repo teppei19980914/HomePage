@@ -118,3 +118,4 @@ tags: ["テスト自動化", "ユニットテスト", "工数削減", "品質保
 ## 関連記事
 
 - [「テスト工程が消滅した」— AI駆動開発 vs 従来開発を全工程で比較してみた](/HomePage/ja/blog/20260410-ai-driven-development/) — AI 駆動開発でテスト工程をさらに圧縮した話
+- [RPA で月 40h 削減を実現する要件定義の型 — Power Automate で失敗しない 5 ステップ](/HomePage/ja/blog/20260512-rpa-requirements/) — 同じく業務工数を削減したもう一つの実績

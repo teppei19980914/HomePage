@@ -130,6 +130,24 @@ The app packs 32 features. For the deep tech stack write-up, see the [tech stack
 
 ---
 
+## Frequently Asked Questions About AI-Driven Development
+
+### Q. What is AI-driven development?
+
+A. It's an approach where the specification is the single source of truth and implementation is delegated to an AI coding agent (Claude Code in this article). The human decides *what* to build; the AI handles design, implementation, and test generation. This article shows the effect with real numbers — shipping an app in three weeks in a language I'd never used.
+
+### Q. How is it different from traditional development?
+
+A. The biggest differences are learning cost and the testing phase. Traditionally, learning a framework takes 1–2 months; with AI-driven development you can start from day zero. And because the AI generates tests alongside the implementation, testing disappears as a separate phase. My estimate shows roughly 90% time reduction across the whole lifecycle.
+
+### Q. Can someone with no programming experience build an app this way?
+
+A. Yes — I started with zero Flutter and zero scratch-development experience. But you still need the judgment to decide *what* to build and whether the quality is good enough. The AI is an engine that materializes decisions fast; it can't replace the decisions themselves.
+
+### Q. What are the downsides or caveats?
+
+A. The AI can't catch device-dependent issues like "the keyboard hides the input field on mobile." Final UX judgment and real-device testing remain human work. And the knowledge of the person giving instructions strongly shapes the quality of the result — an easily overlooked caveat.
+
 ## Judge the quality yourself — try the app built in 3 weeks
 
 It opens right in your browser. Free, no account required.

@@ -1,5 +1,5 @@
 ---
-title: "Claude に「いきなりコード」を書かせない — Explore → Plan → Code → Commit の 4 段階"
+title: "Claude に「いきなりコード」を書かせない — Explore→Plan→Code→Commit の4段階"
 description: "Claude Code 公式ベストプラクティスが提示する開発ワークフロー、Explore → Plan → Code → Commit の 4 段階を解説します。Plan Mode を挟むだけで、なぜ AI 駆動開発の品質が劇的に上がるのかを個人開発の実体験を添えてお伝えします。"
 date: 2026-04-30
 tags: ["Claude Code", "AI駆動開発", "ワークフロー", "プロンプトエンジニアリング", "新人プログラマ応援"]

@@ -103,3 +103,4 @@ If you've been weighing some "should I help, or should I just push my own work?"
 
 - ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/20260412-power-of-words/) — Communication with awareness of impact on others
 - [INTJ-AS (The Lone Grand Designer) — My Working Style Through Personality Assessment](/HomePage/en/blog/20260411-mbti-intj-working-style/) — How an independent type learned to invest time in others
+- [Don't Bring Motivation to Work — Deliver Consistent Results Through Systems, Like Brushing Your Teeth](/HomePage/en/blog/20260423-motivation-is-not-needed/) — Another take on a sustainable way of working

@@ -130,3 +130,4 @@ The next article will quantify how far the above tactics moved my actual numbers
 
 - [Why I Built This Homepage — Walking with Astro v6](/HomePage/en/blog/20260418-astro-v6-homepage/) — Why and how this site was built
 - [From Built-and-Never-Used to Three Apps at Zero Cost](/HomePage/en/blog/20260427-zero-cost-and-claude-code/) — Technical choices behind zero-cost ops
+- [Personal Blog: 1 Month, +733% Clicks, +496% Impressions](/HomePage/en/blog/20260514-seo-one-month-report/) — The results one month after applying these tactics

@@ -1,6 +1,6 @@
 ---
 title: "Claude を「優秀な新人インターン」として扱う — 公式が教える 3 つの最重要原則"
-description: "Anthropic 公式のプロンプトエンジニアリングガイドから、Claude を使いこなすうえで最初に押さえるべき 3 原則「ゴールデンルール・コンテキスト管理・検証手段」を紹介します。実務で使い続けた体感を添えてお届けします。"
+description: "Anthropic 公式のプロンプトエンジニアリングガイドから、Claude を使いこなすうえで最初に押さえるべき 3 原則『ゴールデンルール・コンテキスト管理・検証手段』を紹介します。実務で使い続けて分かった体感とコツも添えてお届けします。"
 date: 2026-04-29
 tags: ["Claude Code", "AI駆動開発", "プロンプトエンジニアリング", "Anthropic", "新人プログラマ応援"]
 ---
@@ -96,4 +96,5 @@ Claude Code の公式ベストプラクティスには、こう書かれてい�
 ## 関連記事
 
 - [Claude Code の「プロンプト術」は公式に答えがあった — 連載スタート記](/HomePage/ja/blog/20260428-claude-code-prompt-guide/) — 連載の全体像
+- [Claude に「いきなりコード」を書かせない — Explore→Plan→Code→Commit の4段階](/HomePage/ja/blog/20260430-claude-prompt-workflow/) — 3原則の次に踏むべき具体的な開発手順
 - Qiita 版（より詳細なリファレンス）: [Qiita 筆者ページ](https://qiita.com/teppei19980914)

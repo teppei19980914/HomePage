@@ -132,6 +132,16 @@ Don't trap users. Don't take away freedom. And still don't leave them lonely.
 
 Next time, I'll write about why I'm so obsessed with **"a tidy UI."** Turns out the philosophy traces back to a high-school notebook.
 
+## FAQ: That Sunday-night dread
+
+### Q. Why do I feel down on Sunday nights?
+
+A. Usually it is the anxiety of not having "what to do, and how, starting Monday" organized in your head. When tasks and past context are scattered, you carry an invisible homework load all weekend. This article is about easing that dread by having your plan already within reach.
+
+### Q. How can I start Monday morning smoothly?
+
+A. The key is being able to reach the context your past self left behind — decisions, risks, retrospectives — without hunting for it first. Tasukiba surfaces the past assets relevant to what you are starting on through semantic search, so you spend less time figuring out where to begin.
+
 ## Related posts
 
 - [An hour a day was evaporating — why I built Tasukiba](/HomePage/en/blog/20260526-tasukiba-why-i-made-it/) — series part 1, the origin problem statement

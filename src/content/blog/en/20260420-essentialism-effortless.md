@@ -118,3 +118,4 @@ If your jar feels full of sand right now, you might try just naming one "rock" t
 
 - ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — How to use limited time
 - ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260419-failure-science/) — Systematizing failure
+- [Anything But Absolute Yes Is a No — Essentialism in Practice](/HomePage/en/blog/20260508-essentialism-saying-no/) — Putting essentialism into daily decisions

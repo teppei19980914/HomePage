@@ -159,3 +159,4 @@ See also [the RPA implementation engagement](/HomePage/en/project/implem-rpa/).
 ## Related Articles
 
 - [How I Cut Regression Test Effort by 90% — Selection, Automation, Operations](/HomePage/en/blog/20260511-test-effort-reduction/) — The same pattern applied to test effort
+- [AI That Implements Without Hesitation — How to Write a 20-Section, 3,500-Line Design Doc](/HomePage/en/blog/20260426-design-doc-howto/) — The next phase after fixing requirements: the design doc

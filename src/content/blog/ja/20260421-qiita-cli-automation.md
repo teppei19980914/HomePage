@@ -1,6 +1,6 @@
 ---
-title: "Qiita CLI × Claude Code で記事管理を自動化した — トレンド分析・SEO・予約投稿、そして記事IDの罠"
-description: "Qiita CLI と Claude Code で記事の作成から SEO 最適化、予約投稿まで Git 上で完結する仕組みを構築。記事 ID の重複投稿問題とデータに基づく投稿時刻の最適化戦略も含めた全記録。"
+title: "Qiita CLI × Claude Code で記事管理を自動化 — トレンド分析・SEO・予約投稿と記事IDの罠"
+description: "Qiita CLI と Claude Code で記事の作成から SEO 最適化、予約投稿までを Git 上で完結させる仕組みを構築しました。記事 ID の重複投稿という落とし穴と、データに基づく投稿時刻の最適化戦略、運用して見えた効果までを含めた全記録です。"
 date: 2026-04-21
 tags: ["Qiita", "Claude Code", "AI駆動開発", "GitHub Actions", "自動化"]
 ---
