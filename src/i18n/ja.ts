@@ -221,6 +221,7 @@ export const ja = {
   // --- Career グラフ ---
   careerGraph: {
     personalDev: [
+      { name: "たすきば", date: "2026.06" },
       { name: "HomePage", date: "2026.04" },
       { name: "ユメハシ", date: "2026.03" },
       { name: "Defrago", date: "2026.01" },

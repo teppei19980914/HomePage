@@ -145,6 +145,7 @@ SVG 手書きの Git ブランチ風グラフ:
    ●  │      個人開発(シアン)
    ●  │
    ●  │
+   ●  │
     \ │
      \│      ← 曲線で分岐
       ● branch ← 分岐点
@@ -156,7 +157,7 @@ SVG 手書きの Git ブランチ風グラフ:
 ```
 
 - 中央線（青）: 正社員キャリア
-- 左ブランチ（シアン）: 個人開発（HomePage、ユメハシ、Defrago）
+- 左ブランチ（シアン）: 個人開発（たすきば、HomePage、ユメハシ、Defrago）
 - レスポンシブ: `viewBox` + `preserveAspectRatio` で画面幅に自動縮小
 
 ### 1.5 Product（product/）
