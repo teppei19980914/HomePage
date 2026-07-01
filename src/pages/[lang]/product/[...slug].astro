@@ -3,7 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ImageLightbox from "../../../components/ImageLightbox.astro";
 import { render } from "astro:content";
 import { getLabels, normalizeLocale, LOCALES, BCP47 } from "../../../i18n";
-import { getLocalizedCollection, stripLocale, isVisibleInDev } from "../../../i18n/content";
+import { getLocalizedCollection, stripLocale, isVisibleInDev, getProductDetailUrl } from "../../../i18n/content";
 import { localeUrl } from "../../../i18n/url";
 import {
   getSeriesByKey,
@@ -209,7 +209,7 @@ const appJsonLd = product.data.url
         <div class="sub-pages-grid">
           {childProducts.map((child) => (
             <a
-              href={localeUrl(lang, `product/${stripLocale(child.id)}/`)}
+              href={getProductDetailUrl(child, lang)}
               class:list={["sub-page-card", child.data.audience && `sub-page-card-${child.data.audience}`]}
             >
               {child.data.audience && (

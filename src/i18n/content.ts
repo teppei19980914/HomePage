@@ -17,6 +17,7 @@
 
 import { getCollection, getEntry } from "astro:content";
 import { DEFAULT_LOCALE, type Locale } from "./types";
+import { localeUrl, rootUrl } from "./url";
 
 /** ロケール対応のコレクション名 */
 export type LocalizedCollection = "blog" | "product" | "project" | "profile";
@@ -38,6 +39,25 @@ export function entryLocale(id: string): Locale {
  */
 export function stripLocale(id: string): string {
   return id.replace(/^(ja|en)\//, "");
+}
+
+/**
+ * プロダクトの詳細ページ遷移先 URL を返す。
+ * `landingPage` (独立した静的 LP へのルート相対パス) が設定されていればそちらを優先し、
+ * なければ通常の Content Collections 詳細ページ URL を返す。
+ *
+ * @example
+ * getProductDetailUrl({ id: "ja/tasukiba-user", data: { landingPage: "products/tasukiba-lp/" } }, "ja")
+ * // => "/HomePage/products/tasukiba-lp/"
+ */
+export function getProductDetailUrl(
+  product: { id: string; data: { landingPage?: string } },
+  locale: Locale,
+): string {
+  if (product.data.landingPage) {
+    return rootUrl(product.data.landingPage);
+  }
+  return localeUrl(locale, `product/${stripLocale(product.id)}/`);
 }
 
 /**

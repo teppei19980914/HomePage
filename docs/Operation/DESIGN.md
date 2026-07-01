@@ -397,7 +397,7 @@ src/utils/
 ├── format.ts / format.test.ts                  ← 日付フォーマット
 ├── reading-time.ts / reading-time.test.ts      ← 読了時間計算（ja 500 字/分 + en 200 語/分）
 ├── share.ts / share.test.ts                    ← シェア URL 生成
-└── blog-calendar.ts / blog-calendar.test.ts    ← カレンダーカバレッジ + 一日一投稿ルール強制
+└── blog-calendar.ts / blog-calendar.test.ts    ← カレンダーカバレッジ + 同日複数投稿禁止ルール強制
 ```
 
 合計 33 テスト、すべて pure 関数の単体テスト。

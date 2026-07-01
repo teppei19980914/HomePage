@@ -9,6 +9,7 @@ status: active
 order: 31
 parent: "tasukiba"
 audience: "user"
+landingPage: "products/tasukiba-lp/"
 ---
 
 ## 資料を探す時間を、価値を創造する時間へ

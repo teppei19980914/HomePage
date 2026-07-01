@@ -1,8 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getLabels, normalizeLocale } from "../../../i18n";
-import { getLocalizedCollection, stripLocale } from "../../../i18n/content";
-import { localeUrl } from "../../../i18n/url";
+import { getLocalizedCollection, getProductDetailUrl } from "../../../i18n/content";
 import { localeStaticPaths } from "../../../i18n/paths";
 
 export const getStaticPaths = localeStaticPaths;
@@ -57,7 +56,7 @@ const products = (await getLocalizedCollection("product", lang))
             </div>
             <div class="product-card-actions">
               <a
-                href={localeUrl(lang, `product/${stripLocale(product.id)}/`)}
+                href={getProductDetailUrl(product, lang)}
                 class="btn-detail"
               >
                 {productLabels.detailLink} &rarr;

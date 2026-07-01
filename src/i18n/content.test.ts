@@ -7,7 +7,7 @@ vi.mock("astro:content", () => ({
   getEntry: vi.fn(),
 }));
 
-import { isPublished } from "./content";
+import { isPublished, getProductDetailUrl } from "./content";
 
 // ============================================================
 // isPublished — 予約投稿の公開判定テスト
@@ -25,6 +25,31 @@ import { isPublished } from "./content";
 function entry(dateStr: string, draft = false) {
   return { data: { draft, date: new Date(dateStr) } };
 }
+
+// ============================================================
+// getProductDetailUrl — プロダクト詳細ページの遷移先 URL 判定テスト
+//
+// `landingPage` を設定したプロダクト (例: 独立した静的 LP を持つ tasukiba-user)
+// はそちらへ、未設定のプロダクトは通常の Content Collections 詳細ページへ遷移する。
+// ============================================================
+describe("getProductDetailUrl", () => {
+  const base = import.meta.env.BASE_URL;
+
+  it("landingPage が設定されている場合はルート相対パスへ遷移する", () => {
+    const product = { id: "ja/tasukiba-user", data: { landingPage: "products/tasukiba-lp/" } };
+    expect(getProductDetailUrl(product, "ja")).toBe(`${base}products/tasukiba-lp/`);
+  });
+
+  it("landingPage はロケールに関わらず同じパスに解決される", () => {
+    const product = { id: "en/tasukiba-user", data: { landingPage: "products/tasukiba-lp/" } };
+    expect(getProductDetailUrl(product, "en")).toBe(`${base}products/tasukiba-lp/`);
+  });
+
+  it("landingPage が未設定の場合は通常の詳細ページ URL を返す", () => {
+    const product = { id: "ja/tasukiba", data: {} };
+    expect(getProductDetailUrl(product, "ja")).toBe(`${base}ja/product/tasukiba/`);
+  });
+});
 
 describe("isPublished", () => {
   afterEach(() => {

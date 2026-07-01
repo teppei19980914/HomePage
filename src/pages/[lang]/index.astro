@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getLabels, normalizeLocale, BCP47 } from "../../i18n";
-import { getLocalizedCollection, stripLocale, isPublished } from "../../i18n/content";
+import { getLocalizedCollection, stripLocale, isPublished, getProductDetailUrl } from "../../i18n/content";
 import { localeUrl } from "../../i18n/url";
 import { localeStaticPaths } from "../../i18n/paths";
 import { estimateReadingTime } from "../../utils/reading-time";
@@ -83,7 +83,7 @@ const products = (await getLocalizedCollection("product", lang))
     <div class="product-grid">
       {products.filter((p) => p.data.status !== "beta").map((p, i) => (
         <a
-          href={localeUrl(lang,`product/${stripLocale(p.id)}/`)}
+          href={getProductDetailUrl(p, lang)}
           class:list={["product-card", "reveal", { "product-suspended": p.data.status === "suspended" }]}
           style={`transition-delay: ${i * 0.1}s`}
         >
@@ -105,7 +105,7 @@ const products = (await getLocalizedCollection("product", lang))
       ))}
       {products.filter((p) => p.data.status === "beta").map((p, i) => (
         <a
-          href={localeUrl(lang,`product/${stripLocale(p.id)}/`)}
+          href={getProductDetailUrl(p, lang)}
           class="product-card product-coming-soon reveal"
           style={`transition-delay: ${(i + 1) * 0.1}s`}
         >

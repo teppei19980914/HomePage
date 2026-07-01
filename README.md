@@ -74,7 +74,7 @@ npm run dev              # → http://localhost:4321/HomePage/
 #### Step 1. ファイル作成
 
 `src/content/blog/{ja,en}/YYYYMMDD-slug.md` を作成（**ja → en の順**）。
-ファイル名規則: `YYYYMMDD-英小文字スラッグ.md`、日付は既存最新の翌日（一日一投稿）。
+ファイル名規則: `YYYYMMDD-英小文字スラッグ.md`、日付は既存最新から2〜4日後を目安（無理のない頻度を優先、同日複数投稿は不可）。
 
 #### Step 2. frontmatter 記入
 

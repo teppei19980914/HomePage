@@ -54,7 +54,7 @@
 
 | 対象 | 管理方法 |
 |---|---|
-| ブログ記事 | `src/content/blog/{ja,en}/YYYYMMDD-slug.md`。一日一投稿、ja → en の翻訳ペア必須 |
+| ブログ記事 | `src/content/blog/{ja,en}/YYYYMMDD-slug.md`。週2〜3投稿を目安（同日複数投稿は不可）、ja → en の翻訳ペア必須 |
 | プロダクト | `src/content/product/{ja,en}/{slug}.md` |
 | プロジェクト | `src/content/project/{ja,en}/{slug}.md` |
 | プロフィール思想セクション | `src/content/profile/{ja,en}/{philosophy,motto,dream,goal}.md` |
@@ -141,7 +141,7 @@
 | GitHub Pages 帯域 月 100GB | 月 20 万 PV 程度で到達 |
 | UI テキストのハードコーディング禁止 | i18n ラベル辞書（`src/i18n/{ja,en}.ts`）に一元管理 |
 | ja/en 翻訳ペア必須 | 多言語対応の品質維持 |
-| 一日一投稿（ブログ）| 同一日に複数記事を作らない、blog-calendar test で強制検証 |
+| 同日複数投稿禁止（ブログ）| 週2〜3投稿を目安とし、同一日に複数記事を作らない。blog-calendar test で強制検証 |
 | ファイル名規則（ブログ）| `YYYYMMDD-slug.md`、blog-calendar test で強制検証 |
 | 公式情報根拠（Claude Code 提案）| SEO 提案は必ず公式情報の URL を根拠として明示 |
 

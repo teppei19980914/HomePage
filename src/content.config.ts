@@ -31,6 +31,9 @@ const product = defineCollection({
     order: z.number().default(0),
     parent: z.string().optional(),
     audience: z.enum(["user", "firstLogin", "developer"]).optional(),
+    // 詳細ページの代わりに独立した静的 LP (public/ 配下) へ遷移させたい場合のルート相対パス。
+    // 設定するとプロダクト一覧・親ページの子カードのリンク先がこちらに差し替わる。
+    landingPage: z.string().optional(),
     // 連載ブログのキー（src/utils/blog-series.ts の BlogSeries.key と対応）。
     // 設定すると LP 下部にこのプロダクトの連載ブログ一覧セクションを表示する。
     blogSeriesKey: z.string().optional(),
