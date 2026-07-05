@@ -49,8 +49,8 @@
       "url": "https://tasukiba.com/",
       "offers": [
         {"@type": "Offer", "name": "Beginner", "price": "0", "priceCurrency": "JPY", "description": "無料。90日トライアル後も読取可。資産入力・チャット月100件まで無料。"},
-        {"@type": "Offer", "name": "Expert", "priceCurrency": "JPY", "description": "プロジェクト作成・更新 ¥10 + Embedding業務操作 ¥5/回"},
-        {"@type": "Offer", "name": "Pro", "priceCurrency": "JPY", "description": "プロジェクト作成・更新 ¥15 + Embedding業務操作 ¥5/回 +「なぜ?」¥15/call"}
+        {"@type": "Offer", "name": "Expert", "priceCurrency": "JPY", "description": "プロジェクト作成・更新 ¥10 + 資産登録/更新 ¥5/回"},
+        {"@type": "Offer", "name": "Pro", "priceCurrency": "JPY", "description": "プロジェクト作成・更新 ¥15 + 資産登録/更新 ¥5/回 +「なぜ?」¥15/call"}
       ]
     },
     {
@@ -61,7 +61,13 @@
         {"@type": "Question", "name": "たすきフクロウとは何ですか?", "acceptedAnswer": {"@type": "Answer", "text": "全画面の右下に常駐するAIチャットボットです。自然文で『こういう状況の過去資産がほしい』と聞くだけで、プロジェクト・ナレッジ・リスク・課題・振り返り・メモ・添付ファイルを横断して意味検索し、対話形式で提案します。"}},
         {"@type": "Question", "name": "セキュリティは法人利用に耐えますか?", "acceptedAnswer": {"@type": "Answer", "text": "MFA（多要素認証）、RBAC権限管理、全データ変更・認証イベントの監査ログ、テナント分離に対応しています。法人での導入を前提に多層防御で設計されています。"}},
         {"@type": "Question", "name": "「なぜ?」機能とは何ですか?", "acceptedAnswer": {"@type": "Answer", "text": "Proプランの機能で、提案された過去資産が『なぜいまのあなたに関連するのか』をAI（Claude）が説明します。提案を鵜呑みにせず、根拠を確認したうえで判断できます。"}},
-        {"@type": "Question", "name": "どんな人向けのツールですか?", "acceptedAnswer": {"@type": "Answer", "text": "プロジェクトマネージャ・チームリーダなど、組織やプロジェクトを管理する方に最適です。過去の知見を次の担当者へ確実に引き継ぎたいチームに向いています。"}}
+        {"@type": "Question", "name": "どんな人向けのツールですか?", "acceptedAnswer": {"@type": "Answer", "text": "プロジェクトマネージャ・チームリーダなど、組織やプロジェクトを管理する方に最適です。過去の知見を次の担当者へ確実に引き継ぎたいチームに向いています。"}},
+        {"@type": "Question", "name": "ExpertプランとProプランの違いは何ですか?", "acceptedAnswer": {"@type": "Answer", "text": "主な違いは3つです。①課金単価（Expert ¥10 / Pro ¥15）、②AIモデル（Expertは高速なHaiku、Proはより深く考えるSonnet）、③『なぜ?』機能の有無（Pro限定）。席数・月間利用回数の上限はどちらもありません。"}},
+        {"@type": "Question", "name": "プランのダウングレードはできますか?", "acceptedAnswer": {"@type": "Answer", "text": "Expert⇄Proの切り替えはいつでも可能ですが、一度Expert / Proを選ぶとBeginner（無料プラン）には戻せません。Beginnerは初めてお試しになる方向けのプランという位置づけです。データはいつでもエクスポートできます。"}},
+        {"@type": "Question", "name": "支払い方法は何がありますか?", "acceptedAnswer": {"@type": "Answer", "text": "銀行振込（請求書払い）とクレジットカード（Stripe、Visa / Mastercard / American Express / JCB対応）の2種類に対応し、テナント設定画面からいつでも切替可能です。なお、適格請求書発行事業者としては登録していません。"}},
+        {"@type": "Question", "name": "解約は簡単にできますか?", "acceptedAnswer": {"@type": "Answer", "text": "はい。テナント設定画面から数クリックで完了します。電話や運営とのやり取りは一切不要です。"}},
+        {"@type": "Question", "name": "データはAIの学習に使われますか?海外に送信されますか?", "acceptedAnswer": {"@type": "Answer", "text": "学習には使われません。主データベースは東京リージョンに保存されますが、自動提案・意味検索の実行時にはAnthropic（Claude）・Voyage AI（いずれも米国）にデータが送信されます。Anthropicとの契約およびVoyage AIのオプトアウト設定により、いずれの学習にも使用されません。"}},
+        {"@type": "Question", "name": "サービスが終了する可能性はありますか?", "acceptedAnswer": {"@type": "Answer", "text": "開発者1名 + AIを中心とした少人数体制で運営しています。正直にお伝えすると明示的な稼働率保証（SLA）は現時点でありませんが、サービス終了の際は必ず事前にデータのエクスポート期間を確保します。"}}
       ]
     }
   ]
@@ -365,8 +371,8 @@
           <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:30px;font-weight:900;color:#fff;line-height:1.3;">¥10<span style="font-size:14px;font-weight:600;color:#9DB2D2;"> / プロジェクト作成・更新</span></div>
           <ul style="list-style:none;margin:24px 0 28px;display:grid;gap:12px;">
             <li style="font-size:14px;color:#CDDDF4;display:flex;gap:9px;"><span style="color:#6FA6F0;font-weight:900;">✓</span>Beginnerの全機能</li>
-            <li style="font-size:14px;color:#CDDDF4;display:flex;gap:9px;"><span style="color:#6FA6F0;font-weight:900;">✓</span>Embedding業務操作 ¥5/回</li>
-            <li style="font-size:14px;color:#CDDDF4;display:flex;gap:9px;"><span style="color:#6FA6F0;font-weight:900;">✓</span>無制限の資産入力・意味検索</li>
+            <li style="font-size:14px;color:#CDDDF4;display:flex;gap:9px;"><span style="color:#6FA6F0;font-weight:900;">✓</span>資産登録/更新・意味検索は月間上限なし（¥5/回）</li>
+            <li style="font-size:14px;color:#CDDDF4;display:flex;gap:9px;"><span style="color:#6FA6F0;font-weight:900;">✓</span>月次予算上限を円単位で設定可能</li>
           </ul>
           <a href="https://tasukiba.com/signup?plan=expert" style="margin-top:auto;text-align:center;text-decoration:none;color:#0A2540;font-weight:800;font-size:15px;padding:14px;background:#fff;border-radius:11px;">このプランで始める</a>
         </div>
@@ -376,12 +382,13 @@
           <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:30px;font-weight:900;color:#0A2540;line-height:1.3;">¥15<span style="font-size:14px;font-weight:600;color:#7385A0;"> / プロジェクト作成・更新</span></div>
           <ul style="list-style:none;margin:24px 0 28px;display:grid;gap:12px;">
             <li style="font-size:14px;color:#46566D;display:flex;gap:9px;"><span style="color:#1D6FE0;font-weight:900;">✓</span>Expertの全機能</li>
-            <li style="font-size:14px;color:#46566D;display:flex;gap:9px;"><span style="color:#1D6FE0;font-weight:900;">✓</span>Embedding業務操作 ¥5/回</li>
+            <li style="font-size:14px;color:#46566D;display:flex;gap:9px;"><span style="color:#1D6FE0;font-weight:900;">✓</span>資産登録/更新 ¥5/回</li>
             <li style="font-size:14px;color:#46566D;display:flex;gap:9px;"><span style="color:#1D6FE0;font-weight:900;">✓</span>「なぜ?」機能 ¥15/call</li>
           </ul>
           <a href="https://tasukiba.com/signup?plan=pro" style="margin-top:auto;text-align:center;text-decoration:none;color:#1D6FE0;font-weight:700;font-size:15px;padding:14px;border:1.5px solid #C9DDF7;border-radius:11px;">このプランで始める</a>
         </div>
       </div>
+      <p style="text-align:center;font-size:13px;color:#7385A0;margin-top:24px;">※「資産」とは、ナレッジ・リスク・課題・振り返り・メモを指します。</p>
     </div>
   </section>
 
@@ -435,7 +442,50 @@
           </summary>
           <div style="padding:0 24px 22px;font-size:14.5px;line-height:1.95;color:#46566D;">プロジェクトマネージャ・チームリーダなど、組織やプロジェクトを管理する方に最適です。過去の知見を次の担当者へ確実に引き継ぎたいチームに向いています。</div>
         </details>
+        <details class="faq-item" style="border:1px solid #E7F0FB;border-radius:14px;overflow:hidden;background:#F8FBFF;">
+          <summary style="padding:22px 24px;display:flex;align-items:center;gap:16px;font-family:'Noto Sans JP',sans-serif;">
+            <span style="font-size:16px;font-weight:700;color:#0A2540;flex:1;">ExpertプランとProプランの違いは何ですか?</span>
+            <span class="faq-sign" style="font-size:22px;color:#1D6FE0;font-weight:400;line-height:1;flex-shrink:0;"></span>
+          </summary>
+          <div style="padding:0 24px 22px;font-size:14.5px;line-height:1.95;color:#46566D;">主な違いは3つです。①課金単価（Expert ¥10 / Pro ¥15）、②AIモデル（Expertは高速なHaiku、Proはより深く考えるSonnet）、③「なぜ?」機能の有無（Pro限定）。席数・月間利用回数の上限はどちらもありません。</div>
+        </details>
+        <details class="faq-item" style="border:1px solid #E7F0FB;border-radius:14px;overflow:hidden;background:#F8FBFF;">
+          <summary style="padding:22px 24px;display:flex;align-items:center;gap:16px;font-family:'Noto Sans JP',sans-serif;">
+            <span style="font-size:16px;font-weight:700;color:#0A2540;flex:1;">プランのダウングレードはできますか?</span>
+            <span class="faq-sign" style="font-size:22px;color:#1D6FE0;font-weight:400;line-height:1;flex-shrink:0;"></span>
+          </summary>
+          <div style="padding:0 24px 22px;font-size:14.5px;line-height:1.95;color:#46566D;">Expert⇄Proの切り替えはいつでも可能ですが、一度Expert / Proを選ぶとBeginner（無料プラン）には戻せません。Beginnerは初めてお試しになる方向けのプランという位置づけです。データはいつでもエクスポートできます。</div>
+        </details>
+        <details class="faq-item" style="border:1px solid #E7F0FB;border-radius:14px;overflow:hidden;background:#F8FBFF;">
+          <summary style="padding:22px 24px;display:flex;align-items:center;gap:16px;font-family:'Noto Sans JP',sans-serif;">
+            <span style="font-size:16px;font-weight:700;color:#0A2540;flex:1;">支払い方法は何がありますか?</span>
+            <span class="faq-sign" style="font-size:22px;color:#1D6FE0;font-weight:400;line-height:1;flex-shrink:0;"></span>
+          </summary>
+          <div style="padding:0 24px 22px;font-size:14.5px;line-height:1.95;color:#46566D;">銀行振込（請求書払い）とクレジットカード（Stripe、Visa / Mastercard / American Express / JCB対応）の2種類に対応し、テナント設定画面からいつでも切替可能です。なお、適格請求書発行事業者としては登録していません。</div>
+        </details>
+        <details class="faq-item" style="border:1px solid #E7F0FB;border-radius:14px;overflow:hidden;background:#F8FBFF;">
+          <summary style="padding:22px 24px;display:flex;align-items:center;gap:16px;font-family:'Noto Sans JP',sans-serif;">
+            <span style="font-size:16px;font-weight:700;color:#0A2540;flex:1;">解約は簡単にできますか?</span>
+            <span class="faq-sign" style="font-size:22px;color:#1D6FE0;font-weight:400;line-height:1;flex-shrink:0;"></span>
+          </summary>
+          <div style="padding:0 24px 22px;font-size:14.5px;line-height:1.95;color:#46566D;">はい。テナント設定画面から数クリックで完了します。電話や運営とのやり取りは一切不要です。</div>
+        </details>
+        <details class="faq-item" style="border:1px solid #E7F0FB;border-radius:14px;overflow:hidden;background:#F8FBFF;">
+          <summary style="padding:22px 24px;display:flex;align-items:center;gap:16px;font-family:'Noto Sans JP',sans-serif;">
+            <span style="font-size:16px;font-weight:700;color:#0A2540;flex:1;">データはAIの学習に使われますか?海外に送信されますか?</span>
+            <span class="faq-sign" style="font-size:22px;color:#1D6FE0;font-weight:400;line-height:1;flex-shrink:0;"></span>
+          </summary>
+          <div style="padding:0 24px 22px;font-size:14.5px;line-height:1.95;color:#46566D;">学習には使われません。主データベースは東京リージョンに保存されますが、自動提案・意味検索の実行時にはAnthropic（Claude）・Voyage AI（いずれも米国）にデータが送信されます。Anthropicとの契約およびVoyage AIのオプトアウト設定により、いずれの学習にも使用されません。</div>
+        </details>
+        <details class="faq-item" style="border:1px solid #E7F0FB;border-radius:14px;overflow:hidden;background:#F8FBFF;">
+          <summary style="padding:22px 24px;display:flex;align-items:center;gap:16px;font-family:'Noto Sans JP',sans-serif;">
+            <span style="font-size:16px;font-weight:700;color:#0A2540;flex:1;">サービスが終了する可能性はありますか?</span>
+            <span class="faq-sign" style="font-size:22px;color:#1D6FE0;font-weight:400;line-height:1;flex-shrink:0;"></span>
+          </summary>
+          <div style="padding:0 24px 22px;font-size:14.5px;line-height:1.95;color:#46566D;">開発者1名 + AIを中心とした少人数体制で運営しています。正直にお伝えすると明示的な稼働率保証（SLA）は現時点でありませんが、サービス終了の際は必ず事前にデータのエクスポート期間を確保します。</div>
+        </details>
       </div>
+      <p style="text-align:center;font-size:14.5px;margin-top:30px;"><a href="https://teppei19980914.github.io/HomePage/ja/product/tasukiba-user/#faq" style="color:#1D6FE0;font-weight:700;text-decoration:none;">そのほかのよくあるご質問はこちら →</a></p>
     </div>
   </section>
 
