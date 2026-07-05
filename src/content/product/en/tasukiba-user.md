@@ -845,6 +845,53 @@ We don't yet have direct integrations with Backlog / Notion etc., but **CSV impo
 
 </details>
 
+<details class="faq-category">
+<summary>🦉 About Tasukiba</summary>
+
+<details class="faq-item">
+<summary>Is Tasukiba free to use?</summary>
+
+Yes. The Beginner plan is free, and even after the 90-day trial, read access to your records continues. Asset entry and chat are free for up to 100 uses per month. No credit card is required.
+
+</details>
+
+<details class="faq-item">
+<summary>What is semantic search?</summary>
+
+Rather than exact keyword matching, it ranks past assets by "closeness of meaning." For example, typing "はし" (hashi) distinguishes between chopsticks, bridge, and edge based on context — so you reach the truly relevant asset even across variations in wording.
+
+</details>
+
+<details class="faq-item">
+<summary>What is the Tasukiba Owl?</summary>
+
+It's an AI chatbot that's always available in the bottom-right corner of the screen. Just ask in natural language, like "I want past assets from a situation like this," and it searches semantically across projects, knowledge, risks, issues, retrospectives, memos, and attachments, then suggests results conversationally.
+
+</details>
+
+<details class="faq-item">
+<summary>Is the security robust enough for enterprise use?</summary>
+
+We support MFA (multi-factor authentication), RBAC permission management, audit logs for all data changes and authentication events, and tenant isolation. It's designed with defense in depth, built for enterprise adoption.
+
+</details>
+
+<details class="faq-item">
+<summary>What is the "Why?" feature?</summary>
+
+A Pro plan feature where AI (Claude) explains why a suggested past asset is relevant to you right now. Instead of accepting suggestions at face value, you can check the reasoning before deciding.
+
+</details>
+
+<details class="faq-item">
+<summary>Who is this tool for?</summary>
+
+It's best suited for project managers, team leads, and others who manage organizations or projects. It's a great fit for teams that want to reliably pass on past knowledge to the next person in charge.
+
+</details>
+
+</details>
+
 </details>
 
 ---
@@ -885,5 +932,21 @@ If there's anything left — "I'd like to know more," "this part still bothers m
 The developer reads every message personally. No sales pressure, no aggressive follow-up.
 
 - [Get in touch via the contact form](/HomePage/en/contact/)
+
+</details>
+
+<details class="faq-item" id="changelog">
+<summary>🗓️ Release History</summary>
+
+| Version | Release date |
+|---|---|
+| v1.5.0 | 2026-07-03 |
+| v1.4.0 | 2026-06-26 |
+| v1.3.0 | 2026-06-19 |
+| v1.2.0 | 2026-06-12 |
+| v1.1.0 | 2026-06-05 |
+| v1.0.0 | 2026-06-01 (official launch) |
+
+Planning a monthly release cadence going forward.
 
 </details>
