@@ -101,3 +101,4 @@ If your next 1-on-1 is on the calendar, you might try walking in with no answers
 - [Words Are Blades — Once Spoken, They Stay With the Other Person](/HomePage/en/blog/20260412-power-of-words/) — Letting words mature before throwing them
 - [Don't Bring Motivation to Work — Like Brushing Your Teeth, Let Systems Deliver Results](/HomePage/en/blog/20260423-motivation-is-not-needed/) — Systems instead of willpower
 - [Anything But Absolute Yes Is a No — Essentialism in Practice](/HomePage/en/blog/20260508-essentialism-saying-no/) — Discerning what truly matters
+- [Autonomy support runs both ways: reading Why We Do What We Do](/HomePage/en/blog/20260729-power-to-nurture-others/) — The foundation for seeing someone as an active agent when you ask a question

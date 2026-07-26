@@ -120,3 +120,4 @@ If a habit you wanted has been slipping recently, you might try writing it as a 
 
 - ["Essentialism" and "Effortless" — The Two Wheels of What to Do and How to Do It](/HomePage/en/blog/20260420-essentialism-effortless/) — The philosophy behind systematization
 - ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — Systematizing actions for others
+- [Autonomy support runs both ways: reading Why We Do What We Do](/HomePage/en/blog/20260729-power-to-nurture-others/) — How the way you engage with people can itself support motivation

@@ -157,3 +157,5 @@ In a world where technical level no longer differentiates people much, that — 
 - [The urge to decide fast is your strength's shadow — Need for Cognitive Closure and the 2-week rule](/HomePage/en/blog/20260520-cognitive-closure-and-2-week-rule/) — Three habits for raising the resolution of your own thinking
 - [A manager's job is asking, not answering](/HomePage/en/blog/20260509-art-of-asking-questions/) — How to design the questions used inside a 1-on-1
 - [Reading Notes on Reinventing Organizations — Why Pyramids Fail and How to Build a Self-Driven Team](/HomePage/en/blog/20260518-teal-organization/) — Delegation as the layer that sits on top of psychological safety
+- [A little levity inside seriousness: reading Humor, Seriously](/HomePage/en/blog/20260726-humor-is-the-secret-weapon/) — Why humor can be an entry point into psychological safety
+- [Autonomy support runs both ways: reading Why We Do What We Do](/HomePage/en/blog/20260729-power-to-nurture-others/) — Designing a space that supports autonomy

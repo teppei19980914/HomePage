@@ -8,7 +8,17 @@
       "PowerShell(npx astro check)",
       "PowerShell(npm test 2>&1)",
       "PowerShell(npm run build 2>&1)",
-      "PowerShell(npx astro check 2>&1)"
+      "PowerShell(npx astro check 2>&1)",
+      "Bash(node -e ' *)",
+      "Bash(git mv *)",
+      "Bash(python3 -c \"import datetime; print\\(datetime.date\\(2026,7,26\\).strftime\\('%A'\\)\\); print\\(datetime.date\\(2026,7,29\\).strftime\\('%A'\\)\\)\")",
+      "Bash(npm test *)",
+      "Bash(npx astro *)",
+      "Bash(npm run *)",
+      "Bash(Get-Date)",
+      "Bash(exit 0)",
+      "Bash(python3 -)",
+      "Bash(PYTHONIOENCODING=utf-8 python3 -)"
     ],
     "additionalDirectories": [
       "C:\\Users\\SF02512\\GitHub\\Private\\CreateQiita\\public"

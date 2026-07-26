@@ -92,3 +92,4 @@ Life is too short to experience every failure firsthand. That's exactly why we h
 
 - [What Reading Gave Me Wasn't Knowledge — It Was the Habit of Thinking from Multiple Angles](/HomePage/en/blog/20260415-reading-and-perspective/) — Multi-perspective thinking from reading
 - ["Words Are Blades" — How a Single Phrase Can Stay with Someone Forever](/HomePage/en/blog/20260412-power-of-words/) — Psychological safety and communication
+- [A little levity inside seriousness: reading Humor, Seriously](/HomePage/en/blog/20260726-humor-is-the-secret-weapon/) — How owning your own mistakes connects to humor and safety

@@ -163,3 +163,5 @@ quadrantChart
 - [「早く結論を出したい」は弱みじゃなく、強みの裏返しだった — 認知的閉包欲求と『2週間ルール』](/HomePage/ja/blog/20260520-cognitive-closure-and-2-week-rule/) — 自分の認知の精度を上げる 3 つの習慣
 - [マネージャの仕事は「答え」ではなく「問い」だった — 『新 問いかけの作法』が教えるチームづくり](/HomePage/ja/blog/20260509-art-of-asking-questions/) — 1on1 で使える「問い」の設計
 - [『ティール組織 入門』読書ノート — ピラミッド型の限界と、自走できるチームの作り方](/HomePage/ja/blog/20260518-teal-organization/) — 心理的安全性の上に乗せる「権限委譲」の話
+- [真面目さの中に、少しだけ陽気さを置いてみる — 『ユーモアは最強の武器である』を読んで](/HomePage/ja/blog/20260726-humor-is-the-secret-weapon/) — ユーモアが心理的安全性の入口になるという視点
+- [自律性は「与える」ものでもある — 『人を伸ばす力』に学ぶ内発的動機付けの育て方](/HomePage/ja/blog/20260729-power-to-nurture-others/) — 自律性を支える場の設計という視点
