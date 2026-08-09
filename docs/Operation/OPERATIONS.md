@@ -23,6 +23,15 @@
 5. 指摘を反映後、`npm run dev` でローカル確認
 6. git commit & push → 自動デプロイ
 
+#### 1.1.1 NewtonX 連携ツールを使う場合（任意）
+
+たたき台から ja/en ドラフトを生成したい場合、`tools/blog-generator/`（ローカル Streamlit
+アプリ、NewtonX ADK 経由でAI生成）を使ってもよい。手順や前提は
+[tools/blog-generator/README.md](../../tools/blog-generator/README.md) を参照。
+
+- このツールは `src/content/blog/{ja,en}/` へのファイル書き込みと `npm test` 等の検証実行までを行う
+- git commit & push は行わない（上記 1.1 の手順 4〜6 は引き続き本人が実施する）
+
 ### 1.2 プロダクトの追加
 
 1. `src/content/product/{ja,en}/{slug}.md` を ja/en 両方作成

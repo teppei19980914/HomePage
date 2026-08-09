@@ -1,0 +1,2 @@
+streamlit>=1.38
+newtonx-adk>=0.10.5

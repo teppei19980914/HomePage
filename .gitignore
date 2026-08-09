@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Python virtual environment (blog-generator tool)
+myvenv/
+__pycache__/
+*.pyc
+
+# NewtonX ADK vendor bundle (internal SDK/docs, not for public repo)
+newtonx_adk/
