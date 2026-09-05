@@ -166,3 +166,4 @@ Claude Code の Hooks を活用して、日次ブランチ運用を自動化し�
 - [「テスト工程が消滅した」— AI 駆動開発 vs 従来開発を全工程で比較してみた](/HomePage/ja/blog/20260410-ai-driven-development/) — AI 駆動開発で 3 週間でアプリを作った実績データ
 - [「失敗の科学」— すべての失敗を経験するには、人生は短すぎる](/HomePage/ja/blog/20260419-failure-science/) — 失敗を蓄積・分析する仕組みの重要性
 - [「エッセンシャル思考」と「エフォートレス思考」— 何をやるかと、どうやるかの両輪](/HomePage/ja/blog/20260420-essentialism-effortless/) — 仕組み化による効率化の思想
+- [「y」を押す前に実装が消えた ― 自作AIコーディングツールの安全設計](/HomePage/ja/blog/20260829-vibe-coding-tool-safety-design/) — AIツールとローカル環境をつなぐ別の自動化事例

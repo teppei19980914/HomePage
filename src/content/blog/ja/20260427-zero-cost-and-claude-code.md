@@ -129,3 +129,4 @@ GitHub Pages、Vercel、Supabase——無料で使えるインフラは山ほど
 - [「テスト工程が消滅した」— AI 駆動開発 vs 従来開発を全工程で比較してみた](/HomePage/ja/blog/20260410-ai-driven-development/) — Claude Code を使った開発の具体的な実績データ
 - [『ユメログ』から『ユメハシ』へ — 夢と現実のあいだに、橋を架ける](/HomePage/ja/blog/20260408-yumehashi-story/) — 運用コスト 0 円で運用しているプロダクトの開発哲学
 - [Astro v6 で個人ホームページを作って分かった — 情報の少ないフレームワークで設計を通す技術](/HomePage/ja/blog/20260418-astro-v6-homepage/) — このサイト自体の技術スタックと設計判断
+- [「y」を押す前に実装が消えた ― 自作AIコーディングツールの安全設計](/HomePage/ja/blog/20260829-vibe-coding-tool-safety-design/) — Claude Codeとの出会いの先にある、AIにファイル操作を任せる設計の話

@@ -123,3 +123,4 @@ Once you take that first step, the speed of learning shifts dramatically. Beyond
 - ["Tests Disappeared as a Phase" — Comparing AI-Driven and Traditional Development](/HomePage/en/blog/20260410-ai-driven-development/) — Concrete data from development with Claude Code
 - [From "YumeLog" to "YumeHashi" — Building a Bridge Between Dreams and Reality](/HomePage/en/blog/20260408-yumehashi-story/) — Development philosophy behind the ¥0 products
 - [Why I Built This Homepage — Walking with Astro v6](/HomePage/en/blog/20260418-astro-v6-homepage/) — The tech stack and design decisions behind this site
+- [Everything Vanished Before I Hit "y" — Safety Design for a Self-Built AI Coding Tool](/HomePage/en/blog/20260829-vibe-coding-tool-safety-design/) — Where the encounter with Claude Code led: designing safety for AI file operations
