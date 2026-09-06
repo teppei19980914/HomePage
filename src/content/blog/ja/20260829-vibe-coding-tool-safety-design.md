@@ -45,3 +45,4 @@ AIとの対話とローカルのソースコードを橋渡しするクライア
 - [「テスト工程が消滅した」— AI駆動開発 vs 従来開発を全工程で比較してみた](/HomePage/ja/blog/20260410-ai-driven-development/) — AIと二人三脚で開発を進めるバイブコーディングの実績データ
 - [Qiita CLI × Claude Code で記事管理を自動化 — 記事IDの罠と仕組み化の教訓](/HomePage/ja/blog/20260421-qiita-cli-automation/) — AIツールとローカル環境をつなぐ別の自動化事例
 - [「作っては使わない」を繰り返していた私が、運用コスト0円でアプリを公開できるようになった話](/HomePage/ja/blog/20260427-zero-cost-and-claude-code/) — Claude Codeとの出会いが開発スタイルを変えた原点
+- [計画通りにいかない毎日から、道なりに進めるアプリへ ― 『ミチナリ』を作った理由](/HomePage/ja/blog/20260831-michinari-story/) — 同じNewtonX基盤を使った別プロダクトの開発話

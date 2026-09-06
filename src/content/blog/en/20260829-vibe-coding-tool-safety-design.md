@@ -45,3 +45,4 @@ Vibe coding massively speeds up how fast you can write code — but without a sa
 - ["The Testing Phase Disappeared" — AI-Driven vs Traditional Development Compared](/HomePage/en/blog/20260410-ai-driven-development/) — real performance data from building alongside AI in a vibe-coding workflow
 - [Qiita CLI × Claude Code — Automating Article Management](/HomePage/en/blog/20260421-qiita-cli-automation/) — another case of bridging an AI tool with a local environment
 - [How I Went From "Build It, Never Use It" to Shipping Apps at Zero Operating Cost](/HomePage/en/blog/20260427-zero-cost-and-claude-code/) — the encounter with Claude Code that changed how I build
+- [From Plans That Never Survive Contact With Reality to an App You Just Follow — Why I Built Michinari](/HomePage/en/blog/20260831-michinari-story/) — another product built on the same NewtonX platform

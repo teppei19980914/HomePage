@@ -94,3 +94,4 @@ If you've been telling yourself "I should read more" for months, maybe pick one 
 - ["No Effort Goes Unrewarded" — How the Concept of Accumulating Luck Changed My Work](/HomePage/en/blog/20260414-effort-and-luck/) — How a book changed my definition of effort
 - ["Breathing Through the Years" — Janet's Law and Working with Time on Your Side](/HomePage/en/blog/20260413-janets-law-time/) — Habits for keeping the brain active
 - ["Black Box Thinking" — Life Is Too Short to Experience Every Failure Yourself](/HomePage/en/blog/20260419-failure-science/) — The importance of accumulating and analyzing failure
+- [Ending the Kind of Reading You Forget Instantly — How Michinari Turns Logs Into an Asset Without Quotas](/HomePage/en/blog/20260906-michinari-reading-as-asset/) — Turning this view of reading into an app feature
