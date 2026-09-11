@@ -36,3 +36,4 @@ I don't think a reading log should be managed by quota — it only becomes an as
 - [From Plans That Never Survive Contact With Reality to an App You Just Follow — Why I Built Michinari](/HomePage/en/blog/20260831-michinari-story/) — the app's overall design philosophy
 - [What Reading Gave Me Wasn't Knowledge — It Was the Habit of Thinking from Multiple Angles](/HomePage/en/blog/20260415-reading-and-perspective/) — an essay on what reading really gives you
 - [The 1.01 Rule: What It Means to End Today at Your Best](/HomePage/en/blog/20260814-daily-one-percent-growth/) — accumulating small logs over time
+- [I Was Treating Myself as Replaceable — Heidegger on Building Teams](/HomePage/en/blog/20260912-heidegger-finitude-team-building/) — a book I actually read through using this reading log feature

@@ -159,3 +159,4 @@ In a world where technical level no longer differentiates people much, that — 
 - [Reading Notes on Reinventing Organizations — Why Pyramids Fail and How to Build a Self-Driven Team](/HomePage/en/blog/20260518-teal-organization/) — Delegation as the layer that sits on top of psychological safety
 - [A little levity inside seriousness: reading Humor, Seriously](/HomePage/en/blog/20260726-humor-is-the-secret-weapon/) — Why humor can be an entry point into psychological safety
 - [Autonomy support runs both ways: reading Why We Do What We Do](/HomePage/en/blog/20260729-power-to-nurture-others/) — Designing a space that supports autonomy
+- [I Was Treating Myself as Replaceable — Heidegger on Building Teams](/HomePage/en/blog/20260912-heidegger-finitude-team-building/) — what has to come after "I belong here"
