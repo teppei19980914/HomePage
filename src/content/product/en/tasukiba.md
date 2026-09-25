@@ -1,15 +1,17 @@
 ---
-title: "Tasukiba — The AI Operations Secretary for Knowledge & Project Management"
-description: "An AI operations secretary that remembers your projects, knowledge, and risks — and surfaces what you need by semantic search, right when you need it. Project and knowledge management built in, with MFA and tenant isolation."
+title: "Tasukiba — AI Operations Secretary (Service Ended)"
+description: "Tasukiba was an AI secretary surfacing project knowledge via semantic search. The service has ended; source code stays public on GitHub as a portfolio piece."
 tagline: "The information you need, delivered right here, right now."
 date: 2026-04-16
 tags: ["AI operations secretary", "Knowledge Management", "semantic search", "operational efficiency", "Project Management"]
 repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
 url: "https://tasukiba.com/"
-status: active
+status: ended
 order: 3
 blogSeriesKey: "tasukiba"
 ---
+
+> **Note: this service has ended.** The server has been shut down, so the "Try it" link above no longer works. The source code remains public in the [GitHub repository](https://github.com/teppei19980914/BusinessManagementPlatform) as a portfolio piece. What follows describes the product as it was while live.
 
 ## Before you go looking, the knowledge you need finds you
 
@@ -28,7 +30,7 @@ Tasukiba is an **AI operations secretary** that remembers your work data — pro
 
 From "review 100 results by eye" to "**decide from a handful.**" Knowledge stops living in one person's memory and accumulates as a **team asset.**
 
-**[Try Tasukiba free for 90 days](https://tasukiba.com/)** — no credit card required.
+(This service has ended; the description above reflects the product as it was while live. See the [GitHub repository](https://github.com/teppei19980914/BusinessManagementPlatform) for implementation details.)
 
 ## What's in the Name
 

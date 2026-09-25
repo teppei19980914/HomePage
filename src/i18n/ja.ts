@@ -307,14 +307,16 @@ export const ja = {
   // --- Product ページ ---
   product: {
     title: "プロダクト",
-    description: "須山哲平が個人開発・運用しているプロダクト一覧。夢を行動に変える「ユメハシ」、ワーキングメモリを解放する「Defrago」、業務データの管理を手伝うAI業務管理秘書「たすきば」。Flutter / FastAPI / Next.jsで構築し月額0円運用しています。",
+    description: "須山哲平が個人開発・運用しているプロダクト一覧。学習管理アプリ「ミチナリ」、GTDタスク管理「Defrago」、夢を行動に変える「ユメハシ」など。AI業務管理秘書「たすきば」は運用終了。Flutter / FastAPI / Next.jsで構築。",
     subtitle: "個人で開発しているプロダクトを紹介します",
     emptyMessage: "プロダクトはまだありません。",
-    statusLabels: { active: "公開中", beta: "開発中 — こうご期待", archived: "アーカイブ", suspended: "新規受付停止中" },
+    statusLabels: { active: "公開中", beta: "開発中 — こうご期待", archived: "アーカイブ", suspended: "新規受付停止中", ended: "運用終了" },
     detailLink: "詳細を見る",
     tryLink: "体験する",
     suspendedLink: "新規受付停止中",
     suspendedNotice: "現在、新規ユーザーの受け入れを停止しています。",
+    endedLink: "運用終了",
+    endedNotice: "サーバーを停止し、本サービスの運用を終了しました。ソースコードは GitHub にてポートフォリオとして公開を継続しています。",
     githubLink: "GitHub", // brand
     appFloat: {
       text: "たすきばを使ってみる",

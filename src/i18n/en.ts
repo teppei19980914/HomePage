@@ -395,14 +395,16 @@ export const en: Labels = {
   // --- Product page ---
   product: {
     title: "Product",
-    description: "Personal products by Teppei Suyama: YumeHashi (goals), Defrago (PDCA), and Tasukiba (AI operations secretary). Flutter, FastAPI, Next.js — zero monthly cost.",
+    description: "Personal products by Teppei Suyama: Michinari, Defrago (GTD), YumeHashi. Tasukiba (AI ops secretary) has ended. Built with Flutter, FastAPI, Next.js.",
     subtitle: "Products I build and maintain on the side",
     emptyMessage: "No products yet.",
-    statusLabels: { active: "Active", beta: "In development — stay tuned", archived: "Archived", suspended: "Not accepting new users" },
+    statusLabels: { active: "Active", beta: "In development — stay tuned", archived: "Archived", suspended: "Not accepting new users", ended: "Service ended" },
     detailLink: "View details",
     tryLink: "Try it",
     suspendedLink: "Not accepting new users",
     suspendedNotice: "We are currently not accepting new users.",
+    endedLink: "Service ended",
+    endedNotice: "The server has been shut down and this service has ended. The source code remains public on GitHub as a portfolio piece.",
     githubLink: "GitHub",
     appFloat: {
       text: "Try Tasukiba",

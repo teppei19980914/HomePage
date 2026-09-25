@@ -175,4 +175,4 @@ src/defrago/
 
 ## Another product by the same developer
 
-Once personal task management clears your head, the next challenge is handling work and knowledge at the team and project level. **[Tasukiba, an AI work-management secretary](/HomePage/en/product/tasukiba/)**, remembers your past projects, knowledge, issues, and retrospectives, and delivers what you need right now through semantic search. If you want to stop spending time hunting for documents, take a look.
+Once personal task management clears your head, the next challenge is handling work and knowledge at the team and project level. I built and ran **[Tasukiba, an AI operations secretary](/HomePage/en/product/tasukiba/)** to remember past projects, knowledge, issues, and retrospectives and deliver what you needed through semantic search, but that service has since ended. If you're curious about the design and implementation, the source code remains public in the [GitHub repository](https://github.com/teppei19980914/BusinessManagementPlatform).

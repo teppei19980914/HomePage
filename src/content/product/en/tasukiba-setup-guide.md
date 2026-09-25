@@ -1,15 +1,17 @@
 ---
-title: "Tasukiba First-Time Setup Guide: Sign-Up to Your First Admin Login"
-description: "A step-by-step onboarding guide to Tasukiba, an AI operations secretary, for a new organization's first admin: from sign-up and tenant provisioning through password and recovery-code setup to your first login. Written so even non-engineers can follow it top to bottom without guessing."
+title: "Tasukiba First-Time Setup Guide (Archive — Service Ended)"
+description: "Archived onboarding guide for Tasukiba. The service has ended; new sign-ups are no longer accepted. Source code is public on GitHub."
 tagline: "From tenant provisioning to your first login — without the guesswork."
 date: 2026-05-28
 tags: ["first login", "sign-up", "setup guide", "tenant admin", "onboarding"]
 url: "https://tasukiba.com/"
-status: active
+status: ended
 order: 33
 parent: "tasukiba"
 audience: "firstLogin"
 ---
+
+> **Note: Tasukiba has ended and new sign-ups are no longer accepted.** What follows is a record of the onboarding flow while the service was live. Source code remains public in the [GitHub repository](https://github.com/teppei19980914/BusinessManagementPlatform) as a portfolio piece.
 
 ## About this page
 

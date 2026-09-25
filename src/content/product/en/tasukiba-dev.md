@@ -1,15 +1,17 @@
 ---
-title: "Join Tasukiba — Help build the AI operations secretary, grow together"
-description: "We're looking for developers to help build Tasukiba, an AI operations secretary. No experience needed, failure-friendly community. Practice TypeScript, Next.js, and PostgreSQL hands-on. Code, tests, docs, and UX review all welcome — join beside your day job, from one commit a month."
+title: "Join Tasukiba — Developer Recruitment (Archive)"
+description: "Archived Tasukiba developer recruitment page. The service has ended; we are no longer recruiting. Source code is public on GitHub as a portfolio piece."
 tagline: "A place where building the service, respecting each other, and growing as a developer happen together."
 date: 2026-04-16
 tags: ["hiring", "community development", "psychological safety", "mutual growth", "TypeScript Next.js"]
 url: "https://tasukiba.com/"
-status: active
+status: ended
 order: 32
 parent: "tasukiba"
 audience: "developer"
 ---
+
+> **Note: Tasukiba has ended and we are no longer recruiting developers.** What follows is a record of the recruitment pitch while the service was live. Source code remains public in the [GitHub repository](https://github.com/teppei19980914/BusinessManagementPlatform) as a portfolio piece.
 
 ## First, the most important thing we want to share
 

@@ -125,4 +125,6 @@ The rest of this page covers the tech stack and key design decisions — for tho
 
 ## What the same developer is focused on now
 
-YumeHashi is currently closed to new sign-ups. The product I am now building and running as my main focus is **[Tasukiba, an AI work-management secretary](/HomePage/en/product/tasukiba/)**. It remembers your projects, knowledge, and retrospectives and delivers what you need right now through semantic search — free to start, for individuals and teams alike.
+YumeHashi is currently closed to new sign-ups. The product I am now building and running as my main focus is **[Michinari, a study-planning app](/HomePage/en/product/michinari/)**, a Windows app that re-plans your certification study, reading, and work goals with AI every day.
+
+In between, I also built and ran **[Tasukiba, an AI operations secretary](/HomePage/en/product/tasukiba/)**, but that service has since ended. Its source code remains public in the [GitHub repository](https://github.com/teppei19980914/BusinessManagementPlatform) as a portfolio piece.

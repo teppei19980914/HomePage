@@ -84,13 +84,16 @@ const products = (await getLocalizedCollection("product", lang))
       {products.filter((p) => p.data.status !== "beta").map((p, i) => (
         <a
           href={getProductDetailUrl(p, lang)}
-          class:list={["product-card", "reveal", { "product-suspended": p.data.status === "suspended" }]}
+          class:list={["product-card", "reveal", { "product-suspended": p.data.status === "suspended" || p.data.status === "ended" }]}
           style={`transition-delay: ${i * 0.1}s`}
         >
           <div class="product-color" style="background:linear-gradient(135deg,#06b6d4,#2563eb)"></div>
           <div class="product-body">
             {p.data.status === "suspended" && (
               <span class="product-suspended-badge">{productLabels.statusLabels.suspended}</span>
+            )}
+            {p.data.status === "ended" && (
+              <span class="product-suspended-badge">{productLabels.statusLabels.ended}</span>
             )}
             <h3>{p.data.title}</h3>
             <p class="product-tagline">{p.data.tagline}</p>

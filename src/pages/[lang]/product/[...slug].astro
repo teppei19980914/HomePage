@@ -85,7 +85,8 @@ const seriesItemList =
 // SoftwareApplication 構造化データ（url を持つ＝実アプリの製品ページに付与）。
 // リッチリザルト対象となり検索結果での露出を高める。
 // offers は「無料で使い始められる」プロダクトのみ（新規受付停止中は付与しない）。
-const appJsonLd = product.data.url
+// 運用終了したプロダクトは実在しないアプリとして誤認させないため、JSON-LD 自体を付与しない。
+const appJsonLd = product.data.url && product.data.status !== "ended"
   ? [
       {
         "@context": "https://schema.org",
@@ -128,7 +129,9 @@ const appJsonLd = product.data.url
             ? productLabels.statusLabels.beta
             : product.data.status === "suspended"
               ? productLabels.statusLabels.suspended
-              : productLabels.statusLabels.archived}
+              : product.data.status === "ended"
+                ? productLabels.statusLabels.ended
+                : productLabels.statusLabels.archived}
       </span>
       <h1>{product.data.title}</h1>
       <p class="tagline">{product.data.tagline}</p>
@@ -145,11 +148,22 @@ const appJsonLd = product.data.url
           </p>
         )
       }
+      {
+        product.data.status === "ended" && (
+          <p class="suspended-notice" role="status">
+            {productLabels.endedNotice}
+          </p>
+        )
+      }
       <div class="header-actions">
         {
           product.data.url && product.data.status === "suspended" ? (
             <span class="btn-primary btn-disabled" aria-disabled="true">
               {productLabels.suspendedLink}
+            </span>
+          ) : product.data.url && product.data.status === "ended" ? (
+            <span class="btn-primary btn-disabled" aria-disabled="true">
+              {productLabels.endedLink}
             </span>
           ) : (
             product.data.url && (
@@ -279,7 +293,7 @@ const appJsonLd = product.data.url
     <a href="#" onclick="history.back(); return false;">&larr; {common.backLink}</a>
   </nav>
 
-  {product.data.url && product.data.status !== "suspended" && (currentSlug === "tasukiba" || product.data.parent === "tasukiba") && (
+  {product.data.url && product.data.status !== "suspended" && product.data.status !== "ended" && (currentSlug === "tasukiba" || product.data.parent === "tasukiba") && (
     <div class="app-float" id="appFloat" data-app-key={currentSlug}>
       <a
         href={product.data.url}
@@ -791,6 +805,15 @@ const appJsonLd = product.data.url
 
   :global(.dark) .status-suspended {
     color: #f87171;
+  }
+
+  .status-ended {
+    background-color: rgba(107, 114, 128, 0.15);
+    color: #4b5563;
+  }
+
+  :global(.dark) .status-ended {
+    color: #9ca3af;
   }
 
   .suspended-notice {

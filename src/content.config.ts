@@ -27,7 +27,7 @@ const product = defineCollection({
     tags: z.array(z.string()).default([]),
     url: z.string().url().optional(),
     repo: z.string().url().optional(),
-    status: z.enum(["active", "beta", "archived", "suspended"]).default("active"),
+    status: z.enum(["active", "beta", "archived", "suspended", "ended"]).default("active"),
     order: z.number().default(0),
     parent: z.string().optional(),
     audience: z.enum(["user", "firstLogin", "developer"]).optional(),

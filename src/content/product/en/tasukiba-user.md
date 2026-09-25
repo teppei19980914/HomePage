@@ -1,24 +1,25 @@
 ---
-title: "Turn Search Time into Value — Tasukiba, Your AI Operations Secretary"
-description: "An AI operations secretary for teams and individuals: semantic search turns document-hunting into creative work, with project and knowledge management built in. MFA, audit logs, and tenant isolation for smooth business adoption."
+title: "Tasukiba — AI Ops Secretary (Service Ended)"
+description: "Tasukiba was an AI secretary for teams: semantic search surfaced past assets. The service has ended; source code stays public on GitHub as a portfolio piece."
 tagline: "Turn time spent searching into time spent creating."
 date: 2026-04-16
 tags: ["AI operations secretary", "knowledge management", "semantic search", "operational efficiency", "project management"]
 url: "https://tasukiba.com/"
-status: active
+status: ended
 order: 31
 parent: "tasukiba"
 audience: "user"
 ---
+
+> **Note: this service has ended.** The server has been shut down, so sign-up and login are no longer available. The source code remains public in the [GitHub repository](https://github.com/teppei19980914/BusinessManagementPlatform) as a portfolio piece. What follows is a record of the product and its policies while live.
 
 ## Turn time spent searching into time spent creating
 
 Tasukiba is an **AI operations secretary** that helps you manage your work data.
 It surfaces past assets at exactly the right moment, cutting the time you spend hunting for documents so you can focus on work that actually creates value.
 
-> 🚀 **Tasukiba went live on June 1, 2026.** [Open Tasukiba](https://tasukiba.com/) to sign up and start right away — no credit card required.
+> (This service has ended and sign-up is no longer available. The description below reflects the product as it was while live.)
 
-- **[Try it free for 90 days](https://tasukiba.com/)** — no credit card required at sign-up.
 - [Drop by Discord to chat](https://discord.com/invite/EqY82YvxuG)
 
 ---
@@ -901,9 +902,8 @@ It's best suited for project managers, team leads, and others who manage organiz
 90 days free. Cancel anytime.
 Whether it fits is, in the end, something best judged by you.
 
-> 🚀 **Tasukiba went live on June 1, 2026.** Sign up from the button below or the always-on link at the bottom-right of the page — [Open Tasukiba](https://tasukiba.com/). No credit card required.
+> (This service has ended. Sign-up is no longer available; the section above reflects the product as it was while live.)
 
-- **[Try it free for 90 days](https://tasukiba.com/)**
 - [Drop by Discord to chat](https://discord.com/invite/EqY82YvxuG)
 
 ### After 90 days

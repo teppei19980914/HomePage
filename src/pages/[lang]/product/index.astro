@@ -42,7 +42,9 @@ const products = (await getLocalizedCollection("product", lang))
                       ? productLabels.statusLabels.beta
                       : product.data.status === "suspended"
                         ? productLabels.statusLabels.suspended
-                        : productLabels.statusLabels.archived}
+                        : product.data.status === "ended"
+                          ? productLabels.statusLabels.ended
+                          : productLabels.statusLabels.archived}
                 </span>
               </div>
               <h2>{product.data.title}</h2>
@@ -66,7 +68,12 @@ const products = (await getLocalizedCollection("product", lang))
                   {productLabels.suspendedLink}
                 </span>
               )}
-              {product.data.status !== "beta" && product.data.status !== "suspended" && product.data.url && (
+              {product.data.status === "ended" && product.data.url && (
+                <span class="btn-primary btn-disabled" aria-disabled="true">
+                  {productLabels.endedLink}
+                </span>
+              )}
+              {product.data.status !== "beta" && product.data.status !== "suspended" && product.data.status !== "ended" && product.data.url && (
                 <a
                   href={product.data.url}
                   target="_blank"
@@ -174,6 +181,15 @@ const products = (await getLocalizedCollection("product", lang))
 
   :global(.dark) .status-suspended {
     color: #f87171;
+  }
+
+  .status-ended {
+    background-color: rgba(107, 114, 128, 0.15);
+    color: #4b5563;
+  }
+
+  :global(.dark) .status-ended {
+    color: #9ca3af;
   }
 
   .btn-disabled {
