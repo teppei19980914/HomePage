@@ -191,7 +191,10 @@ export const ja = {
       title: "資格",
       items: [
         // 資格名は公式名称(brand)のため原文のまま
+        { date: "2026.11", name: "情報セキュリティマネジメント試験" },
+        { date: "2026.11", name: "情報処理安全確保支援士試験 (科目A-1, 2)" },
         { date: "2026.02", name: "Python 3 エンジニア認定実践試験" },
+        { date: "2025.10", name: "プロジェクトマネージャ試験 (科目A-1, 2, 科目B-1)" },
         { date: "2024.10", name: "応用情報技術者試験" },
         { date: "2024.03", name: "OSS-DB Silver" },
         { date: "2023.11", name: "AZ-900 (Microsoft Azure Fundamentals)" },

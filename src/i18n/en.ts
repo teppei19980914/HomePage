@@ -195,7 +195,10 @@ export const en: Labels = {
     certifications: {
       title: "Certifications",
       items: [
+        { date: "2026.11", name: "Information Security Management Examination (JP)" },
+        { date: "2026.11", name: "Registered Information Security Specialist Examination (JP) (Subjects A-1, 2)" },
         { date: "2026.02", name: "Python 3 Engineer Certification (Practical)" },
+        { date: "2025.10", name: "Project Manager Examination (JP) (Subjects A-1, 2, B-1)" },
         { date: "2024.10", name: "Applied Information Technology Engineer (JP)" },
         { date: "2024.03", name: "OSS-DB Silver" },
         { date: "2023.11", name: "AZ-900 (Microsoft Azure Fundamentals)" },
