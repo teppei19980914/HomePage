@@ -6,7 +6,7 @@ date: 2026-08-31
 tags: ["AI Study Management", "Certification Exams", "Reading Log", "Side Project", "Windows", "FastAPI"]
 repo: "https://github.com/teppei19980914/Michinari"
 status: active
-order: 4
+order: 1
 ---
 
 ## Does this sound familiar?

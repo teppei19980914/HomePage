@@ -7,7 +7,7 @@ tags: ["AI業務管理秘書", "ナレッジマネジメント", "意味検索",
 repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
 url: "https://tasukiba.com/"
 status: ended
-order: 3
+order: 4
 blogSeriesKey: "tasukiba"
 ---
 

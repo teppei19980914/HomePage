@@ -6,7 +6,7 @@ date: 2026-08-31
 tags: ["AI学習管理", "資格試験", "読書記録", "個人開発", "Windows", "FastAPI"]
 repo: "https://github.com/teppei19980914/Michinari"
 status: active
-order: 4
+order: 1
 ---
 
 ## こんなことに困っていませんか

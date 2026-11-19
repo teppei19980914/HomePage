@@ -7,7 +7,7 @@ tags: ["AI operations secretary", "Knowledge Management", "semantic search", "op
 repo: "https://github.com/teppei19980914/BusinessManagementPlatform"
 url: "https://tasukiba.com/"
 status: ended
-order: 3
+order: 4
 blogSeriesKey: "tasukiba"
 ---
 
